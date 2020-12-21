@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio OTA</title>
+</head>
+
+<body>
+  <th:block th:fragment="header">
+    <!-- ↓Bootstrap CSSの読み込み -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- ↓CSSの読み込み -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <!-- ↓jQueryUIのCSS読み込み -->
+    <link rel="stylesheet" href="/css/custom-theme/jquery-ui-1.10.0.custom.css">
+    <!-- ↓fontawsome読み込み -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous" />
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css"
+      type="text/css" media="all" />
+
+    <!-- ↓jQueryの読み込み -->
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- ↓jQuery UI の読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!-- ↓Bootstrap JS の読み込み -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+    <!-- ↓Bootbox JS の読み込み -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.js"></script>
+    <script th:src="@{/js/.js}"></script>
+    <script th:inline="javascript" defer>
+      /*<![CDATA[*/
+
+      /*]]>*/
+    </script>
+
+    <!-- ヘッダー -->
+    <nav class="navbar navbar-expand-lg navbar-light container" style="line-height: 2rem;">
+      <a href="#" class="navbar-brand">
+        <img src="/img/logo.png" alt="トップロゴ">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="welcome-msg-area">
+        <!-- <p class="welcome-msg" th:text="'ようこそ！' + ${loginSession.isLogined() == false ? 'ゲストさん' : loginSession.getUserName() + 'さん'}"></p> -->
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="#" class="nav-link">ご予約</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">お知らせ</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">お気に入り</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link icon fas faa-wrench animated-hover fa-shopping-cart"></a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Log in / Sing up</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+  </th:block>
+
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/* css %
+cd portfolio/src/main/resources/static/css
+node-sass styles.scss styles.css --output-style expanded --watch
+Scss自動コンパイルコマンド
+*/
+.icon::before {
+  display: inline-block;
+  margin-right: .5em;
+  font-family: fontawesome;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
