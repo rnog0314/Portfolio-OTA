@@ -11,3 +11,9 @@ Scss自動コンパイルコマンド
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.img-fluid {
+  width: 100vw;
+  height: 600px;
+  object-fit: cover;
+}
