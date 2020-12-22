@@ -12,8 +12,28 @@ Scss自動コンパイルコマンド
   -moz-osx-font-smoothing: grayscale;
 }
 
-.img-fluid {
+.carousel-item .img-fluid {
   width: 100vw;
   height: 600px;
   object-fit: cover;
+}
+
+.card img {
+  width: 18rem;
+  margin: 2rem;
+  height: 12rem;
+  border-radius: 1rem !important;
+  object-fit: cover;
+}
+
+#features.card {
+  display: inline-block;
+  /* ここがポイント */
+  height: 80px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.card {
+  border: none;
 }

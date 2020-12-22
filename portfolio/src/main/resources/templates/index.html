@@ -8,8 +8,10 @@
 </head>
 
 <body>
+  <!-- header挿入 -->
   <header th:insert="fragments/header::header"></header>
   <main role="main">
+    <!-- カルーセルスライド -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide="0" class="active"></li>
@@ -64,9 +66,30 @@
       </a>
     </div><!-- carousel -->
 
+    <div id="features" class="container">
+      <div class="row">
+        <div class="col-4-md">
+          <div class="card">
+            <img src="/img/slider1.jpg" alt="feature content" class="card-img">
+          </div>
+        </div>
+        <div class="col-4-md">
+          <div class="card">
+            <img src="/img/slider2.jpg" alt="feature content" class="card-img img-fluid">
+          </div>
+        </div>
+        <div class="col-4-md">
+          <div class="card">
+            <img src="/img/slider3.jpg" alt="feature content" class="card-img img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
+  <!-- footer -->
   <footer th:insert="fragments/footer::footer"></footer>
-  <script>
+  <script type="text/javascript">
 
   </script>
 </body>
