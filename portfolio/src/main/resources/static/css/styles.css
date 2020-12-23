@@ -22,12 +22,21 @@ Scss自動コンパイルコマンド
   width: 18rem;
   margin: 2rem;
   height: 12rem;
-  border-radius: 1rem !important;
-  object-fit: cover;
+  border-radius: 1rem;
 }
 
-#popular .card img {
+#popular .card img, #where-to-go .card img {
   margin: 0;
+}
+
+#where-to-go .card {
+  border-radius: 1rem;
+}
+
+#where-to-go .card img {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  object-fit: cover;
 }
 
 #features.card {
