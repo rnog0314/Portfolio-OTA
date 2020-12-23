@@ -26,6 +26,12 @@ Scss自動コンパイルコマンド
   object-fit: cover;
 }
 
+#popular .card img {
+  margin: 0;
+}
+
+
+
 #features {
   &.card {
     display: inline-block; /* ここがポイント */
