@@ -78,8 +78,10 @@ body {
 
 .owl-nav .owl-prev {
   margin: auto 1.5rem;
+  outline: none;
 }
 
 .owl-nav .owl-next {
   margin: auto 1.5rem;
+  outline: none;
 }
