@@ -74,20 +74,15 @@ body {
   padding: 3rem
 }
 
-.owl-carousel .item {
-  margin: 3px
-}
-
-.owl-carousel .item img {
-  display: block;
-  width: 100%;
-  height: auto
-}
-
-.owl-carousel .item {
-  margin: 3px
-}
-
-.owl-carousel {
-  margin-bottom: 15px
+.owl-nav {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 2rem;
+  color: lightgray;
+  .owl-prev {
+    margin: auto 1.5rem;
+  }
+  .owl-next {
+    margin: auto 1.5rem;
+  }
 }

@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio OTA</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
+  <!-- ↓Owl Carousel -->
+  <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+  <link rel="stylesheet" th:href="@{/css/owl.theme.default.min.css}">
 </head>
 
 <body>
@@ -98,8 +99,6 @@
 
     <!-- popular -->
     <section id="popular">
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
       <div class="page-content page-container" id="page-content">
         <div class="padding">
           <div class="row container-fluid">
@@ -108,33 +107,15 @@
                 <div class="card-body">
                   <h4 class="card-title">What's popluar</h4>
                   <div class="owl-carousel">
-                    <div class="item"> <img
-                        src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1557204140/banner_12.jpg" alt="image" />
-                    </div>
-                    <div class="item"> <img
-                        src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1557204172/banner_2.jpg" alt="image" />
-                    </div>
-                    <div class="item"> <img
-                        src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1557204663/park-4174278_640.jpg"
-                        alt="image" /> </div>
-                    <div class="item"> <img src="http://www.urbanui.com/fily/template/images/carousel/banner_2.jpg"
-                        alt="image" /> </div>
-                    <div class="item"> <img
-                        src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1557204172/banner_2.jpg" alt="image" />
-                    </div>
-                    <div class="item"> <img
-                        src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1557204663/park-4174278_640.jpg"
-                        alt="image" /> </div>
-                    <div class="item"> <img src="http://www.urbanui.com/fily/template/images/carousel/banner_2.jpg"
-                        alt="image" /> </div>
-                    <div class="item"> <img src="http://www.urbanui.com/fily/template/images/carousel/banner_2.jpg"
-                        alt="image" /> </div>
-                    <div class="item"> <img src="http://www.urbanui.com/fily/template/images/carousel/banner_2.jpg"
-                        alt="image" /> </div>
-                    <div class="item"> <img src="http://www.urbanui.com/fily/template/images/carousel/banner_2.jpg"
-                        alt="image" /> </div>
-                    <div class="item"> <img src="http://www.urbanui.com/fily/template/images/carousel/banner_2.jpg"
-                        alt="image" /> </div>
+                    <div class="item" style="background-color: pink; border-radius: 1rem; height: 100px;">BOX</div>
+                    <div class="item" style="background-color: pink; border-radius: 1rem; height: 100px;">BOX</div>
+                    <div class="item" style="background-color: pink; border-radius: 1rem; height: 100px;">BOX</div>
+                    <div class="item" style="background-color: pink; border-radius: 1rem; height: 100px;">BOX</div>
+                    <div class="item" style="background-color: pink; border-radius: 1rem; height: 100px;">BOX</div>
+                    <div class="item" style="background-color: pink; border-radius: 1rem; height: 100px;">BOX</div>
+                    <div class="item" style="background-color: pink; border-radius: 1rem; height: 100px;">BOX</div>
+                    <div class="item" style="background-color: pink; border-radius: 1rem; height: 100px;">BOX</div>
+                    <div class="item" style="background-color: pink; border-radius: 1rem; height: 100px;">BOX</div>
                   </div>
                 </div>
               </div>
@@ -143,28 +124,28 @@
         </div>
       </div>
     </section>
-
   </main>
+  <script th:src="@{/js/owl.carousel.min.js}"></script>
   <!-- footer -->
   <footer th:insert="fragments/footer::footer"></footer>
   <script type="text/javascript">
     $(document).ready(function () {
-      // TODO https://bbbootstrap.com/snippets/responsive-slick-auto-play-slider-dots-89705356
-      //      https://owlcarousel2.github.io/OwlCarousel2/docs/started-welcome.html
-      $(".owl-carousel").owlCarousel({
-        autoPlay: 3000,
-        items: 4,
-        itemsDesktop: [1199, 3],
-        itemsDesktopSmall: [979, 3],
-        center: true,
-        nav: true,
+      $('.owl-carousel').owlCarousel({
         loop: true,
+        margin: 10,
+        nav: true,
         responsive: {
+          0: {
+            items: 1
+          },
           600: {
-            items: 4
+            items: 3
+          },
+          1000: {
+            items: 5
           }
         }
-      });
+      })
     });
   </script>
 </body>
