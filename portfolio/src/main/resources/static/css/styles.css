@@ -12,7 +12,7 @@ Scss自動コンパイルコマンド
   -moz-osx-font-smoothing: grayscale;
 }
 
-.carousel-item .img-fluid {
+#top-slide .carousel-item .img-fluid {
   width: 100vw;
   height: 600px;
   object-fit: cover;
@@ -25,7 +25,7 @@ Scss自動コンパイルコマンド
   border-radius: 1rem;
 }
 
-#popular .card img, #where-to-go .card img {
+#popular .card img, #where-to-go .card img, #what-to-do .card img {
   margin: 0;
 }
 
@@ -97,4 +97,28 @@ body {
 .owl-nav .owl-next {
   margin: auto 1.5rem;
   outline: none;
+}
+
+#testimonial .img-fluid {
+  width: 100%;
+}
+
+#testimonial .carousel-indicators li {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: lightblue;
+  border-radius: 50%;
+  position: relative;
+  top: 5rem;
+}
+
+.testimonial {
+  background-color: lightblue;
+  border-radius: 3rem;
+  padding: 3rem;
+}
+
+.row-eq-height {
+  display: flex;
+  flex-wrap: wrap;
 }

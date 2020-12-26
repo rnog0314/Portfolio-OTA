@@ -12,7 +12,7 @@ Scss自動コンパイルコマンド
   -moz-osx-font-smoothing: grayscale;
 }
 
-.carousel-item .img-fluid {
+#top-slide .carousel-item .img-fluid {
   width: 100vw;
   height: 600px;
   object-fit: cover;
@@ -25,7 +25,7 @@ Scss自動コンパイルコマンド
   border-radius: 1rem;
 }
 
-#popular, #where-to-go {
+#popular, #where-to-go, #what-to-do {
   .card img  {
     margin: 0;
   }
@@ -40,9 +40,6 @@ Scss自動コンパイルコマンド
   }
 }
 
-
-
-
 #features {
   &.card {
     display: inline-block; /* ここがポイント */
@@ -50,10 +47,6 @@ Scss自動コンパイルコマンド
     margin-right: 15px;
     margin-bottom: 15px;
   }
-  // &.card-img {
-  //   height: 12rem;
-  //   object-fit: cover;
-  // }
 }
 
 .card {
@@ -104,4 +97,29 @@ body {
     margin: auto 1.5rem;
     outline: none;
   }
+}
+
+#testimonial {
+  .img-fluid {
+    width: 100%;
+  }
+  .carousel-indicators li {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: lightblue;
+    border-radius: 50%;
+    position: relative;
+    top: 5rem;
+  }
+}
+
+.testimonial {
+  background-color: lightblue;
+  border-radius: 3rem;
+  padding: 3rem;
+}
+
+.row-eq-height {
+  display: flex;
+  flex-wrap: wrap;
 }
