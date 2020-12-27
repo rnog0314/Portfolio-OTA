@@ -108,10 +108,22 @@ body {
     position: relative;
     top: 5rem;
   }
-  .testimonial {
+  .item {
     background-color: lightblue;
-    border-radius: 3rem;
-    padding: 3rem;
+    padding: 2rem;
+    border-radius: 5rem;
+    height: 30rem;
+    img {
+      object-fit: cover;
+      width: 10rem !important;
+      height: 10rem !important;
+    }
+    .testimonial-text {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 6;
+      overflow: hidden;
+    }
   }
 }
 
@@ -164,4 +176,3 @@ body {
     display: inline;
   }
 }
-

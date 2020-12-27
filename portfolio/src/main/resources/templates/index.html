@@ -174,16 +174,14 @@
       <div class="page-content page-container" id="page-content">
         <div class="padding">
           <div class="row container-fluid">
-            <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
+            <div class="col-lg-12 grid-margin stretch-card owl-carousel owl-theme" id="testimonial-carousel">
+              <div class="card item" th:each="testimonial: ${testimonials}" th:object="${testimonial}">
+                <div class="my-0 m-auto">
+                  <img th:src="@{{imagePath} (imagePath = *{testimonialImage})}" alt="" class="card-img-top rounded-circle m-0" style="object-fit: cover;">
+                </div>
                 <div class="card-body">
-                  <h4 class="card-title">Testimonial</h4>
-                  <div id="testimonial-carousel" class="owl-carousel owl-theme">
-                    <div class="item" th:each="testimonial: ${testimonials}" th:object="${testimonial}">
-                      <img th:src="@{{imagePath} (imagePath = *{testimonialImage})}" alt="" class="m-0">
-                      <p class="testimonial-name" th:text="*{testimonialText}"></p>
-                    </div>
-                  </div>
+                  <h4 class="card-title"><i class="fas fa-quote-left"></i><span class="testimonial-title" th:text="*{testimonialTitle}"></span><i class="fas fa-quote-right"></i></h4>
+                  <p class="testimonial-text" th:text="*{testimonialText}"></p>
                 </div><!-- card-body -->
               </div><!-- card -->
             </div><!-- col -->

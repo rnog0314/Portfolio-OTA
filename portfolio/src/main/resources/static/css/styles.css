@@ -106,10 +106,24 @@ body {
   top: 5rem;
 }
 
-#testimonial .testimonial {
+#testimonial .item {
   background-color: lightblue;
-  border-radius: 3rem;
-  padding: 3rem;
+  padding: 2rem;
+  border-radius: 5rem;
+  height: 30rem;
+}
+
+#testimonial .item img {
+  object-fit: cover;
+  width: 10rem !important;
+  height: 10rem !important;
+}
+
+#testimonial .item .testimonial-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
 }
 
 .row-eq-height {
