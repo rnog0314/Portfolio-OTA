@@ -1,0 +1,11 @@
+insert into destinations (destination_id, destination_name, destination_image) values (1, 'Tokyo', '/img/destination/tokyo.jpg');
+insert into destinations (destination_id, destination_name, destination_image) values (2, 'Hokkaido', '/img/destination/hokkaido.jpg');
+insert into destinations (destination_id, destination_name, destination_image) values (3, 'Kansai', '/img/destination/kansai.jpg');
+insert into destinations (destination_id, destination_name, destination_image) values (4, 'Tokai', '/img/destination/tokai.jpg');
+insert into destinations (destination_id, destination_name, destination_image) values (5, 'Okinawa', '/img/destination/okinawa.jpg');
+insert into destinations (destination_id, destination_name, destination_image) values (6, 'Shikoku', '/img/destination/shikoku.jpg');
+insert into destinations (destination_id, destination_name, destination_image) values (7, 'Kyushu', '/img/destination/kyushu.jpg');
+insert into destinations (destination_id, destination_name, destination_image) values (8, 'Sanin', '/img/destination/sanin.jpg');
+insert into destinations (destination_id, destination_name, destination_image) values (9, 'Tohoku', '/img/destination/tohoku.jpg');
+insert into destinations (destination_id, destination_name, destination_image) values (10, 'Hokuriku', '/img/destination/hokuriku.jpg');
+insert into destinations (destination_id, destination_name, destination_image) values (11, 'Sanyo', '/img/destination/sanyo.jpg');

@@ -51,8 +51,8 @@ CREATE TABLE destinations (
 CREATE TABLE testimonials (
   testimonial_id SERIAL PRIMARY KEY,
   testimonial_image VARCHAR(255) NOT NULL,
-  testimonial_title VARCHAR(30) NOT NULL,
-  testimonial_text VARCHAR(400) NOT NULL,
+  testimonial_title VARCHAR(255) NOT NULL,
+  testimonial_text VARCHAR(1000) NOT NULL,
   testimonial_review INTEGER NOT NULL,
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
 )
