@@ -30,3 +30,4 @@ insert into products (product_id, product_name, product_image, category_id, dest
 insert into products (product_id, product_name, product_image, category_id, destination_id) values (30, 'Realblab', '/img/destination/sanin.jpg', 6, 8);
 
 SELECT * FROM products ORDER BY product_id;
+DROP TABLE products;

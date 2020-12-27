@@ -146,15 +146,15 @@ body {
   background-color: none;
 }
 
-#where-to-go .item {
+#where-to-go .item, #what-to-do .item {
   position: relative;
 }
 
-#where-to-go img {
+#where-to-go img, #what-to-do img {
   display: block;
 }
 
-#where-to-go .destination-name {
+#where-to-go .destination-name, #where-to-go .category-name, #what-to-do .destination-name, #what-to-do .category-name {
   position: absolute;
   bottom: 0;
   left: 1rem;

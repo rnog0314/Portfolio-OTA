@@ -56,3 +56,5 @@ CREATE TABLE testimonials (
   testimonial_review INTEGER NOT NULL,
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
 )
+
+DROP DATABASE ota;

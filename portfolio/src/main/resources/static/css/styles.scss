@@ -151,15 +151,14 @@ body {
 
 }
 
-#where-to-go {
+#where-to-go, #what-to-do {
   .item {
     position: relative;
   }
   img {
     display: block;
-    // vertical-align: bottom;
   }
-  .destination-name {
+  .destination-name, .category-name {
     position: absolute;
     bottom: 0;
     left: 1rem;
