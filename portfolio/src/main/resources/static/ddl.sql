@@ -7,8 +7,10 @@ CREATE TABLE products (
   product_name VARCHAR(255) NOT NULL UNIQUE,
   category_id INTEGER NOT NULL,
   product_image VARCHAR(255),
+  destination_id
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE',
-  FOREIGN KEY(category_id) REFERENCES categories(category_id)
+  FOREIGN KEY(category_id) REFERENCES categories(category_id),
+  FOREIGN KEY(destination_id) REFERENCES destinations(destination_id)
 );
 
 CREATE TABLE categories (
@@ -38,3 +40,19 @@ CREATE TABLE carts (
   FOREIGN KEY(product_id) REFERENCES products(product_id),
   FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE destinations (
+  destination_id SERIAL PRIMARY KEY,
+  destination_name VARCHAR(255) NOT NULL UNIQUE,
+  destination_image VARCHAR(255),
+  delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
+)
+
+CREATE TABLE testimonials (
+  testimonial_id SERIAL PRIMARY KEY,
+  testimonial_image VARCHAR(255) NOT NULL,
+  testimonial_title VARCHAR(30) NOT NULL,
+  testimonial_text VARCHAR(400) NOT NULL,
+  testimonial_review INTEGER NOT NULL,
+  delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
+)
