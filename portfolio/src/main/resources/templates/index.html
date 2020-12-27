@@ -180,6 +180,7 @@
                   <img th:src="@{{imagePath} (imagePath = *{testimonialImage})}" alt="" class="card-img-top rounded-circle m-0" style="object-fit: cover;">
                 </div>
                 <div class="card-body">
+                  <h3 class="star text-center"><i class="fas fa-star"></i>✖️<span th:text="*{testimonialReview}"></span></h3>
                   <h4 class="card-title"><i class="fas fa-quote-left"></i><span class="testimonial-title" th:text="*{testimonialTitle}"></span><i class="fas fa-quote-right"></i></h4>
                   <p class="testimonial-text" th:text="*{testimonialText}"></p>
                 </div><!-- card-body -->
@@ -194,6 +195,7 @@
   <footer th:insert="fragments/footer::footer"></footer>
 
   <script type="text/javascript">
+  /*<![CDATA[*/
     $(document).ready(function () {
       // idをつけてそれ用の初期化を記述すれば複数のowe-carouselができる(https://support.fruitfulcode.com/hc/en-us/articles/115004837994-Multiple-carousels-at-one-page)
       $('#testimonial-carousel').owlCarousel({
@@ -224,9 +226,9 @@
           }
         }
       });
-
-
     });
+
+  /*]]>*/
   </script>
 </body>
 
