@@ -10,7 +10,6 @@ body {
   background-color: #f9f9fa;
 }
 
-
 .icon::before {
   display: inline-block;
   margin-right: 0.5em;
@@ -27,12 +26,12 @@ body {
 
 // #top-slide {
 // }
-  .card img {
-    width: 18rem;
-    margin: 2rem;
-    height: 12rem;
-    border-radius: 1rem;
-  }
+.card img {
+  width: 18rem;
+  margin: 2rem;
+  height: 12rem;
+  border-radius: 1rem;
+}
 
 #popular,
 #where-to-go,
@@ -59,8 +58,6 @@ body {
   width: 100%;
   min-width: 100%;
 }
-
-
 
 .flex {
   -webkit-box-flex: 1;
@@ -118,7 +115,6 @@ body {
   }
 }
 
-
 .row-eq-height {
   display: flex;
   flex-wrap: wrap;
@@ -148,17 +144,18 @@ body {
       background-color: none;
     }
   }
-
 }
 
-#where-to-go, #what-to-do {
+#where-to-go,
+#what-to-do {
   .item {
     position: relative;
   }
   img {
     display: block;
   }
-  .destination-name, .category-name {
+  .destination-name,
+  .category-name {
     position: absolute;
     bottom: 0;
     left: 1rem;
@@ -167,3 +164,4 @@ body {
     display: inline;
   }
 }
+
