@@ -21,23 +21,19 @@ import lombok.Setter;
 public class Destinations {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "category_id")
-  private Integer categoryId;
+  @Column(name = "destination_id")
+  private Integer destinationId;
 
-  @Column(name = "category_name")
-  private String categoryName;
+  @Column(name = "destination_name")
+  private String destinationName;
 
-  @Column(name = "category_image")
-  private String categoryImage;
+  @Column(name = "destination_image")
+  private String destinationImage;
 
   @Column(name = "delete_flag")
   private boolean deleteFlag;
 
   @OneToMany(mappedBy = "destinations", cascade = CascadeType.ALL) // mappedByには所有側の持つこのエンティティのインスタンス名をいれる
   private List<Products> productList;
-
-public List<Destinations> findAll() {
-	return null;
-}
 
 }

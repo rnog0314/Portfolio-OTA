@@ -7,6 +7,7 @@ import com.example.portfolio.model.entity.Destinations;
 import com.example.portfolio.model.entity.Products;
 import com.example.portfolio.model.entity.Testimonials;
 import com.example.portfolio.service.CategoryService;
+import com.example.portfolio.service.DestinationService;
 import com.example.portfolio.service.ProductService;
 import com.example.portfolio.service.TestimonialService;
 
@@ -24,7 +25,7 @@ public class IndexController {
   CategoryService categoryService;
 
   @Autowired
-  Destinations destinationService;
+  DestinationService destinationService;
 
   @Autowired
   ProductService productService;
@@ -36,7 +37,15 @@ public class IndexController {
   public String index(Model m) {
     List<Products> products = productService.findAll();
     List<Categories> categories = categoryService.findAll();
+    for (Categories category : categories) {
+      System.out.println("取得したカテゴリID : " + category.getCategoryId());
+      System.out.println("取得したカテゴリ名 : " + category.getCategoryName());
+    }
     List<Destinations> destinations = destinationService.findAll();
+    for (Destinations destination : destinations) {
+      System.out.println("取得したカテゴリ名 : " + destination.getDestinationName());
+      System.out.println("取得したカテゴリID : " + destination.getDestinationImage());
+    }
     List<Testimonials> testimonials = testimonialService.findAll();
     m.addAttribute("products", products);
     m.addAttribute("categories", categories);
