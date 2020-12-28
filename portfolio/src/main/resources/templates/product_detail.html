@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio OTA</title>
+</head>
+
+<body>
+  <!-- header挿入 -->
+  <header th:insert="fragments/header::header"></header>
+  <main role="main">
+    <section id="top-banner">
+      <div class="container" th:object="${productDetail}">
+        <div class="banner-area">
+          <img th:src="@{{imagePath} (imagePath = *{image})}" class="banner-img" alt="">
+          <div class="price-area">
+            <span class="price"><samll>from</samll>&nbsp;USD&nbsp;<span th:text="*{price}"></span></span>
+          </div>
+          <a href="#" class="btn btn-light">View more photos</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-title" class="text-center my-5" th:object="${product}">
+      <h1 th:text="*{productName}"></h1>
+    </section>
+
+    <section id="product-description">
+      <div class="container mb-5">
+        <div class="row">
+          <div class="col-12">
+            <div class="card" th:object=${productDetail}>
+              <div class="card-body">
+                <h3 th:text="*{articleTitle}"></h3>
+                <p th:text="*{articleText}"></p>
+              </div>
+              <div class="text-center p-3">
+                <img th:src="@{{imagePath} (imagePath = *{image})}" alt="" class="card-img">
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- footer -->
+  <footer th:insert="fragments/footer::footer"></footer>
+
+  <script type="text/javascript">
+  /*<![CDATA[*/
+
+  /*]]>*/
+  </script>
+</body>
+
+</html>

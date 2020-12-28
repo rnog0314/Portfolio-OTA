@@ -1,5 +1,6 @@
 package com.example.portfolio.model.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -47,5 +49,9 @@ public class Product {
   @ManyToOne(fetch = FetchType.LAZY) // One-To-Many/Many-To-Oneの関係ではMany側が所有側になる
   @JoinColumn(name = "destination_id", insertable = false, updatable = false)
   private Destination destination;
+
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "product_id") 
+  private ProductDetail productDetail;
 
 }

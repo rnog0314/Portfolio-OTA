@@ -13,6 +13,17 @@ CREATE TABLE products (
   FOREIGN KEY(destination_id) REFERENCES destinations(destination_id)
 );
 
+CREATE TABLE product_details (
+  product_detail_id SERIAL PRIMARY KEY,
+  product_id INTEGER NOT NULL,
+  image VARCHAR(255) NOT NULL,
+  article_title VARCHAR(255) NOT NULL,
+  article_text VARCHAR(2000) NOT NULL,
+  price INTEGER NOT NOT DEFAULT 100,
+  FOREIGN KEY(product_id) REFERENCES products(product_id)
+)
+SELECT * FROM product_details;
+
 CREATE TABLE categories (
   category_id SERIAL PRIMARY KEY,
   category_name VARCHAR(255) NOT NULL UNIQUE,

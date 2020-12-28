@@ -211,3 +211,39 @@ body {
   margin: 3rem;
   border-radius: 1rem;
 }
+
+#top-banner .banner-area {
+  position: relative;
+}
+
+#top-banner .banner-img {
+  width: 100%;
+  height: 24rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+#top-banner .price-area {
+  display: inline;
+  position: absolute;
+  right: 2rem;
+  background-color: white;
+  bottom: 2rem;
+  border-radius: .4rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+#top-banner .btn {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  border-radius: .5rem;
+}
+
+#product-description .card img {
+  width: 60%;
+  height: 100%;
+  margin: 0;
+  border-radius: .5rem;
+}
