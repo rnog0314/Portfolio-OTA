@@ -68,6 +68,52 @@
       </div><!-- carousel -->
     </section>
 
+    <!-- 記事 -->
+    <section id="article">
+      <div class="card">
+        <div class="container my-5" th:object="${destinationDetail}">
+          <div class="row no-gutters my-5">
+            <div class="col-md-6">
+              <div class="d-flex justify-content-center">
+                <img th:src="@{{imagePath} (imagePath = *{image1})}" alt="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <h3 class="card-title" th:text="*{articleTitle1}"></h3>
+                <p class="card-text" th:text="*{articleText1}"></p>
+              </div>
+            </div>
+          </div><!-- row -->
+          <div class="row no-gutters my-5">
+            <div class="col-md-6 order-last">
+              <div class="d-flex justify-content-center">
+                <img th:src="@{{imagePath} (imagePath = *{image2})}" alt="">
+              </div>
+            </div>
+            <div class="col-md-6 order-first">
+              <div class="card-body">
+                <h3 class="card-title" th:text="*{articleTitle2}"></h3>
+                <p class="card-text" th:text="*{articleText2}"></p>
+              </div>
+            </div>
+          </div><!-- row -->
+          <div class="row no-gutters my-5">
+            <div class="col-md-6">
+              <div class="d-flex justify-content-center">
+                <img th:src="@{{imagePath} (imagePath = *{image3})}" alt="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <h3 class="card-title" th:text="*{articleTitle3}"></h3>
+                <p class="card-text" th:text="*{articleText3}"></p>
+              </div>
+            </div>
+          </div><!-- row -->
+        </div><!-- container -->
+      </div>
+    </section>
   </main>
   <!-- footer -->
   <footer th:insert="fragments/footer::footer"></footer>

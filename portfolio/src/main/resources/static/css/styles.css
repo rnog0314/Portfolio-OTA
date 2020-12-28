@@ -181,3 +181,18 @@ body {
   font-size: 1.6rem;
   display: inline;
 }
+
+#article .card img {
+  width: 24rem;
+  height: 14rem;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+#article .card-title {
+  font-size: 2rem;
+}
+
+#article .card-text {
+  font-size: 1.25rem;
+}

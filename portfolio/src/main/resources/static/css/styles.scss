@@ -176,3 +176,19 @@ body {
     display: inline;
   }
 }
+
+#article {
+  .card img {
+    width: 24rem;
+    height: 14rem;
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+  .card-title {
+    font-size: 2rem;
+  }
+  .card-text {
+    font-size: 1.25rem;
+  }
+
+}
