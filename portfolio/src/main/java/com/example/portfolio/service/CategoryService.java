@@ -3,7 +3,7 @@ package com.example.portfolio.service;
 import java.util.List;
 
 import com.example.portfolio.model.dao.CategoryRepository;
-import com.example.portfolio.model.entity.Categories;
+import com.example.portfolio.model.entity.Category;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class CategoryService {
   @Autowired
   CategoryRepository categoryRepos;
 
-	public List<Categories> findAll() {
+	public List<Category> findAll() {
 		return categoryRepos.findAll();
 	}
 

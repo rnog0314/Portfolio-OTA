@@ -14,7 +14,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "testimonials")
 @Getter @Setter @NoArgsConstructor
-public class Testimonials {
+public class Testimonial {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

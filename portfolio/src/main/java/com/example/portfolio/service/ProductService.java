@@ -3,7 +3,7 @@ package com.example.portfolio.service;
 import java.util.List;
 
 import com.example.portfolio.model.dao.ProductRepository;
-import com.example.portfolio.model.entity.Products;
+import com.example.portfolio.model.entity.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class ProductService {
   @Autowired
   ProductRepository productRepos;
 
-	public List<Products> findAll() {
+	public List<Product> findAll() {
 		return productRepos.findAll();
 	}
 

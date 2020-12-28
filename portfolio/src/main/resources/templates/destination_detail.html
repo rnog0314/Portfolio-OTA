@@ -24,7 +24,7 @@
             <img th:src="@{{imagePath} (imagePath = *{image1})}" alt="First Slide" class="first-slide img-fluid">
             <div class="container">
               <div class="carousel-caption">
-                <h1 class="top-title">This is Hokkaido</h1>
+                <h1 class="top-title">This is <span th:text="${destination.destinationName}"></span></h1>
                 <p class="top-description">You can go anywhere if you want !</p>
                 <p class="top-btn-on-slide">
                   <a href="#" class="btn btn-lg btn-info" role="button">See Photos</a>
@@ -36,7 +36,7 @@
             <img th:src="@{{imagePath} (imagePath = *{image2})}" alt="First Slide" class="second-slide img-fluid">
             <div class="container">
               <div class="carousel-caption">
-                <h1 class="top-title">This is Hokkaido</h1>
+                <h1 class="top-title">This is <span th:text="${destination.destinationName}"></span></h1>
                 <p class="top-description">You can go anywhere if you want !</p>
                 <p class="top-btn-on-slide">
                   <a href="#" class="btn btn-lg btn-info" role="button">See Photos</a>
@@ -48,7 +48,7 @@
             <img th:src="@{{imagePath} (imagePath = *{image3})}" alt="First Slide" class="second-slide img-fluid">
             <div class="container">
               <div class="carousel-caption">
-                <h1 class="top-title">This is Hokkaido</h1>
+                <h1 class="top-title">This is <span th:text="${destination.destinationName}"></span></h1>
                 <p class="top-description">You can go anywhere if you want !</p>
                 <p class="top-btn-on-slide">
                   <a href="#" class="btn btn-lg btn-info" role="button">See Photos</a>

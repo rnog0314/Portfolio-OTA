@@ -17,7 +17,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "products")
 @Getter @Setter @NoArgsConstructor
-public class Products {
+public class Product {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,10 +42,10 @@ public class Products {
   // @JoinColumnアノテーションは所有側に定義される。nameにはOne側と結合する際に必要となるカラム名をいれる。これを入力したら、One(被所有側)にmappedByをつける
   @ManyToOne(fetch = FetchType.LAZY) // One-To-Many/Many-To-Oneの関係ではMany側が所有側になる
   @JoinColumn(name = "category_id", insertable = false, updatable = false)
-  private Categories categories;
+  private Category category;
 
   @ManyToOne(fetch = FetchType.LAZY) // One-To-Many/Many-To-Oneの関係ではMany側が所有側になる
   @JoinColumn(name = "destination_id", insertable = false, updatable = false)
-  private Destinations destinations;
+  private Destination destination;
 
 }

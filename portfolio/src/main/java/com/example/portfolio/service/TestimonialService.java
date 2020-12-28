@@ -5,7 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.example.portfolio.model.dao.TestimonialRepository;
-import com.example.portfolio.model.entity.Testimonials;
+import com.example.portfolio.model.entity.Testimonial;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class TestimonialService {
   @Autowired
   TestimonialRepository testimonialRepos;
 
-public List<Testimonials> findAll() {
+public List<Testimonial> findAll() {
 	return testimonialRepos.findAll();
 }
 }

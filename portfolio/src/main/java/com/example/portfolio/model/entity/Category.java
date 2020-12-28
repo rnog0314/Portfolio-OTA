@@ -18,7 +18,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "categories")
 @Getter @Setter @NoArgsConstructor
-public class Categories {
+public class Category {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,8 +34,8 @@ public class Categories {
   @Column(name = "delete_flag")
   private boolean deleteFlag;
 
-  @OneToMany(mappedBy = "categories", cascade = CascadeType.ALL) // mappedByには所有側の持つこのエンティティのインスタンス名をいれる
-  private List<Products> productList;
+  @OneToMany(mappedBy = "category", cascade = CascadeType.ALL) // mappedByには所有側の持つこのエンティティのインスタンス名をいれる
+  private List<Product> productList;
 
 
 }

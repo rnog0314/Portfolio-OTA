@@ -20,7 +20,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "destinations")
 @Getter @Setter @NoArgsConstructor
-public class Destinations {
+public class Destination {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "destination_id")
@@ -35,11 +35,11 @@ public class Destinations {
   @Column(name = "delete_flag")
   private boolean deleteFlag;
 
-  @OneToMany(mappedBy = "destinations", cascade = CascadeType.ALL) // mappedByには所有側の持つこのエンティティのインスタンス名をいれる
-  private List<Products> productList;
+  @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL) // mappedByには所有側の持つこのエンティティのインスタンス名をいれる
+  private List<Product> productList;
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "destination_id") // destinationsテーブルがdestination_detailsテーブルの所有テーブルであり、結合する際のこのエンティティのカラムをnameに指定する
-  private DestinationDetails destinationDetails;
+  private DestinationDetail destinationDetail;
 
 }

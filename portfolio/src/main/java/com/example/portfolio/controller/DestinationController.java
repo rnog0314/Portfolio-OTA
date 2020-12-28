@@ -1,7 +1,9 @@
 package com.example.portfolio.controller;
 
-import com.example.portfolio.model.entity.DestinationDetails;
+import com.example.portfolio.model.entity.DestinationDetail;
+import com.example.portfolio.model.entity.Destination;
 import com.example.portfolio.service.DestinationDetailService;
+import com.example.portfolio.service.DestinationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +19,14 @@ public class DestinationController {
   @Autowired
   private DestinationDetailService destinationDetailService;
 
+  @Autowired
+  private DestinationService destinationService;
+
   @GetMapping(value = "/{destination_id}")
   public String goDestinationPage(@PathVariable("destination_id") int destinationId, Model m) {
-    DestinationDetails destinationDetail = destinationDetailService.findById(destinationId);
+    Destination destination = destinationService.findById(destinationId);
+    DestinationDetail destinationDetail = destinationDetailService.findById(destinationId);
+    m.addAttribute("destination", destination);
     m.addAttribute("destinationDetail", destinationDetail);
     return "destination_detail";
   }

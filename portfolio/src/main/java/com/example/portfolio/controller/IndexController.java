@@ -2,10 +2,10 @@ package com.example.portfolio.controller;
 
 import java.util.List;
 
-import com.example.portfolio.model.entity.Categories;
-import com.example.portfolio.model.entity.Destinations;
-import com.example.portfolio.model.entity.Products;
-import com.example.portfolio.model.entity.Testimonials;
+import com.example.portfolio.model.entity.Category;
+import com.example.portfolio.model.entity.Destination;
+import com.example.portfolio.model.entity.Product;
+import com.example.portfolio.model.entity.Testimonial;
 import com.example.portfolio.service.CategoryService;
 import com.example.portfolio.service.DestinationService;
 import com.example.portfolio.service.ProductService;
@@ -35,18 +35,18 @@ public class IndexController {
 
   @GetMapping(value = "")
   public String index(Model m) {
-    List<Products> products = productService.findAll();
-    List<Categories> categories = categoryService.findAll();
-    for (Categories category : categories) {
+    List<Product> products = productService.findAll();
+    List<Category> categories = categoryService.findAll();
+    for (Category category : categories) {
       System.out.println("取得したカテゴリID : " + category.getCategoryId());
       System.out.println("取得したカテゴリ名 : " + category.getCategoryName());
     }
-    List<Destinations> destinations = destinationService.findAll();
-    for (Destinations destination : destinations) {
+    List<Destination> destinations = destinationService.findAll();
+    for (Destination destination : destinations) {
       System.out.println("取得したカテゴリ名 : " + destination.getDestinationName());
       System.out.println("取得したカテゴリID : " + destination.getDestinationImage());
     }
-    List<Testimonials> testimonials = testimonialService.findAll();
+    List<Testimonial> testimonials = testimonialService.findAll();
     m.addAttribute("products", products);
     m.addAttribute("categories", categories);
     m.addAttribute("destinations", destinations);
