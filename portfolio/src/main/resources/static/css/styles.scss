@@ -96,6 +96,12 @@ body {
   }
 }
 
+.owl-carousel {
+  button.owl-dot {
+    outline: none;
+  }
+}
+
 #testimonial {
   .img-fluid {
     width: 100%;
@@ -191,4 +197,16 @@ body {
     font-size: 1.25rem;
   }
 
+}
+
+#destination-tour {
+  .tour-img {
+    object-fit: cover;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .item {
+    margin: 3rem;
+    border-radius: 1rem;
+  }
 }

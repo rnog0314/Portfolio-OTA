@@ -20,4 +20,8 @@ public class ProductService {
 		return productRepos.findAll();
 	}
 
+	public List<Product> findByDestinationId(int destinationId) {
+		return productRepos.findByDestinationId(destinationId);
+	}
+
 }
