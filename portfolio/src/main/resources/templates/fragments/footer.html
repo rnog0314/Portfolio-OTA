@@ -34,10 +34,10 @@
       </div>
     </footer>
 
-    <!-- ↓webjars用jQueryの読み込み -->
-    <script src="webjars/jquery/jquery.min.js"></script>
+    <!-- ↓webjars用jQueryの読み込み。⚠️ webjarsを使用する場合、「th」を付けないと機能しない -->
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <!-- ↓webjars用Bootstrapの読み込み -->
-    <script src="webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
     <!-- ↓jQuery UI JSの読み込み -->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>

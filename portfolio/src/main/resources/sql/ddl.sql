@@ -52,9 +52,23 @@ CREATE TABLE testimonials (
   testimonial_id SERIAL PRIMARY KEY,
   testimonial_image VARCHAR(255) NOT NULL,
   testimonial_title VARCHAR(255) NOT NULL,
-  testimonial_text VARCHAR(1000) NOT NULL,
+  testimonial_text VARCHAR(2000) NOT NULL,
   testimonial_review INTEGER NOT NULL,
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
 )
 
-DROP DATABASE ota;
+
+CREATE TABLE destination_details (
+  destination_detail_id SERIAL PRIMARY KEY,
+  destination_id INTEGER NOT NULL,
+  image1 VARCHAR(255) NOT NULL,
+  article_title1 VARCHAR(255) NOT NULL,
+  article_text1 VARCHAR(2000) NOT NULL,
+  image2 VARCHAR(255) NOT NULL,
+  article_title2 VARCHAR(255) NOT NULL,
+  article_text2 VARCHAR(2000) NOT NULL,
+  image3 VARCHAR(255) NOT NULL,
+  article_title3 VARCHAR(255) NOT NULL,
+  article_text3 VARCHAR(2000) NOT NULL,
+  FOREIGN KEY(destination_id) REFERENCES destinations(destination_id)
+)

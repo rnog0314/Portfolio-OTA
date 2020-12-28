@@ -9,9 +9,9 @@
 <body>
   <th:block th:fragment="header">
     <!-- ↓Bootstrap CSSの読み込み -->
-    <link href="webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
     <!-- ↓webjars用font-awesomeの読み込み -->
-    <link rel="stylesheet" href="webjars/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.15.1/css/all.min.css}">
     <!-- ↓font-awesome-animationの読み込み -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
     <!-- ↓CSSの読み込み -->
