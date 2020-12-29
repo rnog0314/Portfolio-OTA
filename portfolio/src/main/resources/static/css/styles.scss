@@ -259,4 +259,12 @@ body {
       background-color: lightblue;
     }
   }
+  .fc-day.fc-future {
+    .price {
+      font-size: .2rem;
+      position: absolute;
+      bottom: 20%;
+      padding: 2px;
+    }
+  }
 }

@@ -48,7 +48,14 @@
 
     <section id="fullcalendar">
       <div class="container mb-5">
-        <div id="calendar"></div>
+        <div class="row">
+          <div class="col-md-6">
+            <div id="calendar"></div>
+          </div>
+          <div class="col-md-6">
+
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -56,7 +63,7 @@
   <footer th:insert="fragments/footer::footer"></footer>
 
   <script type="text/javascript">
-    /*<![CDATA[*/
+
     document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
 
@@ -64,11 +71,6 @@
         plugins: ['dayGrid', 'bootstrap', 'interaction'],
         themeSystem: 'bootstrap',
         defaultView: 'dayGridMonth',
-        // validRange: function(nowDate){
-        //   return {
-        //     start: nowDate
-        //   };
-        // },
         header: {
           left: 'today',
           center: 'title',
@@ -90,7 +92,14 @@
 
       calendar.render();
     });
-  /*]]>*/
+
+    $(function () {
+      /*<![CDATA[*/
+      // let price = /*[[${productDetail.price}]]*/ 0;
+      $('tbody').find('.fc-day.fc-future').append('<span class="price">from 100 USD</span>');
+      // $('.price').text(price);
+      /*]]>*/
+    });
   </script>
 </body>
 
