@@ -43,13 +43,24 @@
         </div>
       </div>
     </section>
+
+    <section id="fullcalendar">
+      <div class="container mb-5">
+        <div id="calendar"></div>
+      </div>
+    </section>
   </main>
   <!-- footer -->
   <footer th:insert="fragments/footer::footer"></footer>
 
   <script type="text/javascript">
   /*<![CDATA[*/
-
+    $(function(){
+      $('#calendar').fullCalendar({
+        // plugins: ['bootstrap'],
+        // themeSystem: 'bootstrap'
+      });
+    })
   /*]]>*/
   </script>
 </body>
