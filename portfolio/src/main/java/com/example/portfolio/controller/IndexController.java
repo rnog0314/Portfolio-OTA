@@ -37,15 +37,7 @@ public class IndexController {
   public String index(Model m) {
     List<Product> products = productService.findAll();
     List<Category> categories = categoryService.findAll();
-    for (Category category : categories) {
-      System.out.println("取得したカテゴリID : " + category.getCategoryId());
-      System.out.println("取得したカテゴリ名 : " + category.getCategoryName());
-    }
     List<Destination> destinations = destinationService.findAll();
-    for (Destination destination : destinations) {
-      System.out.println("取得したカテゴリ名 : " + destination.getDestinationName());
-      System.out.println("取得したカテゴリID : " + destination.getDestinationImage());
-    }
     List<Testimonial> testimonials = testimonialService.findAll();
     m.addAttribute("products", products);
     m.addAttribute("categories", categories);
