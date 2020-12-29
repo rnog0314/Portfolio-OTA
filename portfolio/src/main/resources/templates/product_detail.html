@@ -53,7 +53,7 @@
             <div id="calendar"></div>
           </div>
           <div class="col-md-6">
-
+            
           </div>
         </div>
       </div>
@@ -62,8 +62,8 @@
   <!-- footer -->
   <footer th:insert="fragments/footer::footer"></footer>
 
-  <script type="text/javascript">
-
+  <script th:inline="javascript" type="text/javascript">
+      /*<![CDATA[*/
     document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
 
@@ -94,12 +94,14 @@
     });
 
     $(function () {
-      /*<![CDATA[*/
-      // let price = /*[[${productDetail.price}]]*/ 0;
-      $('tbody').find('.fc-day.fc-future').append('<span class="price">from 100 USD</span>');
-      // $('.price').text(price);
-      /*]]>*/
+
+      let price = /*[[${productDetail.price}]]*/ '';
+      price.toString();
+      price = '$' + price;
+      $('tbody').find('.fc-day.fc-future').append('<span class="prix price"></span>');
+      $('.prix').text(price);
     });
+    /*]]>*/
   </script>
 </body>
 
