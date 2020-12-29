@@ -30,7 +30,7 @@ insert into products (product_id, product_name, product_image, category_id, dest
 insert into products (product_id, product_name, product_image, category_id, destination_id) values (30, 'Realblab', '/img/destination/sanin.jpg', 6, 8);
 insert into products (product_id, product_name, product_image, category_id, destination_id) values (31, 'Parry', '/img/destination/tohoku.jpg', 1, 9);
 insert into products (product_id, product_name, product_image, category_id, destination_id) values (32, 'Matgrass', '/img/destination/hokuriku.jpg', 2, 10);
-insert into products (product_id, product_name, product_image, category_id, destination_id) values (33, 'Smallflower', '/img/destination/sasanyonin.jpg', 3, 11);
+insert into products (product_id, product_name, product_image, category_id, destination_id) values (33, 'Smallflower', '/img/destination/sanyo.jpg', 3, 11);
 insert into products (product_id, product_name, product_image, category_id, destination_id) values (34, 'Brothera', '/img/destination/tokyo.jpg', 4, 1);
 insert into products (product_id, product_name, product_image, category_id, destination_id) values (35, 'Autumn', '/img/destination/hokkaido.jpg', 5, 2);
 insert into products (product_id, product_name, product_image, category_id, destination_id) values (36, 'Idaho', '/img/destination/kansai.jpg', 6, 3);
@@ -78,3 +78,5 @@ insert into products (product_id, product_name, product_image, category_id, dest
 
 SELECT * FROM products ORDER BY product_id;
 DROP TABLE products;
+62 33
+

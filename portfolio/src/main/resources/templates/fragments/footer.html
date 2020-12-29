@@ -55,6 +55,44 @@
     <!-- owl-carousel -->
     <script th:src="@{/js/owl.carousel.min.js}"></script>
 
+    <script th:inline="javascript" defer>
+      /*<![CDATA[*/
+      $(function () {
+        $('#login-btn').on('click', function () {
+          var modal = bootbox.dialog({
+            message: $(".form-content").html(),
+            title: "Please enter your login info",
+            buttons: [
+              {
+                label: "Login",
+                className: "btn btn-primary pull-left",
+                callback: function () {
+
+                  alert($('form #email').val());
+
+                  return false;
+                }
+              },
+              {
+                label: "Cancel",
+                className: "btn btn-default pull-left",
+                callback: function () {
+                  console.log("just do something on close");
+                }
+              }
+            ],
+            show: false,
+            onEscape: function () {
+              modal.modal("hide");
+            }
+          });
+
+          modal.modal("show");
+        });
+      });
+      /*]]>*/
+    </script>
+
 
   </th:block>
 

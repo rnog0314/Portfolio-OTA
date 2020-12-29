@@ -13,7 +13,9 @@
     <!-- ↓webjars用font-awesomeの読み込み -->
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.15.1/css/all.min.css}">
     <!-- ↓font-awesome-animationの読み込み -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css"
+      type="text/css" media="all" />
     <!-- ↓CSSの読み込み -->
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 
@@ -25,15 +27,22 @@
     <link rel="stylesheet" th:href="@{/css/owl.theme.default.min.css}">
 
     <!-- fullcalendar -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/bootstrap/main.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/bootstrap/main.min.css" />
 
     <!-- <script th:src="@{/js/.js}"></script> -->
-    <script th:inline="javascript" defer>
+    <!-- <script th:inline="javascript" defer>
       /*<![CDATA[*/
+      $(function () {
+        $('$login-btn').on('click', function () {
+          bootbox.prompt("This is the default prompt!", function (result) {
+            console.log(result);
+          });
+        })
+      });
       /*]]>*/
-    </script>
+    </script> -->
 
     <!-- ヘッダー -->
     <nav class="navbar navbar-expand-lg navbar-light container" style="line-height: 2rem;">
@@ -70,11 +79,25 @@
             <a href="#"><i class="nav-link fas fa-shopping-cart animated-hover faa-wrench"></i></a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Log in / Sing up</a>
+            <button id="login-btn" type="button" class="nav-link btn btn-muted">Log in / Sing up</button>
           </li>
         </ul>
       </div>
     </nav>
+
+    <div class="form-content" style="display:none;">
+      <form class="form" role="form">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="abc12345@example.com"></input>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        </div>
+      </form>
+    </div>
+
   </th:block>
 
 
