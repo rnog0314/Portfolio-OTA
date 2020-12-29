@@ -54,11 +54,11 @@
           </div>
           <div class="col-md-6 reserve-content">
             <div class="">
-              <form action="" class="form-group d-felx justify-content-center">
+              <form class="form-group d-felx justify-content-center">
                 <div class="my-4">
                   <h5>Date</h5>
                   <h6 style="display: inline-block;">Selected Date :</h6>
-                  <input id="selectedDate" type="text" value="2019-12-31">
+                  <input id="selectedDate" type="text" value="" readonly>
                 </div>
 
                 <div class="counter-row">
@@ -69,6 +69,15 @@
                     <input id="participantsNumber" type="number" value="0" step="1" min="0" pattern="^[0-9]+$"  readonly>
                     <button id="plus-counter" type="button" class="btn"><i class="fas fa-2x fa-plus-circle"></i></button>
                   </div>
+                </div>
+
+                <hr>
+                <div class="total-area">
+                  <h6 class="total-price"><small>Order total</small>&nbsp;USD&nbsp;<span id="total-price">0</span></h6>
+                </div>
+                <div class="btn-area text-right">
+                  <button class="btn btn-info " type="button">Add to Cart</button>
+                  <button class="btn btn-primary" type="button">Book Now</button>
                 </div>
               </form>
             </div>
@@ -115,16 +124,19 @@
     });
 
     $(function () {
+      // カレンダーに値段を表示
+      showPrice();
 
+      // 選択日の初期表示を現在びに
       let today = new Date();
       $('#selectedDate').val(today.toLocaleDateString());
 
-      showPrice();
-
+      // カレンダーのボタンが押下されても値段表示が消えないように
       $('.fc-toolbar button').on('click', function () {
         showPrice();
       });
 
+      // マイナスボタン押下時
       $('#minus-counter').on('click', function(){
         let count = $('#participantsNumber').val();
         count --;
@@ -135,8 +147,10 @@
           $('#plus-counter').prop('disabled', false);
         }
         $('#participantsNumber').val(count);
+        culc();
       });
 
+      // プラスボタン押下時
       $('#plus-counter').on('click', function(){
         let count = $('#participantsNumber').val();
         count ++;
@@ -147,9 +161,15 @@
           $('#plus-counter').prop('disabled', true);
         }
         $('#participantsNumber').val(count);
+        culc();
       });
 
-
+      function culc() {
+        let unitPrice = /*[[${productDetail.price}]]*/ 0;
+        let participants = $('#participantsNumber').val();
+        let totalPrice = unitPrice * participants;
+        $('#total-price').text(totalPrice);
+      }
 
       function showPrice() {
         let price = /*[[${productDetail.price}]]*/ '';

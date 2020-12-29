@@ -271,10 +271,18 @@ input {
     }
   }
   .reserve-content {
-    padding: 10rem 5rem 10rem 5rem;
+    padding: 6rem 5rem 10rem 5rem;
     #participantsNumber {
       width: 2.5rem;
       text-align: center;
     }
+    i {
+      color: rgb(0, 183, 255);
+    }
+  }
+  .total-price {
+    font-size: 1.8rem;
+    text-align: right;
+    color:rgb(0, 183, 255);
   }
 }
