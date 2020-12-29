@@ -248,3 +248,15 @@ body {
     border-radius: .5rem;
   }
 }
+
+#fullcalendar {
+  .fc-past {
+    background-color: rgb(235, 233, 233) !important;
+    .fc-day-number {
+      color: rgb(172, 172, 172) !important;
+    }
+    .fc-hightlight {
+      background-color: lightblue;
+    }
+  }
+}

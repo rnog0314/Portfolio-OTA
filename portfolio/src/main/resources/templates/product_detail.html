@@ -16,7 +16,9 @@
         <div class="banner-area">
           <img th:src="@{{imagePath} (imagePath = *{image})}" class="banner-img" alt="">
           <div class="price-area">
-            <span class="price"><samll>from</samll>&nbsp;USD&nbsp;<span th:text="*{price}"></span></span>
+            <span class="price">
+              <samll>from</samll>&nbsp;USD&nbsp;<span th:text="*{price}"></span>
+            </span>
           </div>
           <a href="#" class="btn btn-light">View more photos</a>
         </div>
@@ -40,8 +42,8 @@
                 <img th:src="@{{imagePath} (imagePath = *{image})}" alt="" class="card-img">
               </div>
             </div>
+          </div>
         </div>
-      </div>
     </section>
 
     <section id="fullcalendar">
@@ -54,13 +56,40 @@
   <footer th:insert="fragments/footer::footer"></footer>
 
   <script type="text/javascript">
-  /*<![CDATA[*/
-    $(function(){
-      $('#calendar').fullCalendar({
-        // plugins: ['bootstrap'],
-        // themeSystem: 'bootstrap'
+    /*<![CDATA[*/
+    document.addEventListener('DOMContentLoaded', function () {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: ['dayGrid', 'bootstrap', 'interaction'],
+        themeSystem: 'bootstrap',
+        defaultView: 'dayGridMonth',
+        // validRange: function(nowDate){
+        //   return {
+        //     start: nowDate
+        //   };
+        // },
+        header: {
+          left: 'today',
+          center: 'title',
+          right: 'prev next'
+        },
+        selectable: true,
+        selectAllow: function (selectInfo) {
+          let today = new Date();
+          if (selectInfo.start < today) {
+            return false;
+          } else {
+            return true;
+          }
+        },
+        dateClick: function (info) {
+          console.log(info.dateStr);
+        }
       });
-    })
+
+      calendar.render();
+    });
   /*]]>*/
   </script>
 </body>

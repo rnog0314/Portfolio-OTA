@@ -247,3 +247,15 @@ body {
   margin: 0;
   border-radius: .5rem;
 }
+
+#fullcalendar .fc-past {
+  background-color: #ebe9e9 !important;
+}
+
+#fullcalendar .fc-past .fc-day-number {
+  color: #acacac !important;
+}
+
+#fullcalendar .fc-past .fc-hightlight {
+  background-color: lightblue;
+}
