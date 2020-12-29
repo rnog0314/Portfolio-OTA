@@ -10,6 +10,11 @@ body {
   background-color: #f9f9fa;
 }
 
+input {
+  border-radius: 0.5rem;
+  border: 1px solid lightgrey;
+}
+
 .icon::before {
   display: inline-block;
   margin-right: 0.5em;
@@ -229,7 +234,7 @@ body {
   right: 2rem;
   background-color: white;
   bottom: 2rem;
-  border-radius: .4rem;
+  border-radius: 0.4rem;
   padding: 1rem;
   font-size: 1.5rem;
 }
@@ -238,14 +243,14 @@ body {
   position: absolute;
   bottom: 2rem;
   left: 2rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 
 #product-description .card img {
   width: 60%;
   height: 100%;
   margin: 0;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 
 #fullcalendar .fc-past {
@@ -265,7 +270,16 @@ body {
 }
 
 #fullcalendar .fc-day.fc-future .price {
-  font-size: .2rem;
+  font-size: 0.2rem;
   position: absolute;
   bottom: 20%;
+}
+
+#fullcalendar .reserve-content {
+  padding: 10rem 5rem 10rem 5rem;
+}
+
+#fullcalendar .reserve-content input {
+  width: 2.5rem;
+  text-align: center;
 }

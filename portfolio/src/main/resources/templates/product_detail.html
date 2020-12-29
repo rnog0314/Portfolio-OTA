@@ -52,8 +52,26 @@
           <div class="col-md-6">
             <div id="calendar"></div>
           </div>
-          <div class="col-md-6">
-            
+          <div class="col-md-6 reserve-content">
+            <div class="">
+              <form action="" class="form-group d-felx justify-content-center">
+                <div class="my-4">
+                  <h5>Date</h5>
+                  <h6 style="display: inline-block;">Selected Date :</h6>
+                  <p style="display: inline-block;">2020-12-11</p>
+                </div>
+
+                <div class="counter-row">
+                  <h5>Number of Participant</h5>
+                  <h6 class="counter-name" style="display: inline-block;">Adult<small>(age : more than 12)</small>:</h6>
+                  <div class="counter" style="display: inline-block;">
+                    <button class="btn"><i class="fas fa-2x fa-minus-circle"></i></button>
+                    <input type="number" value="1" readonly>
+                    <button class="btn"><i class="fas fa-2x fa-plus-circle"></i></button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -63,7 +81,7 @@
   <footer th:insert="fragments/footer::footer"></footer>
 
   <script th:inline="javascript" type="text/javascript">
-      /*<![CDATA[*/
+    /*<![CDATA[*/
     document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
 
@@ -94,12 +112,20 @@
     });
 
     $(function () {
+      showPrice();
+      
+      $('.fc-toolbar button').on('click', function () {
+        showPrice();
+      });
 
-      let price = /*[[${productDetail.price}]]*/ '';
-      price.toString();
-      price = '$' + price;
-      $('tbody').find('.fc-day.fc-future').append('<span class="prix price"></span>');
-      $('.prix').text(price);
+      function showPrice() {
+        let price = /*[[${productDetail.price}]]*/ '';
+        price.toString();
+        price = '$' + price;
+        $('tbody').find('.fc-day.fc-future').append('<span class="prix price"></span>');
+        $('.prix').text(price);
+      }
+
     });
     /*]]>*/
   </script>
