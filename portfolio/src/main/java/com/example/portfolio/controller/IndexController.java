@@ -6,6 +6,7 @@ import com.example.portfolio.model.entity.Category;
 import com.example.portfolio.model.entity.Destination;
 import com.example.portfolio.model.entity.Product;
 import com.example.portfolio.model.entity.Testimonial;
+import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.service.CategoryService;
 import com.example.portfolio.service.DestinationService;
 import com.example.portfolio.service.ProductService;
@@ -33,8 +34,15 @@ public class IndexController {
   @Autowired
   TestimonialService testimonialService;
 
+  @Autowired
+  private LoginSession loginSession;
+
   @GetMapping(value = "")
   public String index(Model m) {
+    if (loginSession.isLogined() == false && loginSession.getTmpUserId() == null) { // ログインしてない&仮ユーザIDがない(=初めてページを開いたとき)
+      int tempUserId = (int) (Math.random() * 1000000000);
+      loginSession.setTmpUserId(tempUserId); // ランダムな整数を仮ユーザIDとしてログインセッションに登録
+    }
     List<Product> products = productService.findAll();
     List<Category> categories = categoryService.findAll();
     List<Destination> destinations = destinationService.findAll();

@@ -38,6 +38,7 @@ CREATE TABLE users (
   email VARCHAR(100) NOT NULL,
   family_name VARCHAR(255) NOT NULL,
   first_name VARCHAR(255) NOT NULL,
+  gender CHAR (1) NOT NULL,
   profile_picture VARCHAR(255),
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
 );
