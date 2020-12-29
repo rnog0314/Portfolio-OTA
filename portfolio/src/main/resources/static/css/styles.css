@@ -261,8 +261,8 @@ input {
   color: #acacac !important;
 }
 
-#fullcalendar .fc-past .fc-hightlight {
-  background-color: lightblue;
+#fullcalendar .fc-highlight {
+  background-color: red;
 }
 
 #fullcalendar .fc-day.fc-future {
@@ -279,7 +279,7 @@ input {
   padding: 10rem 5rem 10rem 5rem;
 }
 
-#fullcalendar .reserve-content input {
+#fullcalendar .reserve-content #participantsNumber {
   width: 2.5rem;
   text-align: center;
 }

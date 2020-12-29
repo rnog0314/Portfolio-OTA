@@ -58,16 +58,16 @@
                 <div class="my-4">
                   <h5>Date</h5>
                   <h6 style="display: inline-block;">Selected Date :</h6>
-                  <p style="display: inline-block;">2020-12-11</p>
+                  <input id="selectedDate" type="text" value="2019-12-31">
                 </div>
 
                 <div class="counter-row">
                   <h5>Number of Participant</h5>
                   <h6 class="counter-name" style="display: inline-block;">Adult<small>(age : more than 12)</small>:</h6>
                   <div class="counter" style="display: inline-block;">
-                    <button class="btn"><i class="fas fa-2x fa-minus-circle"></i></button>
-                    <input type="number" value="1" readonly>
-                    <button class="btn"><i class="fas fa-2x fa-plus-circle"></i></button>
+                    <button id="minus-counter" disabled type="button" class="btn"><i class="fas fa-2x fa-minus-circle"></i></button>
+                    <input id="participantsNumber" type="number" value="0" step="1" min="0" pattern="^[0-9]+$"  readonly>
+                    <button id="plus-counter" type="button" class="btn"><i class="fas fa-2x fa-plus-circle"></i></button>
                   </div>
                 </div>
               </form>
@@ -104,7 +104,10 @@
           }
         },
         dateClick: function (info) {
-          console.log(info.dateStr);
+          // 日付選択をしたその値をinputのvalueに書き換え
+          let selectedDate = info.dateStr;
+          $('#selectedDate').text(selectedDate);
+          $('#selectedDate').val(selectedDate);
         }
       });
 
@@ -112,11 +115,41 @@
     });
 
     $(function () {
+
+      let today = new Date();
+      $('#selectedDate').val(today.toLocaleDateString());
+
       showPrice();
-      
+
       $('.fc-toolbar button').on('click', function () {
         showPrice();
       });
+
+      $('#minus-counter').on('click', function(){
+        let count = $('#participantsNumber').val();
+        count --;
+        if (count < 1) {
+          $('#minus-counter').prop('disabled', true);
+        }
+        if (count < 9) {
+          $('#plus-counter').prop('disabled', false);
+        }
+        $('#participantsNumber').val(count);
+      });
+
+      $('#plus-counter').on('click', function(){
+        let count = $('#participantsNumber').val();
+        count ++;
+        if (count > 0) {
+          $('#minus-counter').prop('disabled', false);
+        }
+        if (count > 7) {
+          $('#plus-counter').prop('disabled', true);
+        }
+        $('#participantsNumber').val(count);
+      });
+
+
 
       function showPrice() {
         let price = /*[[${productDetail.price}]]*/ '';
