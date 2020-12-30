@@ -63,7 +63,6 @@
           bootbox.confirm({
             title: "Please enter your login info",
             message: "<form id='login-info'>\
-                      <a id='facebook-btn' class='btn btn-primary w-100' href='/login'><i class='fab fa-2x fa-facebook-square mr-3' style='font-size:larger;'></i><span>Login with Facebook</span></a>\
                       <p class='m-2'>Email</p>\
                       <input id='email' type='email' name='email' required placeholder='example@abc.com'/><br/>\
                       <p class='m-2'>Password</p>\
@@ -148,10 +147,6 @@
         }
       });
 
-      $.get("/user", function(){
-        $('#user').html(data.userAuthentication.details.name);
-        $('.authenticated').show();
-      });
       /*]]>*/
     </script>
 

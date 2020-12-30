@@ -12,13 +12,13 @@ spring:
         format_sql: true
     hibernate:
       ddl-auto: none
-  security:
-    oauth2:
-      client:
-        registration:
-          facebook:
-            client-id: 214571143579891
-            client-secret: 559df366fccd477e3330c45f58fd74ee
+  # security:
+  #   oauth2:
+  #     client:
+  #       registration:
+  #         facebook:
+  #           client-id: 214571143579891
+  #           client-secret: 559df366fccd477e3330c45f58fd74ee
             # scope:
 
 
