@@ -40,8 +40,10 @@ CREATE TABLE users (
   first_name VARCHAR(255) NOT NULL,
   gender CHAR (1) NOT NULL,
   profile_picture VARCHAR(255),
+  auth_provider VARCHAR(15),
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
 );
+
 
 CREATE TABLE carts (
   category_id SERIAL PRIMARY KEY,
