@@ -15,11 +15,11 @@
             <img src="/img/logo.png" alt="" id="footer-logo" style="width: 12rem;">
           </div>
           <div class="col-4">
-            <h5 class="footer-category text-center">タイトル</h5>
+            <h5 class="footer-category text-center">Title</h5>
             <ul class="d-flex justify-content-center">
-              <li class="list-unstyled"><a href="#">リンク</a></li>
-              <li class="list-unstyled"><a href="#">リンク</a></li>
-              <li class="list-unstyled"><a href="#">リンク</a></li>
+              <li class="list-unstyled"><a href="#">link</a></li>
+              <li class="list-unstyled"><a href="#">link</a></li>
+              <li class="list-unstyled"><a href="#">link</a></li>
             </ul>
           </div>
           <div class="col-4">
@@ -58,7 +58,7 @@
     <script th:inline="javascript" defer>
       /*<![CDATA[*/
       $(function () {
-        // ログインボタン押下
+        // ログインボタン押下でログインモーダル表示
         $('#login-btn').on('click', function () {
           bootbox.confirm({
             title: "Please enter your login info",
@@ -112,6 +112,7 @@
           });
         }); // ログインボタン押下
 
+        // ログアウトボタン押下
         $('#logout-link').on('click', function () {
           $.ajax({
             type: 'POST',
@@ -133,13 +134,15 @@
           }).always(function (result) {
             console.log("ajax通信しました");
           })
-        })
+        });
 
+        // ログイン時のwelcome-msg切り替え処理
         function login(user) {
           let userName = user['userName'];
           $('#welcome-msg').text(`Welcome ${userName} !`);
         }
 
+        // ログイン操作後のnavbar切り替え処理
         function loginCheck() {
           let loginChecker = $('#login-link').prop('class');
           // 非同期通信のため、以下のclassの切り替えを行わないと画面が更新されない

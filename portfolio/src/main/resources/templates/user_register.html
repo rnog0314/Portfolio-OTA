@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio OTA</title>
+</head>
+
+<body>
+  <!-- header挿入 -->
+  <header th:insert="fragments/header::header"></header>
+  <main role="main">
+    <div class="container text-center mt-5">
+      <div class="page-title-area">
+        <h2 class="page-title">New User Registration</h2>
+      </div>
+      <table class="table table-hover table-bordered text-center table-responsive-md">
+        <tr>
+          <th scope="row">User Name</th>
+          <td>
+            <input style="width: 40%;" type="text" id="newUserName" name="userName" placeholder="taro2020abc"
+              maxlength="32" required />
+            <button id="checkUserName" class="btn btn-primary">Check availability</button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Full Name</th>
+          <td>
+            <input style="width: 30%;" type="text" id="newFamilyName" name="familyName" placeholder="James"
+              maxlength="16" required />
+            <input style="width: 30%;" type="text" id="newFirstName" name="firstName" placeholder="Mirror"
+              maxlength="16" required />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">E-mail</th>
+          <td>
+            <input style="width: 60%;" type="email" id="newEmail" name="email" placeholder="taro2020abc@example.com"
+              maxlength="50" required />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Password</th>
+          <td>
+            <input style="width: 60%;" type="password" id="newPassword" name="password" placeholder="●●●●●●"
+              maxlength="16" required />
+          </td>
+        </tr>
+        <tr>
+          <th>Gender</th>
+          <td>
+            <label class="m-3"><input type="radio" name="gender" value="M" checked />Male</label>
+            <label><input type="radio" name="gender" value="F" />Female</label>
+          </td>
+        </tr>
+      </table>
+      <div class="btn-area">
+        <a type="button" id="back-btn" class="btn btn-primary m-3" href="javascript:history.back();">Back</a>
+        <button id="confirm-btn" class="btn btn-success" disabled>Confirm</button>
+      </div>
+    </div>
+    </div>
+
+  </main>
+  <!-- footer -->
+  <footer th:insert="fragments/footer::footer"></footer>
+
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function () {
+      $('#checkUserName').on('click', function () {
+        let userName = $('#newUserName').val();
+        $.ajax({
+          type: 'POST',
+          url: '/portfolio/user/check',
+          data: userName,
+          dataType: 'json',
+          contentType: 'application/json'
+        }).done(function (boolean) {
+          if (boolean == true) {
+            bootbox.alert('This user name is already used. Please try another one.');
+          } else {
+            bootbox.alert('You can use this user name');
+            $('#confirm-btn').prop('disabled', false);
+          }
+        }).fail(function (boolean) {
+          console.log('ajax通信に失敗しました');
+        }).always(function (boolean) {
+          console.log('ajax通信をしました');
+        });
+      });
+
+    });
+    /*]]>*/
+  </script>
+</body>
+
+</html>

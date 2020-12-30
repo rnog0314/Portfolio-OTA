@@ -72,7 +72,7 @@
             <button id="login-btn" type="button" class="nav-link btn btn-muted">Log out</button>
           </li>
           <li id="signup-link" class="nav-item" th:class="${loginSession.isLogined() == false ? '' : 'hidden'}">
-            <button id="signup-btn" type="button" class="nav-link btn btn-muted">Sign up</button>
+            <button id="signup-btn" type="button" class="nav-link btn btn-muted"><a th:href="@{/portfolio/user}">Sign up</a> </button>
           </li>
         </ul>
       </div>

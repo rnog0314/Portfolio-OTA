@@ -15,7 +15,24 @@ public class UserService {
   @Autowired
   private UserRepository userRepos;
 
-public User findByEmailAndPassword(String email, String password) {
-	return userRepos.findByEmailAndPassword(email, password);
-}
+  /**
+   * メールアドレスとパスワードを条件にユーザ取得してログインユーザと照合
+   *
+   * @param userName
+   * @param password
+   * @return
+   */
+  public User findByEmailAndPassword(String email, String password) {
+    return userRepos.findByEmailAndPassword(email, password);
+  }
+
+  /**
+   * ユーザ名重複確認
+   *
+   * @param newUserName
+   * @return
+   */
+  public int findByUserName(String newUserName) {
+    return userRepos.findByUserName(newUserName);
+  }
 }
