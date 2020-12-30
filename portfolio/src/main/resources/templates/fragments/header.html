@@ -31,19 +31,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/bootstrap/main.min.css" />
 
-    <!-- <script th:src="@{/js/.js}"></script> -->
-    <!-- <script th:inline="javascript" defer>
-      /*<![CDATA[*/
-      $(function () {
-        $('$login-btn').on('click', function () {
-          bootbox.prompt("This is the default prompt!", function (result) {
-            console.log(result);
-          });
-        })
-      });
-      /*]]>*/
-    </script> -->
-
     <!-- ヘッダー -->
     <nav class="navbar navbar-expand-lg navbar-light container" style="line-height: 2rem;">
       <a href="#" class="navbar-brand">
@@ -55,6 +42,7 @@
       </button>
       <div class="welcome-msg-area">
         <!-- <p class="welcome-msg" th:text="'ようこそ！' + ${loginSession.isLogined() == false ? 'ゲストさん' : loginSession.getUserName() + 'さん'}"></p> -->
+        <p class="authenticated" style="display: none;">Logged into Facebook as : <span id="loginedUser"></span></p>
       </div>
       <div class="searchForm">
         <form action="" class="form-inline">
