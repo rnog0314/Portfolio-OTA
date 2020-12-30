@@ -283,6 +283,22 @@ input {
   .total-price {
     font-size: 1.8rem;
     text-align: right;
-    color:rgb(0, 183, 255);
+    color: rgb(0, 183, 255);
+  }
+}
+
+// ログインモーダル
+.modal-body {
+  display: flex;
+  justify-content: center;
+  .bootbox-body {
+    width: 75%;
+    #login-info {
+      input {
+        border-radius: 0.5rem;
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
   }
 }

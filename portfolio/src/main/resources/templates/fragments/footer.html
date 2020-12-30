@@ -61,9 +61,11 @@
         $('#login-btn').on('click', function () {
           bootbox.confirm({
             title: "Please enter your login info",
-            message: "<form id='infos'>\
-                      Email:<input id='email' type='email' name='email'/><br/>\
-                      Password:<input id='password' type='password' name='password' />\
+            message: "<form id='login-info'>\
+                      <p class='m-2'>Email</p>\
+                      <input id='email' type='email' name='email' required placeholder='example@abc.com'/><br/>\
+                      <p class='m-2'>Password</p>\
+                      <input id='password' type='password' name='password' required placeholder='●●●●●●'/>\
                       </form>",
             backdrop: true,
             centerVertical: true,
