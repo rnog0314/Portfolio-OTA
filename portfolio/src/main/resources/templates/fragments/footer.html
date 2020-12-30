@@ -59,37 +59,105 @@
       /*<![CDATA[*/
       $(function () {
         $('#login-btn').on('click', function () {
-          var modal = bootbox.dialog({
-            message: $(".form-content").html(),
+          bootbox.confirm({
             title: "Please enter your login info",
-            buttons: [
-              {
-                label: "Login",
-                className: "btn btn-primary pull-left",
-                callback: function () {
-
-                  alert($('form #email').val());
-
-                  return false;
-                }
+            message: "<form id='infos'>\
+                      Email:<input id='email' type='email' name='email'/><br/>\
+                      Password:<input id='password' type='password' name='password' />\
+                      </form>",
+            backdrop: true,
+            centerVertical: true,
+            buttons: {
+              confirm: {
+                label: '<i class="fa fa-check"></i> Login',
+                className: 'btn-primary'
               },
-              {
-                label: "Cancel",
-                className: "btn btn-default pull-left",
-                callback: function () {
-                  console.log("just do something on close");
-                }
+              cancel: {
+                label: '<i class="fa fa-times"></i> Cancel',
+                className: 'btn-secondary'
               }
-            ],
-            show: false,
-            onEscape: function () {
-              modal.modal("hide");
-            }
-          });
+            },
+            callback: function (result) {
+              console.log('value' + $('#email', '.bootbox').val());
+              if (result) {
+                let jsonString = {
+                  'email': $('#email', '.bootbox').val(),
+                  'password': $('#password', '.bootbox').val()
+                };
+                $.ajax({
+                  type: 'POST',
+                  url: 'portfolio/auth/login',
+                  data: JSON.stringify(jsonString),
+                  contentType: 'application/json',
+                  dataType: 'json'
+                }).done(function (result) {
+                  let user = result;
+                  if (jQuery.isEmptyObject(user)) {
+                    bootbox.alert('ユーザー登録がされていません。ユーザー新規登録を行ってください');
+                  } else {
+                    console.log('ログインしました');
+                  }
+                }).fail(function (result) {
+                  bootbox.alert('Error: ajax通信に失敗しました');
+                }).always(function (result) {
+                  console.log("ajax通信しました");
+                })
 
-          modal.modal("show");
+              }
+            },
+          });
         });
       });
+        // var modal = bootbox.dialog({
+        //   message: $(".form-content").html(),
+        //   title: "Please enter your login info",
+        //   backdrop: true,
+        //   buttons: [
+        //     {
+        //       label: "Login",
+        //       className: "btn btn-primary pull-left",
+        //       callback: function () { // ログインメソッドをよぶ
+        //         console.log('value' + $('#email').val());
+        //         let jsonString = {
+        //           'email': $('#email').val(),
+        //           'password': $('#password').val()
+        //         };
+        //         $.ajax({
+        //           type: 'POST',
+        //           url: 'portfolio/auth/login',
+        //           data: JSON.stringify(jsonString),
+        //           contentType: 'application/json',
+        //           dataType: 'json'
+        //         }).done(function (result) {
+        //           let user = result;
+        //           if (jQuery.isEmptyObject(user)) {
+        //             bootbox.alert('ユーザー登録がされていません。ユーザー新規登録を行ってください');
+        //           } else {
+        //             console.log('ログインしました');
+        //             modal.modal('hide');
+        //           }
+        //         }).fail(function (result) {
+        //           bootbox.alert('Error: ajax通信に失敗しました');
+        //         }).always(function (result) {
+        //           console.log("ajax通信しました");
+        //         });
+        //       }
+        //     },
+        //     {
+        //       label: "Cancel",
+        //       className: "btn btn-default pull-left",
+        //       callback: function () {
+        //         console.log("just do something on close");
+        //       }
+        //     }
+        //   ],
+        //   show: false,
+        //   onEscape: function () {
+        //     modal.modal("hide");
+        //   }
+        // });
+
+        // modal.modal("show");
       /*]]>*/
     </script>
 

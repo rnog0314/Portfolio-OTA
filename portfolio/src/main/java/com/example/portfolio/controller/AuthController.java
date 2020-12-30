@@ -2,6 +2,7 @@ package com.example.portfolio.controller;
 
 import com.example.portfolio.model.entity.User;
 import com.example.portfolio.model.form.UserForm;
+import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.service.UserService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,10 +24,37 @@ public class AuthController {
   @Autowired
   private UserService userService;
 
+  @Autowired
+  private LoginSession loginSession;
+
+  /**
+   * ログインメソッド
+   * @param form
+   * @param m
+   * @return
+   */
   @PostMapping(value = "/login")
   @ResponseBody
   public String login(@RequestBody UserForm form, Model m) {
+
+    // ログインフォームに入力されたユーザ名とパスワードと一致するユーザを取得
     User user = userService.findByEmailAndPassword(form.getEmail(), form.getPassword());
+
+    if (user != null) { // ユーザが存在すれば
+      loginSession.setTmpUserId(null); // トップページ初期表示時に付与した仮ユーザIDをnullにして破棄
+      loginSession.setLogined(true); // ログイン状態にする
+      loginSession.setUserId(user.getUserId());
+      loginSession.setUserName(user.getUserName());
+      loginSession.setPassword(user.getPassword());
+      loginSession.setEmail(user.getEmail());
+    } else { // 一致するユーザ情報がなければ、仮ユーザIDはそのまま
+      loginSession.setLogined(false);
+      loginSession.setUserId(null);
+      loginSession.setUserName(null);
+      loginSession.setPassword(null);
+      loginSession.setEmail(null);
+    }
+    m.addAttribute("loginSession", loginSession);
     return gson.toJson(user);
   }
 

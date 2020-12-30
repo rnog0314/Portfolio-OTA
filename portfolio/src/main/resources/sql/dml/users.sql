@@ -1,4 +1,4 @@
-insert into users (user_id, user_name, password, family_name, first_name, email, gender, profile_picture) values (1, 'teestUser', 'password', 'Shyres', 'Hildagarde', 'example@gmail.com', 'F', '/img/avator.png');
+insert into users (user_id, user_name, password, family_name, first_name, email, gender, profile_picture) values (1, 'testUser', 'password', 'Shyres', 'Hildagarde', 'example@gmail.com', 'F', '/img/avator.png');
 insert into users (user_id, user_name, password, family_name, first_name, email, gender, profile_picture) values (2, 'cbonn1', 'LAJqYSq3', 'Bonn', 'Cristina', 'cbonn1@shutterfly.com', 'F', '/img/avator.png');
 insert into users (user_id, user_name, password, family_name, first_name, email, gender, profile_picture) values (3, 'bcleaton2', 'Lekvw4tJTSgO', 'Cleaton', 'Bartholomew', 'bcleaton2@scribd.com', 'M', '/img/avator.png');
 insert into users (user_id, user_name, password, family_name, first_name, email, gender, profile_picture) values (4, 'fwooler3', 'Z5DDJ4H', 'Wooler', 'Fairleigh', 'fwooler3@home.pl', 'M', '/img/avator.png');
@@ -100,3 +100,5 @@ insert into users (user_id, user_name, password, family_name, first_name, email,
 insert into users (user_id, user_name, password, family_name, first_name, email, gender, profile_picture) values (100, 'ewalshe2r', 'ZCDQ4kOH', 'Walshe', 'Elizabeth', 'ewalshe2r@wunderground.com', 'F', '/img/avator.png');
 
 SELECT * FROM users;
+
+

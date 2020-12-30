@@ -43,7 +43,7 @@ public class User {
   private String firstName;
 
   @Column(name = "gender")
-  private short gender;
+  private char gender;
 
   @Column(name = "profile_picture")
   private String profilePicture;
