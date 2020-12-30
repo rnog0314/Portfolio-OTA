@@ -29,6 +29,7 @@ public class AuthController {
 
   /**
    * ログインメソッド
+   *
    * @param form
    * @param m
    * @return
@@ -56,6 +57,23 @@ public class AuthController {
     }
     m.addAttribute("loginSession", loginSession);
     return gson.toJson(user);
+  }
+
+  /**
+   * ログアウトメソッド
+   *
+   * @return
+   */
+  @PostMapping(value = "/logout")
+  @ResponseBody
+  public String logout() {
+    loginSession.setTmpUserId(null);
+    loginSession.setLogined(false);
+    loginSession.setUserId(null);
+    loginSession.setUserName(null);
+    loginSession.setPassword(null);
+    loginSession.setEmail(null);
+    return "";
   }
 
 }

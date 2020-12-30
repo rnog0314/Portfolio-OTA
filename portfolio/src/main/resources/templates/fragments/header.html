@@ -67,36 +67,26 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="#" class="nav-link">ご予約</a>
+            <a href="#" class="nav-link">reservation</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">お知らせ</a>
+            <a href="#" class="nav-link">notification</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">お気に入り</a>
+            <a href="#" class="nav-link">bookmark</a>
           </li>
           <li class="nav-item">
             <a href="#"><i class="nav-link fas fa-shopping-cart animated-hover faa-wrench"></i></a>
           </li>
-          <li class="nav-item">
-            <button id="login-btn" type="button" class="nav-link btn btn-muted">Log in / Sing up</button>
+          <li id="login-link" class="nav-item" th:class="${loginSession.isLogined == false ? '' : 'hideen'}">
+            <button id="login-btn" type="button" class="nav-link btn btn-muted">Log in</button>
+          </li>
+          <li id="logout-link" class="nav-item" th:class="${loginSession.isLogined == true ? '' : 'hidden'}">
+            <button id="login-btn" type="button" class="nav-link btn btn-muted">Log out</button>
           </li>
         </ul>
       </div>
     </nav>
-
-    <div class="form-content" style="display:none;">
-      <form class="form" role="form">
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"></input>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-        </div>
-      </form>
-    </div>
 
   </th:block>
 

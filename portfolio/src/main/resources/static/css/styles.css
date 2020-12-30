@@ -5,6 +5,10 @@ node-sass styles.scss styles.css --output-style expanded --watch
 Scss自動コンパイルコマンド
 */
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;800&family=Rubik:ital,wght@1,600&display=swap");
+.hidden {
+  display: none;
+}
+
 body {
   font-family: "Rubik", "M PLUS Rounded 1c", sans-serif;
   background-color: #f9f9fa;
@@ -294,16 +298,13 @@ input {
   color: #00b7ff;
 }
 
-.modal-body {
-  display: flex;
-  justify-content: center;
+.bootbox-body {
+  width: 100%;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
-.modal-body .bootbox-body {
-  width: 75%;
-}
-
-.modal-body .bootbox-body #login-info input {
+.bootbox-body #login-info input {
   border-radius: 0.5rem;
   width: 100%;
   margin-bottom: 1rem;

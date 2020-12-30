@@ -51,6 +51,7 @@ public class IndexController {
     m.addAttribute("categories", categories);
     m.addAttribute("destinations", destinations);
     m.addAttribute("testimonials", testimonials);
+    m.addAttribute("loginSession", loginSession);
     return "index";
   }
 
