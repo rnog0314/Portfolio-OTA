@@ -6,8 +6,16 @@ Scss自動コンパイルコマンド
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;800&family=Rubik:ital,wght@1,600&display=swap");
 
 // ヘッダー
-.hidden {
-  display: none;
+.navbar {
+
+  .hidden {
+    display: none;
+  }
+
+  .welcome-msg-area {
+    margin: auto 3rem;
+    color: rgba(0,0,0,.5);
+  }
 }
 
 

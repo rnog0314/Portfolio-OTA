@@ -40,9 +40,6 @@
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="welcome-msg-area">
-        <!-- <p class="welcome-msg" th:text="'ようこそ！' + ${loginSession.isLogined() == false ? 'ゲストさん' : loginSession.getUserName() + 'さん'}"></p> -->
-      </div>
       <div class="searchForm">
         <form action="" class="form-inline">
           <input type="text" class="form-control">
@@ -50,6 +47,9 @@
             <i class="fas fa-search"></i>
           </button>
         </form>
+      </div>
+      <div class="welcome-msg-area">
+        <p id="welcome-msg" class="welcome-msg m-0" th:text="'Welcome！' + ${loginSession.isLogined() == false ? 'our Guest' : loginSession.getUserName()}"></p>
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
@@ -65,11 +65,14 @@
           <li class="nav-item">
             <a href="#"><i class="nav-link fas fa-shopping-cart animated-hover faa-wrench"></i></a>
           </li>
-          <li id="login-link" class="nav-item" th:class="${loginSession.isLogined == false ? '' : 'hideen'}">
+          <li id="login-link" class="nav-item" th:class="${loginSession.isLogined() == false ? '' : 'hidden'}">
             <button id="login-btn" type="button" class="nav-link btn btn-muted">Log in</button>
           </li>
-          <li id="logout-link" class="nav-item" th:class="${loginSession.isLogined == true ? '' : 'hidden'}">
+          <li id="logout-link" class="nav-item" th:class="${loginSession.isLogined() == true ? '' : 'hidden'}">
             <button id="login-btn" type="button" class="nav-link btn btn-muted">Log out</button>
+          </li>
+          <li id="signup-link" class="nav-item" th:class="${loginSession.isLogined() == false ? '' : 'hidden'}">
+            <button id="signup-btn" type="button" class="nav-link btn btn-muted">Sign up</button>
           </li>
         </ul>
       </div>

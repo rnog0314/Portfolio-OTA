@@ -97,6 +97,7 @@
                   if (jQuery.isEmptyObject(user)) {
                     bootbox.alert('You have not yet registered. Please sign up first !');
                   } else {
+                    login(user);
                     loginCheck();
                     console.log('ログインしました');
                   }
@@ -134,14 +135,22 @@
           })
         })
 
-        function loginCheck(user) {
+        function login(user) {
+          let userName = user['userName'];
+          $('#welcome-msg').text(`Welcome ${userName} !`);
+        }
+
+        function loginCheck() {
           let loginChecker = $('#login-link').prop('class');
           // 非同期通信のため、以下のclassの切り替えを行わないと画面が更新されない
           if (jQuery.isEmptyObject(loginChecker)) { // ログインしている時
             $('#login-link').addClass('hidden');
+            $('#signup-link').addClass('hidden');
             $('#logout-link').removeClass('hidden');
           } else {                                  // ログインしていない時
+            $('#welcome-msg').text(`Welcome our Guest!`);
             $('#login-link').removeClass('hidden');
+            $('#signup-link').removeClass('hidden');
             $('#logout-link').addClass('hidden');
           }
         }
