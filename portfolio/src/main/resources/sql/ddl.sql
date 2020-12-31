@@ -40,7 +40,18 @@ CREATE TABLE users (
   first_name VARCHAR(255) NOT NULL,
   gender CHAR (1) NOT NULL,
   profile_picture VARCHAR(255),
-  auth_provider VARCHAR(15),
+  delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
+);
+
+CREATE TABLE test_users (
+  user_id SERIAL PRIMARY KEY,
+  user_name VARCHAR(32) NOT NULL UNIQUE,
+  password VARCHAR(16) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  family_name VARCHAR(255) NOT NULL,
+  first_name VARCHAR(255) NOT NULL,
+  gender CHAR (1) NOT NULL,
+  user_img BYTEA,
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
 );
 

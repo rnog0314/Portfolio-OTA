@@ -127,14 +127,18 @@
               };
               $.ajax({
                 type: 'POST',
-                url: 'portfolio/user/register',
+                url: '/portfolio/user/register',
                 data: JSON.stringify(jsonString),
                 contentType: 'application/json',
                 dataType: 'json'
               }).done(function (result) {
-                bootbox.alert('You have just registerd!', function () {
-                  location.href = '/portfolio';
-                });
+                if (result == true) {
+                  bootbox.alert('You have just registerd!', function () {
+                    location.href = '/portfolio';
+                  });
+                } else {
+                  bootbox.alert('Something wrong. Please try again.')
+                }
               }).fail(function (result) {
                 console.log('Error: ajax通信に失敗しました');
               }).always(function (result) {

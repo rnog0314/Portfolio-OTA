@@ -36,5 +36,12 @@ public class UserService {
     return userRepos.findByUserName(newUserName);
   }
 
-
+	/**
+	 * 新規ユーザレコード登録
+	 * @param user
+	 * @return
+	 */
+	public int insertUser(User user) {
+		return userRepos.insertUser(user);
+	}
 }
