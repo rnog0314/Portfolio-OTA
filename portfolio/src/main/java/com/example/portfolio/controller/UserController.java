@@ -1,5 +1,6 @@
 package com.example.portfolio.controller;
 
+import com.example.portfolio.model.entity.User;
 import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.service.UserService;
 import com.google.gson.Gson;
@@ -45,7 +46,7 @@ public class UserController {
   @ResponseBody
   public boolean checkUserName(@RequestBody String newUserName) {
     boolean bool = false; // 重複があるかどうか真偽値をfalseで初期化
-    int count = userService.findByUserName(newUserName); 
+    int count = userService.findByUserName(newUserName);
     if (count > 0) { // 同一のユーザ名が既に存在していたらtrueを返してエラーを表示
       bool = true;
     } else {
@@ -53,4 +54,19 @@ public class UserController {
     }
     return bool;
   }
+
+  //   /**
+  //  * 新規ユーザー登録メソッド
+  //  * @param user
+  //  * @return
+  //  */
+  // @PostMapping("/register")
+  // @ResponseBody
+  // public boolean registerUser(@RequestBody User user) {
+  //   boolean bool = false;
+  //   int result = userService.insertUser(user);
+  //   System.out.println(result + "件のユーザを登録しました");
+  //   if (result > 0) { bool = true; }
+  //   return bool;
+  // }
 }

@@ -35,4 +35,6 @@ public class UserService {
   public int findByUserName(String newUserName) {
     return userRepos.findByUserName(newUserName);
   }
+
+
 }
