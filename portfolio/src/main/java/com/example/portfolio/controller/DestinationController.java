@@ -2,6 +2,7 @@ package com.example.portfolio.controller;
 
 import com.example.portfolio.model.entity.DestinationDetail;
 import com.example.portfolio.model.entity.Product;
+import com.example.portfolio.model.session.LoginSession;
 
 import java.util.List;
 
@@ -30,6 +31,9 @@ public class DestinationController {
   @Autowired
   private ProductService productService;
 
+  @Autowired
+  private LoginSession loginSession;
+
   @GetMapping(value = "/{destination_id}")
   public String goDestinationPage(@PathVariable("destination_id") int destinationId, Model m) {
     Destination destination = destinationService.findById(destinationId);
@@ -38,6 +42,7 @@ public class DestinationController {
     m.addAttribute("destination", destination);
     m.addAttribute("destinationDetail", destinationDetail);
     m.addAttribute("products", products);
+    m.addAttribute("loginSession", loginSession);
     return "destination_detail";
   }
 

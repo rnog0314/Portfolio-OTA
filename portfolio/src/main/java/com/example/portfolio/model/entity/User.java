@@ -45,8 +45,8 @@ public class User {
   @Column(name = "gender")
   private char gender;
 
-  @Column(name = "profile_picture")
-  private String profilePicture;
+  @Column(name = "user_img")
+  private String userImg;
 
   @Column(name = "delete_flag")
   private boolean deleteFlag;

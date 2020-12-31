@@ -2,6 +2,7 @@ package com.example.portfolio.controller;
 
 import com.example.portfolio.model.entity.Product;
 import com.example.portfolio.model.entity.ProductDetail;
+import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.service.ProductDetailService;
 import com.example.portfolio.service.ProductService;
 
@@ -23,12 +24,18 @@ public class ProductController {
   @Autowired
   private ProductService productService;
 
+  @Autowired
+  private LoginSession loginSession;
+
+
+
   @GetMapping(value="/{productId}")
   public String goProductDetailPage(@PathVariable("productId") int productId, Model m) {
     Product product = productService.findById(productId);
     ProductDetail productDetail = productDetailService.findByProductId(productId);
     m.addAttribute("productDetail", productDetail);
     m.addAttribute("product", product);
+    m.addAttribute("loginSession", loginSession);
     return "product_detail";
   }
 
