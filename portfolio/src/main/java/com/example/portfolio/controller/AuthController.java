@@ -40,21 +40,7 @@ public class AuthController {
 
     // ログインフォームに入力されたユーザ名とパスワードと一致するユーザを取得
     User user = userService.findByEmailAndPassword(form.getEmail(), form.getPassword());
-
-    if (user != null) { // ユーザが存在すれば
-      loginSession.setTmpUserId(null); // トップページ初期表示時に付与した仮ユーザIDをnullにして破棄
-      loginSession.setLogined(true); // ログイン状態にする
-      loginSession.setUserId(user.getUserId());
-      loginSession.setUserName(user.getUserName());
-      loginSession.setPassword(user.getPassword());
-      loginSession.setEmail(user.getEmail());
-    } else { // 一致するユーザ情報がなければ、仮ユーザIDはそのまま
-      loginSession.setLogined(false);
-      loginSession.setUserId(null);
-      loginSession.setUserName(null);
-      loginSession.setPassword(null);
-      loginSession.setEmail(null);
-    }
+    userService.setLoginSession(user);
     m.addAttribute("loginSession", loginSession);
     return gson.toJson(user);
   }

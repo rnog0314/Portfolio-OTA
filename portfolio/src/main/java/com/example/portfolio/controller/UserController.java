@@ -62,11 +62,14 @@ public class UserController {
    */
   @PostMapping("/register")
   @ResponseBody
-  public boolean registerUser(@RequestBody User user) {
+  public boolean registerUser(@RequestBody User newUser) {
     boolean bool = false;
-    int result = userService.insertUser(user);
-    System.out.println(result + "件のユーザを登録しました");
-    if (result > 0) { bool = true; }
+    int result = userService.insertUser(newUser);
+    if (result > 0) {
+      User user = userService.findByUserNameAndPassword(newUser.getUserName(), newUser.getPassword());
+      userService.setLoginSession(user);
+      bool = true;
+    }
     return bool;
   }
 }

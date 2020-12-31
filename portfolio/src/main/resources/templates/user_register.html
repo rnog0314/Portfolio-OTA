@@ -133,8 +133,8 @@
                 dataType: 'json'
               }).done(function (result) {
                 if (result == true) {
-                  bootbox.alert('You have just registerd!', function () {
-                    location.href = '/portfolio';
+                  bootbox.alert('You have just registerd! You will move to your personal page.', function () {
+                    location.href = '/portfolio/mypage';
                   });
                 } else {
                   bootbox.alert('Something wrong. Please try again.')

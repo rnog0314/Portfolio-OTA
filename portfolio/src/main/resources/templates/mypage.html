@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio OTA</title>
+</head>
+
+<body>
+  <!-- header挿入 -->
+  <header th:insert="fragments/header::header"></header>
+  <main role="main">
+    <div class="container text-center mt-5">
+      <div class="d-flex justify-content-center align-items-center mb-5">
+        <h2 class="page-title text-center mb-">My Page</h2>
+        <!-- <form th:action="@{/portfolio/history}" method="GET" class="form-inline">
+        <button class="btn btn-warning m-3">See history</button>
+      </form> -->
+      </div>
+      <div class="container-fluid d-flex justify-content-center table-responsive-md">
+        <table class="table table-hover table-bordered table-responsive-md text-center" th:object="${user}">
+          <tr>
+            <th scope="row">Profile Picture</th>
+            <td>
+              <img src="" alt="">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">User Name</th>
+            <td>
+              <span th:text="*{userName}"></span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Name</th>
+            <td>
+              <span th:text="*{familyName}"></span>
+              <span th:text="*{firstName}"></span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Password</th>
+            <td>
+              <span id="asters"></span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">E-mail</th>
+            <th>
+              <span id="email" th:text="*{email}"></span>
+            </th>
+          </tr>
+          <tr>
+            <th scope="row">Gender</th>
+            <td th:text="*{gender == 'M' ? 'Male' : 'Female'}"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </main>
+  <!-- footer -->
+  <footer th:insert="fragments/footer::footer"></footer>
+
+  <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    /* 実際のパスワードの文字数分 「●」 を表示する */
+    let password = /*[[${user.password}]]*/ 'password';
+    let asters = '';
+    for (let i = 0; i < password.length; i++) {
+      asters += '●';
+      console.log(asters);
+    }
+    $('#asters').text(asters);
+    /*]]>*/
+  </script>
+</body>
+
+</html>

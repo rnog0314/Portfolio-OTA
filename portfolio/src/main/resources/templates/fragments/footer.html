@@ -150,11 +150,13 @@
             $('#login-link').addClass('hidden');
             $('#signup-link').addClass('hidden');
             $('#logout-link').removeClass('hidden');
+            $('#mypage-link').removeClass('hidden');
           } else {                                  // ログインしていない時
             $('#welcome-msg').text(`Welcome our Guest!`);
             $('#login-link').removeClass('hidden');
             $('#signup-link').removeClass('hidden');
             $('#logout-link').addClass('hidden');
+            $('#mypage-link').addClass('hidden');
           }
         }
       });

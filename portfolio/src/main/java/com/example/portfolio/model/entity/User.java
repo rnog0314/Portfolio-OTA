@@ -2,8 +2,6 @@ package com.example.portfolio.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,10 +47,6 @@ public class User {
 
   @Column(name = "profile_picture")
   private String profilePicture;
-
-  @Enumerated(EnumType.STRING)
-  @Column(name = "auth_provider")
-  private AuthenticationProvider authProvider;
 
   @Column(name = "delete_flag")
   private boolean deleteFlag;
