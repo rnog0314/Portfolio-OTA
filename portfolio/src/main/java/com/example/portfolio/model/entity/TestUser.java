@@ -5,10 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+// import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import com.google.gson.annotations.Expose;
+
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -46,12 +47,8 @@ public class TestUser {
   @Column(name = "gender")
   private char gender;
 
-  @Lob
-	@Column(name = "user_img", columnDefinition = "MEDIUMBLOB")
-  private String UserImg;
-
-  @Column(name = "delete_flag")
-  private boolean deleteFlag;
+	@Column(name = "user_img")
+  private String userImg;
 
 
 }

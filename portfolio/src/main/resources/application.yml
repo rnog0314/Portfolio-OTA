@@ -1,4 +1,8 @@
 spring:
+  web:
+    resources:
+      static-locations:
+      - classpath:/static/
   datasource:
     url: jdbc:postgresql://localhost:5432/ota
     username: postgres
@@ -12,14 +16,6 @@ spring:
         format_sql: true
     hibernate:
       ddl-auto: none
-  # security:
-  #   oauth2:
-  #     client:
-  #       registration:
-  #         facebook:
-  #           client-id: 214571143579891
-  #           client-secret: 559df366fccd477e3330c45f58fd74ee
-            # scope:
 
 
 logging:

@@ -22,4 +22,14 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	User findByUserNameAndPassword(String userName, String password);
 
+	@Modifying
+	@Query(value = "UPDATE users SET user_name = :userName, family_name = :familyName, first_name = :firstName, email = :email, password = :password, user_img = :imgPath WHERE user_id = :userId", nativeQuery = true)
+	int update(	@Param("userName") String userName,
+							@Param("familyName") String familyName,
+							@Param("firstName") String firstName,
+							@Param("email") String email,
+							@Param("password") String password,
+							@Param("imgPath") String imgPath,
+							@Param("userId") Integer userId);
+
 }

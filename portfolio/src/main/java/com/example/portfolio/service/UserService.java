@@ -1,13 +1,20 @@
 package com.example.portfolio.service;
 
+import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javax.transaction.Transactional;
 
 import com.example.portfolio.model.dao.UserRepository;
 import com.example.portfolio.model.entity.User;
+import com.example.portfolio.model.form.UserForm;
 import com.example.portfolio.model.session.LoginSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Transactional
 @Service
@@ -85,4 +92,25 @@ public class UserService {
   public User findByUserNameAndPassword(String userName, String password) {
     return userRepos.findByUserNameAndPassword(userName, password);
   }
+
+  public int update(UserForm userForm, MultipartFile file, Integer userId) {
+    String userName = userForm.getUserName();
+    String familyName = userForm.getFamilyName();
+    String firstName = userForm.getFirstName();
+    String email = userForm.getEmail();
+    String password = userForm.getPassword();
+    String imgPath = "/img/user/" + file.getOriginalFilename();
+    return userRepos.update(userName, familyName, firstName, email, password, imgPath, userId);
+  }
+
+  public void saveUserImg(MultipartFile file) throws Exception {
+    String folder = "/Users/ryotonoguchi/Dropbox/Programing/Portfolio-OTA/portfolio/src/main/resources/static/img/user/";
+    byte[] bytes = file.getBytes();
+    FileOutputStream output = new FileOutputStream(folder +  file.getOriginalFilename());
+    output.write(bytes);
+    output.close();
+    Path path = Paths.get(folder + file.getOriginalFilename());
+    Files.write(path, bytes);
+  }
+
 }

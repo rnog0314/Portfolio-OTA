@@ -57,6 +57,14 @@
 
     <script th:inline="javascript" defer>
       /*<![CDATA[*/
+
+      // $(window).load(function () {
+      //   loginCheck();
+      // });
+
+      // $(document).on('change', '.checkbox', function() {
+      // });
+
       $(function () {
         // ログインボタン押下でログインモーダル表示
         $('#login-btn').on('click', function () {
@@ -123,7 +131,7 @@
             loginCheck()
             bootbox.alert({
               message: 'You loged out',
-              backdrop:true,
+              backdrop: true,
               centerVertical: true,
               callback: function () {
                 location.replace('/portfolio');

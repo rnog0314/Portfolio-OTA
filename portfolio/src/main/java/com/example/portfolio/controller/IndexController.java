@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 
+
 @Controller
 @RequestMapping("/portfolio")
 public class IndexController {
@@ -54,8 +55,5 @@ public class IndexController {
     m.addAttribute("loginSession", loginSession);
     return "index";
   }
-
-
-
 
 }

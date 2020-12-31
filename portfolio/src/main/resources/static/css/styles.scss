@@ -6,18 +6,15 @@ Scss自動コンパイルコマンド
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;800&family=Rubik:ital,wght@1,600&display=swap");
 
 // ヘッダー
+.hidden {
+  display: none;
+}
 .navbar {
-
-  .hidden {
-    display: none;
-  }
-
   .welcome-msg-area {
-    margin: auto 3rem;
-    color: rgba(0,0,0,.5);
+    margin: auto 1.5rem;
+    color: rgba(0, 0, 0, 0.5);
   }
 }
-
 
 body {
   font-family: "Rubik", "M PLUS Rounded 1c", sans-serif;
@@ -313,4 +310,26 @@ input {
       margin-bottom: 1rem;
     }
   }
+}
+
+// マイページ
+#file-btn {
+  cursor: pointer;
+  border-radius: 0.25rem;
+  padding: 0.4rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+.mypage-img {
+  width: 10rem;
+  margin: 1rem;
+  border-radius: 50%;
+  height: 10rem;
+  object-fit: cover;
+}
+.img-column {
+  width: 30%;
+  padding: 2rem !important;
+  line-height: 8rem;
 }

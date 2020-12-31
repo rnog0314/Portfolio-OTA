@@ -18,44 +18,71 @@
         <button class="btn btn-warning m-3">See history</button>
       </form> -->
       </div>
-      <div class="container-fluid d-flex justify-content-center table-responsive-md">
-        <table class="table table-hover table-bordered table-responsive-md text-center" th:object="${user}">
-          <tr>
-            <th scope="row">Profile Picture</th>
-            <td>
-              <img src="" alt="">
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">User Name</th>
-            <td>
-              <span th:text="*{userName}"></span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Name</th>
-            <td>
-              <span th:text="*{familyName}"></span>
-              <span th:text="*{firstName}"></span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Password</th>
-            <td>
-              <span id="asters"></span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">E-mail</th>
-            <th>
-              <span id="email" th:text="*{email}"></span>
-            </th>
-          </tr>
-          <tr>
-            <th scope="row">Gender</th>
-            <td th:text="*{gender == 'M' ? 'Male' : 'Female'}"></td>
-          </tr>
-        </table>
+      <div class="container-fluid mb-5 table-responsive-md">
+        <form th:action="@{/portfolio/user/modify}" method="post" enctype="multipart/form-data">
+          <table class="table table-hover table-bordered table-responsive-md text-center" th:object="${user}">
+            <tr>
+              <th scope="row" class="img-column">Profile Picture</th>
+              <td style="position: relative;">
+                <img th:src="@{{imagePath} (imagePath = *{userImg})}" th:class="${user.getUserImg().isEmpty() ? 'hidden' : 'mypage-img'}">
+                <img src="/img/avator.png" alt="" th:class="${user.getUserImg().isEmpty() ? 'mypage-img' : 'hidden'}">
+                <form class="" th:action="@{/portfolio/user/addImg}" method="post" enctype="multipart/form-data">
+                  <label id="file-btn" for="userImg" class="bg-primary text-white">Choose your photo
+                    <input type="file" name="file" id="userImg" style="display: none;">
+                  </label>
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" style="width: 30%;">User Name</th>
+              <td class="normal">
+                <span th:text="*{userName}"></span>
+              </td>
+              <td class="modify hidden">
+                <span><input type="text" name="userName" th:value="*{userName}" th:placeholder="*{userName}" style="width: 40%;"></span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" style="width: 30%;">Full Name</th>
+              <td class="normal">
+                <span th:text="*{familyName}"></span><span th:text="*{firstName}"></span>
+              </td>
+              <td class="modify hidden">
+                <span><input type="text" name="familyName" th:value="*{familyName}" th:placeholder="*{familyName}" style="width: 20%;"></span>
+                <span><input type="text" name="firstName" th:value="*{firstName}" th:placeholder="*{firstName}" style="width: 20%;"></span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" style="width: 30%;">Password</th>
+              <td class="normal">
+                <span id="asters"></span>
+              </td>
+              <td class="modify hidden">
+                <span><input type="password" name="password" id="newPassword" th:value="*{password}" placeholder="******"
+                    style="width: 40%;"></span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" style="width: 30%;">E-mail</th>
+              <th class="normal">
+                <span id="email" th:text="*{email}"></span>
+              </th>
+              <th class="modify hidden">
+                <span><input type="email" name="email" id="newEmail" th:value="*{email}" th:placeholder="*{email}"
+                    style="width: 40%;"></span>
+              </th>
+            </tr>
+            <tr>
+              <th scope="row" style="width: 30%;">Gender</th>
+              <td th:text="*{gender == 'M' ? 'Male' : 'Female'}"></td>
+            </tr>
+          </table>
+          <div class="btn-area">
+            <button id="modify-btn" class="btn btn-info" type="button">Modify</button>
+            <button id="cancel-btn" class="btn btn-warning hidden" type="button">Cancel</button>
+            <button id="submit-btn" class="btn btn-primary hidden" type="submit">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
   </main>
@@ -65,13 +92,33 @@
   <script type="text/javascript" th:inline="javascript">
     /*<![CDATA[*/
     /* 実際のパスワードの文字数分 「●」 を表示する */
-    let password = /*[[${user.password}]]*/ 'password';
-    let asters = '';
-    for (let i = 0; i < password.length; i++) {
-      asters += '●';
-      console.log(asters);
-    }
-    $('#asters').text(asters);
+    $(document).ready(function(){
+      
+      let password = /*[[${user.password}]]*/ 'password';
+      let asters = '';
+      for (let i = 0; i < password.length; i++) {
+        asters += '●';
+        console.log(asters);
+      }
+      $('#asters').text(asters);
+
+      $('#modify-btn').on('click', function () {
+        $('.normal').addClass('hidden');
+        $('.modify').removeClass('hidden');
+        $('#modify-btn').addClass('hidden');
+        $('#cancel-btn').removeClass('hidden');
+        $('#submit-btn').removeClass('hidden');
+      });
+      $('#cancel-btn').on('click', function () {
+        $('.normal').removeClass('hidden');
+        $('.modify').addClass('hidden');
+        $('#modify-btn').removeClass('hidden');
+        $('#cancel-btn').addClass('hidden');
+        $('#submit-btn').addClass('hidden');
+      });
+
+    });
+
     /*]]>*/
   </script>
 </body>
