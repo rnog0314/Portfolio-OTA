@@ -43,17 +43,13 @@ CREATE TABLE users (
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
 );
 
-CREATE TABLE test_users (
-  user_id SERIAL PRIMARY KEY,
-  user_name VARCHAR(32)  UNIQUE,
-  password VARCHAR(16) ,
-  email VARCHAR(100) ,
-  family_name VARCHAR(255) ,
-  first_name VARCHAR(255) ,
-  gender CHAR (1) ,
-  user_img VARCHAR
+CREATE TABLE files (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR,
+  type VARCHAR,
+  data BYTEA
 );
-Drop TABLE test_users;
+Drop TABLE files;
 
 
 CREATE TABLE carts (
