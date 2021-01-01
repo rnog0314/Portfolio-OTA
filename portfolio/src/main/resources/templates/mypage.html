@@ -24,11 +24,12 @@
             <tr>
               <th scope="row" class="img-column">Profile Picture</th>
               <td style="position: relative;">
-                <img th:src="${'data:image/png;base64,'+image}" th:class="${user.getUserImg().length == 0 ? 'hidden' : 'mypage-img'}">
+                <img th:src="${'data:image/png;base64,'+image}"
+                  th:class="${user.getUserImg().length == 0 ? 'hidden' : 'mypage-img'}">
                 <img src="/img/avator.png" alt="" th:class="${user.getUserImg().length == 0 ? 'mypage-img' : 'hidden'}">
-                  <label id="file-btn" for="userImg" class="bg-primary text-white">Choose your photo</label>
-                  <input type="file" name="file" id="userImg" style="display: none;">
-                  <p id="selected-status" class="mt-1">[Not yet selcted]</p>
+                <label id="file-btn" for="userImg" class="bg-primary text-white">Choose your photo</label>
+                <input type="file" name="file" id="userImg" style="display: none;">
+                <p id="selected-status" class="mt-1">[Not yet selcted]</p>
               </td>
             </tr>
             <tr>
@@ -38,7 +39,7 @@
               </td>
               <td class="modify hidden">
                 <span><input type="text" name="userName" th:value="*{userName}" th:placeholder="*{userName}"
-                    style="width: 40%;"></span>
+                    style="width: 40%;" required></span>
               </td>
             </tr>
             <tr>
@@ -48,9 +49,9 @@
               </td>
               <td class="modify hidden">
                 <span><input type="text" name="familyName" th:value="*{familyName}" th:placeholder="*{familyName}"
-                    style="width: 20%;"></span>
+                    style="width: 20%;" required></span>
                 <span><input type="text" name="firstName" th:value="*{firstName}" th:placeholder="*{firstName}"
-                    style="width: 20%;"></span>
+                    style="width: 20%;" required></span>
               </td>
             </tr>
             <tr>
@@ -60,7 +61,7 @@
               </td>
               <td class="modify hidden">
                 <span><input type="password" name="password" id="newPassword" th:value="*{password}"
-                    placeholder="******" style="width: 40%;"></span>
+                    placeholder="******" style="width: 40%;" required></span>
               </td>
             </tr>
             <tr>
@@ -70,7 +71,7 @@
               </th>
               <th class="modify hidden">
                 <span><input type="email" name="email" id="newEmail" th:value="*{email}" th:placeholder="*{email}"
-                    style="width: 40%;"></span>
+                    style="width: 40%;" required></span>
               </th>
             </tr>
             <tr>
@@ -83,10 +84,9 @@
             <button id="cancel-btn" class="btn btn-warning hidden" type="button">Cancel</button>
             <button id="submit-btn" class="btn btn-primary hidden" type="submit">Submit</button>
           </div>
-          <!-- </form> -->
+        </form>
       </div>
     </div>
-    <!-- <div id="complete-dialog" th:if="${comepleteMsg != null}"></div> -->
   </main>
   <!-- footer -->
   <footer th:insert="fragments/footer::footer"></footer>

@@ -30,9 +30,12 @@ public class MyPageController {
   @GetMapping("")
   public String goMyPage(Model model) {
     User user = userService.findByUserId(loginSession.getUserId());
-    String image = userService.getUserImg(user);
+    byte[] bytes = user.getUserImg();
+    if (bytes != null) {
+      String image = userService.getUserImg(user);
+      model.addAttribute("image", image);
+    }
     model.addAttribute("user", user);
-    model.addAttribute("image", image);
     model.addAttribute("loginSession", loginSession);
     return "mypage";
   }

@@ -39,7 +39,7 @@ CREATE TABLE users (
   family_name VARCHAR(255) NOT NULL,
   first_name VARCHAR(255) NOT NULL,
   gender CHAR (1) NOT NULL,
-  user_img BYTEA,
+  user_img BYTEA DEFAULT '',
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
 );
 

@@ -56,6 +56,16 @@ public class UserService {
   }
 
   /**
+   * 新規作成したユーザの取得
+   * @param userName
+   * @param password
+   * @return
+   */
+  public User findByUserNameAndPassword(String userName, String password) {
+    return userRepos.findByUserNameAndPassword(userName, password);
+  }
+
+  /**
    * 主キーでユーザを取得
    *
    * @param userId
@@ -87,33 +97,11 @@ public class UserService {
     }
   }
 
-  public User findByUserNameAndPassword(String userName, String password) {
-    return userRepos.findByUserNameAndPassword(userName, password);
-  }
-
-  public int update(UserForm userForm, MultipartFile file, Integer userId) {
-    String userName = userForm.getUserName();
-    String familyName = userForm.getFamilyName();
-    String firstName = userForm.getFirstName();
-    String email = userForm.getEmail();
-    String password = userForm.getPassword();
-    String imgPath = "/img/user/" + file.getOriginalFilename();
-    return userRepos.update(userName, familyName, firstName, email, password, imgPath, userId);
-  }
-
-  // public void saveUserImg(MultipartFile file) throws Exception {
-  // String folder =
-  // "/Users/ryotonoguchi/Dropbox/Programing/Portfolio-OTA/portfolio/src/main/resources/static/img/user/";
-  // // String folder = "src/main/resources/static/img/user/";
-  // byte[] bytes = file.getBytes();
-  // FileOutputStream output = new FileOutputStream(folder +
-  // file.getOriginalFilename());
-  // output.write(bytes);
-  // output.close();
-  // Path path = Paths.get(folder + file.getOriginalFilename());
-  // Files.write(path, bytes);
-  // }
-
+  /**
+   * プロフィール画像の更新
+   * @param file
+   * @return
+   */
   public int updateUserImage(MultipartFile file) {
     Integer userId = loginSession.getUserId();
     byte[] bytes;
@@ -126,11 +114,22 @@ public class UserService {
     }
   }
 
+  /**
+   * ユーザ情報の更新
+   * @param userForm
+   */
   public void updateUser(UserForm userForm) {
     userRepos.updateUser(userForm);
   }
 
+  /**
+   * byte[]からStringへの変換
+   * @param user
+   * @return
+   */
   public String getUserImg(User user) {
     return Base64.getEncoder().encodeToString(user.getUserImg());
   }
+
+
 }
