@@ -5,9 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import com.google.gson.annotations.Expose;
+
+import org.hibernate.annotations.Type;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -45,8 +48,10 @@ public class User {
   @Column(name = "gender")
   private char gender;
 
+  @Lob
+  @Type(type = "org.hibernate.type.BinaryType")
   @Column(name = "user_img")
-  private String userImg;
+  private byte[] userImg;
 
   @Column(name = "delete_flag")
   private boolean deleteFlag;

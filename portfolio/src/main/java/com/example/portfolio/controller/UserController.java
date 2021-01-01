@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -82,45 +81,73 @@ public class UserController {
 
   /**
    * ユーザ情報変更
+   *
    * @param userForm
    * @param file
    * @param m
    * @return
    */
+  // @PostMapping(value = "/modify", consumes = { "multipart/form-data" })
+  // public String modify(UserForm userForm, @RequestPart("file") MultipartFile file, Model m) {
+
+  //   int result = userService.update(userForm, file, loginSession.getUserId());
+  //   if (result > 0) {
+  //     System.out.println(result + "レコード更新しました");
+  //   }
+
+  //   User user = userService.findByUserId(loginSession.getUserId());
+  //   userService.setLoginSession(user);
+  //   m.addAttribute("user", user);
+  //   m.addAttribute("loginSession", loginSession);
+  //   Boolean completeMsg = true;
+  //   m.addAttribute("completeMsg", completeMsg);
+  //   return "mypage";
+  // }
+
+
   @PostMapping(value = "/modify", consumes = { "multipart/form-data" })
-  public String modify(UserForm userForm, @RequestPart("file") MultipartFile file, Model m) {
+  public String modify(UserForm userForm, Model m) {
+    Integer userId = loginSession.getUserId();
+    userForm.setUserId(userId);
+    userService.updateUser(userForm);
 
-    int result = userService.update(userForm, file, loginSession.getUserId());
-    if (result > 0) {
-      System.out.println(result + "レコード更新しました");
-    }
-
-    User user = userService.findByUserId(loginSession.getUserId());
+    User user = userService.findByUserId(userId);
     userService.setLoginSession(user);
-    m.addAttribute("user", user);
-    m.addAttribute("loginSession", loginSession);
+    String image = userService.getUserImg(user);
     Boolean completeMsg = true;
+    m.addAttribute("user", user);
+    m.addAttribute("image", image);
+    m.addAttribute("loginSession", loginSession);
     m.addAttribute("completeMsg", completeMsg);
     return "mypage";
   }
 
   /**
    * プロフィール画像変更
+   *
    * @param file
    * @param m
    * @return
    */
-  @PostMapping(value = "/imgRegis")
+  // @PostMapping(value = "/imgRegis")
+  // @ResponseBody
+  // public boolean imgRegister(@RequestParam("file") MultipartFile file, Model m) {
+  //   boolean bool = false;
+  //   try {
+  //     userService.saveUserImg(file);
+  //     bool = true;
+  //   } catch (Exception e) {
+  //     e.printStackTrace();
+  //   }
+  //   return bool;
+  // }
+
+  @PostMapping(value = "/imgUpload")
   @ResponseBody
-  public boolean imgRegister(@RequestParam("file") MultipartFile file, Model m) {
+  public boolean imgUpdate(@RequestParam("file") MultipartFile file, Model m) {
     boolean bool = false;
-    try {
-      userService.saveUserImg(file);
-      bool = true;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    int result = userService.updateUserImage(file);
+    if (result > 0) { bool = true; }
     return bool;
   }
-
 }

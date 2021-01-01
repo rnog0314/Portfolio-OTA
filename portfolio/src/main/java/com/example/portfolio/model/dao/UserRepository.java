@@ -1,6 +1,7 @@
 package com.example.portfolio.model.dao;
 
 import com.example.portfolio.model.entity.User;
+import com.example.portfolio.model.form.UserForm;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -31,5 +32,14 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 							@Param("password") String password,
 							@Param("imgPath") String imgPath,
 							@Param("userId") Integer userId);
+
+	@Modifying
+	@Query(value = "UPDATE users SET user_img = :bytes WHERE user_id = :userId", nativeQuery = true)
+	int updateUserImage( @Param("bytes") byte[] bytes,
+												@Param("userId") Integer userId);
+
+	@Modifying
+	@Query(value = "UPDATE users SET user_name = :#{#u.userName}, family_name = :#{#u.familyName}, first_name = :#{#u.firstName}, email = :#{#u.email}, password = :#{#u.password} WHERE user_id = :#{#u.userId}", nativeQuery = true)
+	void updateUser(@Param("u") UserForm userForm);
 
 }

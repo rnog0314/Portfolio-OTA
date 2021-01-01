@@ -27,8 +27,6 @@ public class ProductController {
   @Autowired
   private LoginSession loginSession;
 
-
-
   @GetMapping(value="/{productId}")
   public String goProductDetailPage(@PathVariable("productId") int productId, Model m) {
     Product product = productService.findById(productId);

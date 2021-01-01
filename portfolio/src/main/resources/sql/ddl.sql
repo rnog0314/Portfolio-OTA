@@ -39,9 +39,12 @@ CREATE TABLE users (
   family_name VARCHAR(255) NOT NULL,
   first_name VARCHAR(255) NOT NULL,
   gender CHAR (1) NOT NULL,
-  user_img VARCHAR(255),
+  user_img BYTEA,
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
 );
+
+DROP TABLE carts;
+DROP TABLE users;
 
 CREATE TABLE files (
   id SERIAL PRIMARY KEY,

@@ -24,9 +24,8 @@
             <tr>
               <th scope="row" class="img-column">Profile Picture</th>
               <td style="position: relative;">
-                <img th:src="@{{imagePath} (imagePath = *{userImg})}"
-                  th:class="${user.getUserImg().isEmpty() ? 'hidden' : 'mypage-img'}">
-                <img src="/img/avator.png" alt="" th:class="${user.getUserImg().isEmpty() ? 'mypage-img' : 'hidden'}">
+                <img th:src="${'data:image/png;base64,'+image}" th:class="${user.getUserImg().length == 0 ? 'hidden' : 'mypage-img'}">
+                <img src="/img/avator.png" alt="" th:class="${user.getUserImg().length == 0 ? 'mypage-img' : 'hidden'}">
                   <label id="file-btn" for="userImg" class="bg-primary text-white">Choose your photo</label>
                   <input type="file" name="file" id="userImg" style="display: none;">
                   <p id="selected-status" class="mt-1">[Not yet selcted]</p>
@@ -117,7 +116,7 @@
         const fd = new FormData();
         fd.append('file', $('input[type=file]')[0].files[0]);
         $.ajax({
-          url: '/portfolio/user/imgRegis',
+          url: '/portfolio/user/imgUpload',
           type: "POST",
           data: fd,
           enctype: 'multipart/form-data',
@@ -136,7 +135,6 @@
                 reader.onload = function () {
                   var img_src = $('.mypage-img').attr('src', reader.result);
                 }
-                console.log("OK");
                 reader.readAsDataURL(f);
                 console.log('画像ファイルをimgフォルダに格納しました');
               }

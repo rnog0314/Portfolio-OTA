@@ -1,9 +1,7 @@
 package com.example.portfolio.service;
 
-import java.io.FileOutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.IOException;
+import java.util.Base64;
 
 import javax.transaction.Transactional;
 
@@ -103,15 +101,36 @@ public class UserService {
     return userRepos.update(userName, familyName, firstName, email, password, imgPath, userId);
   }
 
-  public void saveUserImg(MultipartFile file) throws Exception {
-    String folder = "/Users/ryotonoguchi/Dropbox/Programing/Portfolio-OTA/portfolio/src/main/resources/static/img/user/";
-    // String folder = "src/main/resources/static/img/user/";
-    byte[] bytes = file.getBytes();
-    FileOutputStream output = new FileOutputStream(folder +  file.getOriginalFilename());
-    output.write(bytes);
-    output.close();
-    Path path = Paths.get(folder + file.getOriginalFilename());
-    Files.write(path, bytes);
+  // public void saveUserImg(MultipartFile file) throws Exception {
+  // String folder =
+  // "/Users/ryotonoguchi/Dropbox/Programing/Portfolio-OTA/portfolio/src/main/resources/static/img/user/";
+  // // String folder = "src/main/resources/static/img/user/";
+  // byte[] bytes = file.getBytes();
+  // FileOutputStream output = new FileOutputStream(folder +
+  // file.getOriginalFilename());
+  // output.write(bytes);
+  // output.close();
+  // Path path = Paths.get(folder + file.getOriginalFilename());
+  // Files.write(path, bytes);
+  // }
+
+  public int updateUserImage(MultipartFile file) {
+    Integer userId = loginSession.getUserId();
+    byte[] bytes;
+    try {
+      bytes = file.getBytes();
+      return userRepos.updateUserImage(bytes, userId);
+    } catch (IOException e) {
+      e.printStackTrace();
+      return 0;
+    }
   }
 
+  public void updateUser(UserForm userForm) {
+    userRepos.updateUser(userForm);
+  }
+
+  public String getUserImg(User user) {
+    return Base64.getEncoder().encodeToString(user.getUserImg());
+  }
 }
