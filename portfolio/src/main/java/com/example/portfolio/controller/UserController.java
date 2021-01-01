@@ -80,13 +80,15 @@ public class UserController {
     return bool;
   }
 
+  /**
+   * ユーザ情報変更
+   * @param userForm
+   * @param file
+   * @param m
+   * @return
+   */
   @PostMapping(value = "/modify", consumes = { "multipart/form-data" })
   public String modify(UserForm userForm, @RequestPart("file") MultipartFile file, Model m) {
-    try {
-      userService.saveUserImg(file);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
 
     int result = userService.update(userForm, file, loginSession.getUserId());
     if (result > 0) {
@@ -97,11 +99,17 @@ public class UserController {
     userService.setLoginSession(user);
     m.addAttribute("user", user);
     m.addAttribute("loginSession", loginSession);
+    Boolean completeMsg = true;
+    m.addAttribute("completeMsg", completeMsg);
     return "mypage";
-    // TODO
-    // Submitボタンを押してから画面更新されても、画像が表示されない。書き込みより読み込みの方が早いことが理由。手動でリロードすると正常に画像が表示される
   }
 
+  /**
+   * プロフィール画像変更
+   * @param file
+   * @param m
+   * @return
+   */
   @PostMapping(value = "/imgRegis")
   @ResponseBody
   public boolean imgRegister(@RequestParam("file") MultipartFile file, Model m) {
