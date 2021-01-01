@@ -105,6 +105,7 @@ public class UserService {
 
   public void saveUserImg(MultipartFile file) throws Exception {
     String folder = "/Users/ryotonoguchi/Dropbox/Programing/Portfolio-OTA/portfolio/src/main/resources/static/img/user/";
+    // String folder = "src/main/resources/static/img/user/";
     byte[] bytes = file.getBytes();
     FileOutputStream output = new FileOutputStream(folder +  file.getOriginalFilename());
     output.write(bytes);

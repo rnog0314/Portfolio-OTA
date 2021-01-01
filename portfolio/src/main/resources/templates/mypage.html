@@ -27,7 +27,6 @@
                 <img th:src="@{{imagePath} (imagePath = *{userImg})}"
                   th:class="${user.getUserImg().isEmpty() ? 'hidden' : 'mypage-img'}">
                 <img src="/img/avator.png" alt="" th:class="${user.getUserImg().isEmpty() ? 'mypage-img' : 'hidden'}">
-                <form class="" th:action="@{/portfolio/user/imgRegis}" method="post" enctype="multipart/form-data">
                   <label id="file-btn" for="userImg" class="bg-primary text-white">Choose your photo</label>
                   <input type="file" name="file" id="userImg" style="display: none;">
                   <p id="selected-status" class="mt-1">[Not yet selcted]</p>
