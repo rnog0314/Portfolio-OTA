@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,7 +27,6 @@ public class UserController {
 
   @Autowired
   private UserService userService;
-
 
   Gson gson = new Gson();
 
@@ -89,21 +89,30 @@ public class UserController {
     }
 
     int result = userService.update(userForm, file, loginSession.getUserId());
-    if (result > 0) { System.out.println(result + "レコード更新しました"); }
+    if (result > 0) {
+      System.out.println(result + "レコード更新しました");
+    }
 
     User user = userService.findByUserId(loginSession.getUserId());
     userService.setLoginSession(user);
     m.addAttribute("user", user);
     m.addAttribute("loginSession", loginSession);
     return "mypage";
-    // TODO Submitボタンを押してから画面更新されても、画像が表示されない。書き込みより読み込みの方が早いことが理由。手動でリロードすると正常に画像が表示される
+    // TODO
+    // Submitボタンを押してから画面更新されても、画像が表示されない。書き込みより読み込みの方が早いことが理由。手動でリロードすると正常に画像が表示される
   }
 
-  // test
-  @GetMapping(value = "/addUser")
-  public String addUser(Model model) {
-    model.addAttribute("loginSession", loginSession);
-    return "upload_test";
+  @PostMapping(value = "/imgRegis")
+  @ResponseBody
+  public boolean imgRegister(@RequestParam("file") MultipartFile file, Model m) {
+    boolean bool = false;
+    try {
+      userService.saveUserImg(file);
+      bool = true;
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return bool;
   }
 
 }

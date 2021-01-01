@@ -3,6 +3,7 @@ spring:
     resources:
       static-locations:
       - classpath:/static/
+      - file:/static/img/
   datasource:
     url: jdbc:postgresql://localhost:5432/ota
     username: postgres

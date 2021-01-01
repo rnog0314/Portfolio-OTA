@@ -24,12 +24,14 @@
             <tr>
               <th scope="row" class="img-column">Profile Picture</th>
               <td style="position: relative;">
-                <img th:src="@{{imagePath} (imagePath = *{userImg})}" th:class="${user.getUserImg().isEmpty() ? 'hidden' : 'mypage-img'}">
+                <img th:src="@{{imagePath} (imagePath = *{userImg})}"
+                  th:class="${user.getUserImg().isEmpty() ? 'hidden' : 'mypage-img'}">
                 <img src="/img/avator.png" alt="" th:class="${user.getUserImg().isEmpty() ? 'mypage-img' : 'hidden'}">
-                <form class="" th:action="@{/portfolio/user/addImg}" method="post" enctype="multipart/form-data">
-                  <label id="file-btn" for="userImg" class="bg-primary text-white">Choose your photo
-                    <input type="file" name="file" id="userImg" style="display: none;">
-                  </label>
+                <form class="" th:action="@{/portfolio/user/imgRegis}" method="post" enctype="multipart/form-data">
+                  <label id="file-btn" for="userImg" class="bg-primary text-white">Choose your photo</label>
+                  <input type="file" name="file" id="userImg" style="display: none;">
+                  <p id="selected-status" class="mt-1">Not yet selcted</p>
+                  <!-- <button id="upload-btn" type="submit" class="btn btn-info hidden">Start Upload</button> -->
                 </form>
               </td>
             </tr>
@@ -39,7 +41,8 @@
                 <span th:text="*{userName}"></span>
               </td>
               <td class="modify hidden">
-                <span><input type="text" name="userName" th:value="*{userName}" th:placeholder="*{userName}" style="width: 40%;"></span>
+                <span><input type="text" name="userName" th:value="*{userName}" th:placeholder="*{userName}"
+                    style="width: 40%;"></span>
               </td>
             </tr>
             <tr>
@@ -48,8 +51,10 @@
                 <span th:text="*{familyName}"></span><span th:text="*{firstName}"></span>
               </td>
               <td class="modify hidden">
-                <span><input type="text" name="familyName" th:value="*{familyName}" th:placeholder="*{familyName}" style="width: 20%;"></span>
-                <span><input type="text" name="firstName" th:value="*{firstName}" th:placeholder="*{firstName}" style="width: 20%;"></span>
+                <span><input type="text" name="familyName" th:value="*{familyName}" th:placeholder="*{familyName}"
+                    style="width: 20%;"></span>
+                <span><input type="text" name="firstName" th:value="*{firstName}" th:placeholder="*{firstName}"
+                    style="width: 20%;"></span>
               </td>
             </tr>
             <tr>
@@ -58,8 +63,8 @@
                 <span id="asters"></span>
               </td>
               <td class="modify hidden">
-                <span><input type="password" name="password" id="newPassword" th:value="*{password}" placeholder="******"
-                    style="width: 40%;"></span>
+                <span><input type="password" name="password" id="newPassword" th:value="*{password}"
+                    placeholder="******" style="width: 40%;"></span>
               </td>
             </tr>
             <tr>
@@ -82,7 +87,7 @@
             <button id="cancel-btn" class="btn btn-warning hidden" type="button">Cancel</button>
             <button id="submit-btn" class="btn btn-primary hidden" type="submit">Submit</button>
           </div>
-        </form>
+          <!-- </form> -->
       </div>
     </div>
   </main>
@@ -92,15 +97,50 @@
   <script type="text/javascript" th:inline="javascript">
     /*<![CDATA[*/
     /* 実際のパスワードの文字数分 「●」 を表示する */
-    $(document).ready(function(){
-      
+    $(document).ready(function () {
+
+      // パスワードのマスク
       let password = /*[[${user.password}]]*/ 'password';
       let asters = '';
       for (let i = 0; i < password.length; i++) {
         asters += '●';
-        console.log(asters);
       }
       $('#asters').text(asters);
+
+      $('#userImg').change(function () {
+        var file = $(this).prop('files')[0];
+        $('#selected-status').text(file.name);
+        // $('#upload-btn').removeClass('hidden');
+        // $('#upload-btn').on('click', function (e) {
+          const fd = new FormData();
+          fd.append('file', $('input[type=file]')[0].files[0]);
+          $.ajax({
+            url: '/portfolio/user/imgRegis',
+            type: "POST",
+            data: fd,
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            cache: false
+          }).done(function (bool) {
+            if (bool == true) {
+              bootbox.alert({
+                message: 'Your photo has just changed now!',
+                backdrop: true,
+                centerVertical: true,
+                callback: function () {
+                  location.reload();
+                }
+              })
+            }
+            console.log('画像ファイルをimgフォルダに格納しました');
+          }).fail(function () {
+            console.log('Error: ajax通信に失敗しました');
+          }).always(function (result) {
+            console.log("ajax通信しました");
+          })
+        // })
+      });
 
       $('#modify-btn').on('click', function () {
         $('.normal').addClass('hidden');
