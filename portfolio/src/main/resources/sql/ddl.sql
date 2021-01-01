@@ -46,15 +46,6 @@ CREATE TABLE users (
 DROP TABLE carts;
 DROP TABLE users;
 
-CREATE TABLE files (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR,
-  type VARCHAR,
-  data BYTEA
-);
-Drop TABLE files;
-
-
 CREATE TABLE carts (
   category_id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
