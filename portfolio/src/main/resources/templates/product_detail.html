@@ -58,17 +58,24 @@
                 <div class="my-4">
                   <h5>Date</h5>
                   <h6 style="display: inline-block;">Selected Date :</h6>
-                  <input id="selectedDate" type="text" value="" readonly>
+                  <input id="selectedDate" type="text" value="" readonly required>
                 </div>
 
                 <div class="counter-row">
                   <h5>Number of Participant</h5>
                   <h6 class="counter-name" style="display: inline-block;">Adult<small>(age : more than 12)</small>:</h6>
                   <div class="counter" style="display: inline-block;">
-                    <button id="minus-counter" disabled type="button" class="btn"><i class="fas fa-2x fa-minus-circle"></i></button>
-                    <input id="participantsNumber" type="number" value="0" step="1" min="0" pattern="^[0-9]+$"  readonly>
-                    <button id="plus-counter" type="button" class="btn"><i class="fas fa-2x fa-plus-circle"></i></button>
+                    <button id="minus-counter" disabled type="button" class="btn"><i
+                        class="fas fa-2x fa-minus-circle"></i></button>
+                    <input id="participantsNumber" type="number" value="0" step="1" min="0" pattern="^[0-9]+$" readonly required>
+                    <button id="plus-counter" type="button" class="btn"><i
+                        class="fas fa-2x fa-plus-circle"></i></button>
                   </div>
+                </div>
+
+                <div th:object="${product}">
+                  <input id="selectedProductId" type="hidden" th:value="*{productId}">
+                  <input id="selectedProductName" type="hidden" th:value="*{productName}">
                 </div>
 
                 <hr>
@@ -76,8 +83,8 @@
                   <h6 class="total-price"><small>Order total</small>&nbsp;USD&nbsp;<span id="total-price">0</span></h6>
                 </div>
                 <div class="btn-area text-right">
-                  <button class="btn btn-info " type="button">Add to Cart</button>
-                  <button class="btn btn-primary" type="button">Book Now</button>
+                  <button id="addCart-btn" class="btn btn-info " type="button">Add to Cart</button>
+                  <button id="book-btn" class="btn btn-primary" type="button">Book Now</button>
                 </div>
               </form>
             </div>
@@ -91,6 +98,8 @@
 
   <script th:inline="javascript" type="text/javascript">
     /*<![CDATA[*/
+
+    /* fullcalendarの初期設定*/
     document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
 
@@ -127,19 +136,85 @@
       // カレンダーに値段を表示
       showPrice();
 
-      // 選択日の初期表示を現在びに
+      /* 予約ボタン押下時*/
+      $('#book-btn').on('click', function () {
+        var box = bootbox.confirm({
+          title: "Please make sure your order is correct.",
+          message: "<form id='reservConf' action='/portfolio/reservation/reserve' method='POST' name='reservationForm'>\
+                    <table class='table table-hover table-responsve-md table-bordered text-left'>\
+                    <tr><th scope='row'>Date</th><td><span><input name='date' id='confirmDate' readonly></span></td></tr>\
+                    <tr><th scope='row'>Number of Participant</th><td><span><input name='count' id='confirmCnt' readonly></span></td></tr>\
+                    <tr><th scope='row'>Ptoduct Name</th><td><span><input name='' id='confirmProductName' readonly></span></td></tr>\
+                    <tr class='hidden'><th scope='row'></th><td><span><input name='productId' id='confirmProductId' readonly></span></td></tr>\
+                    </table>\
+                    </form>",
+          backdrop: true,
+          centerVertical: true,
+          show: false,
+          buttons: {
+            confirm: {
+              label: '<i class="fa fa-check"></i> OK',
+              className: 'btn-primary'
+            },
+            cancel: {
+              label: '<i class="fa fa-times"></i> Modify',
+              className: 'btn-secondary'
+            }
+          },
+          callback: function (result) {
+            if (result) {
+              $('#reservConf').submit();
+              // let jsonString = {
+              //   "date": $('#confirmDate').val(),
+              //   "count": $('#confirmCnt').val()
+              // };
+              // $.ajax({
+              //   type: 'POST',
+              //   url: '/portfolio/reserve',
+              //   data: JSON.stringify(jsonString),
+              //   contentType: 'application/json',
+              //   dataType: 'json'
+              // }).done(function (result) {
+              //   if (result == true) {
+              //     bootbox.alert('You have just booked! You will move to your booking page.', function () {
+              //       location.href = '/portfolio/user/reservation';
+              //     });
+              //   } else {
+              //     bootbox.alert('Something wrong. Please try again.')
+              //   }
+              // }).fail(function (result) {
+              //   console.log('Error: ajax通信に失敗しました');
+              // }).always(functionb (result) {
+              //   console.log("ajax通信しました");
+              // })
+            }
+          }, // callback
+        }) // bootbox.confirm
+        box.on("shown.bs.modal", function () { // モーダルが開かれた直後に以下を実行する
+          $('#confirmDate').text($('#selectedDate').val());
+          $('#confirmDate').val($('#selectedDate').val());
+          $('#confirmCnt').text($('#participantsNumber').val());
+          $('#confirmCnt').val($('#participantsNumber').val());
+          $('#confirmProductName').text($('#selectedProductName').val());
+          $('#confirmProductName').val($('#selectedProductName').val());
+          $('#confirmProductId').val($('#selectedProductId').val());
+        });
+        box.modal('show');
+      })
+
+      /* 選択日の初期表示を現在びに */
       let today = new Date();
       $('#selectedDate').val(today.toLocaleDateString());
 
-      // カレンダーのボタンが押下されても値段表示が消えないように
+      /* カレンダーのボタンが押下されても値段表示が消えないように */
       $('.fc-toolbar button').on('click', function () {
         showPrice();
       });
 
-      // マイナスボタン押下時
-      $('#minus-counter').on('click', function(){
+      /* マイナスボタン押下時 */
+      $('#minus-counter').on('click', function () {
         let count = $('#participantsNumber').val();
-        count --;
+        count--;
         if (count < 1) {
           $('#minus-counter').prop('disabled', true);
         }
@@ -150,10 +225,10 @@
         culc();
       });
 
-      // プラスボタン押下時
-      $('#plus-counter').on('click', function(){
+      /* プラスボタン押下時 */
+      $('#plus-counter').on('click', function () {
         let count = $('#participantsNumber').val();
-        count ++;
+        count++;
         if (count > 0) {
           $('#minus-counter').prop('disabled', false);
         }

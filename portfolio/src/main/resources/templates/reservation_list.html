@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio OTA</title>
+</head>
+
+<body>
+  <!-- header挿入 -->
+  <header th:insert="fragments/header::header"></header>
+  <main role="main">
+    <div class="container text-center mt-4">
+      <section id="reservation-info">
+        <div class="page-title-area d-flex justify-content-center">
+          <h2 th:class="${reservationList.size() > 0 ? 'hidden' : 'page-title'}">You have no reservation</h2>
+          <h2 th:class="${reservationList.size() > 0 ? 'page-title' : 'hidden'}">Your Reservation</h2>
+        </div>
+
+        <div class="card" th:each="reservation:${reservationList}" th:object=${reservation} th:if="${reservationList.size() > 0}">
+          <img th:src="@{{imagePath} (imagePath = *{productImage})}" alt="" class="card-img-top">
+          <a id="detail-btn" th:href="@{/portfolio/product/{productId} (productId=*{productId})}" class="btn btn-primary">See detail</a>
+          <div class="card-body">
+            <dl>
+              <div class="reserve-info">
+                <dt class="card-text">Product Name:</dt>&nbsp;<dd th:text="*{productName}"></dd>
+              </div>
+              <div class="reserve-info">
+                <dt class="card-text">Unit Price:</dt>&nbsp;<dd th:text="*{price}"></dd>
+              </div>
+              <div class="reserve-info">
+                <dt class="card-text">Date:</dt>&nbsp;<dd th:text="*{date}"></dd>
+              </div>
+              <div class="reserve-info">
+                <dt class="card-text">Participant Number:</dt>&nbsp;<dd th:text="*{count}"></dd>
+              </div>
+              <div class="reserve-info">&nbsp;
+                <dt class="card-text">Total Amount:</dt>&nbsp;<span>$</span><dd th:text="*{price * count}"></dd>
+              </div>
+            </dl>
+            <div class="btn-area d-flex">
+              <a id="payment-btn" th:href="@{/portfolio/reservation/payament}" class="btn btn-primary mx-2">Payment</a>
+              <a id="delete-btn" th:href="@{/portfolio/reservation/delete}" class="btn btn-primary mx-2">Delete</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  </main>
+  <!-- footer -->
+  <footer th:insert="fragments/footer::footer"></footer>
+
+  <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function () {
+    });
+  /*]]>*/
+  </script>
+</body>
+
+</html>

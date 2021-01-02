@@ -87,3 +87,27 @@ CREATE TABLE destination_details (
   article_text3 VARCHAR(2000) NOT NULL,
   FOREIGN KEY(destination_id) REFERENCES destinations(destination_id)
 )
+
+CREATE TABLE reservations (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  product_id INTEGER NOT NULL,
+  date VARCHAR (16) NOT NULL,
+  count INTEGER NOT NULL,
+  valid_flag BOOLEAN NOT NULL DEFAULT 'TRUE',
+  FOREIGN KEY(user_id) REFERENCES users(user_id),
+  FOREIGN KEY(product_id) REFERENCES products(product_id)
+)
+
+INSERT INTO reservations (user_id, product_id, date, count) VALUES (1, 1, '2020-12-30', 4);
+INSERT INTO reservations (user_id, product_id, date, count) VALUES (1, 2, '2020-12-31', 2);
+SELECT  * FROM reservations;
+delete from reservations;
+
+SELECT p.product_image, p.product_name, pd.price, r.count, r.date, r.user_id
+FROM reservations AS r
+INNER JOIN products AS p
+ON r.product_id = p.product_id
+INNER JOIN product_details AS pd
+ON r.product_id = pd.product_id
+WHERE r.user_id = 1;

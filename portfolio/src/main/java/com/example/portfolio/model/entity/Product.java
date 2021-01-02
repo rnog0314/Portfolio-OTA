@@ -1,5 +1,7 @@
 package com.example.portfolio.model.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -41,6 +44,9 @@ public class Product {
   @Column(name = "delete_flag")
   private boolean deleteFlag;
 
+  @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+  private List<Reservation> reservations;
+
   // @JoinColumnアノテーションは所有側に定義される。nameにはOne側と結合する際に必要となるカラム名をいれる。これを入力したら、One(被所有側)にmappedByをつける
   @ManyToOne(fetch = FetchType.LAZY) // One-To-Many/Many-To-Oneの関係ではMany側が所有側になる
   @JoinColumn(name = "category_id", insertable = false, updatable = false)
@@ -51,7 +57,7 @@ public class Product {
   private Destination destination;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "product_id") 
+  @JoinColumn(name = "product_id")
   private ProductDetail productDetail;
 
 }
