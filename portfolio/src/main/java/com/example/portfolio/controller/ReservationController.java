@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequestMapping("/portfolio/reservation")
@@ -36,12 +35,9 @@ public class ReservationController {
 
   @PostMapping(value = "/reserve")
   public String reserve(ReservationForm reservationForm, Model m) {
-    System.out.println(reservationForm.getProductId());
     Reservation reserve = reservationService.reserve(reservationForm);
     boolean isReserved = false;
-    if (!reserve.equals(null)) {
-      isReserved = true;
-    }
+    if (!reserve.equals(null)) { isReserved = true; }
     List<ReservationDto> reservationList = reservationService.getReservationList(reserve.getUserId());
     m.addAttribute("reservationList", reservationList);
     m.addAttribute("loginSession", loginSession);

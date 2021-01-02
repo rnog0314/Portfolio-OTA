@@ -11,82 +11,85 @@
   <!-- header挿入 -->
   <header th:insert="fragments/header::header"></header>
   <main role="main">
-    <div class="container text-center mt-5">
-      <div class="d-flex justify-content-center align-items-center mb-5">
-        <h2 class="page-title text-center mb-">My Page</h2>
-        <!-- <form th:action="@{/portfolio/history}" method="GET" class="form-inline">
-        <button class="btn btn-warning m-3">See history</button>
-      </form> -->
-      </div>
-      <div class="container-fluid mb-5 table-responsive-md">
-        <form th:action="@{/portfolio/user/modify}" method="post" enctype="multipart/form-data">
-          <table class="table table-hover table-bordered table-responsive-md text-center" th:object="${user}">
-            <tr>
-              <th scope="row" class="img-column">Profile Picture</th>
-              <td style="position: relative;">
-                <img th:src="${'data:image/png;base64,'+image}"
-                  th:class="${user.getUserImg().length == 0 ? 'hidden' : 'mypage-img'}">
-                <img src="/img/avator.png" alt="" th:class="${user.getUserImg().length == 0 ? 'mypage-img' : 'hidden'}">
-                <label id="file-btn" for="userImg" class="bg-primary text-white">Choose your photo</label>
-                <input type="file" name="file" id="userImg" style="display: none;">
-                <p id="selected-status" class="mt-1">[Not yet selcted]</p>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row" style="width: 30%;">User Name</th>
-              <td class="normal">
-                <span th:text="*{userName}"></span>
-              </td>
-              <td class="modify hidden">
-                <span><input type="text" name="userName" th:value="*{userName}" th:placeholder="*{userName}"
-                    style="width: 40%;" required></span>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row" style="width: 30%;">Full Name</th>
-              <td class="normal">
-                <span th:text="*{familyName}"></span><span th:text="*{firstName}"></span>
-              </td>
-              <td class="modify hidden">
-                <span><input type="text" name="familyName" th:value="*{familyName}" th:placeholder="*{familyName}"
-                    style="width: 20%;" required></span>
-                <span><input type="text" name="firstName" th:value="*{firstName}" th:placeholder="*{firstName}"
-                    style="width: 20%;" required></span>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row" style="width: 30%;">Password</th>
-              <td class="normal">
-                <span id="asters"></span>
-              </td>
-              <td class="modify hidden">
-                <span><input type="password" name="password" id="newPassword" th:value="*{password}"
-                    placeholder="******" style="width: 40%;" required></span>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row" style="width: 30%;">E-mail</th>
-              <th class="normal">
-                <span id="email" th:text="*{email}"></span>
-              </th>
-              <th class="modify hidden">
-                <span><input type="email" name="email" id="newEmail" th:value="*{email}" th:placeholder="*{email}"
-                    style="width: 40%;" required></span>
-              </th>
-            </tr>
-            <tr>
-              <th scope="row" style="width: 30%;">Gender</th>
-              <td th:text="*{gender == 'M' ? 'Male' : 'Female'}"></td>
-            </tr>
-          </table>
-          <div class="btn-area">
-            <button id="modify-btn" class="btn btn-info" type="button">Modify</button>
-            <button id="cancel-btn" class="btn btn-warning hidden" type="button">Cancel</button>
-            <button id="submit-btn" class="btn btn-primary hidden" type="submit">Submit</button>
+    <section id="mypage">
+      <div class="container text-center mt-5">
+        <div class="d-flex justify-content-center align-items-center mb-5" style="position: relative;">
+          <h2 class="page-title text-center mb-">My Page</h2>
+          <div class="title-btn-area d-flex">
+            <a th:href="@{/portfolio/reservation}" class="btn btn-primary mx-2">Bookings</a>
+            <a th:href="@{/portfolio/reservation/history}" class="btn btn-primary mx-2">Histories</a>
           </div>
-        </form>
+        </div>
+        <div class="container-fluid mb-5 table-responsive-md">
+          <form th:action="@{/portfolio/user/modify}" method="post" enctype="multipart/form-data">
+            <table class="table table-hover table-bordered table-responsive-md text-center" th:object="${user}">
+              <tr>
+                <th scope="row" class="img-column">Profile Picture</th>
+                <td style="position: relative;">
+                  <img th:src="${'data:image/png;base64,'+image}"
+                    th:class="${user.getUserImg().length == 0 ? 'hidden' : 'mypage-img'}">
+                  <img src="/img/avator.png" alt="" th:class="${user.getUserImg().length == 0 ? 'mypage-img' : 'hidden'}">
+                  <label id="file-btn" for="userImg" class="bg-primary text-white">Choose your photo</label>
+                  <input type="file" name="file" id="userImg" style="display: none;">
+                  <p id="selected-status" class="mt-1">[Not yet selcted]</p>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" style="width: 30%;">User Name</th>
+                <td class="normal">
+                  <span th:text="*{userName}"></span>
+                </td>
+                <td class="modify hidden">
+                  <span><input type="text" name="userName" th:value="*{userName}" th:placeholder="*{userName}"
+                      style="width: 40%;" required></span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" style="width: 30%;">Full Name</th>
+                <td class="normal">
+                  <span th:text="*{familyName}"></span><span th:text="*{firstName}"></span>
+                </td>
+                <td class="modify hidden">
+                  <span><input type="text" name="familyName" th:value="*{familyName}" th:placeholder="*{familyName}"
+                      style="width: 20%;" required></span>
+                  <span><input type="text" name="firstName" th:value="*{firstName}" th:placeholder="*{firstName}"
+                      style="width: 20%;" required></span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" style="width: 30%;">Password</th>
+                <td class="normal">
+                  <span id="asters"></span>
+                </td>
+                <td class="modify hidden">
+                  <span><input type="password" name="password" id="newPassword" th:value="*{password}"
+                      placeholder="******" style="width: 40%;" required></span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" style="width: 30%;">E-mail</th>
+                <th class="normal">
+                  <span id="email" th:text="*{email}"></span>
+                </th>
+                <th class="modify hidden">
+                  <span><input type="email" name="email" id="newEmail" th:value="*{email}" th:placeholder="*{email}"
+                      style="width: 40%;" required></span>
+                </th>
+              </tr>
+              <tr>
+                <th scope="row" style="width: 30%;">Gender</th>
+                <td th:text="*{gender == 'M' ? 'Male' : 'Female'}"></td>
+              </tr>
+            </table>
+            <div class="btn-area">
+              <button id="modify-btn" class="btn btn-info" type="button">Modify</button>
+              <button id="cancel-btn" class="btn btn-warning hidden" type="button">Cancel</button>
+              <button id="submit-btn" class="btn btn-primary hidden" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </section>
   </main>
   <!-- footer -->
   <footer th:insert="fragments/footer::footer"></footer>

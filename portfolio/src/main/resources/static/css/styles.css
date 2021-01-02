@@ -315,7 +315,7 @@ input {
   margin-bottom: 1rem;
 }
 
-#file-btn {
+#mypage #file-btn {
   cursor: pointer;
   border-radius: 0.25rem;
   padding: 0.4rem;
@@ -324,7 +324,7 @@ input {
   right: 1rem;
 }
 
-.mypage-img {
+#mypage .mypage-img {
   width: 10rem;
   margin: 1rem;
   border-radius: 50%;
@@ -332,10 +332,17 @@ input {
   object-fit: cover;
 }
 
-.img-column {
+#mypage .img-column {
   width: 30%;
   padding: 2rem !important;
   line-height: 8rem;
+}
+
+#mypage .title-btn-area {
+  float: right;
+  position: absolute;
+  right: 1rem;
+  bottom: .5rem;
 }
 
 #reservation-info .reserve-info {
