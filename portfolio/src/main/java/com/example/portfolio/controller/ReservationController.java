@@ -28,7 +28,7 @@ public class ReservationController {
   private ReservationService reservationService;
 
   @GetMapping(value = "")
-  public String postMethodName(Model m) {
+  public String init(Model m) {
     List<ReservationDto> reservationList = reservationService.getReservationList(loginSession.getUserId());
     m.addAttribute("reservationList", reservationList);
     m.addAttribute("loginSession", loginSession);
@@ -46,7 +46,7 @@ public class ReservationController {
     m.addAttribute("reservationList", reservationList);
     m.addAttribute("loginSession", loginSession);
     m.addAttribute("isReserved", isReserved);
-    return "redirect;/portfolio/reservation";
+    return "redirect:/portfolio/reservation";
   }
 
   @PostMapping(value = "/delete")
