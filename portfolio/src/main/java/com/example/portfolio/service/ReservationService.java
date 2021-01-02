@@ -40,4 +40,12 @@ public class ReservationService {
     return reservationDtoRepos.getReservationList(userId);
   }
 
+  public int delete(Integer reservationId) {
+    try {
+      return reservationRepos.deleteByReservationId(reservationId);
+    } catch (IllegalArgumentException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
 }

@@ -164,31 +164,8 @@
           callback: function (result) {
             if (result) {
               $('#reservConf').submit();
-              // let jsonString = {
-              //   "date": $('#confirmDate').val(),
-              //   "count": $('#confirmCnt').val()
-              // };
-              // $.ajax({
-              //   type: 'POST',
-              //   url: '/portfolio/reserve',
-              //   data: JSON.stringify(jsonString),
-              //   contentType: 'application/json',
-              //   dataType: 'json'
-              // }).done(function (result) {
-              //   if (result == true) {
-              //     bootbox.alert('You have just booked! You will move to your booking page.', function () {
-              //       location.href = '/portfolio/user/reservation';
-              //     });
-              //   } else {
-              //     bootbox.alert('Something wrong. Please try again.')
-              //   }
-              // }).fail(function (result) {
-              //   console.log('Error: ajax通信に失敗しました');
-              // }).always(functionb (result) {
-              //   console.log("ajax通信しました");
-              // })
             }
-          }, // callback
+          }, 
         }) // bootbox.confirm
         box.on("shown.bs.modal", function () { // モーダルが開かれた直後に以下を実行する
           $('#confirmDate').text($('#selectedDate').val());

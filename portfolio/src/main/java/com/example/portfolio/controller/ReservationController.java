@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequestMapping("/portfolio/reservation")
@@ -37,12 +39,23 @@ public class ReservationController {
   public String reserve(ReservationForm reservationForm, Model m) {
     Reservation reserve = reservationService.reserve(reservationForm);
     boolean isReserved = false;
-    if (!reserve.equals(null)) { isReserved = true; }
+    if (!reserve.equals(null)) {
+      isReserved = true;
+    }
     List<ReservationDto> reservationList = reservationService.getReservationList(reserve.getUserId());
     m.addAttribute("reservationList", reservationList);
     m.addAttribute("loginSession", loginSession);
     m.addAttribute("isReserved", isReserved);
-    return "reservation_list";
+    return "redirect;/portfolio/reservation";
+  }
+
+  @PostMapping(value = "/delete")
+  @ResponseBody
+  public Boolean delete(@RequestBody Integer reservationId) throws Exception {
+    Boolean bool = false;
+    int result = reservationService.delete(reservationId);
+    if (result > 0) {bool = true;}
+    return bool;
   }
 
 }

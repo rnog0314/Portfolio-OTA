@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface ReservationDtoRepoitory extends JpaRepository<ReservationDto, Integer> {
 
 
-  @Query(value =  "SELECT p.product_image, r.count, p.product_id, pd.price,  p.product_name, r.date "
+  @Query(value =  "SELECT r.id, p.product_image, r.count, p.product_id, pd.price,  p.product_name, r.date "
                 + "FROM reservations AS r "
                 + "INNER JOIN products AS p "
                 + "ON r.product_id = p.product_id "

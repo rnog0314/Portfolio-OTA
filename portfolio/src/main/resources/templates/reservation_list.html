@@ -46,10 +46,9 @@
                     </div>
                   </dl>
                   <div class="btn-area d-flex">
-                    <a id="payment-btn" th:href="@{/portfolio/reservation/payament}"
-                      class="btn btn-primary mx-2">Payment</a>
-                    <a id="delete-btn" th:href="@{/portfolio/reservation/delete}"
-                      class="btn btn-primary mx-2">Delete</a>
+                    <a th:href="@{/portfolio/reservation/payament}" class="btn btn-primary payment-btn mx-2">Payment</a>
+                    <button type="button" class="btn btn-primary delete-btn mx-2">Delete</button>
+                    <input type="hidden" class="reservationId" name="reservationId" th:value="*{id}">
                   </div>
                 </div>
               </div><!-- card -->
@@ -64,6 +63,57 @@
   <script type="text/javascript" th:inline="javascript">
     /*<![CDATA[*/
     $(document).ready(function () {
+
+      /* 削除ボタン押下時*/
+      $('.delete-btn').on('click', function (e) {
+        bootbox.confirm({
+          message: "Are you sure to delete this reservation?",
+          backdrop: true,
+          centerVertical: true,
+          buttons: {
+            confirm: {
+              label: '<i class="fa fa-check"></i> Yes',
+              className: 'btn-primary'
+            },
+            cancel: {
+              label: '<i class="fa fa-times"></i> Cancel',
+              className: 'btn-secondary'
+            }
+          },
+          callback: function (result) {
+            if (result) {
+              let id = $(e.target).parent().find('.reservationId').val();
+              $.ajax({
+                type: 'POST',
+                url: '/portfolio/reservation/delete',
+                data: id,
+                contentType: 'application/json',
+                dataType: 'json',
+              }).done(function (bool) {
+                if (bool) {
+                  bootbox.alert({
+                    message: 'This reservation was deleted.',
+                    backdrop: true,
+                    centerVertical: true,
+                    callback: function () {
+                      location.replace('/portfolio/reservation');
+                    }
+                  })
+                } else {
+                  bootbox.alert('Something wrong, could not delete. Please try agin');
+                }
+              }).fail(function () {
+                console.log('ajax通信に失敗しました');
+              }).always(function () {
+                console.log('ajax通信しました');
+              });
+            } else {
+              console.log('✖️ボタンが押されました');
+            }
+          }
+        })
+      })
+
       $('.owl-carousel').owlCarousel({
         loop: true,
         margin: 10,

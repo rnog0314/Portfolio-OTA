@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class ReservationDto {
 
   @Id
+  private Integer id;
   private Integer productId;
   private String productImage;
   private Integer count;
