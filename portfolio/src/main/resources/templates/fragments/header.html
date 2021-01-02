@@ -41,11 +41,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="searchForm">
-        <form action="" class="form-inline">
-          <input type="text" class="form-control">
-          <button type="submit" class="btn btn-outline-secondary">
-            <i class="fas fa-search"></i>
-          </button>
+        <form th:action="@{/portfolio/search}" method="GET" class="input-group">
+          <input type="text" class="pl-2" placeholder="Tokyo Camping" name="keyword">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-outline-secondary" style="border: 1px solid #ccc;"><i class="fas fa-search"></i></button>
+          </div>
         </form>
       </div>
       <div class="welcome-msg-area">
