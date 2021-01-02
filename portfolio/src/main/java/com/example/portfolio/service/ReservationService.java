@@ -32,7 +32,6 @@ public class ReservationService {
     Integer productId = f.getProductId();
     Integer count = f.getCount();
     String date = f.getDate();
-    System.out.println("受け取った日にち：" + date);
     Reservation reservation = new Reservation(userId, productId, count, date);
     return reservationRepos.save(reservation);
   }
