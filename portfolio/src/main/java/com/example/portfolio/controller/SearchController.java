@@ -6,7 +6,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import com.example.portfolio.model.entity.Product;
 import com.example.portfolio.model.entity.SearchDto;
 import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.service.ProductService;

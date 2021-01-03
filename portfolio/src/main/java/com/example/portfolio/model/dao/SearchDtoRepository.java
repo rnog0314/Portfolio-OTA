@@ -2,7 +2,6 @@ package com.example.portfolio.model.dao;
 
 import java.util.Set;
 
-import com.example.portfolio.model.entity.Product;
 import com.example.portfolio.model.entity.SearchDto;
 
 import org.springframework.data.jpa.repository.JpaRepository;
