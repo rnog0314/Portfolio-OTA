@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio OTA</title>
+</head>
+
+<body>
+  <!-- header挿入 -->
+  <header th:insert="fragments/header::header"></header>
+  <main role="main">
+    <section id="bookmark">
+      <div class="container">
+        <h2 class="pate-title">Your Bookmarks</h2>
+        <div class="row">
+          <div class="col-sm-4 " th:each="bookmark:${bookmarks}" th:object="${bookmark}">
+            <div class="card">
+              <div class="card-img-top">
+                <div style="position: relative;">
+                  <img th:src="@{{imagePath} (imagePath = *{productImage})}" alt="">
+                  <button class="delete-btn btn btn-secondary circle-rounded"><i
+                      class="far fa-2x fa-trash-alt"></i></button>
+                  <input class="productId" type="hidden" th:value="*{productId}">
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title" th:text="*{productName}"></h5>
+                  <a th:href="@{/portfolio/product/{id} (id=*{productId})}">See detail</a>
+                </div>
+              </div>
+            </div><!-- card -->
+          </div><!-- col -->
+        </div><!-- row -->
+      </div><!-- container -->
+    </section>
+
+  </main>
+  <!-- footer -->
+  <footer th:insert="fragments/footer::footer"></footer>
+
+  <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function () {
+      $('.delete-btn').on('click', function (e) {
+        let productId = $(this).parent().find('input').val();
+        console.log(productId);
+        $.ajax({
+          type: 'POST',
+          url: '/portfolio/bookmark/delete',
+          data: productId,
+          contentType: 'application/json',
+          dataType: 'json',
+        }).done(function () {
+          $(e.target).parent().parent().parent().parent().remove();
+          location.reload()
+        }).fail(function () {
+          console.log('ajax通信に失敗しました');
+        }).always(function () {
+          console.log('ajax通信しました');
+        });
+      })
+    });
+
+    /*]]>*/
+  </script>
+</body>
+
+</html>

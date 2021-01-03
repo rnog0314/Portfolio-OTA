@@ -114,6 +114,22 @@ CREATE TABLE reservations (
   FOREIGN KEY(product_id) REFERENCES products(product_id)
 )
 
+CREATE TABLE bookmarks (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  product_id INTEGER NOT NULL,
+  FOREIGN KEY(user_id) REFERENCES users(user_id),
+  FOREIGN KEY(product_id) REFERENCES products(product_id)
+)
+
+
+
+
+
+
+
+
+
 INSERT INTO reservations (user_id, product_id, date, count) VALUES (1, 1, '2020-12-30', 4);
 INSERT INTO reservations (user_id, product_id, date, count) VALUES (1, 2, '2020-12-31', 2);
 SELECT  * FROM reservations;
@@ -136,3 +152,9 @@ OR c.category_name LIKE '%Tokyo%'
 OR d.destination_name LIKE '%Tokyo%'
 ORDER BY p.product_id
 LIMIT 10 OFFSET 2;
+
+
+SELECT b.id, b.product_id, b.user_id, p.product_image, p.product_name
+FROM bookmarks AS b
+INNER JOIN products AS p   ON b.product_id = p.product_id
+WHERE b.user_id = 1;

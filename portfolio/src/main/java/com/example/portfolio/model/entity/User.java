@@ -63,5 +63,8 @@ public class User {
   @OneToMany(mappedBy = "user" ,cascade = CascadeType.ALL)
   private List<Reservation> reservations;
 
+  @OneToMany(mappedBy = "user" ,cascade = CascadeType.ALL)
+  private List<Bookmark> bookmarks;
+
 
 }

@@ -407,3 +407,29 @@ input {
     }
   }
 }
+
+// ブックマークページ
+#bookmark {
+  .card {
+    margin: 1rem auto;
+    border-radius: 1rem;
+    img {
+      margin: 0;
+      width: 100%;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      height: 12.5rem;
+      object-fit: cover;
+    }
+  }
+
+  .delete-btn {
+    position: absolute;
+    right: 0;
+    background: transparent;
+    border: none;
+  }
+  .fa-trash-alt {
+    color: darkgrey;
+  }
+}

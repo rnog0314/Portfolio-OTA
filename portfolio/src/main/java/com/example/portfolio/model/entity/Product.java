@@ -47,6 +47,9 @@ public class Product {
   @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
   private List<Reservation> reservations;
 
+  @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+  private List<Bookmark> bookmarks;
+
   // @JoinColumnアノテーションは所有側に定義される。nameにはOne側と結合する際に必要となるカラム名をいれる。これを入力したら、One(被所有側)にmappedByをつける
   @ManyToOne(fetch = FetchType.LAZY) // One-To-Many/Many-To-Oneの関係ではMany側が所有側になる
   @JoinColumn(name = "category_id", insertable = false, updatable = false)

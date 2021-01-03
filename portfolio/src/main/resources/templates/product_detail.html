@@ -67,7 +67,8 @@
                   <div class="counter" style="display: inline-block;">
                     <button id="minus-counter" disabled type="button" class="btn"><i
                         class="fas fa-2x fa-minus-circle"></i></button>
-                    <input id="participantsNumber" type="number" value="0" step="1" min="0" pattern="^[0-9]+$" readonly required>
+                    <input id="participantsNumber" type="number" value="0" step="1" min="0" pattern="^[0-9]+$" readonly
+                      required>
                     <button id="plus-counter" type="button" class="btn"><i
                         class="fas fa-2x fa-plus-circle"></i></button>
                   </div>
@@ -83,7 +84,7 @@
                   <h6 class="total-price"><small>Order total</small>&nbsp;USD&nbsp;<span id="total-price">0</span></h6>
                 </div>
                 <div class="btn-area text-right">
-                  <button id="addCart-btn" class="btn btn-info " type="button">Add to Cart</button>
+                  <button id="bookmark-btn" class="btn btn-info " type="button">Add to Bookmark</button>
                   <button id="book-btn" class="btn btn-primary" type="button">Book Now</button>
                 </div>
               </form>
@@ -133,7 +134,26 @@
     });
 
     $(function () {
-      // カレンダーに値段を表示
+
+      /* ブックマークボタン押下時 */
+      $('#bookmark-btn').on('click', function () {
+        let productId = $('#selectedProductId').val();
+        $.ajax({
+          type: 'POST',
+          url: '/portfolio/bookmark/add',
+          data: productId,
+          contentType: 'application/json',
+          dataType: 'json',
+        }).done(function () {
+          bootbox.alert('This product has been added in you BOOKMARK')
+        }).fail(function () {
+          bootbox.alert('Something went wrong. Please try again');
+        }).always(function () {
+          console.log('ajax通信しました');
+        });
+      })
+
+      /* カレンダーに値段を表示 */
       showPrice();
 
       /* 予約ボタン押下時*/
@@ -165,7 +185,7 @@
             if (result) {
               $('#reservConf').submit();
             }
-          }, 
+          },
         }) // bootbox.confirm
         box.on("shown.bs.modal", function () { // モーダルが開かれた直後に以下を実行する
           $('#confirmDate').text($('#selectedDate').val());
@@ -216,6 +236,7 @@
         culc();
       });
 
+      /* トータルの計算 */
       function culc() {
         let unitPrice = /*[[${productDetail.price}]]*/ 0;
         let participants = $('#participantsNumber').val();
@@ -223,6 +244,7 @@
         $('#total-price').text(totalPrice);
       }
 
+      /* 金額表示 */
       function showPrice() {
         let price = /*[[${productDetail.price}]]*/ '';
         price.toString();

@@ -133,7 +133,6 @@
               backdrop: true,
               centerVertical: true,
               callback: function () {
-                // var f = $('input[name=file]').prop('files')[0];
                 var reader = new FileReader();
                 reader.onload = function () {
                   var img_src = $('.mypage-img').attr('src', reader.result);
