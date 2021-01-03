@@ -88,6 +88,21 @@ CREATE TABLE destination_details (
   FOREIGN KEY(destination_id) REFERENCES destinations(destination_id)
 )
 
+CREATE TABLE category_details (
+  category_detail_id SERIAL PRIMARY KEY,
+  category_id INTEGER NOT NULL,
+  image1 VARCHAR(255) NOT NULL,
+  article_title1 VARCHAR(255) NOT NULL,
+  article_text1 VARCHAR(2000) NOT NULL,
+  image2 VARCHAR(255) NOT NULL,
+  article_title2 VARCHAR(255) NOT NULL,
+  article_text2 VARCHAR(2000) NOT NULL,
+  image3 VARCHAR(255) NOT NULL,
+  article_title3 VARCHAR(255) NOT NULL,
+  article_text3 VARCHAR(2000) NOT NULL,
+  FOREIGN KEY(category_id) REFERENCES categories(category_id)
+)
+
 CREATE TABLE reservations (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,

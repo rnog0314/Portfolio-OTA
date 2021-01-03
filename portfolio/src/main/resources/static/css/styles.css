@@ -394,3 +394,17 @@ input {
   height: 12.5rem;
   object-fit: cover;
 }
+
+#tour-category .card {
+  margin: 1rem auto;
+  border-radius: 1rem;
+}
+
+#tour-category .card img {
+  margin: 0;
+  width: 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  height: 12.5rem;
+  object-fit: cover;
+}

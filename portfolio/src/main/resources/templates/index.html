@@ -156,8 +156,10 @@
                   <h2 class="card-title">What To Do</h2>
                   <div class="owl-carousel owl-theme">
                     <div class="item" th:each="category: ${categories}" th:object="${category}">
-                      <img th:src="@{{imagePath} (imagePath = *{categoryImage})}" alt="">
-                      <p class="category-name" th:text="*{categoryName}"></p>
+                      <a th:href="@{/portfolio/category/{categoryId} (categoryId=*{categoryId})}">
+                        <img th:src="@{{imagePath} (imagePath = *{categoryImage})}" alt="">
+                        <p class="category-name" th:text="*{categoryName}"></p>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -177,11 +179,14 @@
             <div class="col-lg-12 grid-margin stretch-card owl-carousel owl-theme" id="testimonial-carousel">
               <div class="card item" th:each="testimonial: ${testimonials}" th:object="${testimonial}">
                 <div class="my-0 m-auto">
-                  <img th:src="@{{imagePath} (imagePath = *{testimonialImage})}" alt="" class="card-img-top rounded-circle m-0" style="object-fit: cover;">
+                  <img th:src="@{{imagePath} (imagePath = *{testimonialImage})}" alt=""
+                    class="card-img-top rounded-circle m-0" style="object-fit: cover;">
                 </div>
                 <div class="card-body">
-                  <h3 class="star text-center"><i class="fas fa-star"></i>✖️<span th:text="*{testimonialReview}"></span></h3>
-                  <h4 class="card-title"><i class="fas fa-quote-left"></i><span class="testimonial-title" th:text="*{testimonialTitle}"></span><i class="fas fa-quote-right"></i></h4>
+                  <h3 class="star text-center"><i class="fas fa-star"></i>✖️<span th:text="*{testimonialReview}"></span>
+                  </h3>
+                  <h4 class="card-title"><i class="fas fa-quote-left"></i><span class="testimonial-title"
+                      th:text="*{testimonialTitle}"></span><i class="fas fa-quote-right"></i></h4>
                   <p class="testimonial-text" th:text="*{testimonialText}"></p>
                 </div><!-- card-body -->
               </div><!-- card -->
@@ -195,7 +200,7 @@
   <footer th:insert="fragments/footer::footer"></footer>
 
   <script type="text/javascript" th:inline="javascript">
-  /*<![CDATA[*/
+    /*<![CDATA[*/
     $(document).ready(function () {
       // idをつけてそれ用の初期化を記述すれば複数のowe-carouselができる(https://support.fruitfulcode.com/hc/en-us/articles/115004837994-Multiple-carousels-at-one-page)
       $('#testimonial-carousel').owlCarousel({
@@ -228,7 +233,7 @@
       });
     });
 
-  /*]]>*/
+    /*]]>*/
   </script>
 </body>
 

@@ -1,6 +1,7 @@
 package com.example.portfolio.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.portfolio.model.dao.CategoryRepository;
 import com.example.portfolio.model.entity.Category;
@@ -18,6 +19,12 @@ public class CategoryService {
 
 	public List<Category> findAll() {
 		return categoryRepos.findAll();
+	}
+
+	public Category findById(int categoryId) {
+    Optional<Category> result = categoryRepos.findById(categoryId);
+    Category destination = result.get();
+    return destination;
 	}
 
 }

@@ -29,6 +29,7 @@ public class ProductService {
 
 	/**
 	 * 全ての商品レコードを取得
+	 *
 	 * @return
 	 */
 	public List<Product> findAll() {
@@ -37,6 +38,7 @@ public class ProductService {
 
 	/**
 	 * 行き先を条件に商品 レコードを取得
+	 *
 	 * @param destinationId
 	 * @return
 	 */
@@ -44,8 +46,13 @@ public class ProductService {
 		return productRepos.findByDestinationId(destinationId);
 	}
 
+	public List<Product> findByCategoryId(int categoryId) {
+		return 	productRepos.findByCategoryId(categoryId);
+	}
+
 	/**
 	 * 商品IDを条件にレコードを取得
+	 *
 	 * @param productId
 	 * @return
 	 */
@@ -55,8 +62,10 @@ public class ProductService {
 		return product;
 	}
 
+
 	/**
 	 * キーワード条件にレコードを全て取得
+	 *
 	 * @param keyword
 	 * @return
 	 */
@@ -74,6 +83,7 @@ public class ProductService {
 
 	/**
 	 * リクエストされたページのレコードを取得
+	 *
 	 * @param products
 	 * @param page
 	 * @return
@@ -90,7 +100,7 @@ public class ProductService {
 		if (!(count > 8)) { // 取得した数が9つに満たなかった時
 			return new ArrayList<>(products);
 		}
-		if (count < to) { 
+		if (count < to) {
 			to = count;
 		}
 		List<SearchDto> list = new ArrayList<>(products);
@@ -100,6 +110,7 @@ public class ProductService {
 
 	/**
 	 * 現在ページを取得
+	 *
 	 * @param page
 	 * @return
 	 */
@@ -109,6 +120,7 @@ public class ProductService {
 
 	/**
 	 * 最後のページ番号を取得
+	 *
 	 * @param list
 	 * @return
 	 */
