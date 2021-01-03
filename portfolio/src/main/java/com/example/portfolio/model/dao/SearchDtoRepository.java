@@ -17,8 +17,7 @@ public interface SearchDtoRepository extends JpaRepository<SearchDto, Integer> {
 									"WHERE p.product_name LIKE concat('%', :str, '%') " +
 									"OR c.category_name LIKE concat('%', :str, '%') " +
 									"OR d.destination_name LIKE concat('%', :str, '%') " +
-									"ORDER BY p.product_id " +
-									"LIMIT :records OFFSET :start", nativeQuery = true)
-	Set<SearchDto> fetchProduct(String str, Integer records, Integer start);
+									"ORDER BY p.product_id ", nativeQuery = true)
+	Set<SearchDto> fetchProduct(String str);
 
 }

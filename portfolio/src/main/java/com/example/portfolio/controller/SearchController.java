@@ -3,11 +3,13 @@ package com.example.portfolio.controller;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+// import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import com.example.portfolio.model.entity.SearchDto;
 import com.example.portfolio.model.session.LoginSession;
+import com.example.portfolio.model.session.SearchSession;
 import com.example.portfolio.service.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,20 +31,33 @@ public class SearchController {
   @Autowired
   private ProductService productService;
 
+  @Autowired
+  private SearchSession searchSession;
+
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
-  public String index(@RequestParam("keyword") String keyword, @PathVariable(name = "page") Optional<Integer> page, Model m) {
-    Set<SearchDto> products = productService.search(keyword, page);
-    int lastPage = products.size();
+  public String index(@RequestParam("keyword") Optional<String> keyword, @PathVariable(name = "page") Optional<Integer> page, Model m) {
+    String key = "";
+    if (keyword.isPresent()) {
+      key = keyword.get();
+      searchSession.setKeyword(key);
+    } else {
+      key = searchSession.getKeyword();
+    }
+    Set<SearchDto> searchResult = productService.getAllSearchResult(key);
+    int lastPage = productService.getLastPage(searchResult);
+    List<SearchDto> paginatedResult = productService.getPaginatedResult(searchResult, page);
+    int currentPage = productService.getCurrentPage(page);
+
     if (lastPage > 0) {
       List<Integer> pageNumbers = IntStream.rangeClosed(1, lastPage).boxed().collect(Collectors.toList()); // HTMLでページ分ループするために各ページ番号が入ったリストを作成
       m.addAttribute("pageNumbers", pageNumbers);
     }
+
+    m.addAttribute("page", currentPage);
     m.addAttribute("lastPage", lastPage);
-    m.addAttribute("products", products);
+    m.addAttribute("products", paginatedResult);
     m.addAttribute("loginSession", loginSession);
     return "search";
   }
-
-
 
 }
