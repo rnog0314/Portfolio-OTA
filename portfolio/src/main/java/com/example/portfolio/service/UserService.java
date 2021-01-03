@@ -57,6 +57,7 @@ public class UserService {
 
   /**
    * 新規作成したユーザの取得
+   *
    * @param userName
    * @param password
    * @return
@@ -99,6 +100,7 @@ public class UserService {
 
   /**
    * プロフィール画像の更新
+   *
    * @param file
    * @return
    */
@@ -116,6 +118,7 @@ public class UserService {
 
   /**
    * ユーザ情報の更新
+   *
    * @param userForm
    */
   public void updateUser(UserForm userForm) {
@@ -124,6 +127,7 @@ public class UserService {
 
   /**
    * byte[]からStringへの変換
+   *
    * @param user
    * @return
    */
@@ -131,5 +135,8 @@ public class UserService {
     return Base64.getEncoder().encodeToString(user.getUserImg());
   }
 
+  public User findEmailByUserId(Integer userId) {
+    return userRepos.findByUserId(userId);
+  }
 
 }

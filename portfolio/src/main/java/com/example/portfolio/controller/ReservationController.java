@@ -6,7 +6,9 @@ import com.example.portfolio.model.entity.Reservation;
 import com.example.portfolio.model.entity.ReservationDto;
 import com.example.portfolio.model.form.ReservationForm;
 import com.example.portfolio.model.session.LoginSession;
+import com.example.portfolio.service.EmailSendService;
 import com.example.portfolio.service.ReservationService;
+import com.example.portfolio.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,9 +29,18 @@ public class ReservationController {
   @Autowired
   private ReservationService reservationService;
 
+  @Autowired
+  private UserService userService;
+
+  @Autowired
+  private EmailSendService emailSender;
+
   @GetMapping(value = "")
   public String init(Model m) {
-    List<ReservationDto> reservationList = reservationService.getReservationList(loginSession.getUserId());
+    Integer userId = loginSession.getUserId();
+    List<ReservationDto> reservationList = reservationService.getReservationList(userId);
+    String email = userService.findEmailByUserId(userId).getEmail();
+    m.addAttribute("email", email);
     m.addAttribute("reservationList", reservationList);
     m.addAttribute("loginSession", loginSession);
     return "reservation_list";
@@ -54,8 +65,22 @@ public class ReservationController {
   public Boolean delete(@RequestBody Integer reservationId) throws Exception {
     Boolean bool = false;
     int result = reservationService.delete(reservationId);
-    if (result > 0) {bool = true;}
+    if (result > 0) {
+      bool = true;
+    }
     return bool;
   }
 
+  @PostMapping(value = "/sendEmail")
+  @ResponseBody
+  public Boolean sendeEmail(@RequestBody String email) {
+
+    Boolean bool = true;
+    try {
+      emailSender.send(email);
+      return bool;
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
 }

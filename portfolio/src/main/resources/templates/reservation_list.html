@@ -46,7 +46,7 @@
                     </div>
                   </dl>
                   <div class="btn-area d-flex">
-                    <a th:href="@{/portfolio/reservation/payament}" class="btn btn-primary payment-btn mx-2">Payment</a>
+                    <button type="button" class="btn btn-primary payment-btn mx-2">Payment</button>
                     <button type="button" class="btn btn-primary delete-btn mx-2">Delete</button>
                     <input type="hidden" class="reservationId" name="reservationId" th:value="*{id}">
                   </div>
@@ -54,6 +54,7 @@
               </div><!-- card -->
             </div><!-- col -->
           </div><!-- row -->
+          <input type="hidden" id="email" name="email" th:value="${email}">
         </div>
     </section>
   </main>
@@ -113,6 +114,53 @@
           }
         })
       })
+
+      $('.payment-btn').on('click', function () {
+        var box = bootbox.confirm({
+          message: "<p>We will send you a payment link to this email.</p>\
+                    <p>Please confirm this email is correct</p>\
+                    <p>[<span id='conf-email'></span>]</p>",
+          backdrop: true,
+          centerVertical: true,
+          show: true,
+          buttons: {
+            confirm: {
+              label: '<i class="fa fa-check"></i> Submit',
+              className: 'btn-primary'
+            },
+            cancel: {
+              label: '<i class="fa fa-times"></i> Modify',
+              className: 'btn-secondary'
+            }
+          },
+          callback: function (result) {
+            if (result) {
+              let email = $('#email').val();
+              $.ajax({
+                type: 'POST',
+                url: '/portfolio/reservation/sendEmail',
+                data: email,
+                contentType: 'application/json',
+                dataType: 'json'
+              }).done(function (result) {
+                if (result == true) {
+                  bootbox.alert('We sent an eamil to you. Please check it out!');
+                } else {
+                  bootbox.alert('Something wrong. Please try again.')
+                }
+              }).fail(function (result) {
+                console.log('Error: ajax通信に失敗しました');
+              }).always(function (result) {
+                console.log("ajax通信しました");
+              })
+            }
+          }, // callback
+        })
+        box.on("shown.bs.modal", function () {
+          $('#conf-email').text($('#email').val());
+        })
+      })
+
 
       $('.owl-carousel').owlCarousel({
         loop: true,
