@@ -34,7 +34,7 @@ public class AdminController {
     if (!adminSession.isLogined()) {
       return "redirect:/portfolio/admin";
     }
-    Admin admin = adminService.findBy(adminSession.getId());
+    Admin admin = adminService.findById(adminSession.getId());
     m.addAttribute("admin", admin);
     m.addAttribute("adminSession", adminSession);
     return "admin/index";
@@ -46,13 +46,22 @@ public class AdminController {
     Boolean bool = false;
     Admin admin = adminService.findByAdminNameAndPassword(f.getAdminName(), f.getPassword());
     if (admin != null) {
-      adminSession.setId(admin.getId());
-      adminSession.setPassword(admin.getPassword());
-      adminSession.setAdminName(admin.getAdminName());
-      adminSession.setLogined(true);
+      adminService.setAdminSession(admin);
       bool = true;
     }
     return bool;
+  }
+
+  @PostMapping(value = "/modify")
+  public String modify(AdminForm adminForm, Model m) {
+    adminService.updateAdmin(adminForm);
+    Admin admin = adminService.findById(adminSession.getId());
+    adminService.setAdminSession(admin);
+    Boolean completeMsg = true;
+    m.addAttribute("admin", admin);
+    m.addAttribute("adminSession", adminSession);
+    m.addAttribute("completeMsg", completeMsg);
+    return "admin/index";
   }
 
 }

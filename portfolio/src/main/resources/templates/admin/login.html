@@ -1,94 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<title>Bootstrap Admin Theme v3</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin 2 - Login</title>
 
 </head>
 
-<body class="login-bg">
-	<header th:insert="fragments/admin_header::header"></header>
-	<div class="page-content container">
-		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
-				<div class="login-wrapper">
-					<div class="box">
-						<div class="content-wrap">
-							<h6>Sign In</h6>
-							<!-- <div class="social">
-								<a class="face_login" href="#">
-									<span class="face_icon">
-										<img src="images/facebook.png" alt="fb">
-									</span>
-									<span class="text">Sign in with Facebook</span>
-								</a>
-								<div class="division">
-									<hr class="left">
-									<span>or</span>
-									<hr class="right">
-								</div>
-							</div> -->
-							<input id="adminName" class="form-control" type="text" placeholder="Admin ID" name="adminName">
-							<input id="password" class="form-control" type="password" placeholder="Password" name="password">
-							<div class="action">
-								<button id="login-btn" class="btn btn-primary signup" type="button">Login</button>
-							</div>
-						</div>
-					</div>
+<body class="bg-gradient-primary">
+  <header th:insert="admin/header::header"></header>
+  <div class="container">
 
-					<div class="already">
-						<p>Don't have an account yet?</p>
-						<a href="signup.html">Sign Up</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="/js/admin/bootstrap.min.js"></script>
-	<script src="/js/admin/custom.js"></script>
+      <div class="col-xl-10 col-lg-12 col-md-9">
 
-	<script type="text/javascript" th:inline="javascript">
-		/*<![CDATA[*/
-		$(document).ready(function () {
-			$('#login-btn').on('click', function () {
-				console.log($('#adminName').val());
-				let jsonString = {
-					"adminName": $('#adminName').val(),
-					"password": $('#password').val()
-				}
-				$.ajax({
-					type: 'POST',
-					url: '/portfolio/admin/login',
-					data: JSON.stringify(jsonString),
-					contentType: 'application/json',
-					dataType: 'json'
-				}).done(function (bool) {
-					if (bool) {
-						location.replace('/portfolio/admin/home')
-					} else {
-						bootbox.alert({
-							message: 'Your login info is not correct. Please make sure your input.',
-							backdrop: true,
-							centerVertical: true
-						})
-					}
-				}).fail(function () {
-					console.log('Error: ajax通信に失敗しました');
-				}).always(function () {
-					console.log("ajax通信しました");
-				})
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                  </div>
+                  <form class="user">
+                    <div class="form-group">
+                      <input type="email" class="form-control form-control-user" id="adminName" name="adminName"
+                        aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control form-control-user" id="password" name="password"
+                        placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox small">
+                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                        <label class="custom-control-label" for="customCheck">Remember
+                          Me</label>
+                      </div>
+                    </div>
+                    <button type="button" id="login-btn" class="btn btn-primary btn-user btn-block">Login</button>
+                    <hr>
+                    <div class="text-center">
+                      <a class="small" href="forgot-password.html">Forgot Password?</a>
+                    </div>
+                    <div class="text-center">
+                      <a class="small" href="register.html">Create an Account!</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-			})
-		});
+      </div>
 
-		/*]]>*/
-	</script>
+    </div>
 
+  </div>
+  <footer th:insert="admin/footer::footer"></footer>
+  <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function () {
+      $('#login-btn').on('click', function () {
+        let jsonString = {
+          "adminName": $('#adminName').val(),
+          "password": $('#password').val()
+        }
+        $.ajax({
+          type: 'POST',
+          url: '/portfolio/admin/login',
+          data: JSON.stringify(jsonString),
+          contentType: 'application/json',
+          dataType: 'json'
+        }).done(function (bool) {
+          if (bool) {
+            location.replace('/portfolio/admin/home')
+          } else {
+            bootbox.alert({
+              message: 'Your login info is not correct. Please make sure your input.',
+              backdrop: true,
+              centerVertical: true
+            })
+          }
+        }).fail(function () {
+          console.log('Error: ajax通信に失敗しました');
+        }).always(function () {
+          console.log("ajax通信しました");
+        })
+
+      })
+    });
+
+    /*]]>*/
+  </script>
 </body>
 
 </html>

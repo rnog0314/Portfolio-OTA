@@ -1,0 +1,36 @@
+/* css %
+cd portfolio/src/main/resources/static/admin/css
+node-sass styles.scss styles.css --output-style expanded --watch
+Scss自動コンパイルコマンド
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;800&family=Rubik:ital,wght@1,600&display=swap");
+
+// ヘッダー
+.hidden {
+  display: none !important;
+}
+
+.navbar {
+  .welcome-msg-area {
+    margin: auto 1.5rem;
+    color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+body {
+  font-family: "Rubik", "M PLUS Rounded 1c", sans-serif !important;
+  background-color: #f9f9fa;
+}
+
+input {
+  border-radius: 0.5rem;
+  border: 1px solid lightgrey;
+}
+
+#admin-home {
+  .btn-area {
+    display: flex;
+    justify-content: center;
+  }
+}

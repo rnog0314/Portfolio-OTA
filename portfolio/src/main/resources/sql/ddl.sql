@@ -132,3 +132,5 @@ CREATE TABLE admin (
 DROP TABLE admin;
 
 INSERT INTO admin (admin_name, password) VALUES ('testAdmin', 'password');
+
+SELECT * FROM admin;
