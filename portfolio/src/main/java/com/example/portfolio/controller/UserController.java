@@ -110,19 +110,6 @@ public class UserController {
    * @param m
    * @return
    */
-  // @PostMapping(value = "/imgRegis")
-  // @ResponseBody
-  // public boolean imgRegister(@RequestParam("file") MultipartFile file, Model m) {
-  //   boolean bool = false;
-  //   try {
-  //     userService.saveUserImg(file);
-  //     bool = true;
-  //   } catch (Exception e) {
-  //     e.printStackTrace();
-  //   }
-  //   return bool;
-  // }
-
   @PostMapping(value = "/imgUpload")
   @ResponseBody
   public boolean imgUpdate(@RequestParam("file") MultipartFile file, Model m) {

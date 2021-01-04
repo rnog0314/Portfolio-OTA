@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/portfolio/admin")
-public class AdminIndexController {
+public class AdminController {
 
   @Autowired
   private AdminSession adminSession;
@@ -34,6 +34,8 @@ public class AdminIndexController {
     if (!adminSession.isLogined()) {
       return "redirect:/portfolio/admin";
     }
+    Admin admin = adminService.findBy(adminSession.getId());
+    m.addAttribute("admin", admin);
     m.addAttribute("adminSession", adminSession);
     return "admin/index";
   }
@@ -44,7 +46,7 @@ public class AdminIndexController {
     Boolean bool = false;
     Admin admin = adminService.findByAdminNameAndPassword(f.getAdminName(), f.getPassword());
     if (admin != null) {
-      adminSession.setAdminId(admin.getId());
+      adminSession.setId(admin.getId());
       adminSession.setPassword(admin.getPassword());
       adminSession.setAdminName(admin.getAdminName());
       adminSession.setLogined(true);

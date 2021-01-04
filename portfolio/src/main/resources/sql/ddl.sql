@@ -126,6 +126,7 @@ CREATE TABLE admin (
   id SERIAL PRIMARY KEY,
   admin_name VARCHAR(32) NOT NULL,
   password VARCHAR(64) NOT NULL
+  -- img BYTEA DEFAULT ''
 )
 
 DROP TABLE admin;

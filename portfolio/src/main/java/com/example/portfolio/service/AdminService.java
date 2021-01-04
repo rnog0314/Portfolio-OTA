@@ -23,4 +23,8 @@ public class AdminService {
     return adminRepos.findByAdminNameAndPassword(adminName, password);
   }
 
+  public Admin findBy(Integer id) {
+    return adminRepos.findById(id).get();
+  }
+
 }

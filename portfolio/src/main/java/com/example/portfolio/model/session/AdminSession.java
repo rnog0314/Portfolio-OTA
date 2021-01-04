@@ -9,7 +9,7 @@ import lombok.Data;
 @SessionScope
 @Data
 public class AdminSession {
-  private Integer adminId;
+  private Integer id;
 	private String adminName;
   private String password;
 	private boolean logined = false;
