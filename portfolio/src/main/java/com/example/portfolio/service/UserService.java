@@ -147,11 +147,11 @@ public class UserService {
     return userRepos.findByUserId(userId);
   }
 
-public Page<User> findPaginatedList(Optional<Integer> page) {
-  int currentPage = productService.getCurrentPage(page);
-  Sort sort = Sort.by("userId").ascending(); // ソートのルールを作成
-  Pageable pageable = PageRequest.of(currentPage - 1, 10, sort); // ページネーション情報作成
-  return userRepos.findAll(pageable);
-}
+  public Page<User> findPaginatedList(Optional<Integer> page) {
+    int currentPage = productService.getCurrentPage(page);
+    Sort sort = Sort.by("userId").ascending(); // ソートのルールを作成
+    Pageable pageable = PageRequest.of(currentPage - 1, 10, sort); // ページネーション情報作成
+    return userRepos.findAll(pageable);
+  }
 
 }
