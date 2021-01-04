@@ -41,6 +41,9 @@ public class Product {
   @Column(name = "destination_id")
   private Integer destinationId;
 
+  @Column(name = "price")
+  private Integer price;
+
   @Column(name = "delete_flag")
   private boolean deleteFlag;
 

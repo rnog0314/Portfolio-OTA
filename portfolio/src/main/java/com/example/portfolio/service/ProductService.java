@@ -10,8 +10,13 @@ import com.example.portfolio.model.dao.ProductRepository;
 import com.example.portfolio.model.dao.SearchDtoRepository;
 import com.example.portfolio.model.entity.Product;
 import com.example.portfolio.model.entity.SearchDto;
+import com.example.portfolio.model.form.ProductForm;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -90,9 +95,6 @@ public class ProductService {
 	 */
 	public List<SearchDto> getPaginatedResult(Set<SearchDto> products, Optional<Integer> page) {
 		int currentPage = getCurrentPage(page); // 押下されたページリンクの数字(リクエストされたページ番号)
-		if (currentPage == 0) { // 先頭ページを表示している際の「<」押下用
-			currentPage = 1;
-		}
 
 		int from = (currentPage - 1) * RECORDS + 1;
 		int to = currentPage * RECORDS + 1;
@@ -115,7 +117,11 @@ public class ProductService {
 	 * @return
 	 */
 	public int getCurrentPage(Optional<Integer> page) {
-		return page.orElse(1);
+		int currentPage = page.orElse(1);
+		if (currentPage == 0) {// 先頭ページを表示している際の「<」押下用
+      currentPage = 1;
+    }
+		return currentPage;
 	}
 
 	/**
@@ -126,6 +132,21 @@ public class ProductService {
 	 */
 	public int getLastPage(Set<SearchDto> list) {
 		return list.size() / RECORDS + 1;
+	}
+
+	public void delete(int id) {
+		productRepos.deleteById(id);;
+	}
+
+	public Page<Product> findPaginatedList(Optional<Integer> page) {
+		int currentPage = getCurrentPage(page);
+		Sort sort = Sort.by("productId").ascending(); // ソートのルールを作成
+		Pageable pageable = PageRequest.of(currentPage - 1, 10, sort); // ページネーション情報作成
+		return productRepos.findAll(pageable);
+	}
+
+	public void updateProduct(ProductForm f) {
+		productRepos.updateProduct(f.getProductName(), f.getPrice());
 	}
 
 }

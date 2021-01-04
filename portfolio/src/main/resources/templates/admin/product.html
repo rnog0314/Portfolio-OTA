@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Portfolio OTA Admin</title>
+</head>
+
+<body id="page-top">
+  <header th:insert="admin/header::header"></header>
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+    <header th:insert="admin/sidebar::sidebar"></header>
+    <!-- Start of Content -->
+    <div class="container">
+      <h2 class="page-title">Products</h2>
+      <!-- <form th:action="@{/portfolio/admin/product/modify}" method="POST"> -->
+        <table class="table table-hover table-bordered table-responsive-md text-center"
+          th:if="${products.getTotalPages() > 0}">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" style="width: 15%;">
+                <label>Select All
+                  <input class="ml-2" type="checkbox" name="allChecked" id="checkbox-all">
+                </label>
+              </th>
+              <th scope="col" style="width: 20%;">ID</th>
+              <th scope="col" style="width: 20%;">Image</th>
+              <th scope="col" style="width: 15%;">Title</th>
+              <th scope="col" style="width: 15%;">Price</th>
+            </tr>
+          </thead>
+          <tbody id="boxes">
+            <tr th:each="product : ${products}" th:object="${product}">
+              <td>
+                <input type="checkbox" class="checkbox" th:field="*{productId}" th:value="*{productId}">
+                <!-- type="checkboxの時はtd:filedにidとnameを指定したい文字列にし、td:valueを別個で設定する-->
+                <label th:for="${#ids.prev('productId')}"></label>
+                <!-- labelとidの生成については、#idsユーティリティが便利。labelの位置が前か後ろかによって｢prev｣｢next｣を使い分ける。${#ids.prev('id')}の「id」はth:fieldで指定されるid-->
+              </td>
+              <td th:text="*{productId}"></td>
+              <td class="frame">
+                <img class="w-100" style="height: auto;" th:src="@{{imagePath} (imagePath = *{productImage})}">
+              </td>
+              <td class="normal" th:text="*{productName}"></td>
+              <td class="modify hidden"><span><input type="text" name="productName" th:value="*{productName}"
+                    th:placeholder="*{productName}" required></span></td>
+              <td class="normal" th:text="*{price}"></td>
+              <td class="modify hidden"><span><input type="text" name="price" th:value="*{price}"
+                    th:placeholder="*{price}" required></span></td>
+            </tr>
+          </tbody>
+        </table>
+        <nav aria-label="Page navigation">
+          <ul class="pagination d-flex justify-content-center">
+            <li class="page-item">
+              <a th:href="@{/portfolio/admin/product/1}" class="page-link" aria-label="Previous">
+                <span aria-hidden="true">&lt;&lt;</span>
+              </a>
+            </li>
+            <li class="page-item" th:if="${products.getNumber() > 1}">
+              <a th:href="@{/portfolio/admin/product/{page} (page = ${products.getNumber()})}" class="page-link" aria-label="Previous">
+                <span aria-hidden="true">&lt;</span>
+              </a>
+            </li>
+            <li class="page-item" th:with="start = 1, end = ${products.getTotalPages()}"
+              th:each="pageNumber : ${pageNumbers}">
+              <a class="page-link" th:href="@{/portfolio/admin/product/{page} (page = ${pageNumber})}" th:text="${pageNumber}"></a>
+            </li>
+            <li class="page-item" th:if="${products.getTotalPages() > products.getNumber() + 1 }">
+              <a th:href="@{/portfolio/admin/product/{page} (page = ${products.getNumber() + 2})}" class="page-link" aria-label="Next">
+                <span aria-hidden="true">&gt;</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a th:href="@{/portfolio/admin/product/{page} (page = ${products.getTotalPages()})}" class="page-link" aria-label="Next">
+                <span aria-hidden="true">&gt;&gt;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="container-fluid d-flex justify-content-end" th:if="${products.getTotalPages() > 0}">
+          <div>
+            <div class="btn-area">
+              <button id="delete-btn" class="btn btn-warning mr-3" disabled>Delete</button>
+              <!-- <button id="modify-btn" class="btn mx-2 btn-info" type="button">Modify</button>
+              <button id="cancel-btn" class="btn mx-2 btn-warning hidden" type="button">Cancel</button>
+              <button id="submit-btn" class="btn mx-2 btn-primary hidden" type="submit">Submit</button> -->
+            </div>
+          </div>
+        </div>
+      <!-- </form> -->
+    </div>
+    <!-- End of Content -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <footer th:insert="admin/footer::footer"></footer>
+  <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function () {
+      /* 修正ボタン押下時 */
+      // $('#modify-btn').on('click', function () {
+      //   $('.normal').addClass('hidden');
+      //   $('.modify').removeClass('hidden');
+      //   $('#modify-btn').addClass('hidden');
+      //   $('#cancel-btn').removeClass('hidden');
+      //   $('#submit-btn').removeClass('hidden');
+      // });
+
+      /*キャンセルボタン押下時*/
+      // $('#cancel-btn').on('click', function () {
+      //   $('.normal').removeClass('hidden');
+      //   $('.modify').addClass('hidden');
+      //   $('#modify-btn').removeClass('hidden');
+      //   $('#cancel-btn').addClass('hidden');
+      //   $('#submit-btn').addClass('hidden');
+      // });
+
+      /*修正完了ダイアログの初期化*/
+      // var dialog = bootbox.alert({
+      //   message: '<p class="text-center mb-0">Correctly changed!</p>',
+      //   backdrop: true,
+      //   centerVertical: true,
+      //   show: false,
+      //   callback: function () {
+      //     location.replace('/portfolio/admin/product');
+      //   }
+      // });
+
+      /*product情報更新後のアラート表示*/
+      // const completeMsg = /*[[${completeMsg}]]*/ '';
+      // console.log("completeMsg : " + completeMsg);
+      // if (completeMsg) {
+      //   dialog.modal('show');
+      // }
+
+      /*チェックボックスに変化があったときに削除ボタンの活性/非活性を操作する*/
+      $(document).on('change', '.checkbox', function () { // javascriptを使ってhtml要素を変更した後のものには.change()やonChangeは使えないため、このようにdocumentを先頭につける必要がある
+        changeDisabled();
+      });
+
+      /* 全選択チェックボックスのつけ外し */
+      $('#checkbox-all').on('click', function () {
+        $('.checkbox').prop('checked', this.checked); // this.checkedで全選択チェックボックスの状態と各チェックボックスの状態を同じにする
+        changeDisabled();
+      });
+      $('.checkbox').on('click', function () {
+        if ($('#boxes:checked').length == $('.checkbox').length) {
+          $('#checkbox-all').prop('checked', true);
+        } else {
+          $('#checkbox-all').prop('checked', false);
+        }
+      });
+
+      /*削除ボタン押下時*/
+      $('#delete-btn').on('click', function (e) {
+        e.preventDefault();
+        let checkedList = $('.checkbox:checked'); // チェックボックスにチェックの入ったものを取得
+        let checkedIdList = [];
+        for (checked of checkedList) {
+          checkedIdList.push($(checked).val()); // ☑️のついたレコードのvalueとして設定されているidを空の配列に入れる
+        }
+        deleteProduct(checkedList, checkedIdList);
+      });
+
+      /*削除処理*/
+      function deleteProduct(checkedList, checkedIdList) {
+        $.ajax({
+          type: 'POST',
+          url: '/portfolio/admin/product/delete',
+          data: JSON.stringify(checkedIdList),
+          dataType: 'json',
+          contentType: 'application/json'
+        }).done(function (data) {
+          for (checked of checkedList) {
+            $(checked).parent().parent().remove(); // ☑️のついたレコード全体を削除
+          }
+          // bootbox.alert(`${data}products deleted`);
+          let checkList = $('.checkList'); // ☑️のついたレコードを削除した後、☑️が全て無くなればそのままカートページを更新
+          if (checkList.length == 0) {
+            location.replace('/portfolio/admin/product');
+          }
+          changeDisabled(); // 削除ボタンを非活性化
+        }).fail(function (data) {
+          console.log("ajax通信に失敗しました");
+        }).always(function name(params) {
+          console.log("ajax通信しました");
+        });
+      };
+
+
+      /*削除ボタンの活性/非活性操作*/
+      function changeDisabled() {
+        let checkList = $('.checkbox');
+        let disabled = true;
+        for (let check of checkList) {
+          if ($(check).prop('checked')) { // もし☑️がついていればfalseを、ついていなければtrueを削除ボタンの属性につける
+            disabled = false;
+            break;
+          }
+        }
+        console.log(disabled);
+        $('#delete-btn').prop('disabled', disabled);
+      }
+
+    })
+    /*]]>*/
+  </script>
+</body>
+
+</html>
