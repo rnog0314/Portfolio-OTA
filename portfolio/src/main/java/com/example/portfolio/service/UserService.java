@@ -2,6 +2,7 @@ package com.example.portfolio.service;
 
 import java.io.IOException;
 import java.util.Base64;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -11,6 +12,10 @@ import com.example.portfolio.model.form.UserForm;
 import com.example.portfolio.model.session.LoginSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +28,9 @@ public class UserService {
 
   @Autowired
   private LoginSession loginSession;
+
+  @Autowired
+  private ProductService productService;
 
   /**
    * メールアドレスとパスワードを条件にユーザ取得してログインユーザと照合
@@ -138,5 +146,12 @@ public class UserService {
   public User findEmailByUserId(Integer userId) {
     return userRepos.findByUserId(userId);
   }
+
+public Page<User> findPaginatedList(Optional<Integer> page) {
+  int currentPage = productService.getCurrentPage(page);
+  Sort sort = Sort.by("userId").ascending(); // ソートのルールを作成
+  Pageable pageable = PageRequest.of(currentPage - 1, 10, sort); // ページネーション情報作成
+  return userRepos.findAll(pageable);
+}
 
 }
