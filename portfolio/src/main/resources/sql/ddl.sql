@@ -122,39 +122,12 @@ CREATE TABLE bookmarks (
   FOREIGN KEY(product_id) REFERENCES products(product_id)
 )
 
+CREATE TABLE admin (
+  id SERIAL PRIMARY KEY,
+  admin_name VARCHAR(32) NOT NULL,
+  password VARCHAR(64) NOT NULL
+)
 
+DROP TABLE admin;
 
-
-
-
-
-
-
-INSERT INTO reservations (user_id, product_id, date, count) VALUES (1, 1, '2020-12-30', 4);
-INSERT INTO reservations (user_id, product_id, date, count) VALUES (1, 2, '2020-12-31', 2);
-SELECT  * FROM reservations;
-delete from reservations;
-
-SELECT p.product_image, p.product_name, pd.price, r.count, r.date, r.user_id
-FROM reservations AS r
-INNER JOIN products AS p
-ON r.product_id = p.product_id
-INNER JOIN product_details AS pd
-ON r.product_id = pd.product_id
-WHERE r.user_id = 1;
-
-SELECT p.product_id, p.product_image, p.product_name, c.category_name, d.destination_name
-FROM products AS p
-INNER JOIN categories AS c ON p.category_id = c.category_id
-INNER JOIN destinations AS d ON p.destination_id = d.destination_id
-WHERE p.product_name LIKE '%Tokyo%'
-OR c.category_name LIKE '%Tokyo%'
-OR d.destination_name LIKE '%Tokyo%'
-ORDER BY p.product_id
-LIMIT 10 OFFSET 2;
-
-
-SELECT b.id, b.product_id, b.user_id, p.product_image, p.product_name
-FROM bookmarks AS b
-INNER JOIN products AS p   ON b.product_id = p.product_id
-WHERE b.user_id = 1;
+INSERT INTO admin (admin_name, password) VALUES ('testAdmin', 'password');
