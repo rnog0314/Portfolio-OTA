@@ -96,14 +96,17 @@ public class ProductService {
 	public List<SearchDto> getPaginatedResult(Set<SearchDto> products, Optional<Integer> page) {
 		int currentPage = getCurrentPage(page); // 押下されたページリンクの数字(リクエストされたページ番号)
 
-		int from = (currentPage - 1) * RECORDS + 1;
-		int to = currentPage * RECORDS + 1;
+		int from = (currentPage - 1) * RECORDS;
+		int to = currentPage * RECORDS;
 		int count = products.size();
 		if (!(count > 8)) { // 取得した数が9つに満たなかった時
 			return new ArrayList<>(products);
 		}
 		if (count < to) {
 			to = count;
+		}
+		if (from >= to) {
+
 		}
 		List<SearchDto> list = new ArrayList<>(products);
 		List<SearchDto> subList = list.subList(from, to);
@@ -131,7 +134,13 @@ public class ProductService {
 	 * @return
 	 */
 	public int getLastPage(Set<SearchDto> list) {
-		return list.size() / RECORDS + 1;
+		int count = list.size();
+		int lastPage = count / RECORDS;
+		if (count % RECORDS == 0) {
+			return lastPage;
+		} else {
+			return lastPage + 1;
+		}
 	}
 
 	public void delete(int id) {
