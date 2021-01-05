@@ -105,9 +105,6 @@ public class ProductService {
 		if (count < to) {
 			to = count;
 		}
-		if (from >= to) {
-
-		}
 		List<SearchDto> list = new ArrayList<>(products);
 		List<SearchDto> subList = list.subList(from, to);
 		return subList;
