@@ -59,7 +59,6 @@ public class IndexController {
 }
 
 /* TODO
-  - 検索ページの最後ページ押下でエラー
   - 予約とブックマーク追加の前にログインチェック
   - Admin画面でのカレンダー確認(DBとの連動。Yutube参考)
   - 商品詳細ページにGoogleマップ
