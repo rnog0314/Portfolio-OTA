@@ -25,7 +25,7 @@
                 th:if="${reservationList.size() > 0}">
                 <img th:src="@{{imagePath} (imagePath = *{productImage})}" alt="" class="card-img-top">
                 <a id="detail-btn" th:href="@{/portfolio/product/{productId} (productId=*{productId})}"
-                  class="btn btn-primary">See detail</a>
+                  class="btn btn-info">See detail</a>
                 <div class="card-body">
                   <dl>
                     <div class="reserve-info">
@@ -46,8 +46,8 @@
                     </div>
                   </dl>
                   <div class="btn-area d-flex">
-                    <button type="button" class="btn btn-primary payment-btn mx-2">Payment</button>
-                    <button type="button" class="btn btn-primary delete-btn mx-2">Delete</button>
+                    <button type="button" class="btn btn-info payment-btn mx-2">Payment</button>
+                    <button type="button" class="btn btn-info delete-btn mx-2">Delete</button>
                     <input type="hidden" class="reservationId" name="reservationId" th:value="*{id}">
                   </div>
                 </div>
@@ -74,7 +74,7 @@
           buttons: {
             confirm: {
               label: '<i class="fa fa-check"></i> Yes',
-              className: 'btn-primary'
+              className: 'btn-info'
             },
             cancel: {
               label: '<i class="fa fa-times"></i> Cancel',
@@ -126,7 +126,7 @@
           buttons: {
             confirm: {
               label: '<i class="fa fa-check"></i> Submit',
-              className: 'btn-primary'
+              className: 'btn-info'
             },
             cancel: {
               label: '<i class="fa fa-times"></i> Modify',

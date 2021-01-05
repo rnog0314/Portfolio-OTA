@@ -5,13 +5,88 @@ node-sass styles.scss styles.css --output-style expanded --watch
 Scss自動コンパイルコマンド
 */
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;800&family=Rubik:ital,wght@1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
+main {
+  background-color: #fff;
+}
+
+.bg-primary,
+.btn-primary,
+.btn-info {
+  color: #fff;
+  background-color: #17a2b8 !important;
+  border-color: #17a2b8 !important;
+}
+
+.bg-primary:hover,
+.btn-primary:hover,
+.btn-info:hover {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+a:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+button {
+  outline: none !important;
+}
+
+#header #top-logo {
+  font-family: "Sriracha", cursive;
+  color: #17a2b8;
+}
+
+#header a {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#header #welcome-msg {
+  margin-left: 6rem;
+  margin-bottom: 0;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#footer {
+  background-color: #f9f9fa;
+  color: lightslategrey;
+}
+
+#footer #footer-logo {
+  font-family: "Sriracha", cursive;
+  color: #17a2b8;
+}
+
+#footer a {
+  color: lightgrey;
+}
+
+#footer ul {
+  justify-content: space-evenly;
+  padding: 0;
+  margin: 0;
+}
+
 .hidden {
   display: none;
 }
 
-.navbar .welcome-msg-area {
+.navbar-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbar-nav .welcome-msg-area {
   margin: auto 1.5rem;
   color: rgba(0, 0, 0, 0.5);
+}
+
+.navbar-nav #bookmark-link {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 body {
@@ -42,7 +117,7 @@ input {
   width: 18rem;
   margin: 2rem;
   height: 12rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 #popular .card img,
@@ -118,7 +193,7 @@ input {
 #testimonial .carousel-indicators li {
   width: 1.5rem;
   height: 1.5rem;
-  background-color: lightblue;
+  background-color: #cefdff;
   border-radius: 50%;
   position: relative;
   top: 5rem;
@@ -127,7 +202,7 @@ input {
 #testimonial .item {
   background-color: lightblue;
   padding: 2rem;
-  border-radius: 5rem;
+  border-radius: 1rem;
   height: 30rem;
 }
 
@@ -163,8 +238,6 @@ input {
 }
 
 #popular img {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
   object-fit: cover;
 }
 
@@ -342,7 +415,7 @@ input {
   float: right;
   position: absolute;
   right: 1rem;
-  bottom: .5rem;
+  bottom: 0.5rem;
 }
 
 #reservation-info .reserve-info {

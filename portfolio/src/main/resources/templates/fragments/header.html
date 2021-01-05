@@ -32,14 +32,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/bootstrap/main.min.css" />
 
     <!-- ヘッダー -->
-    <nav class="navbar navbar-expand-lg navbar-light container" style="line-height: 2rem;">
+    <nav id="header" class="navbar navbar-expand-lg navbar-light container" style="line-height: 2rem;">
       <a th:href="@{/portfolio}" class="navbar-brand">
-        <img src="/img/logo.png" style="width: 8rem;" alt="トップロゴ">
+        <!-- <img src="/img/logo.png" style="width: 8rem;" alt="トップロゴ"> -->
+        <h1 id="top-logo">adview</h1>
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="searchForm">
         <form th:action="@{/portfolio/search}" method="GET" class="input-group">
           <input type="text" class="pl-2" placeholder="Tokyo Camping" name="keyword" required>
@@ -48,22 +45,23 @@
           </div>
         </form>
       </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="welcome-msg-area">
-        <p id="welcome-msg" class="welcome-msg m-0" th:text="'Welcome！' + ${loginSession.isLogined() == false ? 'our Guest' : loginSession.getUserName()}"></p>
+        <p id="welcome-msg" class="welcome-msg" th:text="'Welcome！' + ${!loginSession.isLogined() ? 'our Guest' : loginSession.getUserName()}"></p>
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a th:href="@{/portfolio/reservation}" class="nav-link">reservation</a>
+          <li id="reservation-link" th:class="${loginSession.isLogined() == true ? 'nav-item' : 'hidden'}">
+            <a th:href="@{/portfolio/reservation}" class="nav-link">Reservation</i></a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">notification</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">bookmark</a>
-          </li>
-          <li id="bookmark-icon" th:class="${loginSession.isLogined() == true ? 'nav-item' : 'hidden'}">
-            <a th:href="@{/portfolio/bookmark}"><i class="nav-link fas fa-bookmark animated-hover faa-wrench"></i></a>
+          </li> -->
+          <li id="bookmark-link" th:class="${loginSession.isLogined() == true ? 'nav-item' : 'hidden'}">
+            <a th:href="@{/portfolio/bookmark}">Bookmark</i></a>
           </li>
           <li id="login-link" class="nav-item" th:class="${loginSession.isLogined() == false ? '' : 'hidden'}">
             <button id="login-btn" type="button" class="nav-link btn btn-muted">Log in</button>

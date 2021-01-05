@@ -8,26 +8,27 @@
 
 <body>
   <th:block th:fragment="footer">
-    <footer id="footer" class="py-5" style="background-color: rgb(149, 222, 255);">
+    <footer id="footer" class="py-5">
       <div class="container">
         <div class="row d-flex justify-content-center">
           <div class="col-4">
-            <img src="/img/logo.png" alt="" id="footer-logo" style="width: 12rem;">
+            <!-- <img src="/img/logo.png" alt="" id="footer-logo" style="width: 12rem;"> -->
+            <h1 id="footer-logo">adview</h1>
           </div>
           <div class="col-4">
             <h5 class="footer-category text-center">Title</h5>
-            <ul class="d-flex justify-content-center">
+            <ul class="d-flex">
               <li class="list-unstyled"><a href="#">link</a></li>
               <li class="list-unstyled"><a href="#">link</a></li>
               <li class="list-unstyled"><a href="#">link</a></li>
             </ul>
           </div>
           <div class="col-4">
-            <h5 class="footer-category text-center">FOLLOW US !!</h5>
-            <ul class="d-flex justify-content-center">
-              <li class="list-unstyled"><a href="#"><i class="fab fa-instagram fa-2x mx-3"></i></a></li>
-              <li class="list-unstyled"><a href="#"><i class="fab fa-twitter-square fa-2x mx-3"></i></a></li>
-              <li class="list-unstyled"><a href="#"><i class="fab fa-line fa-2x mx-3"></i></a></li>
+            <h5 class="footer-category text-center">FOLLOW ME !!</h5>
+            <ul class="d-flex">
+              <li class="list-unstyled"><a href="https://www.facebook.com/profile.php?id=100008282253974&sk=photos"><i class="fab fa-2x fa-facebook-square" style="color: #3b5998;"></i></a></li>
+              <li class="list-unstyled"><a href="https://www.couchsurfing.com/people/ryoto-noguchi"><img src="/img/couchsurfing.png" alt="" style="width: 2rem;"></a></li>
+              <li class="list-unstyled"><a href="https://github.com/Ryoto-Noguchi"><i class="fab fa-2x fa-github" style="color: #211F1F;"></i></a></li>
             </ul>
           </div>
         </div>
@@ -73,7 +74,7 @@
             buttons: {
               confirm: {
                 label: '<i class="fa fa-check"></i> Login',
-                className: 'btn-primary'
+                className: 'btn-info'
               },
               cancel: {
                 label: '<i class="fa fa-times"></i> Cancel',
@@ -151,14 +152,16 @@
             $('#signup-link').addClass('hidden');
             $('#logout-link').removeClass('hidden');
             $('#mypage-link').removeClass('hidden');
-            $('#bookmark-icon').removeClass('hidden');
+            $('#bookmark-link').removeClass('hidden');
+            $('#reservation-link').removeClass('hidden');
           } else {                                  // ログインしていない時
             $('#welcome-msg').text(`Welcome our Guest!`);
             $('#login-link').removeClass('hidden');
             $('#signup-link').removeClass('hidden');
             $('#logout-link').addClass('hidden');
             $('#mypage-link').addClass('hidden');
-            $('#bookmark-icon').addClass('hidden');
+            $('#bookmark-link').addClass('hidden');
+            $('#reservation-link').addClass('hidden');
           }
         }
       });

@@ -99,6 +99,6 @@ insert into users (user_name, password, family_name, first_name, email, gender, 
 insert into users (user_name, password, family_name, first_name, email, gender, user_img) values ( 'kkennham2q', 'wYa2dB', 'Kennham', 'Kizzie', 'kkennham2q@rakuten.co.jp', 'F', '');
 insert into users (user_name, password, family_name, first_name, email, gender, user_img) values ( 'ewalshe2r', 'ZCDQ4kOH', 'Walshe', 'Elizabeth', 'ewalshe2r@wunderground.com', 'F', '');
 
--- SELECT * FROM users where user_id =1;
+SELECT * FROM users where user_id =1;
 -- DROP TABLE carts;
 -- DROP TABLE users;

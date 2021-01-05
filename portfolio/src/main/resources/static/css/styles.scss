@@ -4,15 +4,79 @@ node-sass styles.scss styles.css --output-style expanded --watch
 Scss自動コンパイルコマンド
 */
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;800&family=Rubik:ital,wght@1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
+
+main {
+  background-color: #fff;
+}
+.bg-primary,
+.btn-primary,
+.btn-info {
+  color: #fff;
+  background-color: #17a2b8 !important;
+  border-color: #17a2b8 !important;
+  &:hover {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+  }
+}
+a:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+button {
+  outline: none !important;
+}
 
 // ヘッダー
+#header {
+  #top-logo {
+    font-family: "Sriracha", cursive;
+    color: #17a2b8;
+  }
+  a {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  #welcome-msg {
+    margin-left: 6rem;
+    margin-bottom: 0;
+    color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+// フッター
+#footer {
+  background-color: #f9f9fa;
+  #footer-logo {
+    font-family: "Sriracha", cursive;
+    color: #17a2b8;
+  }
+  color: lightslategrey;
+  a {
+    color: lightgrey;
+  }
+  ul {
+    justify-content: space-evenly;
+    padding: 0;
+    margin: 0;
+  }
+}
+
 .hidden {
   display: none;
 }
-.navbar {
+.navbar-nav {
   .welcome-msg-area {
     margin: auto 1.5rem;
     color: rgba(0, 0, 0, 0.5);
+  }
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  #bookmark-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
   }
 }
 
@@ -39,13 +103,11 @@ input {
   object-fit: cover;
 }
 
-// #top-slide {
-// }
 .card img {
   width: 18rem;
   margin: 2rem;
   height: 12rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 #popular,
@@ -124,7 +186,7 @@ input {
   .carousel-indicators li {
     width: 1.5rem;
     height: 1.5rem;
-    background-color: lightblue;
+    background-color: rgb(206, 253, 255);
     border-radius: 50%;
     position: relative;
     top: 5rem;
@@ -132,7 +194,7 @@ input {
   .item {
     background-color: lightblue;
     padding: 2rem;
-    border-radius: 5rem;
+    border-radius: 1rem;
     height: 30rem;
     img {
       object-fit: cover;
@@ -165,8 +227,8 @@ input {
     border-radius: 1rem;
   }
   img {
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+    // border-bottom-right-radius: 0;
+    // border-bottom-left-radius: 0;
     object-fit: cover;
   }
   a {
@@ -338,7 +400,7 @@ input {
     float: right;
     position: absolute;
     right: 1rem;
-    bottom: .5rem;
+    bottom: 0.5rem;
   }
 }
 
@@ -433,5 +495,3 @@ input {
     color: darkgrey;
   }
 }
-
-

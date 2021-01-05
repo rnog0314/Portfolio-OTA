@@ -33,12 +33,12 @@ public class ProductService {
 	private final int RECORDS = 9;
 
 	/**
-	 * 全ての商品レコードを取得
+	 * 10個の商品レコードを取得
 	 *
 	 * @return
 	 */
 	public List<Product> findAll() {
-		return productRepos.findAll();
+		return productRepos.findAll().subList(1, 11);
 	}
 
 	/**
