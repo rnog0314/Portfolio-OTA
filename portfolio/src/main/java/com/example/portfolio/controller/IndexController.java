@@ -60,12 +60,13 @@ public class IndexController {
 
 /* TODO
   - トップスライダー画像を画質の良いものに変更
-  - Admin画面でのカレンダー確認(DBとの連動。Yutube参考)
+  - Admin画面でのカレンダー確認(DBとの連動。Youtube参考)
   - 商品詳細ページにGoogleマップ
   - 行き先詳細ページにYouTube
-  - 
+  - OAuth認証
   - 検索結果のカード押下で詳細ページへ
   - JSファイルの分離
+  - Admin画面の作り込み
 */
 
 /* 残りの作成工程
@@ -73,6 +74,5 @@ public class IndexController {
   - 統合テスト(統合試験仕様書をページごとに簡単に作成の上、試験)
   - README作成
   - AWSとDockerを使ってデプロイ
-  - OAuth実装
-  -
+  - ER図作成
 */
