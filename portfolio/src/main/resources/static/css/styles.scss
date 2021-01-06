@@ -495,3 +495,26 @@ input {
     color: darkgrey;
   }
 }
+
+/* アドミン画面 */
+
+// サイドバー
+#sidebar {
+  color: grey;
+  font-size: 1.5rem;
+  // text-align: left;
+  // border: 1px solid lightgrey;
+  border-radius: .5rem;
+  padding: .5rem;
+  // align-items: none;
+  a {
+    color: grey;
+  }
+}
+.navbar-nav.sidebar {
+  align-items: flex-start;
+}
+.col-3.sidebar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+  border-radius: .5rem;
+}

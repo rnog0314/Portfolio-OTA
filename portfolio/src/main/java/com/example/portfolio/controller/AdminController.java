@@ -29,6 +29,18 @@ public class AdminController {
     return "admin/login";
   }
 
+  @PostMapping(value = "/login")
+  @ResponseBody
+  public Boolean goHome(@RequestBody AdminForm f) {
+    Boolean bool = false;
+    Admin admin = adminService.findByAdminNameAndPassword(f.getAdminName(), f.getPassword());
+    if (admin != null) {
+      adminService.setAdminSession(admin);
+      bool = true;
+    }
+    return bool;
+  }
+
   @GetMapping(value = "/home")
   public String index(Model m) {
     if (!adminSession.isLogined()) {
@@ -37,19 +49,14 @@ public class AdminController {
     Admin admin = adminService.findById(adminSession.getId());
     m.addAttribute("admin", admin);
     m.addAttribute("adminSession", adminSession);
-    return "admin/index";
+    return "admin/home";
   }
 
-  @PostMapping(value = "/login")
-  @ResponseBody
-  public Boolean goHomePage(@RequestBody AdminForm f) {
-    Boolean bool = false;
-    Admin admin = adminService.findByAdminNameAndPassword(f.getAdminName(), f.getPassword());
-    if (admin != null) {
-      adminService.setAdminSession(admin);
-      bool = true;
-    }
-    return bool;
+  @GetMapping(value = "/account")
+  public String getMethodName(Model m) {
+    Admin admin = adminService.findById(adminSession.getId());
+    m.addAttribute("admin", admin);
+    return "admin/account";
   }
 
   @PostMapping(value = "/modify")
@@ -61,7 +68,7 @@ public class AdminController {
     m.addAttribute("admin", admin);
     m.addAttribute("adminSession", adminSession);
     m.addAttribute("completeMsg", completeMsg);
-    return "admin/index";
+    return "admin/account";
   }
 
 }

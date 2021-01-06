@@ -64,7 +64,6 @@ public class IndexController {
   - 商品詳細ページにGoogleマップ
   - 行き先詳細ページにYouTube
   - OAuth認証
-  - 検索結果のカード押下で詳細ページへ
   - JSファイルの分離
   - Admin画面の作り込み
 */
