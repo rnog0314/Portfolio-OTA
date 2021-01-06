@@ -137,6 +137,23 @@
 
       /* ブックマークボタン押下時 */
       $('#bookmark-btn').on('click', function () {
+        if ($('#participantsNumber').val() == 0) {
+          bootbox.alert({
+            message: 'You need to input more than 1 person to add to your Bookmark',
+            backdrop: true,
+            centerVertical: true
+          });
+          return false;
+        }
+        let bool = /*[[${loginSession.isLogined()}]]*/ '';
+        if (!bool) {
+          bootbox.alert({
+            message: 'Please login to add to your BOOKMARK',
+            backdrop: true,
+            centerVertical: true
+          });
+          return false;
+        }
         let productId = $('#selectedProductId').val();
         $.ajax({
           type: 'POST',
@@ -158,6 +175,23 @@
 
       /* 予約ボタン押下時*/
       $('#book-btn').on('click', function () {
+        if ($('#participantsNumber').val() == 0) {
+          bootbox.alert({
+            message: 'You need to input more than 1 person to book',
+            backdrop: true,
+            centerVertical: true
+          });
+          return false;
+        }
+        let bool = /*[[${loginSession.isLogined()}]]*/ '';
+        if (!bool) {
+          bootbox.alert({
+            message: 'Please login to book',
+            backdrop: true,
+            centerVertical: true
+          });
+          return false;
+        }
         var box = bootbox.confirm({
           title: "Please make sure your order is correct.",
           message: "<form id='reservConf' action='/portfolio/reservation/reserve' method='POST' name='reservationForm'>\
