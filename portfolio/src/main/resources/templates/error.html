@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio OTA</title>
+  <!-- ↓Bootstrap CSSの読み込み -->
+  <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+  <!-- ↓webjars用font-awesomeの読み込み -->
+  <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.15.1/css/all.min.css}">
+  <!-- ↓font-awesome-animationの読み込み -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css"
+    type="text/css" media="all" />
+  <!-- ↓CSSの読み込み -->
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+  <!-- ↓jQueryUIのCSS読み込み -->
+  <link rel="stylesheet" href="/css/custom-theme/jquery-ui-1.10.0.custom.css">
+  <style>
+    i {
+      position: absolute;
+      top: 5rem;
+      color: lightgrey;
+    }
+    h1 {
+      font-size: 4rem;
+    }
+    a {
+      line-height: 2rem;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- header挿入 -->
+  <!-- <header th:insert="fragments/header::header"></header> -->
+  <main>
+    <div class="d-flex justify-content-center text-center align-items-center" style="height: 100vh;">
+      <div>
+        <h1 id="error-title">Oopus!<br> Something went wrong!</h1>
+        <i class="far fa-10x fa-question-circle" style=""></i>
+        <a class="btn btn-info" th:href="@{/portfolio}">Go home page</a>
+      </div>
+    </div>
+  </main>
+  <!-- footer -->
+  <!-- <footer th:insert="fragments/footer::footer"></footer> -->
+  <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+
+    /*]]>*/
+  </script>
+</body>
+
+</html>

@@ -64,6 +64,7 @@ public class IndexController {
   - 商品詳細ページにGoogleマップ
   - 行き先詳細ページにYouTube
   - システムエラーページ作成
+  - 
   - 検索結果のカード押下で詳細ページへ
 */
 
