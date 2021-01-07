@@ -11,15 +11,15 @@
     <title>Portfolio OTA Admin</title>
   </head>
 
-  <body id="page-top">
+  <body id="account">
     <header th:insert="admin/header::header"></header>
     <!-- Page Wrapper -->
-    <div id="wrapper" class="container">
+    <div id="wrapper" class="container mt-5">
       <div class="row">
         <div class="col-3" th:insert="admin/sidebar::sidebar"></div>
         <!-- Start of Content -->
-        <div class="col-9 content-box w-100" id="admin-home" style="display: block;">
-          <div class="container" style="padding: 10rem;">
+        <div class="col-9 content-box">
+          <div class="container" >
             <h2 class="page-title">Your Account</h2>
             <form th:action="@{/portfolio/admin/modify}" method="post">
               <!-- <div class="img-area">

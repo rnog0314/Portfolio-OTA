@@ -511,8 +511,9 @@ input {
 #sidebar {
   color: grey;
   font-size: 1.5rem;
-  border-radius: .5rem;
-  padding: .5rem;
+  border-radius: 0.5rem;
+  padding-left: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
 }
 
 #sidebar a {
@@ -521,9 +522,46 @@ input {
 
 .navbar-nav.sidebar {
   align-items: flex-start;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .col-3.sidebar {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+  border-radius: 0.5rem;
+}
+
+#home .card-title h1 {
+  font-size: 1.5rem;
+}
+
+#home .card-text p {
+  font-size: 1rem;
+}
+
+#home .card-margin {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+  padding: 1rem 2rem 1rem 2rem;
+  border-radius: 0.5rem;
+}
+
+#home .card-margin a {
+  color: grey;
+}
+
+#home .card-margin a:hover {
+  opacity: 0.9;
+}
+
+#account .btn-area {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#account .content-box {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
   border-radius: .5rem;
+  padding-top: 2rem;
 }
