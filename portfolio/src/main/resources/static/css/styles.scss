@@ -63,6 +63,7 @@ button {
   }
 }
 
+// 全体
 .hidden {
   display: none;
 }
@@ -96,6 +97,13 @@ input {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+// pagination.html
+.page-link {
+  color: grey !important;
+}
+
+// index.html
 
 #top-slide .carousel-item .img-fluid {
   width: 100vw;
@@ -505,6 +513,7 @@ input {
   border-radius: 0.5rem;
   padding-left: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+  margin-top: 3rem;
   a {
     color: grey;
   }

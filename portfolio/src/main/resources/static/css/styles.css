@@ -107,6 +107,10 @@ input {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.page-link {
+  color: grey !important;
+}
+
 #top-slide .carousel-item .img-fluid {
   width: 100vw;
   height: 600px;
@@ -514,6 +518,7 @@ input {
   border-radius: 0.5rem;
   padding-left: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+  margin-top: 3rem;
 }
 
 #sidebar a {
