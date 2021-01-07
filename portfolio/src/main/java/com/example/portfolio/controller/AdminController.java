@@ -64,7 +64,7 @@ public class AdminController {
     adminService.updateAdmin(adminForm);
     Admin admin = adminService.findById(adminSession.getId());
     adminService.setAdminSession(admin);
-    Boolean completeMsg = true;
+    boolean completeMsg = true;
     m.addAttribute("admin", admin);
     m.addAttribute("adminSession", adminSession);
     m.addAttribute("completeMsg", completeMsg);
