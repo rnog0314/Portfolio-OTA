@@ -62,8 +62,8 @@ public class ReservationController {
 
   @PostMapping(value = "/delete")
   @ResponseBody
-  public Boolean delete(@RequestBody Integer reservationId) throws Exception {
-    Boolean bool = false;
+  public boolean delete(@RequestBody Integer reservationId) throws Exception {
+    boolean bool = false;
     int result = reservationService.delete(reservationId);
     if (result > 0) {
       bool = true;
@@ -73,9 +73,9 @@ public class ReservationController {
 
   @PostMapping(value = "/sendEmail")
   @ResponseBody
-  public Boolean sendeEmail(@RequestBody String email) {
+  public boolean sendeEmail(@RequestBody String email) {
 
-    Boolean bool = true;
+    boolean bool = true;
     try {
       emailSender.send(email);
       return bool;

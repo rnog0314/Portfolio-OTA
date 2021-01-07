@@ -46,8 +46,8 @@ public class AdminProductController {
 
   @PostMapping(value = "/delete")
   @ResponseBody
-  public Boolean delete(@RequestBody String[] checkedIdList) {
-    Boolean bool = false;
+  public boolean delete(@RequestBody String[] checkedIdList) {
+    boolean bool = false;
     try {
       for (String id : checkedIdList) { // 配列を拡張for文でループしてそれぞれDBから論理削除する
         productService.delete(Integer.parseInt(id)); // パラメータの型はStringであるためparseIntする

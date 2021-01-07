@@ -563,3 +563,45 @@ input {
     padding-top: 2rem;
   }
 }
+
+// admin/user.html
+#user {
+  tbody tr td {
+    vertical-align: middle;
+  }
+  table {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+    padding-top: 2rem;
+    img {
+      border-radius: .25rem;
+    }
+  }
+}
+
+// admin/product.html
+#product {
+  tbody tr td {
+    vertical-align: middle;
+  }
+  table {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+    padding-top: 2rem;
+    img {
+      border-radius: .25rem;
+    }
+  }
+}
+
+// admin/reservation.html
+#reservation {
+  tbody tr td {
+    vertical-align: middle;
+  }
+  table {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+    padding-top: 2rem;
+    img {
+      border-radius: .25rem;
+    }
+  }
+}

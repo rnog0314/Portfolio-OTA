@@ -44,8 +44,8 @@ public class BookmarkController {
 
   @PostMapping(value = "/add")
   @ResponseBody
-  public Boolean add(@RequestBody Integer productId) {
-    Boolean bool = false;
+  public boolean add(@RequestBody Integer productId) {
+    boolean bool = false;
     int result = bookmarkService.add(productId);
     if (result > 0) {
       bool = true;
@@ -55,8 +55,8 @@ public class BookmarkController {
 
   @PostMapping(value = "/delete")
   @ResponseBody
-  public Boolean delete(@RequestBody Integer productId) throws Exception {
-    Boolean bool = false;
+  public boolean delete(@RequestBody Integer productId) throws Exception {
+    boolean bool = false;
     int result = bookmarkService.delete(productId);
     if (result > 0) {
       bool = true;
