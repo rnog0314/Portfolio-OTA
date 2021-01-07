@@ -11,28 +11,27 @@
   <title>Portfolio OTA Admin</title>
 </head>
 
-<body id="page-top">
+<body id="product">
   <header th:insert="admin/header::header"></header>
   <!-- Page Wrapper -->
-  <div id="wrapper">
-    <header th:insert="admin/sidebar::sidebar"></header>
-    <!-- Start of Content -->
-    <div class="container">
-      <h2 class="page-title">Products</h2>
-      <!-- <form th:action="@{/portfolio/admin/product/modify}" method="POST"> -->
+  <div id="wrapper" class="container">
+    <div class="row">
+      <header class="col-3" th:insert="admin/sidebar::sidebar"></header>
+      <div class="col-9 content-box">
+        <h2 class="page-title">Products</h2>
         <table class="table table-hover table-bordered table-responsive-md text-center"
           th:if="${products.getTotalPages() > 0}">
           <thead class="thead-light">
             <tr>
-              <th scope="col" style="width: 15%;">
+              <th scope="col" style="width: 10%;">
                 <label>Select All
                   <input class="ml-2" type="checkbox" name="allChecked" id="checkbox-all">
                 </label>
               </th>
-              <th scope="col" style="width: 20%;">ID</th>
-              <th scope="col" style="width: 20%;">Image</th>
-              <th scope="col" style="width: 15%;">Title</th>
-              <th scope="col" style="width: 15%;">Price</th>
+              <th scope="col" style="width: 10%;">ID</th>
+              <th scope="col" style="width: 25%;">Image</th>
+              <th scope="col" style="width: 35%;">Title</th>
+              <th scope="col" style="width: 20%;">Price</th>
             </tr>
           </thead>
           <tbody id="boxes">
@@ -48,11 +47,9 @@
                 <img class="w-100" style="height: auto;" th:src="@{{imagePath} (imagePath = *{productImage})}">
               </td>
               <td class="normal" th:text="*{productName}"></td>
-              <td class="modify hidden"><span><input type="text" name="productName" th:value="*{productName}"
-                    th:placeholder="*{productName}" required></span></td>
+              <!-- <td class="modify hidden"><span><input type="text" name="productName" th:value="*{productName}" th:placeholder="*{productName}" required></span></td> -->
               <td class="normal" th:text="*{price}"></td>
-              <td class="modify hidden"><span><input type="text" name="price" th:value="*{price}"
-                    th:placeholder="*{price}" required></span></td>
+              <!-- <td class="modify hidden"><span><input type="text" name="price" th:value="*{price}" th:placeholder="*{price}" required></span></td> -->
             </tr>
           </tbody>
         </table>
@@ -68,8 +65,7 @@
                 <span aria-hidden="true">&lt;</span>
               </a>
             </li>
-            <li class="page-item" th:with="start = 1, end = ${products.getTotalPages()}"
-              th:each="pageNumber : ${pageNumbers}">
+            <li class="page-item" th:with="start = 1, end = ${products.getTotalPages()}" th:each="pageNumber : ${pageNumbers}">
               <a class="page-link" th:href="@{/portfolio/admin/product/{page} (page = ${pageNumber})}" th:text="${pageNumber}"></a>
             </li>
             <li class="page-item" th:if="${products.getTotalPages() > products.getNumber() + 1 }">
@@ -89,17 +85,14 @@
             <div class="btn-area">
               <button id="delete-btn" class="btn btn-warning mr-3" disabled>Delete</button>
               <!-- <button id="modify-btn" class="btn mx-2 btn-info" type="button">Modify</button>
-              <button id="cancel-btn" class="btn mx-2 btn-warning hidden" type="button">Cancel</button>
-              <button id="submit-btn" class="btn mx-2 btn-primary hidden" type="submit">Submit</button> -->
+                  <button id="cancel-btn" class="btn mx-2 btn-warning hidden" type="button">Cancel</button>
+                  <button id="submit-btn" class="btn mx-2 btn-primary hidden" type="submit">Submit</button> -->
             </div>
           </div>
         </div>
-      <!-- </form> -->
-    </div>
-    <!-- End of Content -->
-
+      </div><!-- col -->
+    </div><!-- row -->
   </div>
-  <!-- End of Page Wrapper -->
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
