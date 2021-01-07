@@ -571,6 +571,10 @@ input {
   padding-top: 2rem;
 }
 
+#user tbody tr td {
+  vertical-align: middle;
+}
+
 #user table {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
   padding-top: 2rem;
@@ -590,5 +594,18 @@ input {
 }
 
 #product table img {
+  border-radius: .25rem;
+}
+
+#reservation tbody tr td {
+  vertical-align: middle;
+}
+
+#reservation table {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+  padding-top: 2rem;
+}
+
+#reservation table img {
   border-radius: .25rem;
 }

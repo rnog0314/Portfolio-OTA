@@ -11,14 +11,14 @@
   <title>Portfolio OTA Admin</title>
 </head>
 
-<body id="page-top">
+<body id="reservation">
   <header th:insert="admin/header::header"></header>
   <!-- Page Wrapper -->
-  <div id="wrapper">
-    <header th:insert="admin/sidebar::sidebar"></header>
-    <!-- Start of Content -->
-    <div class="container">
-      <h2 class="page-title">reservations</h2>
+  <div id="wrapper" class="container">
+    <div class="row">
+      <header class="col-3" th:insert="admin/sidebar::sidebar"></header>
+      <div class="col-9">
+        <h2 class="page-title">reservations</h2>
         <table class="table table-hover table-bordered table-responsive-md text-center"
           th:if="${reservations.getTotalPages() > 0}">
           <thead class="thead-light">
@@ -48,32 +48,35 @@
               </a>
             </li>
             <li class="page-item" th:if="${reservations.getNumber() > 1}">
-              <a th:href="@{/portfolio/admin/reservation/{page} (page = ${reservations.getNumber()})}" class="page-link" aria-label="Previous">
+              <a th:href="@{/portfolio/admin/reservation/{page} (page = ${reservations.getNumber()})}" class="page-link"
+                aria-label="Previous">
                 <span aria-hidden="true">&lt;</span>
               </a>
             </li>
             <li class="page-item" th:with="start = 1, end = ${reservations.getTotalPages()}"
               th:each="pageNumber : ${pageNumbers}">
-              <a class="page-link" th:href="@{/portfolio/admin/reservation/{page} (page = ${pageNumber})}" th:text="${pageNumber}"></a>
+              <a class="page-link" th:href="@{/portfolio/admin/reservation/{page} (page = ${pageNumber})}"
+                th:text="${pageNumber}"></a>
             </li>
             <li class="page-item" th:if="${reservations.getTotalPages() > reservations.getNumber() + 1 }">
-              <a th:href="@{/portfolio/admin/reservation/{page} (page = ${reservations.getNumber() + 2})}" class="page-link" aria-label="Next">
+              <a th:href="@{/portfolio/admin/reservation/{page} (page = ${reservations.getNumber() + 2})}"
+                class="page-link" aria-label="Next">
                 <span aria-hidden="true">&gt;</span>
               </a>
             </li>
             <li class="page-item">
-              <a th:href="@{/portfolio/admin/reservation/{page} (page = ${reservations.getTotalPages()})}" class="page-link" aria-label="Next">
+              <a th:href="@{/portfolio/admin/reservation/{page} (page = ${reservations.getTotalPages()})}"
+                class="page-link" aria-label="Next">
                 <span aria-hidden="true">&gt;&gt;</span>
               </a>
             </li>
           </ul>
         </nav>
+      </div>
     </div>
-    <!-- End of Content -->
-
   </div>
   <!-- End of Page Wrapper -->
-
+  
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
