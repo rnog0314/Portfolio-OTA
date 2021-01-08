@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Portfolio OTA Admin</title>
+</head>
+
+<body id="testimonials">
+  <header th:insert="admin/header::header"></header>
+  <!-- Page Wrapper -->
+  <div id="wrapper" class="container">
+    <div class="row">
+      <header class="col-3" th:insert="admin/sidebar::sidebar"></header>
+      <div class="col-9 content-box">
+        <h2>Testimonials</h2>
+        <div class="row">
+          <div class="col-md-4" th:each="testimonial: ${testimonials}" th:object="${testimonial}">
+            <div class="">
+              <div class="card">
+                <div class="text-center">
+                  <img th:src="@{{imagePath} (imagePath = *{testimonialImage})}" alt="" class="card-img circle-rounded">
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title" th:text="*{testimonialTitle}"></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- col -->
+    </div><!-- row -->
+  </div>
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <footer th:insert="admin/footer::footer"></footer>
+  <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    /*]]>*/
+  </script>
+</body>
+
+</html>

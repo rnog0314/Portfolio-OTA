@@ -190,6 +190,17 @@ input {
   outline: none;
 }
 
+#testimonial .owl-stage-outer {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+#testimonial .owl-item {
+  margin: 0;
+  justify-content: center;
+  display: flex;
+}
+
 #testimonial .img-fluid {
   width: 100%;
 }
@@ -204,9 +215,8 @@ input {
 }
 
 #testimonial .item {
-  background-color: lightblue;
   padding: 2rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   height: 30rem;
 }
 
@@ -221,6 +231,12 @@ input {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 6;
   overflow: hidden;
+}
+
+#testimonial .card.item {
+  width: 90%;
+  padding: 2rem 0.5rem 2rem 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
 }
 
 .row-eq-height {
@@ -513,6 +529,7 @@ input {
 
 /* アドミン画面 */
 #sidebar {
+  background: #fff;
   color: grey;
   font-size: 1.5rem;
   border-radius: 0.5rem;
@@ -567,7 +584,7 @@ input {
 
 #account .content-box {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   padding-top: 2rem;
 }
 
@@ -581,7 +598,7 @@ input {
 }
 
 #user table img {
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 #product tbody tr td {
@@ -594,7 +611,7 @@ input {
 }
 
 #product table img {
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 #reservation tbody tr td {
@@ -607,5 +624,22 @@ input {
 }
 
 #reservation table img {
-  border-radius: .25rem;
+  border-radius: 0.25rem;
+}
+
+#testimonials .card {
+  border: none;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+  height: 20rem;
+}
+
+#testimonials .card img {
+  width: 10rem;
+  margin: 0;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 50%;
 }
