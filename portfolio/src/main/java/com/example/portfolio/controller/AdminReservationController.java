@@ -27,7 +27,7 @@ public class AdminReservationController {
   private ReservationService reservationService;
 
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
-  public String getMethodName(@PathVariable(name = "page") Optional<Integer> page, Model m, Reservation u) {
+  public String init(@PathVariable(name = "page") Optional<Integer> page, Model m, Reservation u) {
     Page<Reservation> reservations = reservationService.findPaginatedList(page);
     int lastPage = reservations.getTotalPages();
     if (lastPage > 0) {
