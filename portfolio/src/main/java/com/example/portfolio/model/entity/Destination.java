@@ -24,7 +24,7 @@ public class Destination {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "destination_id")
-  private Integer destinationId;
+  private int destinationId;
 
   @Column(name = "destination_name")
   private String destinationName;

@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 public class BookmarkDto {
 
   @Id
-  private Integer id;
-  private Integer userId;
-  private Integer productId;
+  private int id;
+  private int userId;
+  private int productId;
   private String productImage;
   private String productName;
 

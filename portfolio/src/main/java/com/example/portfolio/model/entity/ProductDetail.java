@@ -19,10 +19,10 @@ public class ProductDetail {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "product_detail_id")
-  private Integer productDetailId;
+  private int productDetailId;
 
   @Column(name = "product_id")
-  private Integer productId;
+  private int productId;
 
   @Column(name = "image")
   private String image;
@@ -34,6 +34,6 @@ public class ProductDetail {
   private String articleText;
 
   @Column(name = "price")
-  private Integer price;
+  private int price;
 
 }

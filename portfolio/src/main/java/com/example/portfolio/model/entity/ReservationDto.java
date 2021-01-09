@@ -14,11 +14,11 @@ import lombok.NoArgsConstructor;
 public class ReservationDto {
 
   @Id
-  private Integer id;
-  private Integer productId;
+  private int id;
+  private int productId;
   private String productImage;
-  private Integer count;
-  private Integer price;
+  private int count;
+  private int price;
   private String productName;
   private String date;
 
