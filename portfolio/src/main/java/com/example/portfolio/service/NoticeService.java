@@ -25,4 +25,12 @@ public class NoticeService {
     return noticeRepos.findAll();
   }
 
+  public Notice findById(int id) {
+    return noticeRepos.findById(id).get();
+  }
+
+  public int update(Notice n) {
+    return noticeRepos.update(n.getId(), n.getTitle(), n.getText());
+  }
+
 }

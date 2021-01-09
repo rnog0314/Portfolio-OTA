@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Portfolio OTA Admin</title>
+</head>
+
+<body id="notice-detail">
+  <header th:insert="admin/header::header"></header>
+  <!-- Page Wrapper -->
+  <div id="wrapper" class="container">
+    <div class="row">
+      <header class="col-3" th:insert="admin/sidebar::sidebar"></header>
+      <div class="col-9">
+        <h2 class="page-title">notice</h2>
+        <div class="card" th:object="${notice}">
+          <h2 class="card-title normal"><span th:text="*{title}"></span></h2>
+          <h2 class="card-title modify hidden"><span><input type="text" id="newTitle" th:value="*{title}"
+                required></span></h2>
+          <p class="card-text normal"><span th:text="*{text}"></span></p>
+          <p class="card-text modify hidden"><span><textarea id="newText" th:plceholder="*{text}" class="w-100" rows="5" required></textarea></span>
+          </p>
+          <small class="card-text text-right"
+            th:text="*{{#dates.format(new java.util.Date(createdAt), 'yyyy-MM-dd hh:mm')}}"></small>
+          <div class="btn-area">
+            <button id="modify-btn" class="btn btn-info" type="button">Modify</button>
+            <button id="cancel-btn" class="btn btn-secondary hidden" type="button">Cancel</button>
+            <button id="submit-btn" class="btn btn-info hidden" type="button">Submit</button>
+            <input type="hidden" id="ID" th:value="*{id}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Page Wrapper -->
+  <footer th:insert="admin/footer::footer"></footer>
+  <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function () {
+      /* 修正ボタン押下時 */
+      $('#modify-btn').on('click', function () {
+        $('.normal').addClass('hidden');
+        $('.modify').removeClass('hidden');
+        $('#modify-btn').addClass('hidden');
+        $('#cancel-btn').removeClass('hidden');
+        $('#submit-btn').removeClass('hidden');
+      });
+
+      /*キャンセルボタン押下時*/
+      $('#cancel-btn').on('click', function () {
+        $('.normal').removeClass('hidden');
+        $('.modify').addClass('hidden');
+        $('#modify-btn').removeClass('hidden');
+        $('#cancel-btn').addClass('hidden');
+        $('#submit-btn').addClass('hidden');
+      });
+
+      /* 送信ボタン押下時 */
+      $('#submit-btn').on('click', function () {
+        let jsonString = {
+          "id": $('#ID').val(),
+          "title": $('#newTitle').val(),
+          "text": $('#newText').val()
+        }
+        $.ajax({
+          url: '/portfolio/admin/notice/modify',
+          type: "POST",
+          data: JSON.stringify(jsonString),
+          contentType: 'application/json',
+          dataType: 'json'
+        }).done(function () {
+          bootbox.alert({
+            message: "This notice has been modified",
+            backdrop: true,
+            centerVertical: true,
+            callback: function () {
+              location.reload();
+            }
+          })
+        }).fail(function () {
+          console.log('Error: ajax通信に失敗しました');
+        }).always(function () {
+          console.log("ajax通信しました");
+        })
+      })
+
+    })
+    /*]]>*/
+  </script>
+</body>
+
+</html>

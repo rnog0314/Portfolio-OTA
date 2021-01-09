@@ -26,10 +26,10 @@
               <th scope="col">Title</th>
             </tr>
           </thead>
-          <tbody id="boxes">
-            <tr th:each="notice : ${notices}" th:object="${notice}">
+          <tbody>
+            <tr id="boxes" th:each="notice : ${notices}" th:object="${notice}">
               <td th:text="*{#dates.format(new java.util.Date(createdAt), 'yyyy-MM-dd hh:mm')}"></td>
-              <td th:text="*{title}"></td>
+              <td ><a th:href="@{/portfolio/admin/notice/{id} (id=*{id})}" th:text="*{title}" style="display: block;"></a></td>
             </tr>
           </tbody>
         </table>
