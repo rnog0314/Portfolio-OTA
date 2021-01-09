@@ -643,3 +643,17 @@ input {
   object-fit: cover;
   border-radius: 50%;
 }
+
+#notice table {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+}
+
+#notice a {
+  color: grey;
+}
+
+#notice-detail .card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+  padding: 1rem;
+  border-radius: .5rem;
+}

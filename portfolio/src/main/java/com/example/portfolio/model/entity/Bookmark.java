@@ -22,13 +22,13 @@ public class Bookmark {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
-  private Integer id;
+  private int id;
 
   @Column(name = "user_id")
-  private Integer userId;
+  private int userId;
 
   @Column(name = "product_id")
-  private Integer productId;
+  private int productId;
 
   @ManyToOne
   @JoinColumn(name = "product_id", insertable = false, updatable = false)
@@ -38,7 +38,7 @@ public class Bookmark {
   @JoinColumn(name = "user_id", insertable = false, updatable = false)
   private User user;
 
-  public Bookmark(Integer userId, Integer productId) {
+  public Bookmark(int userId, int productId) {
     this.userId = userId;
     this.productId = productId;
   }

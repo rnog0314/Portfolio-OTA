@@ -19,10 +19,10 @@ public class CategoryDetail {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "category_detail_id")
-  private Integer categoryDetailId;
+  private int categoryDetailId;
 
   @Column(name = "category_id")
-  private Integer categoryId;
+  private int categoryId;
 
   @Column(name = "image1")
   private String image1;

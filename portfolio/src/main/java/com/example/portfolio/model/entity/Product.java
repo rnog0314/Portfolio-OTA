@@ -27,22 +27,22 @@ public class Product {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "product_id")
-  private Integer productId;
+  private int productId;
 
   @Column(name = "product_name")
   private String productName;
 
   @Column(name = "category_id")
-  private Integer categoryId;
+  private int categoryId;
 
   @Column(name = "product_image")
   private String productImage;
 
   @Column(name = "destination_id")
-  private Integer destinationId;
+  private int destinationId;
 
   @Column(name = "price")
-  private Integer price;
+  private int price;
 
   @Column(name = "delete_flag")
   private boolean deleteFlag;

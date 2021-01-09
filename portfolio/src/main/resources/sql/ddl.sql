@@ -129,8 +129,21 @@ CREATE TABLE admin (
   -- img BYTEA DEFAULT ''
 )
 
-DROP TABLE admin;
+-- MySQLの「ON UPDATE TIMESTAMP」はPOSTGRESではこの関数を設定しておいて、
+CREATE OR REPLACE FUNCTION trigger_set_timestamp()
+RETURNS TRIGGER AS $$
+  BEGIN NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE 'plpgsql';
 
-INSERT INTO admin (admin_name, password) VALUES ('testAdmin', 'password');
+CREATE TABLE notices (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(100) NOT NULL,
+  text VARCHAR(2000) NOT NULL,
+  visible_flag BOOLEAN DEFAULT 'TRUE',
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_DATE,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_DATE
+)
 
-SELECT * FROM admin;
+DROP table notices;

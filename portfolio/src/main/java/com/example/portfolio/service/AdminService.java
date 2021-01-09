@@ -28,20 +28,19 @@ public class AdminService {
     return adminRepos.findById(id).get();
   }
 
-public void updateAdmin(AdminForm adminForm) {
-  int id = adminSession.getId();
-  String adminName = adminForm.getAdminName();
-  String password = adminForm.getPassword();
-  adminRepos.updateAdmin(id, adminName, password);
-}
+  public void updateAdmin(AdminForm adminForm) {
+    int id = adminSession.getId();
+    String adminName = adminForm.getAdminName();
+    String password = adminForm.getPassword();
+    adminRepos.updateAdmin(id, adminName, password);
+  }
 
-public void setAdminSession(Admin admin) {
+  public void setAdminSession(Admin admin) {
 
-  adminSession.setId(admin.getId());
-  adminSession.setPassword(admin.getPassword());
-  adminSession.setAdminName(admin.getAdminName());
-  adminSession.setLogined(true);
-}
-
+    adminSession.setId(admin.getId());
+    adminSession.setPassword(admin.getPassword());
+    adminSession.setAdminName(admin.getAdminName());
+    adminSession.setLogined(true);
+  }
 
 }

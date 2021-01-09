@@ -19,7 +19,7 @@ public class Testimonial {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "testimonial_id")
-  private Integer testimonialId;
+  private int testimonialId;
 
   @Column(name = "testimonial_image")
   private String testimonialImage;
@@ -31,7 +31,7 @@ public class Testimonial {
   private String testimonialText;
 
   @Column(name = "testimonial_review")
-  private Integer testimonialReview;
+  private int testimonialReview;
 
   @Column(name = "delete_flag")
   private boolean deleteFlag;

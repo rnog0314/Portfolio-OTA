@@ -1,5 +1,7 @@
 package com.example.portfolio.model.entity;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,19 +14,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "admin")
+@Table(name = "notices")
 @Getter @Setter @NoArgsConstructor
-public class Admin {
+public class Notice {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
   private int id;
 
-  @Column(name = "admin_name")
-  private String adminName;
+  @Column(name = "title")
+  private String title;
 
-  @Column(name = "password")
-  private String password;
+  @Column(name = "text")
+  private String text;
+
+  @Column(name = "img")
+  private byte[] img;
+
+  @Column(name = "created_at")
+  private Timestamp createdAt;
+
+  @Column(name = "updated_at")
+  private Timestamp updatedAt;
 
 }

@@ -29,7 +29,7 @@ public class User {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "user_id")
   @Expose
-  private Integer userId;
+  private int userId;
 
   @Column(name = "user_name")
   @Expose
