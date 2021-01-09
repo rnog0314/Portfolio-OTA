@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio OTA</title>
+</head>
+
+<body>
+  <!-- header挿入 -->
+  <header th:insert="fragments/header::header"></header>
+  <main role="main">
+    <section id="notices">
+      <div class="container">
+        <h2 class="page-title">Notices</h2>
+        <table class="table table-hover table-bordered table-responsive-md text-center mb-5"
+          th:if="${notices.size() > 0}">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="boxes" th:each="notice : ${notices}" th:object="${notice}">
+              <td th:text="*{#dates.format(new java.util.Date(createdAt), 'yyyy-MM-dd hh:mm')}"></td>
+              <td><a href="#" th:text="*{title}" style="display: block;"></a>
+              </td>
+              <input type="hidden" class="hiddenText" th:value="*{id}">
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+  <!-- footer -->
+  <footer th:insert="fragments/footer::footer"></footer>
+
+  <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function () {
+
+    });
+
+    /*]]>*/
+  </script>
+</body>
+
+</html>

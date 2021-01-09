@@ -29,8 +29,8 @@ public class Notice {
   @Column(name = "text")
   private String text;
 
-  @Column(name = "img")
-  private byte[] img;
+  @Column(name = "visible_flag")
+  private boolean visibleFlag;
 
   @Column(name = "created_at")
   private Timestamp createdAt;
