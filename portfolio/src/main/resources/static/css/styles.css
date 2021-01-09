@@ -527,6 +527,14 @@ input {
   color: darkgrey;
 }
 
+#notices table {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+}
+
+#notices a {
+  color: grey;
+}
+
 /* アドミン画面 */
 #sidebar {
   background: #fff;

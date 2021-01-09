@@ -3,7 +3,6 @@ package com.example.portfolio.controller;
 import java.util.List;
 
 import com.example.portfolio.model.entity.Notice;
-import com.example.portfolio.model.session.AdminSession;
 import com.example.portfolio.service.NoticeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 @RequestMapping("/portfolio/admin/notice")
 public class AdminNoticeController {
-
-  @Autowired
-  private AdminSession adminSession;
 
   @Autowired
   private NoticeService noticeService;

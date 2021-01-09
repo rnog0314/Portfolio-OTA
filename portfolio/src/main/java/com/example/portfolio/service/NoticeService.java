@@ -6,7 +6,6 @@ import javax.transaction.Transactional;
 
 import com.example.portfolio.model.dao.NoticeRepository;
 import com.example.portfolio.model.entity.Notice;
-import com.example.portfolio.model.session.AdminSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +17,6 @@ public class NoticeService {
   @Autowired
   private NoticeRepository noticeRepos;
 
-  @Autowired
-  private AdminSession adminSession;
-
   public List<Notice> findAll() {
     return noticeRepos.findAll();
   }
@@ -31,6 +27,10 @@ public class NoticeService {
 
   public int update(Notice n) {
     return noticeRepos.update(n.getId(), n.getTitle(), n.getText());
+  }
+
+  public List<Notice> findAllByVisibleFlagTrue() {
+    return noticeRepos.findAllByVisibleFlagTrueOrderByCreatedAt();
   }
 
 }
