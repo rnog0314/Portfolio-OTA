@@ -11,6 +11,7 @@ import com.example.portfolio.model.entity.Reservation;
 import com.example.portfolio.model.entity.ReservationDto;
 import com.example.portfolio.model.form.ReservationForm;
 import com.example.portfolio.model.session.LoginSession;
+import com.example.portfolio.utils.Utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -35,21 +36,43 @@ public class ReservationService {
   @Autowired
   private ProductService productService;
 
+  @Autowired
+  private UserService userService;
 
+  @Autowired
+  private Utils utils;
+
+  /**
+   * 予約の挿入
+   * @param f ReservationForm
+   * @return Reservation
+   */
   public Reservation reserve(ReservationForm f) {
-    Integer userId = loginSession.getUserId();
-    Integer productId = f.getProductId();
-    Integer count = f.getCount();
-    String date = f.getDate();
-    Reservation reservation = new Reservation(userId, productId, count, date);
+    int userId = loginSession.getUserId();
+    int productId = f.getProductId();
+    int count = f.getCount();
+    String title = userService.findUserNameByUserId(userId) + " : " + count + "PAX";
+    String start = f.getDate();
+    String end = utils.getEndDate(start);
+    Reservation reservation = new Reservation(userId, productId, count, start, end,title);
     return reservationRepos.save(reservation);
   }
 
-  public List<ReservationDto> getReservationList(Integer userId) {
+  /**
+   * 予約リスト取得
+   * @param userId ユーザID
+   * @return 予約リスト
+   */
+  public List<ReservationDto> getReservationList(int userId) {
     return reservationDtoRepos.getReservationList(userId);
   }
 
-  public int delete(Integer reservationId) {
+  /**
+   * 予約削除
+   * @param reservationId 予約ID
+   * @return 削除件数
+   */
+  public int delete(int reservationId) {
     try {
       return reservationRepos.deleteByReservationId(reservationId);
     } catch (IllegalArgumentException e) {
@@ -57,11 +80,24 @@ public class ReservationService {
     }
   }
 
+  /**
+   * ページネーションされた予約リスト取得
+   * @param page リクエストされたページ番号
+   * @return ページネーションされた予約リスト
+   */
   public Page<Reservation> findPaginatedList(Optional<Integer> page) {
     int currentPage = productService.getCurrentPage(page);
     Sort sort = Sort.by("id").ascending(); // ソートのルールを作成
     Pageable pageable = PageRequest.of(currentPage - 1, 10, sort); // ページネーション情報作成
     return reservationRepos.findAll(pageable);
+  }
+
+  /**
+   * 予約リストの全取得
+   * @return 全予約リスト
+   */
+  public List<Reservation> findAll() {
+    return reservationRepos.findAll();
   }
 
 }

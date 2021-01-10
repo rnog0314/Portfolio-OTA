@@ -11,7 +11,7 @@
   <title>Portfolio OTA Admin</title>
 </head>
 
-<body id="reservation">
+<body id="reservation-calendar">
   <header th:insert="admin/header::header"></header>
   <!-- Page Wrapper -->
   <div id="wrapper" class="container">
@@ -36,7 +36,7 @@
               <td th:text="*{userId}"></td>
               <td th:text="*{productId}"></td>
               <td th:text="*{count}"></td>
-              <td th:text="*{date}"></td>
+              <td th:text="*{start}"></td>
             </tr>
           </tbody>
         </table>
@@ -72,11 +72,16 @@
             </li>
           </ul>
         </nav>
+        <!-- カレンダー -->
+
+        <div class="container">
+          <div id="calendar"></div>
+        </div>
       </div>
     </div>
   </div>
   <!-- End of Page Wrapper -->
-  
+
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
@@ -85,9 +90,55 @@
   <footer th:insert="admin/footer::footer"></footer>
   <script type="text/javascript" th:inline="javascript">
     /*<![CDATA[*/
-    $(document).ready(function () {
+    document.addEventListener('DOMContentLoaded', function () {
+      var calendarEl = document.getElementById('calendar');
 
-    })
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: ['dayGrid', 'bootstrap', 'interaction'],
+        editable: true,
+        themeSystem: 'bootstrap',
+        defaultView: 'dayGridMonth',
+        header: {
+          left: 'today',
+          center: 'title',
+          right: 'prev next'
+        },
+        events:
+          {
+            url: '/portfolio/reservation/fetchAll'
+          }
+        ,
+        // events: function (info, successCallback, failureCallback) {
+        //   $.ajax({
+        //     url: '/portfolio/reservation/fetchAll',
+        //     type: 'GET',
+        //   }).done(function () {
+        //     console.log("OK");
+        //   }).fail(function () {
+        //     console.log("Failed");
+        //   }).always(function () {
+        //     console.log("Nothing");
+        //   })
+        // },
+        selectable: true,
+        selectAllow: function (selectInfo) {
+          let today = new Date();
+          if (selectInfo.start < today) {
+            return false;
+          } else {
+            return true;
+          }
+        },
+        dateClick: function (info) {
+          // 日付選択をしたその値をinputのvalueに書き換え
+          let selectedDate = info.dateStr;
+          $('#selectedDate').text(selectedDate);
+          $('#selectedDate').val(selectedDate);
+        }
+      });
+
+      calendar.render();
+    });
     /*]]>*/
   </script>
 </body>
