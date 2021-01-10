@@ -62,7 +62,6 @@ public class IndexController {
   - トップスライダー画像を画質の良いものに変更
   - 商品詳細ページにGoogleマップ
   - 行き先詳細ページにYouTube
-  - OAuth認証
   - JSファイルの分離
 */
 
