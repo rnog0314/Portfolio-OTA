@@ -68,38 +68,6 @@
       </div><!-- carousel -->
     </section>
 
-    <!-- features -->
-    <!-- <section id="features">
-      <div class="container">
-        <div class="seciton-head">
-          <h2 class="section-title">Features</h2>
-        </div>
-        <div class="row justify-content-center m-0">
-          <div class="col-4-md">
-            <div class="card">
-              <a href="#">
-                <img src="/img/slider1.jpg" alt="feature content" class="card-img">
-              </a>
-            </div>
-          </div>
-          <div class="col-4-md">
-            <div class="card">
-              <a href="#">
-                <img src="/img/slider2.jpg" alt="feature content" class="card-img img-fluid">
-              </a>
-            </div>
-          </div>
-          <div class="col-4-md">
-            <div class="card">
-              <a href="#">
-                <img src="/img/slider3.jpg" alt="feature content" class="card-img img-fluid">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
     <!-- What's popular-->
     <section id="popular">
       <div class="container mt-5 mb-5">
@@ -108,7 +76,7 @@
           <div class="m-0" th:each="product: ${products}" th:object="${product}">
             <!-- ループを回してcardををデータぶん作りたいので、.cardの1つ上の階層にth:eachをつける-->
             <div class="card">
-              <a th:href="@{/portfolio/product/{productId} (productId=*{productId})}">
+              <a th:href="@{/portfolio/product/{id} (id=*{productId})}">
                 <img th:src="@{{imagePath} (imagePath = *{productImage})}" alt="" class="m-0">
                 <div class="card-body">
                   <h5 class="card-title" th:text="*{productName}">Title</h5>

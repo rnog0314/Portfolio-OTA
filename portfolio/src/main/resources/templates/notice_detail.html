@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio OTA</title>
+</head>
+
+<body>
+  <!-- header挿入 -->
+  <header th:insert="fragments/header::header"></header>
+  <main role="main" id="notice-detail">
+    <section class="notice-detial my-5">
+      <div class="container">
+        <div class="card" th:object="${notice}">
+          <div class="card-body">
+            <h2 class="card-title" th:text="*{title}"></h2>
+            <p class="card-text" th:text="*{text}"></p>
+            <small class="card-text" th:text="*{#dates.format(new java.util.Date(createdAt), 'yyyy-MM-dd hh:mm')}"></small>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- footer -->
+  <footer th:insert="fragments/footer::footer"></footer>
+
+  <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function () {
+
+    });
+
+    /*]]>*/
+  </script>
+</body>
+
+</html>

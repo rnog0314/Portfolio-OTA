@@ -336,6 +336,9 @@ input {
     left: 2rem;
     border-radius: 0.5rem;
   }
+  #bookmark-btn {
+    color: white;
+  }
 }
 
 #product-description {
@@ -525,6 +528,15 @@ input {
   }
   a {
     color: grey;
+  }
+}
+
+// notice_detail.html
+#notice-detail {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  .container {
+    width: 60%;
   }
 }
 

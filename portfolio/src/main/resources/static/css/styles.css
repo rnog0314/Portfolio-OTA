@@ -348,6 +348,10 @@ input {
   border-radius: 0.5rem;
 }
 
+#top-banner #bookmark-btn {
+  color: white;
+}
+
 #product-description .card img {
   width: 60%;
   height: 100%;
@@ -533,6 +537,15 @@ input {
 
 #notices a {
   color: grey;
+}
+
+#notice-detail {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+#notice-detail .container {
+  width: 60%;
 }
 
 /* アドミン画面 */
