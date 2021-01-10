@@ -63,6 +63,8 @@ public class IndexController {
   - 商品詳細ページにGoogleマップ
   - 行き先詳細ページにYouTube
   - JSファイルの分離
+  - 各ページのaタグの色修正
+  - 各ページのimgのbdrsの修正
 */
 
 /* 残りの作成工程
