@@ -63,6 +63,5 @@ public class BookmarkController {
     }
     return bool;
   }
-  // TODO ログインしていないとブックマーク登録できないようにする
 
 }

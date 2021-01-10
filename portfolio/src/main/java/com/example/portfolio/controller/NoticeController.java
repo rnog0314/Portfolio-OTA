@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequestMapping("/portfolio/notice")
@@ -28,6 +29,14 @@ public class NoticeController {
     m.addAttribute("notices", notices);
     m.addAttribute("loginSession", loginSession);
     return "notice";
+  }
+
+  @GetMapping(value = "/{id}")
+  public String showDetail(@PathVariable("id") int id, Model m) {
+    Notice notice = noticeService.findById(id);
+    m.addAttribute("notice", notice);
+    m.addAttribute("loginSession", loginSession);
+    return "notice_detail";
   }
 
 }
