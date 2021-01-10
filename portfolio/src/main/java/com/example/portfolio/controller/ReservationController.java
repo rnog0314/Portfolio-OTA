@@ -9,6 +9,8 @@ import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.service.EmailSendService;
 import com.example.portfolio.service.ReservationService;
 import com.example.portfolio.service.UserService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 @RequestMapping("/portfolio/reservation")
@@ -35,9 +38,11 @@ public class ReservationController {
   @Autowired
   private EmailSendService emailSender;
 
+  Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+
   @GetMapping(value = "")
   public String init(Model m) {
-    Integer userId = loginSession.getUserId();
+    int userId = loginSession.getUserId();
     List<ReservationDto> reservationList = reservationService.getReservationList(userId);
     String email = userService.findEmailByUserId(userId).getEmail();
     m.addAttribute("email", email);
@@ -62,7 +67,7 @@ public class ReservationController {
 
   @PostMapping(value = "/delete")
   @ResponseBody
-  public boolean delete(@RequestBody Integer reservationId) throws Exception {
+  public boolean delete(@RequestBody int reservationId) throws Exception {
     boolean bool = false;
     int result = reservationService.delete(reservationId);
     if (result > 0) {
@@ -83,4 +88,12 @@ public class ReservationController {
       throw new RuntimeException(e);
     }
   }
+
+  @GetMapping(value="/fetchAll")
+  @ResponseBody
+  public String fetchAll() {
+    List<Reservation> reservations = reservationService.findAll();
+    return gson.toJson(reservations);
+  }
+
 }

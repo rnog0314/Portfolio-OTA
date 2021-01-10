@@ -143,15 +143,34 @@ public class UserService {
     return Base64.getEncoder().encodeToString(user.getUserImg());
   }
 
+  /**
+   * メールアドレスの取得
+   * @param userId ユーザID
+   * @return メールアドレス
+   */
   public User findEmailByUserId(Integer userId) {
     return userRepos.findByUserId(userId);
   }
 
+  /**
+   * ページネーションされたユーザリストの取得
+   * @param page リクエストされたページ番号
+   * @return ページネーションされたユーザリスト
+   */
   public Page<User> findPaginatedList(Optional<Integer> page) {
     int currentPage = productService.getCurrentPage(page);
     Sort sort = Sort.by("userId").ascending(); // ソートのルールを作成
     Pageable pageable = PageRequest.of(currentPage - 1, 10, sort); // ページネーション情報作成
     return userRepos.findAll(pageable);
+  }
+
+  /**
+   * ユーザIDをもとにユーザ名を取得
+   * @param userId ユーザID
+   * @return ユーザ名
+   */
+  public String findUserNameByUserId(int userId) {
+    return userRepos.findUserNameByUserId(userId);
   }
 
 }

@@ -107,12 +107,16 @@ CREATE TABLE reservations (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
   product_id INTEGER NOT NULL,
-  date VARCHAR (16) NOT NULL,
+  title VARCHAR (64) NOT NULL,
+  start_date VARCHAR (16) NOT NULL,
+  end_date VARCHAR (16) NOT NULL,
   count INTEGER NOT NULL,
   valid_flag BOOLEAN NOT NULL DEFAULT 'TRUE',
   FOREIGN KEY(user_id) REFERENCES users(user_id),
   FOREIGN KEY(product_id) REFERENCES products(product_id)
 )
+
+DROP TABLE reservations;
 
 CREATE TABLE bookmarks (
   id SERIAL PRIMARY KEY,
@@ -146,4 +150,13 @@ CREATE TABLE notices (
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_DATE
 )
 
-DROP table notices;
+
+DROP TABLE reservations;
+
+INSERT INTO reservations (user_id, product_id, start_date, end_date, count) VALUES (1, 1, '2021-01-15', '2021-01-16', 5);
+INSERT INTO reservations (user_id, product_id, start_date, end_date, count) VALUES (2, 2, '2021-01-17', '2021-01-18', 3);
+
+SELECT * FROM reservations;
+
+
+SELECT * FROM reservations WHERE user_id = 1;

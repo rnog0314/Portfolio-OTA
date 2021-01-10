@@ -65,7 +65,6 @@ public class IndexController {
   - 行き先詳細ページにYouTube
   - OAuth認証
   - JSファイルの分離
-  - Admin/notice.html作成
 */
 
 /* 残りの作成工程

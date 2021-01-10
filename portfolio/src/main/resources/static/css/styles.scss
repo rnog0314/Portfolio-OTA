@@ -630,17 +630,23 @@ input {
 }
 
 // admin/reservation.html
-#reservation {
+#admin-reservation {
   tbody tr td {
     vertical-align: middle;
   }
-  table {
+  table.list {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
     padding-top: 2rem;
     img {
       border-radius: 0.25rem;
     }
   }
+  #list-btn, #calendar-btn {
+    &:hover {
+      opacity: .9;
+    }
+  }
+
 }
 
 // admin/testimonials.html

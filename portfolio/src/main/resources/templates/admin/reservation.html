@@ -11,15 +11,21 @@
   <title>Portfolio OTA Admin</title>
 </head>
 
-<body id="reservation">
+<body id="admin-reservation">
   <header th:insert="admin/header::header"></header>
   <!-- Page Wrapper -->
   <div id="wrapper" class="container">
     <div class="row">
       <header class="col-3" th:insert="admin/sidebar::sidebar"></header>
       <div class="col-9">
-        <h2 class="page-title">reservations</h2>
-        <table class="table table-hover table-bordered table-responsive-md text-center"
+        <div class="page-title-area d-flex">
+          <h2 class="page-title">reservations</h2>
+          <div class="btn-area">
+            <button id="calendar-btn" class="btn hidden"><i class="far fa-2x fa-calendar-alt"></i></button>
+            <button id="list-btn" class="btn normal"><i class="far fa-2x fa-list-alt"></i></button>
+          </div>
+        </div>
+        <table class="table table-hover table-bordered table-responsive-md text-center list hidden"
           th:if="${reservations.getTotalPages() > 0}">
           <thead class="thead-light">
             <tr>
@@ -36,11 +42,11 @@
               <td th:text="*{userId}"></td>
               <td th:text="*{productId}"></td>
               <td th:text="*{count}"></td>
-              <td th:text="*{date}"></td>
+              <td th:text="*{start}"></td>
             </tr>
           </tbody>
         </table>
-        <nav aria-label="Page navigation">
+        <nav aria-label="Page navigation" class="list hidden">
           <ul class="pagination d-flex justify-content-center">
             <li class="page-item">
               <a th:href="@{/portfolio/admin/reservation/1}" class="page-link" aria-label="Previous">
@@ -72,20 +78,87 @@
             </li>
           </ul>
         </nav>
+        <!-- カレンダー -->
+        <div class="container calendar normal">
+          <div id="calendar"></div>
+        </div>
       </div>
     </div>
   </div>
   <!-- End of Page Wrapper -->
-  
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
 
   <footer th:insert="admin/footer::footer"></footer>
   <script type="text/javascript" th:inline="javascript">
     /*<![CDATA[*/
+    document.addEventListener('DOMContentLoaded', function () {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: ['dayGrid', 'bootstrap', 'interaction'],
+        editable: true,
+        themeSystem: 'bootstrap',
+        defaultView: 'dayGridMonth',
+        header: {
+          left: 'today',
+          center: 'title',
+          right: 'prev next'
+        },
+        events:
+        {
+          url: '/portfolio/reservation/fetchAll'
+        }
+        ,
+        // events: function (info, successCallback, failureCallback) {
+        //   $.ajax({
+        //     url: '/portfolio/reservation/fetchAll',
+        //     type: 'GET',
+        //   }).done(function () {
+        //     console.log("OK");
+        //   }).fail(function () {
+        //     console.log("Failed");
+        //   }).always(function () {
+        //     console.log("Nothing");
+        //   })
+        // },
+        selectable: true,
+        selectAllow: function (selectInfo) {
+          let today = new Date();
+          if (selectInfo.start < today) {
+            return false;
+          } else {
+            return true;
+          }
+        },
+        dateClick: function (info) {
+          // 日付選択をしたその値をinputのvalueに書き換え
+          let selectedDate = info.dateStr;
+          $('#selectedDate').text(selectedDate);
+          $('#selectedDate').val(selectedDate);
+        }
+      });
+
+      calendar.render();
+    });
+
     $(document).ready(function () {
+      /* リストボタン押下時 */
+      $('#list-btn').on('click', function () {
+        $('.normal').removeClass('hidden');
+        $('.calendar').addClass('hidden');
+        $('.list').removeClass('hidden');
+        $('#calendar-btn').removeClass('hidden');
+        $(this).addClass('hidden');
+      });
+
+      /* カレンダーボタン押下時 */
+      $('#calendar-btn').on('click', function () {
+        $('.normal').addClass('hidden');
+        $('.calendar').removeClass('hidden');
+        $('.list').addClass('hidden');
+        $(this).addClass('hidden');
+        $('#list-btn').removeClass('hidden');
+        // location.reload();
+      });
 
     })
     /*]]>*/

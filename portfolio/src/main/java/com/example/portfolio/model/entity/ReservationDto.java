@@ -20,6 +20,12 @@ public class ReservationDto {
   private int count;
   private int price;
   private String productName;
-  private String date;
+  private String startDate;
+  private String userName;
+  // private String title;
+
+  // public void setTitle(String userName, int count) {
+  //   this.title = userName + ":" + count + "PAX";
+  // }
 
 }
