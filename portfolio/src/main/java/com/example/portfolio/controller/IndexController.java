@@ -60,7 +60,6 @@ public class IndexController {
 
 /* TODO
   - トップスライダー画像を画質の良いものに変更
-  - Admin画面でのカレンダー確認(DBとの連動。Youtube参考)
   - 商品詳細ページにGoogleマップ
   - 行き先詳細ページにYouTube
   - OAuth認証
