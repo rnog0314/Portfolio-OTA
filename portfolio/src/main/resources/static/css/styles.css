@@ -635,17 +635,21 @@ input {
   border-radius: 0.25rem;
 }
 
-#reservation tbody tr td {
+#admin-reservation tbody tr td {
   vertical-align: middle;
 }
 
-#reservation table {
+#admin-reservation table.list {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
   padding-top: 2rem;
 }
 
-#reservation table img {
+#admin-reservation table.list img {
   border-radius: 0.25rem;
+}
+
+#admin-reservation #list-btn:hover, #admin-reservation #calendar-btn:hover {
+  opacity: .9;
 }
 
 #testimonials .card {
