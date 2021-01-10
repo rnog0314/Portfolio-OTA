@@ -106,20 +106,7 @@
         events:
         {
           url: '/portfolio/reservation/fetchAll'
-        }
-        ,
-        // events: function (info, successCallback, failureCallback) {
-        //   $.ajax({
-        //     url: '/portfolio/reservation/fetchAll',
-        //     type: 'GET',
-        //   }).done(function () {
-        //     console.log("OK");
-        //   }).fail(function () {
-        //     console.log("Failed");
-        //   }).always(function () {
-        //     console.log("Nothing");
-        //   })
-        // },
+        },
         selectable: true,
         selectAllow: function (selectInfo) {
           let today = new Date();
@@ -128,12 +115,6 @@
           } else {
             return true;
           }
-        },
-        dateClick: function (info) {
-          // 日付選択をしたその値をinputのvalueに書き換え
-          let selectedDate = info.dateStr;
-          $('#selectedDate').text(selectedDate);
-          $('#selectedDate').val(selectedDate);
         }
       });
 
@@ -157,7 +138,6 @@
         $('.list').addClass('hidden');
         $(this).addClass('hidden');
         $('#list-btn').removeClass('hidden');
-        // location.reload();
       });
 
     })
