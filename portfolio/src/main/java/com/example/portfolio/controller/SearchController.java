@@ -34,6 +34,13 @@ public class SearchController {
   @Autowired
   private SearchSession searchSession;
 
+  /**
+   * 商品検索
+   * @param keyword 検索ワード
+   * @param page リクエストされたページ番号
+   * @param m Model
+   * @return search.html
+   */
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
   public String index(@RequestParam("keyword") Optional<String> keyword, @PathVariable(name = "page") Optional<Integer> page, Model m) {
     String key = "";

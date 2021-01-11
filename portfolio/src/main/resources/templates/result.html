@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio OTA</title>
+</head>
+
+<body>
+  <!-- header挿入 -->
+  <header th:insert="fragments/header::header"></header>
+  <main class="d-flex justify-content-center">
+    <div class="container d-flex justify-content-center m-5">
+      <h3 th:if='${error}' th:text='${error}' style='color: red;'></h3>
+      <div th:unless='${error}'>
+        <h3>Your payment has been successfully done!</h3>
+        <p>We sent you a confirmation e-mail. Please check it out!</p>
+        <a th:href="@{/portfolio}" class="btn btn-info">Back to the top page</a>
+          <!-- <h3 style='color: green;'>Success!</h3>
+          <div>Id.: <span th:text='${id}' /></div>
+          <div>Status: <span th:text='${status}' /></div>
+          <div>Charge id.: <span th:text='${chargeId}' /></div>
+          <div>Balance transaction id.: <span th:text='${balance_transaction}' /></div> -->
+      </div>
+      <!-- <a href='/checkout.html'>Checkout again</a> -->
+    </div>
+  </main>
+  <!-- footer -->
+  <footer th:insert="fragments/footer::footer"></footer>
+
+  <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function () {
+
+    });
+
+    /*]]>*/
+  </script>
+</body>
+
+</html>

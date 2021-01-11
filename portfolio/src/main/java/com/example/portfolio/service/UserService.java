@@ -148,8 +148,12 @@ public class UserService {
    * @param userId ユーザID
    * @return メールアドレス
    */
-  public User findEmailByUserId(Integer userId) {
+  public User findByUserId(int userId) {
     return userRepos.findByUserId(userId);
+  }
+
+  public String findEmailByUserId(int userId) {
+    return userRepos.findEmailByUserId(userId);
   }
 
   /**

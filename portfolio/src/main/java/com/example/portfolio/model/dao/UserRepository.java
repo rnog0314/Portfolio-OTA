@@ -21,7 +21,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query(value = "INSERT INTO users (user_name, family_name, first_name, email, password, gender) VALUES (:#{#user.userName}, :#{#user.familyName}, :#{#user.firstName}, :#{#user.email}, :#{#user.password}, :#{#user.gender})", nativeQuery = true)
 	int insertUser(@Param("user") User newUser);
 
-	User findByUserId(Integer userId);
+	User findByUserId(int userId);
 
 	User findByUserNameAndPassword(String userName, String password);
 
@@ -33,12 +33,12 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 							@Param("email") String email,
 							@Param("password") String password,
 							@Param("imgPath") String imgPath,
-							@Param("userId") Integer userId);
+							@Param("userId") int userId);
 
 	@Modifying
 	@Query(value = "UPDATE users SET user_img = :bytes WHERE user_id = :userId", nativeQuery = true)
 	int updateUserImage( @Param("bytes") byte[] bytes,
-												@Param("userId") Integer userId);
+												@Param("userId") int userId);
 
 	@Modifying
 	@Query(value = "UPDATE users SET user_name = :#{#u.userName}, family_name = :#{#u.familyName}, first_name = :#{#u.firstName}, email = :#{#u.email}, password = :#{#u.password} WHERE user_id = :#{#u.userId}", nativeQuery = true)
@@ -46,5 +46,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	@Query(value = "SELECT user_name from users WHERE user_id = :userId", nativeQuery = true)
 	String findUserNameByUserId(int userId);
+
+	@Query(value = "SELECT email from users WHERE user_id = :userId", nativeQuery = true)
+	String findEmailByUserId(int userId);
 
 }

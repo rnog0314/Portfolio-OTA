@@ -450,6 +450,8 @@ input {
 #reservation-info .card {
   position: relative;
   margin-bottom: 5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
 }
 
 #reservation-info .card-body {
@@ -548,13 +550,31 @@ input {
   width: 60%;
 }
 
+#checkout-page .stripe-button-el, #checkout-page .stripe-button-el span {
+  color: #fff;
+  background-color: #17a2b8 !important;
+  border-color: #17a2b8 !important;
+  background-image: none !important;
+}
+
+#checkout-page .stripe-button-el:hover, #checkout-page .stripe-button-el span:hover {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+#checkout-page .card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* アドミン画面 */
 #sidebar {
   background: #fff;
   color: grey;
   font-size: 1.5rem;
-  border-radius: 0.5rem;
   padding-left: 1.5rem;
+  border-radius: 0.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
   margin-top: 3rem;
 }
@@ -648,8 +668,9 @@ input {
   border-radius: 0.25rem;
 }
 
-#admin-reservation #list-btn:hover, #admin-reservation #calendar-btn:hover {
-  opacity: .9;
+#admin-reservation #list-btn:hover,
+#admin-reservation #calendar-btn:hover {
+  opacity: 0.9;
 }
 
 #testimonials .card {
@@ -680,5 +701,5 @@ input {
 #notice-detail .card {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
   padding: 1rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }

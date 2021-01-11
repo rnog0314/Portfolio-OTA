@@ -8,12 +8,15 @@ import java.util.stream.IntStream;
 import com.example.portfolio.model.entity.Reservation;
 import com.example.portfolio.model.session.AdminSession;
 import com.example.portfolio.service.ReservationService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -26,6 +29,8 @@ public class AdminReservationController {
   @Autowired
   private ReservationService reservationService;
 
+  Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
   public String init(@PathVariable(name = "page") Optional<Integer> page, Model m, Reservation u) {
     Page<Reservation> reservations = reservationService.findPaginatedList(page);
@@ -37,6 +42,18 @@ public class AdminReservationController {
     m.addAttribute("reservations", reservations);
     m.addAttribute("adminSession", adminSession);
     return "admin/reservation";
+  }
+
+  /**
+   * DBから予約情報取得
+   *
+   * @return reservations 全予約情報
+   */
+  @GetMapping(value = "/fetchAll")
+  @ResponseBody
+  public String fetchAll() {
+    List<Reservation> reservations = reservationService.findAll();
+    return gson.toJson(reservations);
   }
 
 }

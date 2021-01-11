@@ -68,6 +68,6 @@ public class Reservation {
     this.start = start;
     this.end = end;
     this.title = title;
-    this.validFlag = true;
+    this.validFlag = false;
   }
 }
