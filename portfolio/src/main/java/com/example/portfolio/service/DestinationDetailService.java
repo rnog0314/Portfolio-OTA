@@ -16,6 +16,11 @@ public class DestinationDetailService {
   @Autowired
   private DestinationDetailRepository destinationDetailRepos;
 
+  /**
+   * デスティネーション詳細取得
+   * @param destinationId デスティネーションID
+   * @return DestinationDetail デスティネーション詳細
+   */
 	public DestinationDetail findById(int destinationId) {
     Optional <DestinationDetail> result =  destinationDetailRepos.findById(destinationId);
     DestinationDetail destinationDetail =  result.get();

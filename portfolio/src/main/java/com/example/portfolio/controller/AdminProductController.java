@@ -31,8 +31,15 @@ public class AdminProductController {
   @Autowired
   private ProductService productService;
 
+  /**
+   *  ページネーションされた商品一覧取得
+   * @param page リクエストされたページ番号
+   * @param m Model
+   * @param p Product
+   * @return admin/product.html
+   */
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
-  public String findProduct(@PathVariable(name = "page") Optional<Integer> page, Model m, Product p) {
+  public String init(@PathVariable(name = "page") Optional<Integer> page, Model m, Product p) {
     Page<Product> products = productService.findPaginatedList(page);
     int lastPage = products.getTotalPages();
     if (lastPage > 0) {
@@ -44,6 +51,11 @@ public class AdminProductController {
     return "admin/product";
   }
 
+  /**
+   * 商品削除
+   * @param checkedIdList 削除チェックボックスに☑️がついた商品ID(String)
+   * @return 商品削除成功/失敗
+   */
   @PostMapping(value = "/delete")
   @ResponseBody
   public boolean delete(@RequestBody String[] checkedIdList) {
@@ -60,6 +72,11 @@ public class AdminProductController {
 
   }
 
+  /**
+   * 商品情報修正
+   * @param productForm ProductForm
+   * @return admin/product.html
+   */
   @PostMapping(value = "/modify")
   public String modify(ProductForm productForm) {
     productService.updateProduct(productForm);

@@ -27,8 +27,14 @@ public class ProductController {
   @Autowired
   private LoginSession loginSession;
 
-  @GetMapping(value="/{productId}")
-  public String goProductDetailPage(@PathVariable("productId") int productId, Model m) {
+  /**
+   * 商品詳細初期表示
+   * @param productId 商品ID
+   * @param m Model
+   * @return product_detail.html
+   */
+  @GetMapping(value="/{id}")
+  public String init(@PathVariable("id") int productId, Model m) {
     Product product = productService.findById(productId);
     ProductDetail productDetail = productDetailService.findByProductId(productId);
     m.addAttribute("productDetail", productDetail);

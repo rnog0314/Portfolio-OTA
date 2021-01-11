@@ -39,27 +39,33 @@ public class ProductService {
 	 */
 	public List<Product> findAll() {
 		return productRepos.findAll().subList(1, 11);
+		// TODO この１０個のレコードとは何か？
 	}
 
 	/**
 	 * 行き先を条件に商品レコードを取得
 	 *
-	 * @param destinationId
-	 * @return
+	 * @param destinationId デスティネーションID
+	 * @return List<Product> デスティネーションIDでソートした商品一覧
 	 */
 	public List<Product> findByDestinationId(int destinationId) {
 		return productRepos.findByDestinationId(destinationId);
 	}
 
+	/**
+	 * カテゴリを条件に商品レコードを取得
+	 * @param categoryId カテゴリID
+	 * @return List<Product> カテゴリIDでソートした商品一覧
+	 */
 	public List<Product> findByCategoryId(int categoryId) {
 		return 	productRepos.findByCategoryId(categoryId);
 	}
 
 	/**
-	 * 商品IDを条件にレコードを取得
+	 * 商品詳細取得
 	 *
-	 * @param productId
-	 * @return
+	 * @param productId 商品ID
+	 * @return Product 商品
 	 */
 	public Product findById(int productId) {
 		Optional<Product> result = productRepos.findById(productId);
@@ -75,10 +81,12 @@ public class ProductService {
 	 * @return
 	 */
 	public Set<SearchDto> getAllSearchResult(String keyword) {
+		// 検索キーワードをトリミング&分割して配列に入れる
 		String[] keywords = keyword.replaceAll("　", " ").replaceAll("\\s{2,}", " ").trim().split(" ");
-		Set<SearchDto> products = new HashSet<>();
-		for (String str : keywords) {
-			Set<SearchDto> set = searchRepos.fetchProduct(str);
+		Set<SearchDto> products = new HashSet<>(); // リスト内で重複したレコードがないようにSetを使用
+		for (String key : keywords) {
+			// 分割したキーワード毎にレコードを検索し、用意した空のSetに追加
+			Set<SearchDto> set = searchRepos.fetchProduct(key);
 			for (SearchDto s : set) {
 				products.add(s);
 			}

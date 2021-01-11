@@ -99,7 +99,7 @@
                   <h2 class="card-title">Where To Go</h2>
                   <div class="owl-carousel owl-theme">
                     <div class="item" th:each="destination: ${destinations}" th:object="${destination}">
-                      <a th:href="@{/portfolio/destination/{destinationId} (destinationId=*{destinationId})}">
+                      <a th:href="@{/portfolio/destination/{id} (id=*{destinationId})}">
                         <img th:src="@{{imagePath} (imagePath = *{destinationImage})}" alt="">
                         <p class="destination-name" th:text="*{destinationName}"></p>
                       </a>
@@ -124,7 +124,7 @@
                   <h2 class="card-title">What To Do</h2>
                   <div class="owl-carousel owl-theme">
                     <div class="item" th:each="category: ${categories}" th:object="${category}">
-                      <a th:href="@{/portfolio/category/{categoryId} (categoryId=*{categoryId})}">
+                      <a th:href="@{/portfolio/category/{id} (id=*{categoryId})}">
                         <img th:src="@{{imagePath} (imagePath = *{categoryImage})}" alt="">
                         <p class="category-name" th:text="*{categoryName}"></p>
                       </a>

@@ -16,6 +16,11 @@ public class CategoryDetailService {
   @Autowired
   private CategoryDetailRepository categoryDetailRepos;
 
+  /**
+   * カテゴリ詳細取得
+   * @param categoryId カテゴリID
+   * @return CategoryDetail カテゴリ詳細
+   */
 	public CategoryDetail findById(int categoryId) {
     Optional <CategoryDetail> result =  categoryDetailRepos.findById(categoryId);
     CategoryDetail categoryDetail =  result.get();

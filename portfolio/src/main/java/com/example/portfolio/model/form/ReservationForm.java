@@ -6,7 +6,7 @@ import lombok.Data;
 public class ReservationForm {
 
   private String date;
-  private Integer count;
-  private Integer productId;
+  private int count;
+  private int productId;
 
 }

@@ -6,6 +6,7 @@ import com.example.portfolio.model.entity.SearchDto;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -14,10 +15,10 @@ public interface SearchDtoRepository extends JpaRepository<SearchDto, Integer> {
 									"FROM products AS p " +
 									"INNER JOIN categories AS c ON p.category_id = c.category_id " +
 									"INNER JOIN destinations AS d ON p.destination_id = d.destination_id " +
-									"WHERE p.product_name LIKE concat('%', :str, '%') " +
-									"OR c.category_name LIKE concat('%', :str, '%') " +
-									"OR d.destination_name LIKE concat('%', :str, '%') " +
+									"WHERE p.product_name LIKE concat('%', :keyword, '%') " +
+									"OR c.category_name LIKE concat('%', :keyword, '%') " +
+									"OR d.destination_name LIKE concat('%', :keyword, '%') " +
 									"ORDER BY p.product_id ", nativeQuery = true)
-	Set<SearchDto> fetchProduct(String str);
+	Set<SearchDto> fetchProduct(@Param("keyword") String keyword);
 
 }

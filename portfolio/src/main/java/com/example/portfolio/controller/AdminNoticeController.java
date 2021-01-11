@@ -22,6 +22,11 @@ public class AdminNoticeController {
   @Autowired
   private NoticeService noticeService;
 
+  /**
+   * 管理者/お知らせ画面一覧表示
+   * @param m Model
+   * @return admin/notice.html
+   */
   @GetMapping(value = "")
   public String init(Model m) {
     List<Notice> notices = noticeService.findAll();
@@ -29,6 +34,12 @@ public class AdminNoticeController {
     return "admin/notice";
   }
 
+  /**
+   * お知らせ詳細画面表示
+   * @param id お知らせID
+   * @param m Model
+   * @return admin/notice_detail,html
+   */
   @GetMapping(value = "/{id}")
   public String goDetail(@PathVariable("id") int id, Model m) {
     Notice notice = noticeService.findById(id);
@@ -36,6 +47,11 @@ public class AdminNoticeController {
     return "admin/notice_detail";
   }
 
+  /**
+   * お知らせ修正
+   * @param notice お知らせ
+   * @return お知らせ修正成功/失敗
+   */
   @PostMapping(value = "/modify")
   @ResponseBody
   public boolean update(@RequestBody Notice notice) {

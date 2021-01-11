@@ -34,8 +34,14 @@ public class DestinationController {
   @Autowired
   private LoginSession loginSession;
 
-  @GetMapping(value = "/{destination_id}")
-  public String goDestinationPage(@PathVariable("destination_id") int destinationId, Model m) {
+  /**
+   * 行き先詳細ページ初期表示
+   * @param destinationId デスティネーションID
+   * @param m Model
+   * @return destination_detail.html
+   */
+  @GetMapping(value = "/{init}")
+  public String init(@PathVariable("init") int destinationId, Model m) {
     Destination destination = destinationService.findById(destinationId);
     DestinationDetail destinationDetail = destinationDetailService.findById(destinationId);
     List<Product> products = productService.findByDestinationId(destinationId);

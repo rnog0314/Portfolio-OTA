@@ -28,16 +28,15 @@ public class AuthController {
   private LoginSession loginSession;
 
   /**
-   * ログインメソッド
+   * ログイン
    *
-   * @param form
-   * @param m
-   * @return
+   * @param form UserForm
+   * @param m Model
+   * @return User
    */
   @PostMapping(value = "/login")
   @ResponseBody
   public String login(@RequestBody UserForm form, Model m) {
-
     // ログインフォームに入力されたユーザ名とパスワードと一致するユーザを取得
     User user = userService.findByEmailAndPassword(form.getEmail(), form.getPassword());
     userService.setLoginSession(user);
@@ -46,9 +45,9 @@ public class AuthController {
   }
 
   /**
-   * ログアウトメソッド
+   * ログアウト
    *
-   * @return
+   * @return なし
    */
   @PostMapping(value = "/logout")
   @ResponseBody

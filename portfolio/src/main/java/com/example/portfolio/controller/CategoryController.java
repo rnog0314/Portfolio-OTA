@@ -34,8 +34,14 @@ public class CategoryController {
   @Autowired
   private LoginSession loginSession;
 
-  @GetMapping(value = "/{category_id}")
-  public String gocategoryPage(@PathVariable("category_id") int categoryId, Model m) {
+  /**
+   * カテゴリ詳細ページ初期表示
+   * @param categoryId カテゴリID
+   * @param m Model
+   * @return category_detail.html
+   */
+  @GetMapping(value = "/{id}")
+  public String init(@PathVariable("id") int categoryId, Model m) {
     Category category = categoryService.findById(categoryId);
     CategoryDetail categoryDetail = categoryDetailService.findById(categoryId);
     List<Product> products = productService.findByCategoryId(categoryId);

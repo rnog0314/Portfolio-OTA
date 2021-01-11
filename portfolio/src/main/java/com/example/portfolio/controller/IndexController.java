@@ -38,9 +38,15 @@ public class IndexController {
   @Autowired
   private LoginSession loginSession;
 
+  /**
+   * トップページ初期表示
+   * @param m Model
+   * @return index.html
+   */
   @GetMapping(value = "")
-  public String index(Model m) {
-    if (loginSession.isLogined() == false && loginSession.getTmpUserId() == null) { // ログインしてない&仮ユーザIDがない(=初めてページを開いたとき)
+  public String init(Model m) {
+     // ログインしてない&仮ユーザIDがない(=初めてページを開いたとき)
+    if (!loginSession.isLogined() && loginSession.getTmpUserId() == null) {
       int tempUserId = (int) (Math.random() * 1000000000);
       loginSession.setTmpUserId(tempUserId); // ランダムな整数を仮ユーザIDとしてログインセッションに登録
     }

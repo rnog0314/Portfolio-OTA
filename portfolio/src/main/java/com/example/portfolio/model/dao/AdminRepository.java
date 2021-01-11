@@ -11,10 +11,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
 
-	Admin findByAdminNameAndPassword(@Param("adminName") String adminName, @Param("password") String password);
+	Admin findByAdminNameAndPassword(	@Param("adminName") String adminName,
+																		@Param("password") String password);
 
 	@Modifying
 	@Query(value = "UPDATE admin SET admin_name = :adminName, password = :password WHERE  id = :id" , nativeQuery = true)
-	void updateAdmin(@Param("id") int id, @Param("adminName") String adminName, @Param("password") String password);
+	void updateAdmin( @Param("id") int id,
+										@Param("adminName") String adminName,
+										@Param("password") String password);
 
 }

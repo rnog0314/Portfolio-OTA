@@ -14,16 +14,16 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	User findByEmailAndPassword(String email, String password);
 
+	User findByUserId(int userId);
+
+	User findByUserNameAndPassword(String userName, String password);
+
 	@Query(value = "SELECT count(user_name) FROM users WHERE user_name = :newUserName", nativeQuery = true)
-	int findByUserName(String newUserName);
+	int findByUserName(@Param("newUserName") String newUserName);
 
 	@Modifying
 	@Query(value = "INSERT INTO users (user_name, family_name, first_name, email, password, gender) VALUES (:#{#user.userName}, :#{#user.familyName}, :#{#user.firstName}, :#{#user.email}, :#{#user.password}, :#{#user.gender})", nativeQuery = true)
 	int insertUser(@Param("user") User newUser);
-
-	User findByUserId(int userId);
-
-	User findByUserNameAndPassword(String userName, String password);
 
 	@Modifying
 	@Query(value = "UPDATE users SET user_name = :userName, family_name = :familyName, first_name = :firstName, email = :email, password = :password, user_img = :imgPath WHERE user_id = :userId", nativeQuery = true)
@@ -45,9 +45,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	void updateUser(@Param("u") UserForm userForm);
 
 	@Query(value = "SELECT user_name from users WHERE user_id = :userId", nativeQuery = true)
-	String findUserNameByUserId(int userId);
+	String findUserNameByUserId(@Param("userId") int userId);
 
 	@Query(value = "SELECT email from users WHERE user_id = :userId", nativeQuery = true)
-	String findEmailByUserId(int userId);
+	String findEmailByUserId(@Param("userId") int userId);
 
 }

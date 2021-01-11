@@ -14,7 +14,12 @@ public class ProductDetailService {
   @Autowired
   private ProductDetailRepository productDetailRepos;
 
-public ProductDetail findByProductId(int productId) {
-	return productDetailRepos.findByProductId(productId);
-}
+  /**
+   * 商品詳細取得
+   * @param productId 商品ID
+   * @return ProductDetail 商品詳細
+   */
+  public ProductDetail findByProductId(int productId) {
+    return productDetailRepos.findByProductId(productId);
+  }
 }

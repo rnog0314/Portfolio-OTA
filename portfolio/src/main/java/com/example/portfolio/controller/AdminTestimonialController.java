@@ -23,6 +23,11 @@ public class AdminTestimonialController {
   @Autowired
   private TestimonialService testimonialService;
 
+  /**
+   * お客様の声一覧表示
+   * @param m Model
+   * @return admin/testimonial.html
+   */
   @GetMapping(value="")
   public String init(Model m) {
     List<Testimonial> testimonials = testimonialService.findAll();

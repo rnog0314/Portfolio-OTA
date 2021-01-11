@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class ReservationDto {
-
+  // 画面表示用のDTO
   @Id
   private int id;
   private int productId;
@@ -22,10 +22,5 @@ public class ReservationDto {
   private String productName;
   private String startDate;
   private String userName;
-  // private String title;
-
-  // public void setTitle(String userName, int count) {
-  //   this.title = userName + ":" + count + "PAX";
-  // }
 
 }

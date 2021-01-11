@@ -26,8 +26,15 @@ public class AdminUserController {
   @Autowired
   private UserService userService;
 
+  /**
+   *
+   * @param page
+   * @param m
+   * @param u
+   * @return
+   */
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
-  public String getMethodName(@PathVariable(name = "page") Optional<Integer> page, Model m, User u) {
+  public String init(@PathVariable(name = "page") Optional<Integer> page, Model m, User u) {
     Page<User> users = userService.findPaginatedList(page);
     int lastPage = users.getTotalPages();
     if (lastPage > 0) {

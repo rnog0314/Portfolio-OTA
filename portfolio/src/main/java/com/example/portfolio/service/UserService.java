@@ -134,10 +134,10 @@ public class UserService {
   }
 
   /**
-   * byte[]からStringへの変換
+   * ユーザ画像をbyte[]からStringへの変換
    *
-   * @param user
-   * @return
+   * @param user User
+   * @return Stringにしたユーザ画像
    */
   public String getUserImg(User user) {
     return Base64.getEncoder().encodeToString(user.getUserImg());
