@@ -36,6 +36,11 @@ spring:
     properties.mail.smtp.starttls.required: true
     properties.mail.smtp.ssl.trust: smtp.gmail.com
 
+stripe:
+  keys:
+    public: pk_test_51I8E5wE3yhgepcJZTZN4tFuMIyiOiXGCU0ScD0UkNkmcrj9uYhoZRBGHTKRqXB4i4D8PED7MvL7GJI9nnOFcOQQr002DtSIWWW
+    secret: sk_test_51I8E5wE3yhgepcJZ2fECdvZGYh7I8QPdRfcRfyS9Ytldn9ltbVcibugxMMx6QSlkvra4BxXDHwuV1IpG14V3QSfe00ojDxY8eX
+
 logging:
   level:
     org:

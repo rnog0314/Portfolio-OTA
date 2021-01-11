@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio OTA</title>
+</head>
+
+<body>
+  <!-- header挿入 -->
+  <header th:insert="fragments/header::header"></header>
+  <main>
+    <div class="contain">
+      <form action='/portfolio/charge' method='POST' id='checkout-form'>
+        <input type='hidden' th:value='${amount}' name='amount' />
+        <label>Price:<span th:text='${amount/100}' /></label>
+        <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
+        <script src='https://checkout.stripe.com/checkout.js'
+                class='stripe-button'
+                th:attr='data-key=${stripePublicKey},
+                  data-amount=${amount},
+                  data-currency=${currency}'
+                  data-name='Baeldung'
+                  data-description='Spring course checkout'
+                data-image='https://www.baeldung.com/wp-content/themes/baeldung/favicon/android-chrome-192x192.png'
+                data-locale='auto'
+                data-zip-code='false'>
+          </script>
+      </form>
+    </div>
+  </main>
+  <!-- footer -->
+  <footer th:insert="fragments/footer::footer"></footer>
+
+  <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function () {
+
+    });
+
+    /*]]>*/
+  </script>
+</body>
+
+</html>
