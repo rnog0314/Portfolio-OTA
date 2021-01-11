@@ -115,6 +115,11 @@
       </div>
     </section>
 
+
+    <section id="youtube" th:if="${destinationDetail.moviePath}" class="text-center">
+      <iframe width="560" height="315" th:src="@{{path} (path = ${destinationDetail.moviePath})}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+
     <!-- ツアー -->
     <section id="destination-tour">
       <div class="page-content page-container" id="page-content">

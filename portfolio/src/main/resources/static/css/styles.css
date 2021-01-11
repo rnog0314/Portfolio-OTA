@@ -34,6 +34,11 @@ button {
   outline: none !important;
 }
 
+iframe {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+}
+
 #header #top-logo {
   font-family: "Sriracha", cursive;
   color: #17a2b8;
@@ -298,6 +303,8 @@ input {
   height: 14rem;
   border-radius: 1rem;
   object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
 }
 
 #article .card-title {
@@ -310,8 +317,8 @@ input {
 
 #destination-tour .tour-img {
   object-fit: cover;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
 }
 
 #destination-tour .item {

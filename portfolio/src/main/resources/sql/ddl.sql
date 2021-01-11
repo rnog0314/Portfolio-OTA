@@ -85,8 +85,13 @@ CREATE TABLE destination_details (
   image3 VARCHAR(255) NOT NULL,
   article_title3 VARCHAR(255) NOT NULL,
   article_text3 VARCHAR(2000) NOT NULL,
+  movie_path VARCHAR(255) DEFAULT 'https://www.youtube.com/embed/CNeakmoER7Q',
   FOREIGN KEY(destination_id) REFERENCES destinations(destination_id)
 )
+
+update destination_details set movie_path = 'https://www.youtube.com/embed/f-Bgx6JK1Vw' where destination_id = 8;
+
+
 
 CREATE TABLE category_details (
   category_detail_id SERIAL PRIMARY KEY,
