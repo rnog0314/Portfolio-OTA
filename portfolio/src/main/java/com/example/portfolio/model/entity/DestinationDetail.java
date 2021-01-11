@@ -51,4 +51,7 @@ public class DestinationDetail {
   @Column(name = "article_text3")
   private String articleText3;
 
+  @Column(name = "movie_path")
+  private String moviePath;
+
 }

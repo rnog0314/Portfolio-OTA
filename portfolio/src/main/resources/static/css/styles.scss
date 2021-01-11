@@ -6,6 +6,7 @@ Scss自動コンパイルコマンド
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;800&family=Rubik:ital,wght@1,600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
 
+// 共通
 main {
   background-color: #fff;
 }
@@ -26,6 +27,11 @@ a:hover {
 }
 button {
   outline: none !important;
+}
+
+iframe {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50) !important;
 }
 
 // ヘッダー
@@ -288,6 +294,8 @@ input {
     height: 14rem;
     border-radius: 1rem;
     object-fit: cover;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50) !important;
   }
   .card-title {
     font-size: 2rem;
@@ -300,8 +308,8 @@ input {
 #destination-tour {
   .tour-img {
     object-fit: cover;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50) !important;
   }
   .item {
     margin: 3rem;
