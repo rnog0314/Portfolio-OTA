@@ -46,7 +46,12 @@
                     </div>
                   </dl>
                   <div class="btn-area d-flex">
-                    <button type="button" class="btn btn-info payment-btn mx-2">Payment</button>
+                    <form th:action="@{/portfolio/reservation/checkout}" method="POST">
+                      <button type="submit" class="btn btn-info payment-btn mx-2">Payment</button>
+                      <input type="hidden" th:value="*{price * count}" name="amount">
+                      <input type="hidden" name="imagePath" th:value="*{productImage}">
+                      <input type="hidden" name="productName" th:value="*{productName}">
+                    </form>
                     <button type="button" class="btn btn-info delete-btn mx-2">Delete</button>
                     <input type="hidden" class="reservationId" name="reservationId" th:value="*{id}">
                   </div>
@@ -115,51 +120,51 @@
         })
       })
 
-      $('.payment-btn').on('click', function () {
-        var box = bootbox.confirm({
-          message: "<p>We will send you a payment link to this email.</p>\
-                    <p>Please confirm this email is correct</p>\
-                    <p>[<span id='conf-email'></span>]</p>",
-          backdrop: true,
-          centerVertical: true,
-          show: true,
-          buttons: {
-            confirm: {
-              label: '<i class="fa fa-check"></i> Submit',
-              className: 'btn-info'
-            },
-            cancel: {
-              label: '<i class="fa fa-times"></i> Modify',
-              className: 'btn-secondary'
-            }
-          },
-          callback: function (result) {
-            if (result) {
-              let email = $('#email').val();
-              $.ajax({
-                type: 'POST',
-                url: '/portfolio/reservation/sendEmail',
-                data: email,
-                contentType: 'application/json',
-                dataType: 'json'
-              }).done(function (result) {
-                if (result == true) {
-                  bootbox.alert('We sent an eamil to you. Please check it out!');
-                } else {
-                  bootbox.alert('Something wrong. Please try again.')
-                }
-              }).fail(function (result) {
-                console.log('Error: ajax通信に失敗しました');
-              }).always(function (result) {
-                console.log("ajax通信しました");
-              })
-            }
-          }, // callback
-        })
-        box.on("shown.bs.modal", function () {
-          $('#conf-email').text($('#email').val());
-        })
-      })
+      // $('.payment-btn').on('click', function () {
+      //   var box = bootbox.confirm({
+      //     message: "<p>We will send you a payment link to this email.</p>\
+      //               <p>Please confirm this email is correct</p>\
+      //               <p>[<span id='conf-email'></span>]</p>",
+      //     backdrop: true,
+      //     centerVertical: true,
+      //     show: true,
+      //     buttons: {
+      //       confirm: {
+      //         label: '<i class="fa fa-check"></i> Submit',
+      //         className: 'btn-info'
+      //       },
+      //       cancel: {
+      //         label: '<i class="fa fa-times"></i> Modify',
+      //         className: 'btn-secondary'
+      //       }
+      //     },
+      //     callback: function (result) {
+      //       if (result) {
+      //         let email = $('#email').val();
+      //         $.ajax({
+      //           type: 'POST',
+      //           url: '/portfolio/reservation/sendEmail',
+      //           data: email,
+      //           contentType: 'application/json',
+      //           dataType: 'json'
+      //         }).done(function (result) {
+      //           if (result == true) {
+      //             bootbox.alert('We sent an eamil to you. Please check it out!');
+      //           } else {
+      //             bootbox.alert('Something wrong. Please try again.')
+      //           }
+      //         }).fail(function (result) {
+      //           console.log('Error: ajax通信に失敗しました');
+      //         }).always(function (result) {
+      //           console.log("ajax通信しました");
+      //         })
+      //       }
+      //     }, // callback
+      //   })
+      //   box.on("shown.bs.modal", function () {
+      //     $('#conf-email').text($('#email').val());
+      //   })
+      // })
 
 
       $('.owl-carousel').owlCarousel({

@@ -10,23 +10,36 @@
 <body>
   <!-- header挿入 -->
   <header th:insert="fragments/header::header"></header>
-  <main>
-    <div class="contain">
+  <main id="checkout-page">
+    <div class="container">
       <form action='/portfolio/charge' method='POST' id='checkout-form'>
-        <input type='hidden' th:value='${amount}' name='amount' />
-        <label>Price:<span th:text='${amount/100}' /></label>
-        <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
-        <script src='https://checkout.stripe.com/checkout.js'
-                class='stripe-button'
-                th:attr='data-key=${stripePublicKey},
-                  data-amount=${amount},
-                  data-currency=${currency}'
-                  data-name='Baeldung'
-                  data-description='Spring course checkout'
-                data-image='https://www.baeldung.com/wp-content/themes/baeldung/favicon/android-chrome-192x192.png'
-                data-locale='auto'
-                data-zip-code='false'>
-          </script>
+        <div class="card">
+          <div class="row no-gutters">
+            <div class="col-6 card-content">
+              <div>
+                <img th:src="@{{imagePath} (imagePath = ${imagePath})}" alt="" class="card-img-top">
+              </div>
+            </div>
+            <div class="col-6 card-content">
+              <div class="card-body">
+                <h2 class="card-title" th:text="${productName}"></h2>
+                <input type='hidden' th:value='${amount}' name='amount' />
+                <label class="mr-3" th:inline="text">Price:&nbsp;[[${currency}]]&nbsp;<span th:text='${amount/100}'>&nbsp;</label>
+                <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
+                <script src='https://checkout.stripe.com/checkout.js'
+                        class='stripe-button'
+                        th:attr='data-key=${stripePublicKey},
+                          data-amount=${amount},
+                          data-currency=${currency}'
+                        th:data-name='${productName}'
+                        th:data-image="${imagePath}"
+                        data-locale='ja'
+                        data-zip-code='false'>
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   </main>
@@ -36,7 +49,7 @@
   <script type="text/javascript" th:inline="javascript">
     /*<![CDATA[*/
     $(document).ready(function () {
-
+      // $('.stripe-button-el').addClass('btn');
     });
 
     /*]]>*/

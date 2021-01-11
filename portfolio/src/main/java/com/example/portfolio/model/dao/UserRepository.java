@@ -21,7 +21,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query(value = "INSERT INTO users (user_name, family_name, first_name, email, password, gender) VALUES (:#{#user.userName}, :#{#user.familyName}, :#{#user.firstName}, :#{#user.email}, :#{#user.password}, :#{#user.gender})", nativeQuery = true)
 	int insertUser(@Param("user") User newUser);
 
-	User findByUserId(Integer userId);
+	User findByUserId(int userId);
 
 	User findByUserNameAndPassword(String userName, String password);
 
@@ -46,5 +46,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	@Query(value = "SELECT user_name from users WHERE user_id = :userId", nativeQuery = true)
 	String findUserNameByUserId(int userId);
+
+	String findEmailByUserId(int userId);
 
 }

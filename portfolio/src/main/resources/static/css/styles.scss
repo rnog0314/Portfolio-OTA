@@ -540,6 +540,25 @@ input {
   }
 }
 
+// checkout.html
+#checkout-page {
+  .stripe-button-el, .stripe-button-el span {
+    color: #fff;
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+    background-image: none !important;
+    &:hover {
+      background-color: #17a2b8;
+      border-color: #17a2b8;
+    }
+  }
+  .card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 /* アドミン画面 */
 
 // サイドバー
@@ -641,12 +660,12 @@ input {
       border-radius: 0.25rem;
     }
   }
-  #list-btn, #calendar-btn {
+  #list-btn,
+  #calendar-btn {
     &:hover {
-      opacity: .9;
+      opacity: 0.9;
     }
   }
-
 }
 
 // admin/testimonials.html
@@ -684,6 +703,6 @@ input {
   .card {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
     padding: 1rem;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
   }
 }
