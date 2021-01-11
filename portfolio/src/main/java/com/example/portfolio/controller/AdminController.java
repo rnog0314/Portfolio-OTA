@@ -24,15 +24,24 @@ public class AdminController {
   @Autowired
   private AdminService adminService;
 
+  /**
+   * 管理者ログインページ初期表示
+   * @return admin/login.html
+   */
   @GetMapping(value = "")
   public String goLoginPage() {
     return "admin/login";
   }
 
+  /**
+   * 管理者ログイン
+   * @param f AdminForm
+   * @return 管理者情報照合成功/失敗
+   */
   @PostMapping(value = "/login")
   @ResponseBody
-  public Boolean goHome(@RequestBody AdminForm f) {
-    Boolean bool = false;
+  public boolean goHome(@RequestBody AdminForm f) {
+    boolean bool = false;
     Admin admin = adminService.findByAdminNameAndPassword(f.getAdminName(), f.getPassword());
     if (admin != null) {
       adminService.setAdminSession(admin);
@@ -41,6 +50,11 @@ public class AdminController {
     return bool;
   }
 
+  /**
+   * 管理者画面初期表示
+   * @param m Model
+   * @return admin/home.html
+   */
   @GetMapping(value = "/home")
   public String index(Model m) {
     if (!adminSession.isLogined()) {
@@ -52,6 +66,11 @@ public class AdminController {
     return "admin/home";
   }
 
+  /**
+   * 管理者アカウントページ初期表示
+   * @param m Model
+   * @return admin/account
+   */
   @GetMapping(value = "/account")
   public String getMethodName(Model m) {
     Admin admin = adminService.findById(adminSession.getId());
@@ -59,6 +78,12 @@ public class AdminController {
     return "admin/account";
   }
 
+  /**
+   * 管理者アカウント情報修正
+   * @param adminForm AdminForm
+   * @param m Model
+   * @return admin/account.html
+   */
   @PostMapping(value = "/modify")
   public String modify(AdminForm adminForm, Model m) {
     adminService.updateAdmin(adminForm);

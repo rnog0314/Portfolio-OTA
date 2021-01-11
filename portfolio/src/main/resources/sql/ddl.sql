@@ -111,7 +111,7 @@ CREATE TABLE reservations (
   start_date VARCHAR (16) NOT NULL,
   end_date VARCHAR (16) NOT NULL,
   count INTEGER NOT NULL,
-  valid_flag BOOLEAN NOT NULL DEFAULT 'TRUE',
+  valid_flag BOOLEAN NOT NULL DEFAULT 'FALSE',
   FOREIGN KEY(user_id) REFERENCES users(user_id),
   FOREIGN KEY(product_id) REFERENCES products(product_id)
 )

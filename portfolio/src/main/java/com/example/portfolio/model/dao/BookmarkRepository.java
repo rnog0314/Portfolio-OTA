@@ -13,7 +13,7 @@ public interface BookmarkRepository extends JpaRepository<Bookmark, Integer> {
 
   @Modifying
 	@Query(value = "DELETE FROM bookmarks WHERE product_id = :productId", nativeQuery = true)
-	int deleteByProductId(@Param("productId") Integer productId);
+	int deleteByProductId(@Param("productId") int productId);
 
 
 }

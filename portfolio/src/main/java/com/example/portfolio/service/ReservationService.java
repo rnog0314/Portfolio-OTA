@@ -44,6 +44,7 @@ public class ReservationService {
 
   /**
    * 予約の挿入
+   *
    * @param f ReservationForm
    * @return Reservation
    */
@@ -54,12 +55,13 @@ public class ReservationService {
     String title = userService.findUserNameByUserId(userId) + " : " + count + "PAX";
     String start = f.getDate();
     String end = utils.getEndDate(start);
-    Reservation reservation = new Reservation(userId, productId, count, start, end,title);
+    Reservation reservation = new Reservation(userId, productId, count, start, end, title);
     return reservationRepos.save(reservation);
   }
 
   /**
    * 予約リスト取得
+   *
    * @param userId ユーザID
    * @return 予約リスト
    */
@@ -69,10 +71,11 @@ public class ReservationService {
 
   /**
    * 予約削除
+   *
    * @param reservationId 予約ID
    * @return 削除件数
    */
-  public int delete(int reservationId) {
+  public int cancel(int reservationId) {
     try {
       return reservationRepos.deleteByReservationId(reservationId);
     } catch (IllegalArgumentException e) {
@@ -82,6 +85,7 @@ public class ReservationService {
 
   /**
    * ページネーションされた予約リスト取得
+   *
    * @param page リクエストされたページ番号
    * @return ページネーションされた予約リスト
    */
@@ -94,10 +98,16 @@ public class ReservationService {
 
   /**
    * 予約リストの全取得
+   *
    * @return 全予約リスト
    */
   public List<Reservation> findAll() {
-    return reservationRepos.findAll();
+    return reservationRepos.findAllByValidFlagTrue();
   }
+
+  public void updateValidFlag(int reservationId) {
+    reservationRepos.updateValidFlag(reservationId);
+  }
+
 
 }

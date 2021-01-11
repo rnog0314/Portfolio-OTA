@@ -198,7 +198,7 @@
                     <table class='table table-hover table-responsve-md table-bordered text-left'>\
                     <tr><th scope='row'>Date</th><td><span><input name='date' id='confirmDate' readonly></span></td></tr>\
                     <tr><th scope='row'>Number of Participant</th><td><span><input name='count' id='confirmCnt' readonly></span></td></tr>\
-                    <tr><th scope='row'>Ptoduct Name</th><td><span><input name='' id='confirmProductName' readonly></span></td></tr>\
+                    <tr><th scope='row'>Product Name</th><td><span><input name='' id='confirmProductName' readonly></span></td></tr>\
                     <tr class='hidden'><th scope='row'></th><td><span><input name='productId' id='confirmProductId' readonly></span></td></tr>\
                     </table>\
                     </form>",
@@ -233,7 +233,7 @@
         box.modal('show');
       })
 
-      /* 選択日の初期表示を現在びに */
+      /* 選択日の初期表示を現在日に */
       let today = new Date();
       $('#selectedDate').val(today.toLocaleDateString());
 

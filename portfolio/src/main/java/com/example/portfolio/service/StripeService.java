@@ -7,11 +7,6 @@ import javax.annotation.PostConstruct;
 
 import com.example.portfolio.model.entity.ChargeRequest;
 import com.stripe.Stripe;
-import com.stripe.exception.ApiConnectionException;
-import com.stripe.exception.ApiException;
-import com.stripe.exception.AuthenticationException;
-import com.stripe.exception.CardException;
-import com.stripe.exception.InvalidRequestException;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 
@@ -21,6 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class StripeService {
 
+  // application.ymlに記述したシークレットキー
   @Value("${stripe.keys.secret}")
   private String secretKey;
 
@@ -30,6 +26,12 @@ public class StripeService {
     Stripe.apiKey = secretKey;
   }
 
+  /**
+   * 決済処理
+   * @param chargeRequest ChargeRequest
+   * @return charge Charge
+   * @throws StripeException
+   */
   public Charge charge(ChargeRequest chargeRequest) throws StripeException {
     Map<String, Object> chargeParams = new HashMap<>();
     chargeParams.put("amount", chargeRequest.getAmount());

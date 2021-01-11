@@ -33,12 +33,12 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 							@Param("email") String email,
 							@Param("password") String password,
 							@Param("imgPath") String imgPath,
-							@Param("userId") Integer userId);
+							@Param("userId") int userId);
 
 	@Modifying
 	@Query(value = "UPDATE users SET user_img = :bytes WHERE user_id = :userId", nativeQuery = true)
 	int updateUserImage( @Param("bytes") byte[] bytes,
-												@Param("userId") Integer userId);
+												@Param("userId") int userId);
 
 	@Modifying
 	@Query(value = "UPDATE users SET user_name = :#{#u.userName}, family_name = :#{#u.familyName}, first_name = :#{#u.firstName}, email = :#{#u.email}, password = :#{#u.password} WHERE user_id = :#{#u.userId}", nativeQuery = true)
@@ -47,6 +47,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query(value = "SELECT user_name from users WHERE user_id = :userId", nativeQuery = true)
 	String findUserNameByUserId(int userId);
 
+	@Query(value = "SELECT email from users WHERE user_id = :userId", nativeQuery = true)
 	String findEmailByUserId(int userId);
 
 }

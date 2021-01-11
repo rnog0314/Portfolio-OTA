@@ -42,7 +42,7 @@ public class ProductService {
 	}
 
 	/**
-	 * 行き先を条件に商品 レコードを取得
+	 * 行き先を条件に商品レコードを取得
 	 *
 	 * @param destinationId
 	 * @return
@@ -140,10 +140,19 @@ public class ProductService {
 		}
 	}
 
+	/**
+	 * 商品削除
+	 * @param id 商品ID
+	 */
 	public void delete(int id) {
 		productRepos.deleteById(id);;
 	}
 
+	/**
+	 * ページネーションされた商品リスト取得
+	 * @param page リクエストされたページ番号
+	 * @return ページネーションされた商品リスト
+	 */
 	public Page<Product> findPaginatedList(Optional<Integer> page) {
 		int currentPage = getCurrentPage(page);
 		Sort sort = Sort.by("productId").ascending(); // ソートのルールを作成
@@ -153,6 +162,18 @@ public class ProductService {
 
 	public void updateProduct(ProductForm f) {
 		productRepos.updateProduct(f.getProductName(), f.getPrice());
+	}
+
+	public int getPriceByProductId(int productId) {
+		return productRepos.getPriceByProductId(productId);
+	}
+
+	public String getProductImageByProductId(int productId) {
+		return productRepos.getProductImageByProductId(productId);
+	}
+
+	public String getProductNameByProductId(int productId) {
+		return productRepos.getProductNameByProductId(productId);
 	}
 
 }

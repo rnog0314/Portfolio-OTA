@@ -438,6 +438,8 @@ input {
   .card {
     position: relative;
     margin-bottom: 5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
   }
   .card-body {
     position: relative;
@@ -566,8 +568,8 @@ input {
   background: #fff;
   color: grey;
   font-size: 1.5rem;
-  border-radius: 0.5rem;
   padding-left: 1.5rem;
+  border-radius: 0.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
   margin-top: 3rem;
   a {

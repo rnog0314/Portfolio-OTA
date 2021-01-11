@@ -46,13 +46,13 @@
                     </div>
                   </dl>
                   <div class="btn-area d-flex">
-                    <form th:action="@{/portfolio/reservation/checkout}" method="POST">
+                    <!-- <form th:action="@{/portfolio/reservation/checkout}" method="POST">
                       <button type="submit" class="btn btn-info payment-btn mx-2">Payment</button>
                       <input type="hidden" th:value="*{price * count}" name="amount">
                       <input type="hidden" name="imagePath" th:value="*{productImage}">
                       <input type="hidden" name="productName" th:value="*{productName}">
-                    </form>
-                    <button type="button" class="btn btn-info delete-btn mx-2">Delete</button>
+                    </form> -->
+                    <button type="button" class="btn btn-info cancel-btn mx-2">Cancel</button>
                     <input type="hidden" class="reservationId" name="reservationId" th:value="*{id}">
                   </div>
                 </div>
@@ -71,9 +71,9 @@
     $(document).ready(function () {
 
       /* 削除ボタン押下時*/
-      $('.delete-btn').on('click', function (e) {
+      $('.cancel-btn').on('click', function (e) {
         bootbox.confirm({
-          message: "Are you sure to delete this reservation?",
+          message: "Are you sure to cancel this reservation?",
           backdrop: true,
           centerVertical: true,
           buttons: {
@@ -91,14 +91,14 @@
               let id = $(e.target).parent().find('.reservationId').val();
               $.ajax({
                 type: 'POST',
-                url: '/portfolio/reservation/delete',
+                url: '/portfolio/reservation/cancel',
                 data: id,
                 contentType: 'application/json',
                 dataType: 'json',
               }).done(function (bool) {
                 if (bool) {
                   bootbox.alert({
-                    message: 'This reservation was deleted.',
+                    message: 'This reservation was canceled.',
                     backdrop: true,
                     centerVertical: true,
                     callback: function () {
@@ -106,7 +106,7 @@
                     }
                   })
                 } else {
-                  bootbox.alert('Something wrong, could not delete. Please try agin');
+                  bootbox.alert('Something wrong, could not cancel. Please try agin');
                 }
               }).fail(function () {
                 console.log('ajax通信に失敗しました');
