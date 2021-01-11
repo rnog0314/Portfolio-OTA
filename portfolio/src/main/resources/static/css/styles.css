@@ -326,6 +326,19 @@ input {
   border-radius: 1rem;
 }
 
+#google-map {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3rem;
+}
+
+#map {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+  width: 40rem;
+  height: 25rem;
+}
+
 #top-banner .banner-area {
   position: relative;
 }

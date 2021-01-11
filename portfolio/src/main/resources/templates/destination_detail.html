@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio OTA</title>
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyAxZgTR6saBdSixxHOPGmbTFAzZFHQEJLs&language=ja" async defer></script>
 </head>
 
 <body>
@@ -117,7 +118,9 @@
 
 
     <section id="youtube" th:if="${destinationDetail.moviePath}" class="text-center">
-      <iframe width="560" height="315" th:src="@{{path} (path = ${destinationDetail.moviePath})}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="560" height="315" th:src="@{{path} (path = ${destinationDetail.moviePath})}" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
     </section>
 
     <!-- ツアー -->
@@ -140,26 +143,44 @@
         </div>
     </section>
 
+    <!-- Google Maps -->
+    <section id="google-map">
+      <div id="map"></div>
+    </section>
+
   </main>
   <!-- footer -->
   <footer th:insert="fragments/footer::footer"></footer>
 
-  <script type="text/javascript">
+  <script type="text/javascript" th:inline="javascript">
     /*<![CDATA[*/
+
     $(document).ready(function () {
-      // idをつけてそれ用の初期化を記述すれば複数のowe-carouselができる(https://support.fruitfulcode.com/hc/en-us/articles/115004837994-Multiple-carousels-at-one-page)
-      $('#tours-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        responsive: {
-          0: {
-            items: 1
-          },
-          600: {
-            items: 3
+      let latitude = /*[[${destinationDetail.latitude}]]*/ 0;
+      console.log(latitude);
+      let longitude = /*[[${destinationDetail.longitude}]]*/ 0;
+      console.log(longitude);
+      var MyLatLng = new google.maps.LatLng(latitude, longitude);
+      var Options = {
+        zoom: 15,      //地図の縮尺値
+        center: MyLatLng,    //地図の中心座標
+        mapTypeId: 'roadmap'   //地図の種類
+      };
+      var map = new google.maps.Map(document.getElementById('map'), Options);
+
+      // idをつけてそれ用の初期化を記述すれば複数のowe - carouselができる(https://support.fruitfulcode.com/hc/en-us/articles/115004837994-Multiple-carousels-at-one-page)
+        $('#tours-carousel').owlCarousel({
+          loop: true,
+          margin: 10,
+          responsive: {
+            0: {
+              items: 1
+            },
+            600: {
+              items: 3
+            }
           }
-        }
-      });
+        });
 
       $('.owl-carousel').owlCarousel({
         loop: true,
