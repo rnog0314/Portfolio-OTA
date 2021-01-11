@@ -54,4 +54,10 @@ public class DestinationDetail {
   @Column(name = "movie_path")
   private String moviePath;
 
+  @Column(name = "latitude")
+  private String latitude;
+
+  @Column(name = "longitude")
+  private String longitude;
+
 }

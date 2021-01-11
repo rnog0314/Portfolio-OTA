@@ -89,9 +89,14 @@ CREATE TABLE destination_details (
   FOREIGN KEY(destination_id) REFERENCES destinations(destination_id)
 )
 
-update destination_details set movie_path = 'https://www.youtube.com/embed/f-Bgx6JK1Vw' where destination_id = 8;
+update destination_details set movie_path = 'https://www.youtube.com/embed/FsWJH5VgMj8' where destination_id = 11;
+update destination_details set latitude = 34.29620569754424 where destination_id = 11;
+update destination_details set longitude = 132.32073973035796 where destination_id = 11;
+34.29620569754424
+132.32073973035796
 
-
+ALTER TABLE destination_details ADD COLUMN latitude double precision;
+ALTER TABLE destination_details ADD COLUMN longitude double precision;
 
 CREATE TABLE category_details (
   category_detail_id SERIAL PRIMARY KEY,
