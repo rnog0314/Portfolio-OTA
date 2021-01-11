@@ -255,8 +255,6 @@ input {
     border-radius: 1rem;
   }
   img {
-    // border-bottom-right-radius: 0;
-    // border-bottom-left-radius: 0;
     object-fit: cover;
   }
   a {
@@ -315,6 +313,19 @@ input {
     margin: 3rem;
     border-radius: 1rem;
   }
+}
+
+#google-map {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3rem;
+}
+
+#map {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50) !important;
+  width: 40rem;
+  height: 25rem;
 }
 
 // product_detail.html
