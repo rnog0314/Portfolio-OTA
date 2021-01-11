@@ -60,7 +60,6 @@ public class IndexController {
 
 /* TODO
   - トップスライダー画像を画質の良いものに変更
-  - 商品詳細ページにGoogleマップ AIzaSyAxZgTR6saBdSixxHOPGmbTFAzZFHQEJLs
   - JSファイルの分離
   - 各ページのaタグの色修正
   - 各ページのimgのbdrsの修正
@@ -72,7 +71,7 @@ public class IndexController {
   - 単体テスト(JUnit)
   - 統合テスト(統合試験仕様書をページごとに簡単に作成の上、試験)
   - README作成
-  - AWSとDockerを使ってデプロイ
+  - ⭐️AWSとDockerを使ってデプロイ
   - ER図作成
   - 画面設計書作成
 */
