@@ -41,7 +41,7 @@ public class AdminNoticeController {
    * @return admin/notice_detail,html
    */
   @GetMapping(value = "/{id}")
-  public String goDetail(@PathVariable("id") int id, Model m) {
+  public String showDetail(@PathVariable("id") int id, Model m) {
     Notice notice = noticeService.findById(id);
     m.addAttribute("notice", notice);
     return "admin/notice_detail";

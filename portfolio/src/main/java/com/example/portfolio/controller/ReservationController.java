@@ -98,7 +98,7 @@ public class ReservationController {
 
   /**
    * 予約キャンセル
-   * @param reservationId
+   * @param reservationId 予約ID
    * @return bool キャンセル処理成功/失敗
    */
   @PostMapping(value = "/cancel")
@@ -114,7 +114,7 @@ public class ReservationController {
 
   /**
    * 決済処理
-   * @param chargeRequest
+   * @param chargeRequest ChargeRequest
    * @param reservationId 予約ID
    * @param m Model
    * @return result.html

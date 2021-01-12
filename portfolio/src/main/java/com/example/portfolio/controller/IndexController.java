@@ -70,7 +70,6 @@ public class IndexController {
   - 各ページのaタグの色修正
   - 各ページのimgのbdrsの修正
   - Service内にある処理で相応しくないものをUtils.javaへの以降
-  - Javadoc未記入のメソッドに記入
 */
 
 /* 残りの作成工程

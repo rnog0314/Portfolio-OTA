@@ -41,7 +41,7 @@ public class SearchController {
    * @return search.html
    */
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
-  public String index(@RequestParam("keyword") Optional<String> keyword, @PathVariable(name = "page") Optional<Integer> page, Model m) {
+  public String init(@RequestParam("keyword") Optional<String> keyword, @PathVariable(name = "page") Optional<Integer> page, Model m) {
     String key = "";
     if (keyword.isPresent()) {
       key = keyword.get();

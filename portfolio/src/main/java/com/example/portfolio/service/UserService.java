@@ -46,8 +46,8 @@ public class UserService {
   /**
    * ユーザ名重複確認
    *
-   * @param newUserName
-   * @return
+   * @param newUserName ユーザ名
+   * @return 該当するユーザ件数
    */
   public int findByUserName(String newUserName) {
     return userRepos.findByUserName(newUserName);
@@ -56,8 +56,8 @@ public class UserService {
   /**
    * 新規ユーザレコード登録
    *
-   * @param user
-   * @return
+   * @param user User
+   * @return 新規作成したユーザの件数
    */
   public int insertUser(User user) {
     return userRepos.insertUser(user);
@@ -66,9 +66,9 @@ public class UserService {
   /**
    * 新規作成したユーザの取得
    *
-   * @param userName
-   * @param password
-   * @return
+   * @param userName ユーザ名
+   * @param password パスワード
+   * @return User
    */
   public User findByUserNameAndPassword(String userName, String password) {
     return userRepos.findByUserNameAndPassword(userName, password);
@@ -77,8 +77,8 @@ public class UserService {
   /**
    * 主キーでユーザを取得
    *
-   * @param userId
-   * @return
+   * @param userId ユーザID
+   * @return User
    */
   public User findByUserId(Integer userId) {
     return userRepos.findByUserId(userId);
@@ -87,7 +87,7 @@ public class UserService {
   /**
    * LoginSessionにログイン情報を格納
    *
-   * @param user
+   * @param user User
    */
   public void setLoginSession(User user) {
     if (user != null) { // ユーザが存在すれば
@@ -109,8 +109,8 @@ public class UserService {
   /**
    * プロフィール画像の更新
    *
-   * @param file
-   * @return
+   * @param file MultipartFile
+   * @return 更新件数
    */
   public int updateUserImage(MultipartFile file) {
     Integer userId = loginSession.getUserId();
@@ -127,7 +127,7 @@ public class UserService {
   /**
    * ユーザ情報の更新
    *
-   * @param userForm
+   * @param userForm UserForm
    */
   public void updateUser(UserForm userForm) {
     userRepos.updateUser(userForm);

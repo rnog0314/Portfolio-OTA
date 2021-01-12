@@ -29,7 +29,7 @@ public class AdminController {
    * @return admin/login.html
    */
   @GetMapping(value = "")
-  public String goLoginPage() {
+  public String init() {
     return "admin/login";
   }
 
@@ -40,7 +40,7 @@ public class AdminController {
    */
   @PostMapping(value = "/login")
   @ResponseBody
-  public boolean goHome(@RequestBody AdminForm f) {
+  public boolean home(@RequestBody AdminForm f) {
     boolean bool = false;
     Admin admin = adminService.findByAdminNameAndPassword(f.getAdminName(), f.getPassword());
     if (admin != null) {
@@ -72,7 +72,7 @@ public class AdminController {
    * @return admin/account
    */
   @GetMapping(value = "/account")
-  public String getMethodName(Model m) {
+  public String showAccount(Model m) {
     Admin admin = adminService.findById(adminSession.getId());
     m.addAttribute("admin", admin);
     return "admin/account";

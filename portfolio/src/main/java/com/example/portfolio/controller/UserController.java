@@ -68,7 +68,7 @@ public class UserController {
    */
   @PostMapping("/register")
   @ResponseBody
-  public boolean registerUser(@RequestBody User newUser) {
+  public boolean register(@RequestBody User newUser) {
     boolean bool = false;
     int result = userService.insertUser(newUser);
     if (result > 0) {

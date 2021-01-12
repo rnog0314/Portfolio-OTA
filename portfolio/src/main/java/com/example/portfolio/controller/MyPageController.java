@@ -24,8 +24,8 @@ public class MyPageController {
   /**
    * マイページ初期表示
    *
-   * @param model
-   * @return
+   * @param model Model
+   * @return myapage.html
    */
   @GetMapping("")
   public String init(Model model) {

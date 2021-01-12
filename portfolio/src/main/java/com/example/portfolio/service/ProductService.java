@@ -33,13 +33,12 @@ public class ProductService {
 	private final int RECORDS = 9;
 
 	/**
-	 * 10個の商品レコードを取得
+	 * トップで表示する10個の商品取得
 	 *
 	 * @return
 	 */
 	public List<Product> findAll() {
 		return productRepos.findAll().subList(1, 11);
-		// TODO この１０個のレコードとは何か？
 	}
 
 	/**
@@ -168,10 +167,19 @@ public class ProductService {
 		return productRepos.findAll(pageable);
 	}
 
+	/**
+	 * 商品情報修正
+	 * @param f ProductForm
+	 */
 	public void updateProduct(ProductForm f) {
 		productRepos.updateProduct(f.getProductName(), f.getPrice());
 	}
 
+	/**
+	 * 商品価格取得
+	 * @param productId 商品ID
+	 * @return 商品価格
+	 */
 	public int getPriceByProductId(int productId) {
 		return productRepos.getPriceByProductId(productId);
 	}
