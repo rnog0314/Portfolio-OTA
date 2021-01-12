@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class SearchDto {
-
+  // 画面表示用のDTO
   @Id
   private int productId;
   private String productImage;

@@ -22,13 +22,13 @@ public class MyPageController {
   private LoginSession loginSession;
 
   /**
-   * マイページ初期表示メソッド
+   * マイページ初期表示
    *
-   * @param model
-   * @return
+   * @param model Model
+   * @return myapage.html
    */
   @GetMapping("")
-  public String goMyPage(Model model) {
+  public String init(Model model) {
     User user = userService.findByUserId(loginSession.getUserId());
     byte[] bytes = user.getUserImg();
     if (bytes != null) {

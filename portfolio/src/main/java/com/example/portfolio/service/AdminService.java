@@ -20,23 +20,41 @@ public class AdminService {
   @Autowired
   private AdminSession adminSession;
 
+  /**
+   * 管理者ログイン
+   * @param adminName 管理者名
+   * @param password パスワード
+   * @return Admin
+   */
   public Admin findByAdminNameAndPassword(String adminName, String password) {
     return adminRepos.findByAdminNameAndPassword(adminName, password);
   }
 
-  public Admin findById(Integer id) {
+  /**
+   * 管理者取得
+   * @param id 管理者ID
+   * @return Admin
+   */
+  public Admin findById(int id) {
     return adminRepos.findById(id).get();
   }
 
-  public void updateAdmin(AdminForm adminForm) {
+  /**
+   * 管理者情報更新
+   * @param f AdminForm
+   */
+  public void updateAdmin(AdminForm f) {
     int id = adminSession.getId();
-    String adminName = adminForm.getAdminName();
-    String password = adminForm.getPassword();
+    String adminName = f.getAdminName();
+    String password = f.getPassword();
     adminRepos.updateAdmin(id, adminName, password);
   }
 
+  /**
+   * 管理者セッション更新
+   * @param admin Admin
+   */
   public void setAdminSession(Admin admin) {
-
     adminSession.setId(admin.getId());
     adminSession.setPassword(admin.getPassword());
     adminSession.setAdminName(admin.getAdminName());

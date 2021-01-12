@@ -17,6 +17,10 @@ public class TestimonialService {
   @Autowired
   TestimonialRepository testimonialRepos;
 
+  /**
+   * Testimonial一覧取得
+   * @return List<Testimonial> Testimonial一覧
+   */
   public List<Testimonial> findAll() {
     return testimonialRepos.findAll();
   }

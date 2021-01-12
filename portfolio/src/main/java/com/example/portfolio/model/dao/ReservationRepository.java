@@ -19,7 +19,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
 	@Modifying
 	@Query(value = "UPDATE reservations SET valid_flag = true WHERE id = :reservationId", nativeQuery = true)
-	void updateValidFlag(int reservationId);
+	void updateValidFlag(@Param("reservationId") int reservationId);
 
 	@Query(value = "SELECT * FROM reservations WHERE valid_flag = true", nativeQuery = true)
 	List<Reservation> findAllByValidFlagTrue();

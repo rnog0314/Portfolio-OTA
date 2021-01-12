@@ -26,7 +26,12 @@ public class BookmarkService {
   @Autowired
   private BookmarkDtoRepository bookmarkDtoRepos;
 
-  public int add(Integer productId) {
+  /**
+   * お気に入り追加
+   * @param productId 商品ID
+   * @return 商品追加件数
+   */
+  public int add(int productId) {
     Bookmark bookmark = new Bookmark(loginSession.getUserId(), productId);
     try {
       bookmarkRepos.save(bookmark);
@@ -36,11 +41,21 @@ public class BookmarkService {
     }
   }
 
-  public List<BookmarkDto> getBookmarkList(Integer userId) {
+  /**
+   * お気に入り取得
+   * @param userId ユーザID
+   * @return ユーザ別お気に入り一覧
+   */
+  public List<BookmarkDto> getBookmarkList(int userId) {
     return bookmarkDtoRepos.getBookmarkList(userId);
   }
 
-  public int delete(Integer productId) {
+  /**
+   * お気に入り削除
+   * @param productId 商品ID
+   * @return 削除件数
+   */
+  public int delete(int productId) {
     try {
       return bookmarkRepos.deleteByProductId(productId);
     } catch (IllegalArgumentException e) {

@@ -23,6 +23,11 @@ public class NoticeController {
   @Autowired
   private LoginSession loginSession;
 
+  /**
+   * お知らせ一覧初期表示
+   * @param m Model
+   * @return notice.html
+   */
   @GetMapping(value = "")
   public String init(Model m) {
     List<Notice> notices = noticeService.findAllByVisibleFlagTrue();
@@ -31,6 +36,12 @@ public class NoticeController {
     return "notice";
   }
 
+  /**
+   * お知らせ詳細初期表示
+   * @param id お知らせID
+   * @param m Model
+   * @return notice_detail.html
+   */
   @GetMapping(value = "/{id}")
   public String showDetail(@PathVariable("id") int id, Model m) {
     Notice notice = noticeService.findById(id);

@@ -30,26 +30,26 @@ public class UserController {
   Gson gson = new Gson();
 
   /**
-   * 新規ユーザー登録ページ初期表示メソッド
+   * 新規ユーザー登録ページ初期表示
    *
-   * @param model
-   * @return
+   * @param m Model
+   * @return user_register.html
    */
   @GetMapping("")
-  public String goUserRegisterPage(Model model) {
-    model.addAttribute("loginSession", loginSession);
+  public String init(Model m) {
+    m.addAttribute("loginSession", loginSession);
     return "user_register";
   }
 
   /**
    * ユーザ名重複確認メソッド
    *
-   * @param newUserName
-   * @return
+   * @param newUserName 新規ユーザ名
+   * @return bool 重複有無(falseで重複なし)
    */
   @PostMapping("/check")
   @ResponseBody
-  public boolean checkUserName(@RequestBody String newUserName) {
+  public boolean checkUserNameDuplicate(@RequestBody String newUserName) {
     boolean bool = false; // 重複があるかどうか真偽値をfalseで初期化
     int count = userService.findByUserName(newUserName);
     if (count > 0) { // 同一のユーザ名が既に存在していたらtrueを返してエラーを表示
@@ -61,14 +61,14 @@ public class UserController {
   }
 
   /**
-   * 新規ユーザー登録メソッド
+   * 新規ユーザー登録
    *
-   * @param user
-   * @return
+   * @param user User
+   * @return bool 新規ユーザ登録成功/失敗
    */
   @PostMapping("/register")
   @ResponseBody
-  public boolean registerUser(@RequestBody User newUser) {
+  public boolean register(@RequestBody User newUser) {
     boolean bool = false;
     int result = userService.insertUser(newUser);
     if (result > 0) {
@@ -82,20 +82,20 @@ public class UserController {
   /**
    * ユーザ情報変更
    *
-   * @param userForm
-   * @param m
-   * @return
+   * @param f UserForm
+   * @param m Model
+   * @return mypage.html
    */
   @PostMapping(value = "/modify", consumes = { "multipart/form-data" })
-  public String modify(UserForm userForm, Model m) {
-    Integer userId = loginSession.getUserId();
-    userForm.setUserId(userId);
-    userService.updateUser(userForm);
+  public String modify(UserForm f, Model m) {
+    int userId = loginSession.getUserId();
+    f.setUserId(userId);
+    userService.updateUser(f);
 
     User user = userService.findByUserId(userId);
     userService.setLoginSession(user);
     String image = userService.getUserImg(user);
-    Boolean completeMsg = true;
+    boolean completeMsg = true;
     m.addAttribute("user", user);
     m.addAttribute("image", image);
     m.addAttribute("loginSession", loginSession);
@@ -106,13 +106,13 @@ public class UserController {
   /**
    * プロフィール画像変更
    *
-   * @param file
-   * @param m
-   * @return
+   * @param file MultipartFile
+   * @param m Model
+   * @return bool プロフィール画像変更成功/失敗
    */
   @PostMapping(value = "/imgUpload")
   @ResponseBody
-  public boolean imgUpdate(@RequestParam("file") MultipartFile file, Model m) {
+  public boolean updateUserImg(@RequestParam("file") MultipartFile file, Model m) {
     boolean bool = false;
     int result = userService.updateUserImage(file);
     if (result > 0) { bool = true; }

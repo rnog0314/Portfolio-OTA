@@ -3,7 +3,6 @@ package com.example.portfolio.controller;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-// import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -42,7 +41,7 @@ public class SearchController {
    * @return search.html
    */
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
-  public String index(@RequestParam("keyword") Optional<String> keyword, @PathVariable(name = "page") Optional<Integer> page, Model m) {
+  public String init(@RequestParam("keyword") Optional<String> keyword, @PathVariable(name = "page") Optional<Integer> page, Model m) {
     String key = "";
     if (keyword.isPresent()) {
       key = keyword.get();

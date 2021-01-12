@@ -6,6 +6,7 @@ import com.example.portfolio.model.entity.ReservationDto;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -22,6 +23,6 @@ public interface ReservationDtoRepoitory extends JpaRepository<ReservationDto, I
                 + "ON r.user_id = u.user_id "
                 + "WHERE r.user_id = :userId "
                 + "AND r.valid_flag = true", nativeQuery = true)
-	List<ReservationDto> getReservationList(int userId);
+	List<ReservationDto> getReservationList(@Param("userId") int userId);
 
 }

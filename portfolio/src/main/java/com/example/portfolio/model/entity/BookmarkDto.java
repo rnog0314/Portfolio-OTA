@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class BookmarkDto {
-
+  // 画面表示用のDTO
   @Id
   private int id;
   private int userId;

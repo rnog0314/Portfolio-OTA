@@ -6,5 +6,6 @@ import lombok.Data;
 public class ProductForm {
 
   private String productName;
-  private Integer price;
+  private int price;
+  
 }

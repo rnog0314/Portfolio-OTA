@@ -18,10 +18,19 @@ public class DestinationService {
   @Autowired
   DestinationRepository destinationRepos;
 
+  /**
+   * デスティネーション全取得
+   * @return List<Destination> デスティネーション一覧
+   */
   public List<Destination> findAll() {
     return destinationRepos.findAll();
   }
 
+  /**
+   * デスティネーション取得
+   * @param destinationId デスティネーションID
+   * @return Destination デスティネーション
+   */
   public Destination findById(int destinationId) {
     Optional <Destination> result = destinationRepos.findById(destinationId);
     Destination destination = result.get();

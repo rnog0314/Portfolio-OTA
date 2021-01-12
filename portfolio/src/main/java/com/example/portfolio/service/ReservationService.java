@@ -105,6 +105,10 @@ public class ReservationService {
     return reservationRepos.findAllByValidFlagTrue();
   }
 
+  /**
+   * 予約有効フラグの更新
+   * @param reservationId 予約ID
+   */
   public void updateValidFlag(int reservationId) {
     reservationRepos.updateValidFlag(reservationId);
   }

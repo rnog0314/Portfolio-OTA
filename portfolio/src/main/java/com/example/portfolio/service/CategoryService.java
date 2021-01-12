@@ -17,10 +17,19 @@ public class CategoryService {
   @Autowired
   CategoryRepository categoryRepos;
 
+  /**
+   * カテゴリ全取得
+   * @return List<Category> カテゴリ一覧
+   */
 	public List<Category> findAll() {
 		return categoryRepos.findAll();
 	}
 
+  /**
+   * カテゴリ取得
+   * @param categoryId カテゴリID
+   * @return Category カテゴリ
+   */
 	public Category findById(int categoryId) {
     Optional<Category> result = categoryRepos.findById(categoryId);
     Category destination = result.get();

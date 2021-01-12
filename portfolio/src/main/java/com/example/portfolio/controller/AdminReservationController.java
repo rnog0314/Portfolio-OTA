@@ -31,8 +31,15 @@ public class AdminReservationController {
 
   Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
+  /**
+   * 管理者/予約情報一覧表示
+   * @param page リクエストされたページ番号
+   * @param m Model
+   * @param r Reservation
+   * @return admin/reservation.html
+   */
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
-  public String init(@PathVariable(name = "page") Optional<Integer> page, Model m, Reservation u) {
+  public String init(@PathVariable(name = "page") Optional<Integer> page, Model m, Reservation r) {
     Page<Reservation> reservations = reservationService.findPaginatedList(page);
     int lastPage = reservations.getTotalPages();
     if (lastPage > 0) {
@@ -45,8 +52,7 @@ public class AdminReservationController {
   }
 
   /**
-   * DBから予約情報取得
-   *
+   * DBから予約情報取得しカレンダーに表示
    * @return reservations 全予約情報
    */
   @GetMapping(value = "/fetchAll")

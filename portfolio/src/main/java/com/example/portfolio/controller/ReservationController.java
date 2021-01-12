@@ -50,6 +50,7 @@ public class ReservationController {
   @Autowired
   private ProductService productService;
 
+  // application.ymlに記載したStripeのパブリックキー
   @Value("${stripe.keys.public}")
   private String stripePublicKey;
 
@@ -62,8 +63,8 @@ public class ReservationController {
   public String init(Model m) {
     int userId = loginSession.getUserId();
     List<ReservationDto> reservationList = reservationService.getReservationList(userId);
-    String email = userService.findByUserId(userId).getEmail();
-    m.addAttribute("email", email);
+    // String email = userService.findByUserId(userId).getEmail();
+    // m.addAttribute("email", email);
     m.addAttribute("reservationList", reservationList);
     m.addAttribute("loginSession", loginSession);
     return "reservation_list";
@@ -85,7 +86,7 @@ public class ReservationController {
     int amount = price * reserve.getCount();
     int id = reserve.getId();
 
-    m.addAttribute("amount", amount * 100); // in cents
+    m.addAttribute("amount", amount * 100); // in Stripeはセントはでamoutを扱うため、✖️100
     m.addAttribute("imagePath", imagePath);
     m.addAttribute("id", id);
     m.addAttribute("productName", productName);
@@ -97,13 +98,12 @@ public class ReservationController {
 
   /**
    * 予約キャンセル
-   * @param reservationId
-   * @return True/False キャンセル処理成功/失敗
-   * @throws Exception
+   * @param reservationId 予約ID
+   * @return bool キャンセル処理成功/失敗
    */
   @PostMapping(value = "/cancel")
   @ResponseBody
-  public boolean cancel(@RequestBody int reservationId) throws Exception {
+  public boolean cancel(@RequestBody int reservationId) {
     boolean bool = false;
     int result = reservationService.cancel(reservationId);
     if (result > 0) {
@@ -114,7 +114,7 @@ public class ReservationController {
 
   /**
    * 決済処理
-   * @param chargeRequest
+   * @param chargeRequest ChargeRequest
    * @param reservationId 予約ID
    * @param m Model
    * @return result.html
