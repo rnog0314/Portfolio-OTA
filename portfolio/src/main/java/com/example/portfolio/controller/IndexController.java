@@ -65,7 +65,7 @@ public class IndexController {
 }
 
 /* TODO
-  - トップスライダー画像を画質の良いものに変更
+  - cateogry_destailsの画像を画質の良いものに変更
   - JSファイルの分離
   - 各ページのaタグの色修正
   - 各ページのimgのbdrsの修正
