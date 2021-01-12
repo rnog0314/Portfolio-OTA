@@ -69,7 +69,7 @@ public class IndexController {
   - JSファイルの分離
   - 各ページのaタグの色修正
   - 各ページのimgのbdrsの修正
-  - Service内にある処理で相応しくないものをUtils.javaへの以降
+  - try-catchの確認
 */
 
 /* 残りの作成工程

@@ -168,5 +168,10 @@ INSERT INTO reservations (user_id, product_id, start_date, end_date, count) VALU
 
 SELECT * FROM reservations;
 
+update destination_details set image1 = '/img/destination/sanyo/sanyo1.jpg', image2 = '/img/destination/sanyo/sanyo2.jpg', image3 = '/img/destination/sanyo/sanyo3.jpg' where destination_id = 11;
+
 
 SELECT * FROM reservations WHERE user_id = 1;
+
+delete from destinations where destination_id = 11;
+
