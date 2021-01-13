@@ -1,1 +1,1 @@
-INSERT INTO admins (admin_name, password) VALUES ('testAdmin1', 'password001');
+INSERT INTO admin (admin_name, password) VALUES ('testAdmin1', 'password001');

@@ -1,13 +1,27 @@
-DROP DATABASE IF EXISTS ota;
+-- DROP DATABASE IF EXISTS ota;
 
-CREATE DATABASE ota;
+-- CREATE DATABASE ota;
+
+CREATE TABLE categories (
+  category_id SERIAL PRIMARY KEY,
+  category_name VARCHAR(255) NOT NULL UNIQUE,
+  category_image VARCHAR(255),
+  delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
+);
+
+CREATE TABLE destinations (
+  destination_id SERIAL PRIMARY KEY,
+  destination_name VARCHAR(255) NOT NULL UNIQUE,
+  destination_image VARCHAR(255),
+  delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
+);
 
 CREATE TABLE products (
   product_id SERIAL PRIMARY KEY,
   product_name VARCHAR(255) NOT NULL UNIQUE,
   category_id INTEGER NOT NULL,
   product_image VARCHAR(255),
-  destination_id
+  destination_id INTEGER NOT NULL,
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE',
   FOREIGN KEY(category_id) REFERENCES categories(category_id),
   FOREIGN KEY(destination_id) REFERENCES destinations(destination_id)
@@ -19,16 +33,8 @@ CREATE TABLE product_details (
   image VARCHAR(255) NOT NULL,
   article_title VARCHAR(255) NOT NULL,
   article_text VARCHAR(2000) NOT NULL,
-  price INTEGER NOT NOT DEFAULT 100,
+  price INTEGER NOT NULL DEFAULT 100,
   FOREIGN KEY(product_id) REFERENCES products(product_id)
-)
-SELECT * FROM product_details;
-
-CREATE TABLE categories (
-  category_id SERIAL PRIMARY KEY,
-  category_name VARCHAR(255) NOT NULL UNIQUE,
-  category_image VARCHAR(255),
-  delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
 );
 
 CREATE TABLE users (
@@ -53,12 +59,6 @@ CREATE TABLE carts (
   FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
 
-CREATE TABLE destinations (
-  destination_id SERIAL PRIMARY KEY,
-  destination_name VARCHAR(255) NOT NULL UNIQUE,
-  destination_image VARCHAR(255),
-  delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
-)
 
 CREATE TABLE testimonials (
   testimonial_id SERIAL PRIMARY KEY,
@@ -67,7 +67,7 @@ CREATE TABLE testimonials (
   testimonial_text VARCHAR(2000) NOT NULL,
   testimonial_review INTEGER NOT NULL,
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
-)
+);
 
 
 CREATE TABLE destination_details (
@@ -84,7 +84,7 @@ CREATE TABLE destination_details (
   article_text3 VARCHAR(2000) NOT NULL,
   movie_path VARCHAR(255) DEFAULT 'https://www.youtube.com/embed/CNeakmoER7Q',
   FOREIGN KEY(destination_id) REFERENCES destinations(destination_id)
-)
+);
 
 CREATE TABLE category_details (
   category_detail_id SERIAL PRIMARY KEY,
@@ -99,7 +99,7 @@ CREATE TABLE category_details (
   article_title3 VARCHAR(255) NOT NULL,
   article_text3 VARCHAR(2000) NOT NULL,
   FOREIGN KEY(category_id) REFERENCES categories(category_id)
-)
+);
 
 CREATE TABLE reservations (
   id SERIAL PRIMARY KEY,
@@ -112,7 +112,7 @@ CREATE TABLE reservations (
   valid_flag BOOLEAN NOT NULL DEFAULT 'FALSE',
   FOREIGN KEY(user_id) REFERENCES users(user_id),
   FOREIGN KEY(product_id) REFERENCES products(product_id)
-)
+);
 
 CREATE TABLE bookmarks (
   id SERIAL PRIMARY KEY,
@@ -120,22 +120,7 @@ CREATE TABLE bookmarks (
   product_id INTEGER NOT NULL,
   FOREIGN KEY(user_id) REFERENCES users(user_id),
   FOREIGN KEY(product_id) REFERENCES products(product_id)
-)
-
-CREATE TABLE admin (
-  id SERIAL PRIMARY KEY,
-  admin_name VARCHAR(32) NOT NULL,
-  password VARCHAR(64) NOT NULL
-  -- img BYTEA DEFAULT ''
-)
-
--- MySQLの「ON UPDATE TIMESTAMP」はPOSTGRESではこの関数を設定しておいて、
-CREATE OR REPLACE FUNCTION trigger_set_timestamp()
-RETURNS TRIGGER AS $$
-  BEGIN NEW.updated_at = NOW();
-  RETURN NEW;
-END;
-$$ LANGUAGE 'plpgsql';
+);
 
 CREATE TABLE notices (
   id SERIAL PRIMARY KEY,
@@ -144,4 +129,19 @@ CREATE TABLE notices (
   visible_flag BOOLEAN DEFAULT 'TRUE',
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_DATE,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_DATE
-)
+);
+
+CREATE TABLE admin (
+  id SERIAL PRIMARY KEY,
+  admin_name VARCHAR(32) NOT NULL,
+  password VARCHAR(64) NOT NULL
+);
+
+
+-- -- MySQLの「ON UPDATE TIMESTAMP」はPOSTGRESではこの関数を設定しておいて、
+-- CREATE OR REPLACE FUNCTION trigger_set_timestamp()
+-- RETURNS TRIGGER AS $$
+--   BEGIN NEW.updated_at = NOW();
+--   RETURN NEW;
+-- END;
+-- $$ LANGUAGE 'plpgsql';
