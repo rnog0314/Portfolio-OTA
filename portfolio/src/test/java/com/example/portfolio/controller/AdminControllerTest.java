@@ -1,9 +1,11 @@
 package com.example.portfolio.controller;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.transaction.Transactional;
 
+import com.example.portfolio.model.entity.Admin;
 // import com.example.portfolio.model.entity.Admin;
 import com.example.portfolio.service.AdminService;
 
@@ -20,12 +22,23 @@ public class AdminControllerTest {
   @Autowired
   private AdminService adminService;
 
+  /**
+   * 管理者画面ログイン
+   */
   @Test
   public void testHome() {
 
-    String adminName = "testAdmin1";
+    // 管理者アカウントが存在する場合
+    String  adminName = "testAdmin1";
     String password = "password001";
-    assertTrue(adminService.findByAdminNameAndPassword(adminName, password) != null);
+    Admin admin1 = adminService.findByAdminNameAndPassword(adminName, password);
+    assertTrue(admin1 != null);
+
+    // 管理者アカウントが存在しない場合
+    adminName = "adminNotExsit";
+    password = "passwordNotExsit";
+    Admin admin2 = adminService.findByAdminNameAndPassword(adminName, password);
+    assertFalse(admin2 == null);
 
   }
 }
