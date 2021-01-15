@@ -70,6 +70,7 @@ public class IndexController {
   - 各ページのaタグの色修正
   - 各ページのimgのbdrsの修正
   - try-catchの確認
+  - Mockの使い方
 */
 
 /* 残りの作成工程
