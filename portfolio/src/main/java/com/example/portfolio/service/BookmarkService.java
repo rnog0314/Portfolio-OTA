@@ -32,8 +32,8 @@ public class BookmarkService {
    * @return 商品追加件数
    */
   public int add(int productId) {
-    Bookmark bookmark = new Bookmark(loginSession.getUserId(), productId);
     try {
+      Bookmark bookmark = new Bookmark(loginSession.getUserId(), productId);
       bookmarkRepos.save(bookmark);
       return 1;
     } catch (IllegalArgumentException e) {
@@ -56,11 +56,7 @@ public class BookmarkService {
    * @return 削除件数
    */
   public int delete(int productId) {
-    try {
-      return bookmarkRepos.deleteByProductId(productId);
-    } catch (IllegalArgumentException e) {
-      throw new RuntimeException(e);
-    }
+    return bookmarkRepos.deleteByProductId(productId);
   }
 
 }
