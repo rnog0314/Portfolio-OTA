@@ -10,15 +10,20 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
+@Sql
 public class AdminServiceTest {
 
   @Mock
@@ -65,6 +70,26 @@ public class AdminServiceTest {
     assertEquals(1 , adminSession.getId());
     assertEquals("testAdmin", f.getAdminName());
     assertEquals("password", f.getPassword());
+  }
+
+  @Test
+  public void testSetAdminSession() {
+    Admin testAdmin1 = new Admin(3, "testAdmin", "password");
+    doNothing().when(adminSession).setId(testAdmin1.getId());
+    doNothing().when(adminSession).setAdminName(testAdmin1.getAdminName());
+    doNothing().when(adminSession).setPassword(testAdmin1.getPassword());
+    doNothing().when(adminSession).setLogined(true);
+    adminService.setAdminSession(testAdmin1);
+  }
+
+  @Test
+  public void testFindAll() {
+    List<Admin> expected = new ArrayList<Admin>();
+    expected.add(new Admin(1, "testAdmin", "password"));
+    expected.add(new Admin(2, "testAdmin2", "password2"));
+    when(adminReposMock.findAll()).thenReturn(expected);
+    List<Admin> actual = adminService.findAll();
+    assertEquals(expected, actual);
   }
 
 

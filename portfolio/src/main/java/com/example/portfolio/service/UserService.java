@@ -75,16 +75,6 @@ public class UserService {
   }
 
   /**
-   * 主キーでユーザを取得
-   *
-   * @param userId ユーザID
-   * @return User
-   */
-  public User findByUserId(Integer userId) {
-    return userRepos.findByUserId(userId);
-  }
-
-  /**
    * LoginSessionにログイン情報を格納
    *
    * @param user User
@@ -113,14 +103,13 @@ public class UserService {
    * @return 更新件数
    */
   public int updateUserImage(MultipartFile file) {
-    Integer userId = loginSession.getUserId();
+    int userId = loginSession.getUserId();
     byte[] bytes;
     try {
       bytes = file.getBytes();
       return userRepos.updateUserImage(bytes, userId);
     } catch (IOException e) {
-      e.printStackTrace();
-      return 0;
+      throw new RuntimeException();
     }
   }
 
