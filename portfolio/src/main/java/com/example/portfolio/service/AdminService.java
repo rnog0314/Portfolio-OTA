@@ -42,7 +42,7 @@ public class AdminService {
   }
 
   /**
-   * 管理者情報更新
+   * 管理者情報更新service
    * @param f AdminForm
    */
   public void updateAdmin(AdminForm f) {

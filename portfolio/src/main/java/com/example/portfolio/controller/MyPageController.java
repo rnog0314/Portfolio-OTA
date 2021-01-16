@@ -29,7 +29,7 @@ public class MyPageController {
    */
   @GetMapping("")
   public String init(Model model) {
-    User user = userService.findByUserId(loginSession.getUserId());
+    User user = userService.findByUserId((int) loginSession.getUserId());
     byte[] bytes = user.getUserImg();
     if (bytes != null) {
       String image = userService.getUserImg(user);
