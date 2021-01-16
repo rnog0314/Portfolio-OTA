@@ -1,12 +1,11 @@
 package com.example.portfolio.controller;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.transaction.Transactional;
 
 import com.example.portfolio.model.entity.Admin;
-// import com.example.portfolio.model.entity.Admin;
 import com.example.portfolio.service.AdminService;
 
 import org.junit.jupiter.api.Test;
@@ -38,7 +37,7 @@ public class AdminControllerTest {
     adminName = "adminNotExsit";
     password = "passwordNotExsit";
     Admin admin2 = adminService.findByAdminNameAndPassword(adminName, password);
-    assertFalse(admin2 == null);
+    assertNull(admin2);
 
   }
 }
