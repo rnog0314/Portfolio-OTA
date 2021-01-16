@@ -103,9 +103,9 @@ public class UserService {
    * @return 更新件数
    */
   public int updateUserImage(MultipartFile file) {
-    int userId = loginSession.getUserId();
-    byte[] bytes;
     try {
+      int userId = loginSession.getUserId();
+      byte[] bytes;
       bytes = file.getBytes();
       return userRepos.updateUserImage(bytes, userId);
     } catch (IOException e) {

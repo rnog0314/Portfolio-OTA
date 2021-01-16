@@ -2,6 +2,7 @@ package com.example.portfolio.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
@@ -44,12 +45,22 @@ public class UserServiceTest {
   ArgumentCaptor<User> argCaptor;
 
   @Test
-  public void testUpdateUserImageSuccess() {
+  public void testUpdateUserImage() {
+    // 正常処理
     when(loginSession.getUserId()).thenReturn(1);
     MockMultipartFile kmlfile = new MockMultipartFile("data", "filename.kml", "text/plain", "some kml".getBytes());
     when(userRepos.updateUserImage(any(), anyInt())).thenReturn(1);
     int actual = userSerive.updateUserImage(kmlfile);
     assertEquals(1, actual);
+
+    // 例外処理
+    MockMultipartFile nullFile = null;
+    assertThrows(RuntimeException.class, () -> userSerive.updateUserImage(nullFile));
+  }
+
+  @Test
+  public void testUpdateUserImageThrowException() {
+
   }
 
   @Test
