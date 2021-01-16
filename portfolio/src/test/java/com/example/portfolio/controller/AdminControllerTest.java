@@ -29,14 +29,17 @@ import org.springframework.test.context.jdbc.Sql;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
+// @ExtendWith(MockitoExtension.class)
 @Sql
-@ExtendWith(MockitoExtension.class)
 public class AdminControllerTest {
 
-  @InjectMocks
-  private AdminController adminController = new AdminController();
+  // @InjectMocks
+  // private AdminController adminController = new AdminController();
 
-  @Mock
+  // @Mock
+  // private AdminService adminService;
+
+  @Autowired
   private AdminService adminService;
 
   /**
@@ -80,10 +83,10 @@ public class AdminControllerTest {
 
     /** 管理者の存在チェック */
     // 管理者アカウントが存在する場合
-    // String adminName = "testAdmin1";
-    // String password = "password001";
-    // Admin admin1 = adminService.findByAdminNameAndPassword(adminName, password);
-    // assertTrue(admin1 != null);
+    String adminName = "testAdmin1";
+    String password = "password001";
+    Admin admin1 = adminService.findByAdminNameAndPassword(adminName, password);
+    assertTrue(admin1 != null);
 
     // 管理者アカウントが存在しない場合
     // adminName = "adminNotExsit";
