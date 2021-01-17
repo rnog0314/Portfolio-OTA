@@ -68,7 +68,7 @@ public class IndexController {
   - cateogry_details.htmlの画像を画質の良いものに変更
   - JSファイルの分離
   - 各ページのimgのbdrsの修正
-  - Repositoryの単体テスト
+  - Repositoryの単体テスト(更新系はBeanPropertyRowMapperを使ってDBの状態確認)
 */
 
 /* 残りの作成工程
