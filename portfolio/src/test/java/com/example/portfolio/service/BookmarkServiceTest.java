@@ -43,7 +43,7 @@ public class BookmarkServiceTest {
 
   @Test
   public void testDelete() {
-    when(bookmarkRepos.deleteByProductId(anyInt())).thenReturn(1);
+    when(bookmarkRepos.deleteByProductIdAndUserId(anyInt(), anyInt())).thenReturn(1);
     int actual = bookmarkService.delete(1);
     assertEquals(1, actual);
   }

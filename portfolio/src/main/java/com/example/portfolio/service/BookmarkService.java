@@ -56,7 +56,8 @@ public class BookmarkService {
    * @return 削除件数
    */
   public int delete(int productId) {
-    return bookmarkRepos.deleteByProductId(productId);
+    int userId = loginSession.getUserId();
+    return bookmarkRepos.deleteByProductIdAndUserId(productId, userId);
   }
 
 }

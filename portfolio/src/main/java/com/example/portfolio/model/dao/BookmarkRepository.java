@@ -12,8 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface BookmarkRepository extends JpaRepository<Bookmark, Integer> {
 
   @Modifying
-	@Query(value = "DELETE FROM bookmarks WHERE product_id = :productId", nativeQuery = true)
-	int deleteByProductId(@Param("productId") int productId);
-
-
+	@Query(value = "DELETE FROM bookmarks WHERE product_id = :productId AND user_id = :userId", nativeQuery = true)
+	int deleteByProductIdAndUserId( @Param("productId") int productId,
+																	@Param("userId") int userId);
 }
