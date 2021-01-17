@@ -124,7 +124,7 @@ public class ProductService {
 	 * @return
 	 */
 	public int getCurrentPage(Optional<Integer> page) {
-		int currentPage = page.orElse(1);
+		int currentPage = page.orElse(1); // ページ初期表示でリクエストされたページ番号がない時、ページ番号を1とする
 		if (currentPage == 0) {// 先頭ページを表示している際の「<」押下用
       currentPage = 1;
     }

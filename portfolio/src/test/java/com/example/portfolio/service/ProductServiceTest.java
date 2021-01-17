@@ -28,7 +28,7 @@ public class ProductServiceTest {
   private ProductRepository productRepos;
 
   @Mock
-	private SearchDtoRepository searchRepos;
+  private SearchDtoRepository searchRepos;
 
   @InjectMocks
   private ProductService productService;
@@ -50,7 +50,7 @@ public class ProductServiceTest {
     products.add(new SearchDto(1, "dummyImage1", "dummyName1"));
     products.add(new SearchDto(2, "dummyImage2", "dummyName2"));
     Optional<Integer> page = Optional.of(Integer.valueOf(0));
-    List<SearchDto> actual1 =  productService.getPaginatedResult(products, page);
+    List<SearchDto> actual1 = productService.getPaginatedResult(products, page);
     assertEquals(2, actual1.size());
 
     // リストが9つよりも多くあった時
@@ -59,9 +59,21 @@ public class ProductServiceTest {
       productList.add(new SearchDto(i, "dummyImage" + i, "dummyName" + i));
     }
     page = Optional.of(Integer.valueOf(2));
-    List<SearchDto> actual2 =  productService.getPaginatedResult(productList, page);
+    List<SearchDto> actual2 = productService.getPaginatedResult(productList, page);
     assertEquals(6, actual2.size());
+  }
 
+  @Test
+  public void testGetCurrentPage() {
+    // 先頭ページ「<」が押下された時
+    Optional<Integer> page = Optional.of(Integer.valueOf(0));
+    int actual1 = productService.getCurrentPage(page);
+    assertEquals(1, actual1);
+
+    // 先頭ページ「<」以外が押下された時
+    page = Optional.of(Integer.valueOf(8));
+    int actual2 = productService.getCurrentPage(page);
+    assertEquals(8, actual2);
   }
 
 }
