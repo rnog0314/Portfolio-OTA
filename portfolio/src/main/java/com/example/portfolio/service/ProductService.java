@@ -101,14 +101,14 @@ public class ProductService {
 	 * @return
 	 */
 	public List<SearchDto> getPaginatedResult(Set<SearchDto> products, Optional<Integer> page) {
-		int currentPage = getCurrentPage(page); // 押下されたページリンクの数字(リクエストされたページ番号)
-
-		int from = (currentPage - 1) * RECORDS;
-		int to = currentPage * RECORDS;
+		// 取得した数が9つに満たなかった場合はSetをそのままListに変換して返す
 		int count = products.size();
-		if (!(count > 8)) { // 取得した数が9つに満たなかった時
+		if (!(count > 8)) {
 			return new ArrayList<>(products);
 		}
+		int currentPage = getCurrentPage(page); // 押下されたページリンクの数字(リクエストされたページ番号)
+		int from = (currentPage - 1) * RECORDS;
+		int to = currentPage * RECORDS;
 		if (count < to) {
 			to = count;
 		}
