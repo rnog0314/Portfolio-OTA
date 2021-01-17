@@ -67,8 +67,8 @@ public class IndexController {
 /* TODO
   - cateogry_details.htmlの画像を画質の良いものに変更
   - JSファイルの分離
-  - 各ページのaタグの色修正
   - 各ページのimgのbdrsの修正
+  - Repositoryの単体テスト
 */
 
 /* 残りの作成工程

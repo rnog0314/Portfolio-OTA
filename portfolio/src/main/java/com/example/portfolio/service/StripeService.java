@@ -41,7 +41,6 @@ public class StripeService {
     try {
       return Charge.create(chargeParams);
     } catch (StripeException e) {
-      e.printStackTrace();
       throw new RuntimeException();
     }
   }
