@@ -37,7 +37,6 @@ public class Utils {
       System.out.println(sdf.format(calendar.getTime()));
       end = sdf.format(calendar.getTime());
     } catch (ParseException e) {
-      e.printStackTrace();
       throw new RuntimeException();
     }
     return end;

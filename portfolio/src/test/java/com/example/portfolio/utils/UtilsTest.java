@@ -1,6 +1,7 @@
 package com.example.portfolio.utils;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -49,5 +50,19 @@ public class UtilsTest {
     }
     int actual2 = utils.getLastPage(list2);
     assertEquals(7, actual2);
+  }
+
+  @Test
+  public void testGetEndDate() {
+    Utils utils = new Utils();
+    // 正常系
+    String start = "2020-12-31";
+    String actual1 = utils.getEndDate(start);
+    assertEquals("2021-01-01", actual1);
+
+    // 異常系
+    String start1 = "something";
+    assertThrows(RuntimeException.class, ()-> utils.getEndDate(start1));
+
   }
 }
