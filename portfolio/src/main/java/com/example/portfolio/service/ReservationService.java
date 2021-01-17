@@ -15,9 +15,7 @@ import com.example.portfolio.utils.Utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Transactional
@@ -32,9 +30,6 @@ public class ReservationService {
 
   @Autowired
   private ReservationDtoRepoitory reservationDtoRepos;
-
-  @Autowired
-  private ProductService productService;
 
   @Autowired
   private UserService userService;
@@ -79,7 +74,7 @@ public class ReservationService {
     try {
       return reservationRepos.deleteByReservationId(reservationId);
     } catch (IllegalArgumentException e) {
-      throw new RuntimeException(e);
+      throw new RuntimeException();
     }
   }
 
@@ -90,9 +85,7 @@ public class ReservationService {
    * @return ページネーションされた予約リスト
    */
   public Page<Reservation> findPaginatedList(Optional<Integer> page) {
-    int currentPage = productService.getCurrentPage(page);
-    Sort sort = Sort.by("id").ascending(); // ソートのルールを作成
-    Pageable pageable = PageRequest.of(currentPage - 1, 10, sort); // ページネーション情報作成
+    Pageable pageable = utils.getPageable(page);
     return reservationRepos.findAll(pageable);
   }
 

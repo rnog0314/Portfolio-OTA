@@ -6,8 +6,6 @@ import static org.mockito.Mockito.when;
 
 import java.util.Optional;
 
-import javax.transaction.Transactional;
-
 import com.example.portfolio.model.dao.CategoryDetailRepository;
 import com.example.portfolio.model.entity.CategoryDetail;
 
@@ -15,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
