@@ -14,12 +14,12 @@ import org.springframework.test.context.jdbc.Sql;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.hamcrest.CoreMatchers.is;
 
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import static org.hamcrest.CoreMatchers.is;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
