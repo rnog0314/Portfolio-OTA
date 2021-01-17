@@ -1,7 +1,6 @@
 package com.example.portfolio.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -14,6 +13,7 @@ import javax.transaction.Transactional;
 import com.example.portfolio.model.dao.UserRepository;
 import com.example.portfolio.model.entity.User;
 import com.example.portfolio.model.session.LoginSession;
+import com.example.portfolio.utils.Utils;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -36,7 +36,7 @@ public class UserServiceTest {
   private LoginSession loginSession;
 
   @Mock
-  private ProductService productService;
+  private Utils utils;
 
   @InjectMocks
   private UserService userSerive;
@@ -82,14 +82,14 @@ public class UserServiceTest {
   @Test
   public void testFindPaginatedList() {
     Optional<Integer> page = Optional.of(Integer.valueOf(0));
-    when(productService.getCurrentPage(any())).thenReturn(1);
+    when(utils.getCurrentPage(any())).thenReturn(1);
     Pageable pageable = mock(Pageable.class);
     @SuppressWarnings("unchecked")
     Page<User> expected = mock(Page.class);
+    when(utils.getPageable(page)).thenReturn(pageable);
     when(userRepos.findAll(pageable)).thenReturn(expected);
     Page<User> actual = userSerive.findPaginatedList(page);
-    assertNull(actual);
-
+    assertEquals(expected, actual);
   }
 
 

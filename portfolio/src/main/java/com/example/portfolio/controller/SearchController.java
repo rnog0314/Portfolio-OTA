@@ -10,6 +10,7 @@ import com.example.portfolio.model.entity.SearchDto;
 import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.model.session.SearchSession;
 import com.example.portfolio.service.ProductService;
+import com.example.portfolio.utils.Utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,9 @@ public class SearchController {
   private ProductService productService;
 
   @Autowired
+  private Utils utils;
+
+  @Autowired
   private SearchSession searchSession;
 
   /**
@@ -50,9 +54,9 @@ public class SearchController {
       key = searchSession.getKeyword();
     }
     Set<SearchDto> searchResult = productService.getAllSearchResult(key);
-    int lastPage = productService.getLastPage(searchResult);
+    int lastPage = utils.getLastPage(searchResult);
     List<SearchDto> paginatedResult = productService.getPaginatedResult(searchResult, page);
-    int currentPage = productService.getCurrentPage(page);
+    int currentPage = utils.getCurrentPage(page);
 
     if (lastPage > 0) {
       List<Integer> pageNumbers = IntStream.rangeClosed(1, lastPage).boxed().collect(Collectors.toList()); // HTMLでページ分ループするために各ページ番号が入ったリストを作成

@@ -11,12 +11,11 @@ import com.example.portfolio.model.dao.SearchDtoRepository;
 import com.example.portfolio.model.entity.Product;
 import com.example.portfolio.model.entity.SearchDto;
 import com.example.portfolio.model.form.ProductForm;
+import com.example.portfolio.utils.Utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +28,9 @@ public class ProductService {
 
 	@Autowired
 	private SearchDtoRepository searchRepos;
+
+	@Autowired
+	private Utils utils;
 
 	private final int RECORDS = 9;
 
@@ -94,11 +96,11 @@ public class ProductService {
 	}
 
 	/**
-	 * リクエストされたページのレコードを取得
+	 * リクエストされたページの商品リスト取得
 	 *
-	 * @param products
-	 * @param page
-	 * @return
+	 * @param products 検索された商品一覧の全結果
+	 * @param page リクエストされたページ番号
+	 * @return List<SearchDto> ページネーションされた検索結果
 	 */
 	public List<SearchDto> getPaginatedResult(Set<SearchDto> products, Optional<Integer> page) {
 		// 取得した数が9つに満たなかった場合はSetをそのままListに変換して返す
@@ -106,7 +108,7 @@ public class ProductService {
 		if (!(count > 8)) {
 			return new ArrayList<>(products);
 		}
-		int currentPage = getCurrentPage(page); // 押下されたページリンクの数字(リクエストされたページ番号)
+		int currentPage = utils.getCurrentPage(page); // 押下されたページリンクの数字(リクエストされたページ番号)
 		int from = (currentPage - 1) * RECORDS;
 		int to = currentPage * RECORDS;
 		if (count < to) {
@@ -115,36 +117,6 @@ public class ProductService {
 		List<SearchDto> list = new ArrayList<>(products);
 		List<SearchDto> subList = list.subList(from, to);
 		return subList;
-	}
-
-	/**
-	 * 現在ページを取得
-	 *
-	 * @param page
-	 * @return
-	 */
-	public int getCurrentPage(Optional<Integer> page) {
-		int currentPage = page.orElse(1); // ページ初期表示でリクエストされたページ番号がない時、ページ番号を1とする
-		if (currentPage == 0) {// 先頭ページを表示している際の「<」押下用
-      currentPage = 1;
-    }
-		return currentPage;
-	}
-
-	/**
-	 * 最後のページ番号を取得
-	 *
-	 * @param list
-	 * @return
-	 */
-	public int getLastPage(Set<SearchDto> list) {
-		int count = list.size();
-		int lastPage = count / RECORDS;
-		if (count % RECORDS == 0) {
-			return lastPage;
-		} else {
-			return lastPage + 1;
-		}
 	}
 
 	/**
@@ -161,9 +133,7 @@ public class ProductService {
 	 * @return ページネーションされた商品リスト
 	 */
 	public Page<Product> findPaginatedList(Optional<Integer> page) {
-		int currentPage = getCurrentPage(page);
-		Sort sort = Sort.by("productId").ascending(); // ソートのルールを作成
-		Pageable pageable = PageRequest.of(currentPage - 1, 10, sort); // ページネーション情報作成
+		Pageable pageable = utils.getPageable(page);
 		return productRepos.findAll(pageable);
 	}
 

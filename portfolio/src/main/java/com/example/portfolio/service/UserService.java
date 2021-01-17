@@ -10,12 +10,11 @@ import com.example.portfolio.model.dao.UserRepository;
 import com.example.portfolio.model.entity.User;
 import com.example.portfolio.model.form.UserForm;
 import com.example.portfolio.model.session.LoginSession;
+import com.example.portfolio.utils.Utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -30,7 +29,7 @@ public class UserService {
   private LoginSession loginSession;
 
   @Autowired
-  private ProductService productService;
+  private Utils utils;
 
   /**
    * メールアドレスとパスワードを条件にユーザ取得してログインユーザと照合
@@ -151,9 +150,7 @@ public class UserService {
    * @return ページネーションされたユーザリスト
    */
   public Page<User> findPaginatedList(Optional<Integer> page) {
-    int currentPage = productService.getCurrentPage(page);
-    Sort sort = Sort.by("userId").ascending(); // ソートのルールを作成
-    Pageable pageable = PageRequest.of(currentPage - 1, 10, sort); // ページネーション情報作成
+    Pageable pageable = utils.getPageable(page);
     return userRepos.findAll(pageable);
   }
 

@@ -13,7 +13,6 @@ import com.example.portfolio.service.ProductService;
 import com.example.portfolio.service.ReservationService;
 import com.example.portfolio.service.StripeService;
 import com.example.portfolio.service.UserService;
-import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
 
 @Controller
 @RequestMapping("/portfolio/reservation")
@@ -56,6 +54,7 @@ public class ReservationController {
 
   /**
    * 予約確認画面初期表示
+   *
    * @param m Model
    * @return reservation_list.html
    */
@@ -72,8 +71,9 @@ public class ReservationController {
 
   /**
    * 仮予約
+   *
    * @param reservationForm ReservationForm
-   * @param m Model
+   * @param m               Model
    * @return checkout.html
    */
   @PostMapping(value = "/reserve")
@@ -98,6 +98,7 @@ public class ReservationController {
 
   /**
    * 予約キャンセル
+   *
    * @param reservationId 予約ID
    * @return bool キャンセル処理成功/失敗
    */
@@ -114,33 +115,24 @@ public class ReservationController {
 
   /**
    * 決済処理
+   *
    * @param chargeRequest ChargeRequest
    * @param reservationId 予約ID
-   * @param m Model
+   * @param m             Model
    * @return result.html
-   * @throws StripeException
    */
   @PostMapping("/charge")
-  public String charge( ChargeRequest chargeRequest,
-                        @RequestParam("reservationId") int reservationId,
-                        Model m) {
-    try {
-      chargeRequest.setDescription("Example charge");
-      chargeRequest.setCurrency(Currency.EUR);
-      Charge charge = paymentsService.charge(chargeRequest);
-      String email = userService.findEmailByUserId(loginSession.getUserId());
-      String id = charge.getId();
-      String status = charge.getStatus();
-      emailSender.send(email, id, status); // 予約確認メール送信
-      reservationService.updateValidFlag(reservationId); // 仮予約を本予約に変更
-      m.addAttribute("loginSession", loginSession);
-      return "result";
-    } catch (StripeException e) {
-      m.addAttribute("error", e.getMessage());
-      m.addAttribute("loginSession", loginSession);
-      return "result";
-    }
-
+  public String charge(ChargeRequest chargeRequest, @RequestParam("reservationId") int reservationId, Model m) {
+    chargeRequest.setDescription("Example charge");
+    chargeRequest.setCurrency(Currency.EUR);
+    Charge charge = paymentsService.charge(chargeRequest);
+    String email = userService.findEmailByUserId(loginSession.getUserId());
+    String id = charge.getId();
+    String status = charge.getStatus();
+    emailSender.send(email, id, status); // 予約確認メール送信
+    reservationService.updateValidFlag(reservationId); // 仮予約を本予約に変更
+    m.addAttribute("loginSession", loginSession);
+    return "result";
   }
 
 }
