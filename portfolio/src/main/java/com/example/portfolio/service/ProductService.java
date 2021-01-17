@@ -25,10 +25,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductService {
 
 	@Autowired
-	ProductRepository productRepos;
+	private ProductRepository productRepos;
 
 	@Autowired
-	SearchDtoRepository searchRepos;
+	private SearchDtoRepository searchRepos;
 
 	private final int RECORDS = 9;
 
@@ -77,7 +77,7 @@ public class ProductService {
 	 * キーワード条件にレコードを全て取得
 	 *
 	 * @param keyword
-	 * @return
+	 * @return Set<SearchDto> キーワドでソートされたリスト
 	 */
 	public Set<SearchDto> getAllSearchResult(String keyword) {
 		// 検索キーワードをトリミング&分割して配列に入れる
@@ -184,10 +184,20 @@ public class ProductService {
 		return productRepos.getPriceByProductId(productId);
 	}
 
+	/**
+	 * 商品画像のパス取得
+	 * @param productId 商品ID
+	 * @return String 商品画像のパス
+	 */
 	public String getProductImageByProductId(int productId) {
 		return productRepos.getProductImageByProductId(productId);
 	}
 
+	/**
+	 * 商品名
+	 * @param productId 商品ID
+	 * @return String 商品名
+	 */
 	public String getProductNameByProductId(int productId) {
 		return productRepos.getProductNameByProductId(productId);
 	}
