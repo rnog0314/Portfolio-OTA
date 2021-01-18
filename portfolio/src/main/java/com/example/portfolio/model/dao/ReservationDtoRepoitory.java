@@ -20,7 +20,7 @@ public interface ReservationDtoRepoitory extends JpaRepository<ReservationDto, I
                 + "INNER JOIN product_details AS pd "
                 + "ON r.product_id = pd.product_id "
                 + "INNER JOIN users AS u "
-                + "ON r.user_id = u.user_id "
+                + "ON r.user_id = u.id "
                 + "WHERE r.user_id = :userId "
                 + "AND r.valid_flag = true", nativeQuery = true)
 	List<ReservationDto> getReservationList(@Param("userId") int userId);

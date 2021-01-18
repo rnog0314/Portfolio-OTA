@@ -34,7 +34,7 @@
           </thead>
           <tbody id="boxes">
             <tr th:each="user : ${users}" th:object="${user}">
-              <td th:text="*{userId}"></td>
+              <td th:text="*{id}"></td>
               <td th:text="*{userName}"></td>
               <td th:text="*{familyName}"></td>
               <td th:text="*{firstName}"></td>

@@ -72,15 +72,15 @@ public class AdminProductController {
 
   }
 
-  /**
-   * 商品情報修正
-   * @param productForm ProductForm
-   * @return admin/product.html
-   */
-  @PostMapping(value = "/modify")
-  public String modify(ProductForm productForm) {
-    productService.updateProduct(productForm);
-    return "redirect:/portfolio/admin/product";
-  }
+  // /**
+  //  * 商品情報修正
+  //  * @param productForm ProductForm
+  //  * @return admin/product.html
+  //  */
+  // @PostMapping(value = "/modify")
+  // public String modify(ProductForm productForm) {
+  //   productService.updateProduct(productForm);
+  //   return "redirect:/portfolio/admin/product";
+  // }
 
 }

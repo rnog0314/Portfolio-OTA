@@ -24,7 +24,7 @@
               <div class="card" th:each="reservation:${reservationList}" th:object=${reservation}
                 th:if="${reservationList.size() > 0}">
                 <img th:src="@{{imagePath} (imagePath = *{productImage})}" alt="" class="card-img-top">
-                <a id="detail-btn" th:href="@{/portfolio/product/{productId} (productId=*{productId})}"
+                <a id="detail-btn" th:href="@{/portfolio/product/{id} (id=*{productId})}"
                   class="btn btn-info">See detail</a>
                 <div class="card-body">
                   <dl>

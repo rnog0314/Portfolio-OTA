@@ -82,7 +82,7 @@ public class UserService {
     if (user != null) { // ユーザが存在すれば
       loginSession.setTmpUserId(null); // トップページ初期表示時に付与した仮ユーザIDをnullにして破棄
       loginSession.setLogined(true); // ログイン状態にする
-      loginSession.setUserId(user.getUserId());
+      loginSession.setUserId(user.getId());
       loginSession.setUserName(user.getUserName());
       loginSession.setPassword(user.getPassword());
       loginSession.setEmail(user.getEmail());
@@ -137,11 +137,11 @@ public class UserService {
    * @return メールアドレス
    */
   public User findByUserId(int userId) {
-    return userRepos.findByUserId(userId);
+    return userRepos.findById(userId);
   }
 
-  public String findEmailByUserId(int userId) {
-    return userRepos.findEmailByUserId(userId);
+  public String findEmailById(int userId) {
+    return userRepos.findEmailById(userId);
   }
 
   /**
@@ -159,8 +159,8 @@ public class UserService {
    * @param userId ユーザID
    * @return ユーザ名
    */
-  public String findUserNameByUserId(int userId) {
-    return userRepos.findUserNameByUserId(userId);
+  public String findUserNameById(int userId) {
+    return userRepos.findUserNameById(userId);
   }
 
 }
