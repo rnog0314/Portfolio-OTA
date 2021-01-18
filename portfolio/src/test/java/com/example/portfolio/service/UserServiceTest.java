@@ -66,13 +66,13 @@ public class UserServiceTest {
   @Test
   public void testSetLoginSession() {
     User user = new User();
-    user.setUserId(1);
+    user.setId(1);
     user.setUserName("testAdmin");
     user.setEmail("example@gmail.com");
     user.setPassword("password");
     doNothing().when(loginSession).setTmpUserId(null);
     doNothing().when(loginSession).setLogined(true);
-    doNothing().when(loginSession).setUserId(user.getUserId());
+    doNothing().when(loginSession).setUserId(user.getId());
     doNothing().when(loginSession).setUserName(user.getUserName());
     doNothing().when(loginSession).setPassword(user.getPassword());
     doNothing().when(loginSession).setEmail(user.getEmail());

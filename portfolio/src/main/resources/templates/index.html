@@ -76,7 +76,7 @@
           <div class="m-0" th:each="product: ${products}" th:object="${product}">
             <!-- ループを回してcardををデータぶん作りたいので、.cardの1つ上の階層にth:eachをつける-->
             <div class="card">
-              <a th:href="@{/portfolio/product/{id} (id=*{productId})}">
+              <a th:href="@{/portfolio/product/{id} (id=*{id})}">
                 <img th:src="@{{imagePath} (imagePath = *{productImage})}" alt="" class="m-0">
                 <div class="card-body">
                   <h5 class="card-title" th:text="*{productName}">Title</h5>

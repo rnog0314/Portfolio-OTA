@@ -40,7 +40,7 @@ public class ReservationServiceTest {
   @Test
   public void testReserve() {
     when(loginSession.getUserId()).thenReturn(1);
-    when(userService.findUserNameByUserId(anyInt())).thenReturn("testUser");
+    when(userService.findUserNameById(anyInt())).thenReturn("testUser");
     when(utils.getEndDate(anyString())).thenReturn("2020-02-04");
     Reservation expected = mock(Reservation.class);
     when(rRepos.save(expected)).thenReturn(expected);

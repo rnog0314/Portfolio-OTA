@@ -50,7 +50,7 @@ public class Utils {
    */
   public Pageable getPageable(Optional<Integer> page) {
     int currentPage = getCurrentPage(page);
-    Sort sort = Sort.by("userId").ascending(); // ソートのルールを作成
+    Sort sort = Sort.by("id").ascending(); // ソートのルールを作成
     Pageable pageable = PageRequest.of(currentPage - 1, 10, sort); // ページネーション情報作成
     return pageable;
   }

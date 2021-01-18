@@ -37,12 +37,12 @@
           <tbody id="boxes">
             <tr th:each="product : ${products}" th:object="${product}">
               <td>
-                <input type="checkbox" class="checkbox" th:field="*{productId}" th:value="*{productId}">
+                <input type="checkbox" class="checkbox" th:field="*{id}" th:value="*{id}">
                 <!-- type="checkboxの時はtd:filedにidとnameを指定したい文字列にし、td:valueを別個で設定する-->
-                <label th:for="${#ids.prev('productId')}"></label>
+                <label th:for="${#ids.prev('id')}"></label>
                 <!-- labelとidの生成については、#idsユーティリティが便利。labelの位置が前か後ろかによって｢prev｣｢next｣を使い分ける。${#ids.prev('id')}の「id」はth:fieldで指定されるid-->
               </td>
-              <td th:text="*{productId}"></td>
+              <td th:text="*{id}"></td>
               <td class="frame">
                 <img class="w-100" style="height: auto;" th:src="@{{imagePath} (imagePath = *{productImage})}">
               </td>
@@ -180,7 +180,6 @@
           for (checked of checkedList) {
             $(checked).parent().parent().remove(); // ☑️のついたレコード全体を削除
           }
-          // bootbox.alert(`${data}products deleted`);
           let checkList = $('.checkList'); // ☑️のついたレコードを削除した後、☑️が全て無くなればそのままカートページを更新
           if (checkList.length == 0) {
             location.replace('/portfolio/admin/product');

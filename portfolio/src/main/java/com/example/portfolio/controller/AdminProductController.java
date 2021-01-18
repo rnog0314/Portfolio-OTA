@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import com.example.portfolio.model.entity.Product;
-import com.example.portfolio.model.form.ProductForm;
+// import com.example.portfolio.model.form.ProductForm;
 import com.example.portfolio.model.session.AdminSession;
 import com.example.portfolio.service.ProductService;
 
@@ -72,15 +72,15 @@ public class AdminProductController {
 
   }
 
-  /**
-   * 商品情報修正
-   * @param productForm ProductForm
-   * @return admin/product.html
-   */
-  @PostMapping(value = "/modify")
-  public String modify(ProductForm productForm) {
-    productService.updateProduct(productForm);
-    return "redirect:/portfolio/admin/product";
-  }
+  // /**
+  //  * 商品情報修正
+  //  * @param productForm ProductForm
+  //  * @return admin/product.html
+  //  */
+  // @PostMapping(value = "/modify")
+  // public String modify(ProductForm productForm) {
+  //   productService.updateProduct(productForm);
+  //   return "redirect:/portfolio/admin/product";
+  // }
 
 }

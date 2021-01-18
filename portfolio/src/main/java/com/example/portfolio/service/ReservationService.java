@@ -47,7 +47,7 @@ public class ReservationService {
     int userId = loginSession.getUserId();
     int productId = f.getProductId();
     int count = f.getCount();
-    String title = userService.findUserNameByUserId(userId) + " : " + count + "PAX";
+    String title = userService.findUserNameById(userId) + " : " + count + "PAX";
     String start = f.getDate();
     String end = utils.getEndDate(start);
     Reservation reservation = new Reservation(userId, productId, count, start, end, title);

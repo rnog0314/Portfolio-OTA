@@ -10,7 +10,7 @@ import com.example.portfolio.model.dao.ProductRepository;
 import com.example.portfolio.model.dao.SearchDtoRepository;
 import com.example.portfolio.model.entity.Product;
 import com.example.portfolio.model.entity.SearchDto;
-import com.example.portfolio.model.form.ProductForm;
+// import com.example.portfolio.model.form.ProductForm;
 import com.example.portfolio.utils.Utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,13 +137,13 @@ public class ProductService {
 		return productRepos.findAll(pageable);
 	}
 
-	/**
-	 * 商品情報修正
-	 * @param f ProductForm
-	 */
-	public void updateProduct(ProductForm f) {
-		productRepos.updateProduct(f.getProductName(), f.getPrice());
-	}
+	// /**
+	//  * 商品情報修正
+	//  * @param f ProductForm
+	//  */
+	// public void updateProduct(ProductForm f) {
+	// 	productRepos.updateProduct(f.getProductName(), f.getPrice());
+	// }
 
 	/**
 	 * 商品価格取得
@@ -151,7 +151,7 @@ public class ProductService {
 	 * @return 商品価格
 	 */
 	public int getPriceByProductId(int productId) {
-		return productRepos.getPriceByProductId(productId);
+		return productRepos.getPriceById(productId);
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class ProductService {
 	 * @return String 商品画像のパス
 	 */
 	public String getProductImageByProductId(int productId) {
-		return productRepos.getProductImageByProductId(productId);
+		return productRepos.getProductImageById(productId);
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class ProductService {
 	 * @return String 商品名
 	 */
 	public String getProductNameByProductId(int productId) {
-		return productRepos.getProductNameByProductId(productId);
+		return productRepos.getProductNameById(productId);
 	}
 
 }

@@ -126,7 +126,7 @@ public class ReservationController {
     chargeRequest.setDescription("Example charge");
     chargeRequest.setCurrency(Currency.EUR);
     Charge charge = paymentsService.charge(chargeRequest);
-    String email = userService.findEmailByUserId(loginSession.getUserId());
+    String email = userService.findEmailById(loginSession.getUserId());
     String id = charge.getId();
     String status = charge.getStatus();
     emailSender.send(email, id, status); // 予約確認メール送信
