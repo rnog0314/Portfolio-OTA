@@ -55,4 +55,11 @@ public class ProductRepositoryTest {
     String actual = repos.getProductImageById(productId);
     assertEquals("dummyImage1", actual);
   }
+
+  @Test
+  public void testGetProductNameById() {
+    int productId = 1;
+    String actual = repos.getProductNameById(productId);
+    assertEquals("dummyName1", actual);
+  }
 }
