@@ -12,9 +12,9 @@ import com.example.portfolio.model.entity.Product;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+// import org.springframework.jdbc.core.BeanPropertyRowMapper;
+// import org.springframework.jdbc.core.JdbcTemplate;
+// import org.springframework.jdbc.core.RowMapper;
 import org.springframework.test.context.jdbc.Sql;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -25,8 +25,8 @@ public class ProductRepositoryTest {
   @Autowired
   private ProductRepository repos;
 
-  @Autowired
-  private JdbcTemplate jdbcTemplate;
+  // @Autowired
+  // private JdbcTemplate jdbcTemplate;
 
   @Test
   public void testFindByDestinationId() {
@@ -42,14 +42,14 @@ public class ProductRepositoryTest {
     assertEquals(2, actual.size());
   }
 
-  @Test
-  public void testUpdateProduct() {
-    String productName = "updatedName";
-    int price = 2000;
-    repos.updateProduct(productName, price);
-    String sql = "SELECT * FROM admin";
-    RowMapper<Product> rowMapper = new BeanPropertyRowMapper<Product>(Product.class);
-    List<Product> admin = jdbcTemplate.query(sql, rowMapper);
+  // @Test
+  // public void testUpdateProduct() {
+  //   String productName = "updatedName";
+  //   int price = 2000;
+  //   repos.updateProduct(productName, price);
+  //   String sql = "SELECT * FROM admin";
+  //   RowMapper<Product> rowMapper = new BeanPropertyRowMapper<Product>(Product.class);
+  //   List<Product> admin = jdbcTemplate.query(sql, rowMapper);
 
-  }
+  // }
 }

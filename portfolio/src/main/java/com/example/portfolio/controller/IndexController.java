@@ -69,6 +69,7 @@ public class IndexController {
   - JSファイルの分離
   - 各ページのimgのbdrsの修正
   - Repositoryの単体テスト(更新系はBeanPropertyRowMapperを使ってDBの状態確認)
+  - products/usersのpk変更によるリグレッションテストをこのブランチで行う
 */
 
 /* 残りの作成工程
