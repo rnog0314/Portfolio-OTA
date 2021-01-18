@@ -42,14 +42,11 @@ public class ProductRepositoryTest {
     assertEquals(2, actual.size());
   }
 
-  // @Test
-  // public void testUpdateProduct() {
-  //   String productName = "updatedName";
-  //   int price = 2000;
-  //   repos.updateProduct(productName, price);
-  //   String sql = "SELECT * FROM admin";
-  //   RowMapper<Product> rowMapper = new BeanPropertyRowMapper<Product>(Product.class);
-  //   List<Product> admin = jdbcTemplate.query(sql, rowMapper);
+  @Test
+  public void PriceById() {
+    int productId = 4;
+    int actual = repos.getPriceById(productId);
+    assertEquals(1500, actual);
 
-  // }
+  }
 }
