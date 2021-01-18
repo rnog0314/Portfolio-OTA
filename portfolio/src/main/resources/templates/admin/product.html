@@ -180,7 +180,6 @@
           for (checked of checkedList) {
             $(checked).parent().parent().remove(); // ☑️のついたレコード全体を削除
           }
-          // bootbox.alert(`${data}products deleted`);
           let checkList = $('.checkList'); // ☑️のついたレコードを削除した後、☑️が全て無くなればそのままカートページを更新
           if (checkList.length == 0) {
             location.replace('/portfolio/admin/product');
