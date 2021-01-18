@@ -22,9 +22,6 @@ public class ProductRepositoryTest {
   @Autowired
   private ProductRepository repos;
 
-  // @Autowired
-  // private JdbcTemplate jdbcTemplate;
-
   @Test
   public void testFindByDestinationId() {
     int id = 1;
