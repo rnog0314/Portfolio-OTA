@@ -13,12 +13,10 @@ import org.springframework.stereotype.Repository;
 public interface ReservationDtoRepoitory extends JpaRepository<ReservationDto, Integer> {
 
 
-  @Query(value =  "SELECT r.id, r.product_id, r.count, p.product_image, pd.price,  p.product_name, r.start_date, u.user_name "
+  @Query(value =  "SELECT r.id, r.product_id, r.count, p.product_image, p.price,  p.product_name, r.start_date, u.user_name "
                 + "FROM reservations AS r "
                 + "INNER JOIN products AS p "
                 + "ON r.product_id = p.id "
-                + "INNER JOIN product_details AS pd "
-                + "ON r.product_id = pd.product_id "
                 + "INNER JOIN users AS u "
                 + "ON r.user_id = u.id "
                 + "WHERE r.user_id = :userId "
