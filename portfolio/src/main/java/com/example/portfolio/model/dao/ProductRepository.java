@@ -15,12 +15,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	List<Product> findByDestinationId(int destinationId);
 
 	List<Product> findByCategoryId(int categoryId);
-
-	// @Modifying
-	// @Query(value = "UPDATE products SET product_name = :productName, price = :price WHERE product_name = :productName", nativeQuery = true)
-	// void updateProduct( @Param("productName") String productName,
-	// 										@Param("price") int price);
-
+	
 	@Query(value = "SELECT price FROM products WHERE id = :productId", nativeQuery = true)
 	int getPriceById(@Param("productId") int productId);
 
@@ -30,4 +25,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	@Query(value = "SELECT product_name FROM products WHERE id = :productId", nativeQuery = true)
 	String getProductNameById(@Param("productId") int productId);
 
+	// @Modifying
+	// @Query(value = "UPDATE products SET product_name = :productName, price = :price WHERE product_name = :productName", nativeQuery = true)
+	// void updateProduct( @Param("productName") String productName,
+	// 										@Param("price") int price);
 }
