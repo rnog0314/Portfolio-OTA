@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class SearchDto {
   // 画面表示用のDTO
   @Id
-  private int productId;
+  private int id;
   private String productImage;
   private String productName;
 }
