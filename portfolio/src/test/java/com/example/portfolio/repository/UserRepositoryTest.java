@@ -4,6 +4,7 @@ import javax.transaction.Transactional;
 
 import com.example.portfolio.model.dao.UserRepository;
 import com.example.portfolio.model.entity.User;
+import com.example.portfolio.model.form.UserForm;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
@@ -15,7 +16,9 @@ import static org.hamcrest.CoreMatchers.is;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.test.context.jdbc.Sql;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -72,6 +75,26 @@ public class UserRepositoryTest {
     int userId = 1;
     int actual = repos.updateUserImage(bytes, userId);
     assertEquals(1, actual);
+  }
+
+  @Test
+  public void testUpdateUser() {
+    UserForm f = new UserForm(1, "updatedName", "updatedEmail", "updatedPassword", "updatedFamilyName", "updatedFirstName");
+    repos.updateUser(f);
+    String sql = "SELECT * FROM users WHERE id = ?";
+    RowMapper<User> rowMapper = new BeanPropertyRowMapper<User>(User.class);
+    int id = 1;
+    User user = jdbcTemplate.queryForObject(sql, rowMapper, id);
+    String userName = user.getUserName();
+    String email = user.getEmail();
+    String password = user.getPassword();
+    String familyName = user.getFamilyName();
+    String firstName = user.getFirstName();
+    assertEquals("updatedName", userName);
+    assertEquals("updatedEmail", email);
+    assertEquals("updatedPassword", password);
+    assertEquals("updatedFamilyName", familyName);
+    assertEquals("updatedFirstName", firstName);
   }
 
 }
