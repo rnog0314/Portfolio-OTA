@@ -44,4 +44,12 @@ public class UserRepositoryTest {
     assertTrue(actual != null);
   }
 
+  @Test
+  public void testFindByUserName() {
+    String userName = "testUser";
+    int actual = repos.findByUserName(userName);
+    assertEquals(1, actual);
+  }
+
+
 }
