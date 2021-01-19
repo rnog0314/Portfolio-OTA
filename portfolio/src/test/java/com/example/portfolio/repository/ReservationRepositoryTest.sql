@@ -1,4 +1,4 @@
-INSERT INTO users (id, user_name, password, email, family_name, first_name, gender) VALUES (1, 'dummyUser', 'password', 'example@gamil.com', 'Jones', 'Mark', 'M');
+INSERT INTO users (id, user_name, password, email, family_name, first_name, gender, delete_flag) VALUES (1, 'dummyUser', 'password', 'example@gamil.com', 'Jones', 'Mark', 'M', FALSE);
 
 INSERT INTO categories (category_id, category_name) VALUES (1, 'dummyCategory1');
 INSERT INTO categories (category_id, category_name) VALUES (2, 'dummyCategory2');

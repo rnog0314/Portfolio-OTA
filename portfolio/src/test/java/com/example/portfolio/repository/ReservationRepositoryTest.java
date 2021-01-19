@@ -30,6 +30,12 @@ public class ReservationRepositoryTest {
   private JdbcTemplate jdbcTemplate;
 
   @Test
+  public void testFindAllByValidFlagTrue() {
+    List<Reservation> actual = repos.findAllByValidFlagTrue();
+    assertEquals(2, actual.size());
+  }
+
+  @Test
   public void testDeleteByReservationId() {
     int id = 1;
     int actual = repos.deleteByReservationId(id);
@@ -50,4 +56,5 @@ public class ReservationRepositoryTest {
     Reservation actual = jdbcTemplate.queryForObject(sql, rowMapper, id);
     assertTrue(actual.isValidFlag());
   }
+
 }
