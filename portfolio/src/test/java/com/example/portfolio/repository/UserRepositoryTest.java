@@ -66,4 +66,12 @@ public class UserRepositoryTest {
       assertEquals(1, actual);
   }
 
+  @Test
+  public void testUpdateUserImage() {
+    byte[] bytes = "dummyBytes".getBytes();
+    int userId = 1;
+    int actual = repos.updateUserImage(bytes, userId);
+    assertEquals(1, actual);
+  }
+
 }
