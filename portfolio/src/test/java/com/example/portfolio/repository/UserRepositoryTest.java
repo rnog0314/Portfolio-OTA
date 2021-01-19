@@ -58,7 +58,7 @@ public class UserRepositoryTest {
   public void testInsertUser() {
       User user = new User();
       user.setId(6);
-      user.setUserName("testUser");
+      user.setUserName("insertedUser");
       user.setPassword("password");
       user.setFamilyName("Jones");
       user.setFirstName("Adam");
@@ -75,6 +75,13 @@ public class UserRepositoryTest {
     int userId = 1;
     int actual = repos.updateUserImage(bytes, userId);
     assertEquals(1, actual);
+  }
+
+  @Test
+  public void testFindUserNameById() {
+    int id = 1;
+    String actual = repos.findUserNameById(id);
+    assertEquals("testUser", actual);
   }
 
   @Test
@@ -96,5 +103,7 @@ public class UserRepositoryTest {
     assertEquals("updatedFamilyName", familyName);
     assertEquals("updatedFirstName", firstName);
   }
+
+
 
 }
