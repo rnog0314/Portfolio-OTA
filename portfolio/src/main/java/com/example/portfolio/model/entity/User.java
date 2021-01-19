@@ -16,13 +16,14 @@ import com.google.gson.annotations.Expose;
 
 import org.hibernate.annotations.Type;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "users")
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class User {
 
   @Id

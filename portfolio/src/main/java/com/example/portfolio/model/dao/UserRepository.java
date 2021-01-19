@@ -22,18 +22,18 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	int findByUserName(@Param("newUserName") String newUserName);
 
 	@Modifying
-	@Query(value = "INSERT INTO users (user_name, family_name, first_name, email, password, gender) VALUES (:#{#user.userName}, :#{#user.familyName}, :#{#user.firstName}, :#{#user.email}, :#{#user.password}, :#{#user.gender})", nativeQuery = true)
-	int insertUser(@Param("user") User newUser);
+	@Query(value = "INSERT INTO users (user_name, family_name, first_name, email, password, gender) VALUES (:#{#u.userName}, :#{#u.familyName}, :#{#u.firstName}, :#{#u.email}, :#{#u.password}, :#{#u.gender})", nativeQuery = true)
+	int insertUser(@Param("u") User newUser);
 
-	@Modifying
-	@Query(value = "UPDATE users SET user_name = :userName, family_name = :familyName, first_name = :firstName, email = :email, password = :password, user_img = :imgPath WHERE id = :userId", nativeQuery = true)
-	int update(	@Param("userName") String userName,
-							@Param("familyName") String familyName,
-							@Param("firstName") String firstName,
-							@Param("email") String email,
-							@Param("password") String password,
-							@Param("imgPath") String imgPath,
-							@Param("userId") int userId);
+	// @Modifying
+	// @Query(value = "UPDATE users SET user_name = :userName, family_name = :familyName, first_name = :firstName, email = :email, password = :password, user_img = :imgPath WHERE id = :userId", nativeQuery = true)
+	// int update(	@Param("userName") String userName,
+	// 						@Param("familyName") String familyName,
+	// 						@Param("firstName") String firstName,
+	// 						@Param("email") String email,
+	// 						@Param("password") String password,
+	// 						@Param("imgPath") String imgPath,
+	// 						@Param("userId") int userId);
 
 	@Modifying
 	@Query(value = "UPDATE users SET user_img = :bytes WHERE id = :userId", nativeQuery = true)
@@ -44,10 +44,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query(value = "UPDATE users SET user_name = :#{#u.userName}, family_name = :#{#u.familyName}, first_name = :#{#u.firstName}, email = :#{#u.email}, password = :#{#u.password} WHERE id = :#{#u.userId}", nativeQuery = true)
 	void updateUser(@Param("u") UserForm userForm);
 
-	@Query(value = "SELECT user_name from users WHERE id = :userId", nativeQuery = true)
+	@Query(value = "SELECT user_name FROM users WHERE id = :userId", nativeQuery = true)
 	String findUserNameById(@Param("userId") int userId);
 
-	@Query(value = "SELECT email from users WHERE id = :userId", nativeQuery = true)
+	@Query(value = "SELECT email FROM users WHERE id = :userId", nativeQuery = true)
 	String findEmailById(@Param("userId") int userId);
 
 }
