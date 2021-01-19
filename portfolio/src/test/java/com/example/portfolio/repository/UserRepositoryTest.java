@@ -51,5 +51,19 @@ public class UserRepositoryTest {
     assertEquals(1, actual);
   }
 
+  @Test
+  public void testInsertUser() {
+      User user = new User();
+      user.setId(6);
+      user.setUserName("testUser");
+      user.setPassword("password");
+      user.setFamilyName("Jones");
+      user.setFirstName("Adam");
+      user.setEmail("example@gmail.com");
+      user.setGender('F');
+      user.setDeleteFlag(false);
+      int actual = repos.insertUser(user);
+      assertEquals(1, actual);
+  }
 
 }
