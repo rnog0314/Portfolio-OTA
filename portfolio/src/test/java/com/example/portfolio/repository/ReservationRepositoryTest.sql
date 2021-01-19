@@ -17,3 +17,4 @@ INSERT INTO bookmarks (user_id, product_id) VALUES (1, 2);
 
 INSERT INTO reservations (id, user_id, product_id, title, start_date, end_date, count, valid_flag) VALUES (1, 1, 1, 'dummyTitle', '2020-12-31', '2021-01-19', 5, TRUE);
 INSERT INTO reservations (id, user_id, product_id, title, start_date, end_date, count, valid_flag) VALUES (2, 1, 2, 'dummyTitle2', '2020-12-25', '2020-12-26', 5, TRUE);
+INSERT INTO reservations (id, user_id, product_id, title, start_date, end_date, count, valid_flag) VALUES (3, 1, 4, 'dummyTitle3', '2020-12-26', '2020-12-27', 4, FALSE);
