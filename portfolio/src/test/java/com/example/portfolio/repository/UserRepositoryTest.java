@@ -35,7 +35,13 @@ public class UserRepositoryTest {
     String password = "password";
     User actual = repos.findByEmailAndPassword(email, password);
     assertTrue(actual != null);
+  }
 
+  @Test
+  public void testFindById() {
+    int id = 1;
+    User actual = repos.findById(id);
+    assertTrue(actual != null);
   }
 
 }
