@@ -44,10 +44,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query(value = "UPDATE users SET user_name = :#{#u.userName}, family_name = :#{#u.familyName}, first_name = :#{#u.firstName}, email = :#{#u.email}, password = :#{#u.password} WHERE id = :#{#u.userId}", nativeQuery = true)
 	void updateUser(@Param("u") UserForm userForm);
 
-	@Query(value = "SELECT user_name from users WHERE id = :userId", nativeQuery = true)
+	@Query(value = "SELECT user_name FROM users WHERE id = :userId", nativeQuery = true)
 	String findUserNameById(@Param("userId") int userId);
 
-	@Query(value = "SELECT email from users WHERE id = :userId", nativeQuery = true)
+	@Query(value = "SELECT email FROM users WHERE id = :userId", nativeQuery = true)
 	String findEmailById(@Param("userId") int userId);
 
 }

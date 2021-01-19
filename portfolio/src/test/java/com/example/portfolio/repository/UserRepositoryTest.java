@@ -85,6 +85,13 @@ public class UserRepositoryTest {
   }
 
   @Test
+  public void testFindEmailById() {
+    int id = 1;
+    String actual = repos.findEmailById(id);
+    assertEquals("example@gmail.com", actual);
+  }
+
+  @Test
   public void testUpdateUser() {
     UserForm f = new UserForm(1, "updatedName", "updatedEmail", "updatedPassword", "updatedFamilyName", "updatedFirstName");
     repos.updateUser(f);
