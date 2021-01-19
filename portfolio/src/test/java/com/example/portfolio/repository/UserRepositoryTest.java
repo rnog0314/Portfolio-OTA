@@ -6,12 +6,8 @@ import com.example.portfolio.model.dao.UserRepository;
 import com.example.portfolio.model.entity.User;
 import com.example.portfolio.model.form.UserForm;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.isNotNull;
-import static org.hamcrest.CoreMatchers.is;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
