@@ -38,4 +38,11 @@ public class Notice {
   @Column(name = "updated_at")
   private Timestamp updatedAt;
 
+  public Notice(String title, String text) {
+    this.title = title;
+    this.text = text;
+  }
+
+
+
 }

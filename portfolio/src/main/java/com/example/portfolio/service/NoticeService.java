@@ -19,6 +19,7 @@ public class NoticeService {
 
   /**
    * お知らせ全取得
+   *
    * @return List<Notice> お知らせ一覧
    */
   public List<Notice> findAll() {
@@ -27,6 +28,7 @@ public class NoticeService {
 
   /**
    * お知らせ詳細取得
+   *
    * @param id お知らせID
    * @return Notice お知らせ詳細
    */
@@ -36,6 +38,7 @@ public class NoticeService {
 
   /**
    * お知らせ情報更新
+   *
    * @param n Notice
    * @return お知らせ更新件数
    */
@@ -45,10 +48,17 @@ public class NoticeService {
 
   /**
    * 表示可お知らせ一覧取得
+   *
    * @return List<Notice> 表示可お知らせ一覧
    */
   public List<Notice> findAllByVisibleFlagTrue() {
     return noticeRepos.findAllByVisibleFlagTrueOrderByCreatedAt();
+  }
+
+  public Notice insert(Notice n) {
+    Notice notice = new Notice(n.getTitle(), n.getText());
+    return noticeRepos.save(notice);
+    // TODO 作成時刻をNow()で取得して、それをStringにフォーマットしてからentity挿入
   }
 
 }

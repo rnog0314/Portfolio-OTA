@@ -63,4 +63,15 @@ public class AdminNoticeController {
     return bool;
   }
 
+  @PostMapping("/create")
+  @ResponseBody
+  public boolean insert(@RequestBody Notice notice) {
+    boolean bool = false;
+    Notice insertedNotice = noticeService.insert(notice);
+    if (insertedNotice != null) {
+      bool = true;
+    }
+    return bool;
+  }
+
 }
