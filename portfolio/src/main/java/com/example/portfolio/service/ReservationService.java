@@ -14,6 +14,8 @@ import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.utils.Utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -85,8 +87,12 @@ public class ReservationService {
    * @return ページネーションされた予約リスト
    */
   public Page<Reservation> findPaginatedList(Optional<Integer> page) {
+    Reservation probe = new Reservation();
+    probe.setValidFlag(true);
+    ExampleMatcher matcher = ExampleMatcher.matching().withIgnorePaths("id", "userId", "productId", "title", "start", "end", "count");
+    Example<Reservation> example = Example.of(probe, matcher);
     Pageable pageable = utils.getPageable(page);
-    return reservationRepos.findAll(pageable);
+    return reservationRepos.findAll(example, pageable);
   }
 
   /**
