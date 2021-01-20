@@ -486,16 +486,24 @@ input {
 
 // 検索結果ページ
 #searchResult {
+  padding-top: 3rem;
   .card {
     margin: 1rem auto;
     border-radius: 1rem;
+    .card-body {
+      padding-top: .5rem;
+    }
     img {
       margin: 0;
       width: 100%;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
       height: 12.5rem;
       object-fit: cover;
+    }
+    a {
+      color: grey;
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 }
