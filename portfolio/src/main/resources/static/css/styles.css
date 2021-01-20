@@ -500,18 +500,32 @@ input {
   border-bottom-right-radius: 0;
 }
 
+#searchResult {
+  padding-top: 3rem;
+}
+
 #searchResult .card {
   margin: 1rem auto;
   border-radius: 1rem;
 }
 
+#searchResult .card .card-body {
+  padding-top: .5rem;
+}
+
 #searchResult .card img {
   margin: 0;
   width: 100%;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
   height: 12.5rem;
   object-fit: cover;
+}
+
+#searchResult .card a {
+  color: grey;
+}
+
+#searchResult .card a:hover {
+  opacity: 0.8;
 }
 
 #tour-category .card {
