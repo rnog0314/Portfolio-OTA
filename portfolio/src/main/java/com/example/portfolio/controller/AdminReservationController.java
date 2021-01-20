@@ -48,6 +48,12 @@ public class AdminReservationController {
     }
     m.addAttribute("reservations", reservations);
     m.addAttribute("adminSession", adminSession);
+    return "admin/reservation_list";
+  }
+
+  @GetMapping("/calendar")
+  public String showCalendar(Model m) {
+    m.addAttribute("adminSession", adminSession);
     return "admin/reservation";
   }
 

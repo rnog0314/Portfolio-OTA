@@ -21,65 +21,11 @@
         <div class="page-title-area d-flex">
           <h2 class="page-title">reservations</h2>
           <div class="btn-area">
-            <button id="calendar-btn" class="btn hidden"><i class="far fa-2x fa-calendar-alt"></i></button>
-            <button id="list-btn" class="btn normal"><i class="far fa-2x fa-list-alt"></i></button>
+            <a th:href="@{/portfolio/admin/reservation}" id="list-btn" class="btn"><i class="far fa-2x fa-list-alt"></i></a>
           </div>
         </div>
-        <table class="table table-hover table-bordered table-responsive-md text-center list hidden"
-          th:if="${reservations.getTotalPages() > 0}">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">User ID</th>
-              <th scope="col">Product ID</th>
-              <th scope="col">Count</th>
-              <th scope="col">Date</th>
-            </tr>
-          </thead>
-          <tbody id="boxes">
-            <tr th:each="reservation : ${reservations}" th:object="${reservation}">
-              <td th:text="*{id}"></td>
-              <td th:text="*{userId}"></td>
-              <td th:text="*{productId}"></td>
-              <td th:text="*{count}"></td>
-              <td th:text="*{start}"></td>
-            </tr>
-          </tbody>
-        </table>
-        <nav aria-label="Page navigation" class="list hidden">
-          <ul class="pagination d-flex justify-content-center">
-            <li class="page-item">
-              <a th:href="@{/portfolio/admin/reservation/1}" class="page-link" aria-label="Previous">
-                <span aria-hidden="true">&lt;&lt;</span>
-              </a>
-            </li>
-            <li class="page-item" th:if="${reservations.getNumber() > 1}">
-              <a th:href="@{/portfolio/admin/reservation/{page} (page = ${reservations.getNumber()})}" class="page-link"
-                aria-label="Previous">
-                <span aria-hidden="true">&lt;</span>
-              </a>
-            </li>
-            <li class="page-item" th:with="start = 1, end = ${reservations.getTotalPages()}"
-              th:each="pageNumber : ${pageNumbers}">
-              <a class="page-link" th:href="@{/portfolio/admin/reservation/{page} (page = ${pageNumber})}"
-                th:text="${pageNumber}"></a>
-            </li>
-            <li class="page-item" th:if="${reservations.getTotalPages() > reservations.getNumber() + 1 }">
-              <a th:href="@{/portfolio/admin/reservation/{page} (page = ${reservations.getNumber() + 2})}"
-                class="page-link" aria-label="Next">
-                <span aria-hidden="true">&gt;</span>
-              </a>
-            </li>
-            <li class="page-item">
-              <a th:href="@{/portfolio/admin/reservation/{page} (page = ${reservations.getTotalPages()})}"
-                class="page-link" aria-label="Next">
-                <span aria-hidden="true">&gt;&gt;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
         <!-- カレンダー -->
-        <div class="container calendar normal">
+        <div class="container">
           <div id="calendar"></div>
         </div>
       </div>
@@ -122,23 +68,23 @@
     });
 
     $(document).ready(function () {
-      /* リストボタン押下時 */
-      $('#list-btn').on('click', function () {
-        $('.normal').removeClass('hidden');
-        $('.calendar').addClass('hidden');
-        $('.list').removeClass('hidden');
-        $('#calendar-btn').removeClass('hidden');
-        $(this).addClass('hidden');
-      });
+      // /* リストボタン押下時 */
+      // $('#list-btn').on('click', function () {
+      //   $('.normal').removeClass('hidden');
+      //   $('.calendar').addClass('hidden');
+      //   $('.list').removeClass('hidden');
+      //   $('#calendar-btn').removeClass('hidden');
+      //   $(this).addClass('hidden');
+      // });
 
-      /* カレンダーボタン押下時 */
-      $('#calendar-btn').on('click', function () {
-        $('.normal').addClass('hidden');
-        $('.calendar').removeClass('hidden');
-        $('.list').addClass('hidden');
-        $(this).addClass('hidden');
-        $('#list-btn').removeClass('hidden');
-      });
+      // /* カレンダーボタン押下時 */
+      // $('#calendar-btn').on('click', function () {
+      //   $('.normal').addClass('hidden');
+      //   $('.calendar').removeClass('hidden');
+      //   $('.list').addClass('hidden');
+      //   $(this).addClass('hidden');
+      //   $('#list-btn').removeClass('hidden');
+      // });
 
     })
     /*]]>*/
