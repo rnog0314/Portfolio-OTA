@@ -65,11 +65,12 @@ public class IndexController {
 }
 
 /* TODO
-  - cateogry_details.htmlの画像を画質の良いものに変更
-  - JSファイルの分離
-  - Qiita投稿(Stripe, fullCalendar,)
+  - admin_reservation.htmlをカレンダーとリストで画面分ける
   - adminのパスワード忘れ
   - adminのお知らせ新規作成
+  - cateogry_details.htmlの画像を画質の良いものに変更
+  - JSファイルの分離
+  - Qiita投稿(Stripe, fullCalendar)
 */
 
 /* 残りの作成工程
