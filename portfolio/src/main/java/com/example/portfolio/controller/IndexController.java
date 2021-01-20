@@ -68,11 +68,10 @@ public class IndexController {
   - cateogry_details.htmlの画像を画質の良いものに変更
   - JSファイルの分離
   - 各ページのimgのbdrsの修正
-  - Qiita投稿(Stripe, fullCalendar, 単体テスト環境構築&やり方)
+  - Qiita投稿(Stripe, fullCalendar,)
 */
 
 /* 残りの作成工程
-  - 単体テスト(JUnit)
   - 統合テスト(統合試験仕様書をページごとに簡単に作成の上、試験)
   - README作成
   - ⭐️AWSとDockerを使ってデプロイ
