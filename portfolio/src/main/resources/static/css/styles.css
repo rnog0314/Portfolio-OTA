@@ -315,6 +315,14 @@ input {
   font-size: 1.25rem;
 }
 
+#destination-tour a {
+  color: grey;
+}
+
+#destination-tour a:hover {
+  opacity: .8;
+}
+
 #destination-tour .tour-img {
   object-fit: cover;
   border-radius: 0.5rem;
@@ -533,11 +541,17 @@ input {
   border-radius: 1rem;
 }
 
+#tour-category .card a {
+  color: grey;
+}
+
+#tour-category .card a:hover {
+  opacity: .8;
+}
+
 #tour-category .card img {
   margin: 0;
   width: 100%;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
   height: 12.5rem;
   object-fit: cover;
 }
@@ -547,11 +561,17 @@ input {
   border-radius: 1rem;
 }
 
+#bookmark .card a {
+  color: grey;
+}
+
+#bookmark .card a:hover {
+  opacity: .8;
+}
+
 #bookmark .card img {
   margin: 0;
   width: 100%;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
   height: 12.5rem;
   object-fit: cover;
 }

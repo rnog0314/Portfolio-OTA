@@ -67,8 +67,9 @@ public class IndexController {
 /* TODO
   - cateogry_details.htmlの画像を画質の良いものに変更
   - JSファイルの分離
-  - 各ページのimgのbdrsの修正
   - Qiita投稿(Stripe, fullCalendar,)
+  - adminのパスワード忘れ
+  - adminのお知らせ新規作成
 */
 
 /* 残りの作成工程
