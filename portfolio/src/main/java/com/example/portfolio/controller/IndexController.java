@@ -68,6 +68,7 @@ public class IndexController {
   - admin_reservation.htmlをカレンダーとリストで画面分ける
   - adminのパスワード忘れ
   - adminのお知らせ新規作成
+  - STSでカバレッじ測定
   - cateogry_details.htmlの画像を画質の良いものに変更
   - JSファイルの分離
   - Qiita投稿(Stripe, fullCalendar)
