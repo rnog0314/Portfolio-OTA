@@ -11,13 +11,12 @@
   <!-- header挿入 -->
   <header th:insert="fragments/header::header"></header>
   <main role="main">
-    <section id="mypage">
-      <div class="container text-center mt-5">
-        <div class="d-flex justify-content-center align-items-center mb-5" style="position: relative;">
-          <h2 class="page-title text-center mb-">My Page</h2>
+    <section id="mypage" class="pb-5">
+      <div class="container text-center">
+        <div class="d-flex justify-content-center align-items-center" style="position: relative;">
+          <h2 class="page-title text-center pt-4 mb-3">My Page</h2>
           <div class="title-btn-area d-flex">
             <a th:href="@{/portfolio/reservation}" class="btn btn-info mx-2">Bookings</a>
-            <!-- <a th:href="@{/portfolio/reservation/history}" class="btn btn-info mx-2">Histories</a> -->
           </div>
         </div>
         <div class="container-fluid mb-5 table-responsive-md">

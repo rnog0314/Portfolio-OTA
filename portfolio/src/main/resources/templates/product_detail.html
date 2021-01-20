@@ -10,7 +10,7 @@
 <body>
   <!-- header挿入 -->
   <header th:insert="fragments/header::header"></header>
-  <main role="main">
+  <main role="main" class="pt-5">
     <section id="top-banner">
       <div class="container" th:object="${productDetail}">
         <div class="banner-area">
@@ -84,7 +84,7 @@
                   <h6 class="total-price"><small>Order total</small>&nbsp;USD&nbsp;<span id="total-price">0</span></h6>
                 </div>
                 <div class="btn-area text-right">
-                  <button id="bookmark-btn" class="btn" style="background-color: skyblue;" type="button">Add to Bookmark</button>
+                  <button id="bookmark-btn" class="btn" style="background-color: skyblue; color: #fff;" type="button">Add to Bookmark</button>
                   <button id="book-btn" class="btn btn-info" type="button">Book Now</button>
                 </div>
               </form>
@@ -137,14 +137,6 @@
 
       /* ブックマークボタン押下時 */
       $('#bookmark-btn').on('click', function () {
-        if ($('#participantsNumber').val() == 0) {
-          bootbox.alert({
-            message: 'You need to input more than 1 person to add to your Bookmark',
-            backdrop: true,
-            centerVertical: true
-          });
-          return false;
-        }
         let bool = /*[[${loginSession.isLogined()}]]*/ '';
         if (!bool) {
           bootbox.alert({

@@ -11,7 +11,7 @@
   <!-- header挿入 -->
   <header th:insert="fragments/header::header"></header>
   <main role="main">
-    <section id="bookmark">
+    <section id="bookmark" class="pt-5">
       <div class="container">
         <h2 class="pate-title">Your Bookmarks</h2>
         <div class="row">
@@ -24,7 +24,7 @@
                       class="far fa-2x fa-trash-alt"></i></button>
                   <input class="productId" type="hidden" th:value="*{productId}">
                 </div>
-                <div class="card-body">
+                <div class="card-body text-center pt-3">
                   <h5 class="card-title" th:text="*{productName}"></h5>
                   <a th:href="@{/portfolio/product/{id} (id=*{productId})}">See detail</a>
                 </div>

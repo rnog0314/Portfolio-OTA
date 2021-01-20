@@ -304,6 +304,12 @@ input {
 }
 
 #destination-tour {
+  a {
+    color: grey;
+    &:hover {
+      opacity: .8;
+    }
+  }
   .tour-img {
     object-fit: cover;
     border-radius: 0.5rem;
@@ -508,32 +514,40 @@ input {
   }
 }
 
-// カテゴリページ
+// category_detail.html
 #tour-category {
   .card {
     margin: 1rem auto;
     border-radius: 1rem;
+    a {
+      color: grey;
+      &:hover {
+        opacity: .8;
+      }
+    }
     img {
       margin: 0;
       width: 100%;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
       height: 12.5rem;
       object-fit: cover;
     }
   }
 }
 
-// ブックマークページ
+// bookmark.html
 #bookmark {
   .card {
     margin: 1rem auto;
     border-radius: 1rem;
+    a {
+      color: grey;
+      &:hover {
+        opacity: .8;
+      }
+    }
     img {
       margin: 0;
       width: 100%;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
       height: 12.5rem;
       object-fit: cover;
     }

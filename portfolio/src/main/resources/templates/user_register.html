@@ -11,7 +11,7 @@
   <!-- header挿入 -->
   <header th:insert="fragments/header::header"></header>
   <main role="main">
-    <div class="container text-center mt-5">
+    <div class="container text-center py-5">
       <div class="page-title-area">
         <h2 class="page-title">New User Registration</h2>
       </div>
@@ -56,8 +56,8 @@
         </tr>
       </table>
       <div class="btn-area">
-        <a type="button" id="back-btn" class="btn btn-primary m-3" href="javascript:history.back();">Back</a>
-        <button id="confirm-btn" class="btn btn-success" disabled>Confirm</button>
+        <a type="button" id="back-btn" class="btn btn-secondary m-3" href="javascript:history.back();">Back</a>
+        <button id="confirm-btn" class="btn btn-info" disabled>Confirm</button>
       </div>
     </div>
   </main>
@@ -159,7 +159,7 @@
           $('#passwordConfirm').text($('#newPassword').val());
           $('#gender').text(gender);
         });
-
+        box.modal('show');
       })
     });
     /*]]>*/
