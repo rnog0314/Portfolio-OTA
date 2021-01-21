@@ -65,7 +65,6 @@ public class IndexController {
 }
 
 /* TODO
-  - adminのお知らせ新規作成
   - STSでカバレッじ測定
   - cateogry_details.htmlの画像を画質の良いものに変更
   - JSファイルの分離
