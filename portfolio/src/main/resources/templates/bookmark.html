@@ -38,32 +38,7 @@
   </main>
   <!-- footer -->
   <footer th:insert="fragments/footer::footer"></footer>
-
-  <script type="text/javascript" th:inline="javascript">
-    /*<![CDATA[*/
-    $(document).ready(function () {
-      $('.delete-btn').on('click', function (e) {
-        let productId = $(this).parent().find('input').val();
-        console.log(productId);
-        $.ajax({
-          type: 'POST',
-          url: '/portfolio/bookmark/delete',
-          data: productId,
-          contentType: 'application/json',
-          dataType: 'json',
-        }).done(function () {
-          $(e.target).parent().parent().parent().parent().remove();
-          location.reload()
-        }).fail(function () {
-          console.log('ajax通信に失敗しました');
-        }).always(function () {
-          console.log('ajax通信しました');
-        });
-      })
-    });
-
-    /*]]>*/
-  </script>
+  <script th:inline="javascript" th:src="@{/js/bookmark.js}"></script>
 </body>
 
 </html>
