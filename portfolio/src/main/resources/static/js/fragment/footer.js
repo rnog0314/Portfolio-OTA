@@ -45,6 +45,7 @@ $(function () {
                 login(user);
                 loginCheck();
                 console.log("ログインしました");
+                location.reload();
               }
             })
             .fail(function (result) {
