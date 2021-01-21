@@ -66,6 +66,7 @@ public class IndexController {
 
 /* TODO
   - STSでカバレッじ測定
+  -index.htmlのスライダーの[See Photos]のリンク
   - cateogry_details.htmlの画像を画質の良いものに変更
   - JSファイルの分離
   - Qiita投稿(Stripe, fullCalendar)
