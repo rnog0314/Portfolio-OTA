@@ -24,6 +24,7 @@ public class AdminNoticeController {
 
   /**
    * 管理者/お知らせ画面一覧表示
+   *
    * @param m Model
    * @return admin/notice.html
    */
@@ -36,8 +37,9 @@ public class AdminNoticeController {
 
   /**
    * お知らせ詳細画面表示
+   *
    * @param id お知らせID
-   * @param m Model
+   * @param m  Model
    * @return admin/notice_detail,html
    */
   @GetMapping(value = "/{id}")
@@ -49,6 +51,7 @@ public class AdminNoticeController {
 
   /**
    * お知らせ修正
+   *
    * @param notice お知らせ
    * @return お知らせ修正成功/失敗
    */

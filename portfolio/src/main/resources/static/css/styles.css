@@ -600,10 +600,6 @@ input {
   padding-bottom: 3rem;
 }
 
-#notice-detail .container {
-  width: 60%;
-}
-
 #checkout-page .stripe-button-el, #checkout-page .stripe-button-el span {
   color: #fff;
   background-color: #17a2b8 !important;
@@ -750,6 +746,15 @@ input {
 
 #notice a {
   color: grey;
+}
+
+#notice .page-title-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+#notice .page-title-area #create-btn {
+  margin-bottom: 1rem;
 }
 
 #notice-detail .card {

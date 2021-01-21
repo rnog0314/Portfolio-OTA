@@ -578,9 +578,9 @@ input {
 #notice-detail {
   padding-top: 3rem;
   padding-bottom: 3rem;
-  .container {
-    width: 60%;
-  }
+  // .container {
+  //   width: 60%;
+  // }
 }
 
 // checkout.html
@@ -738,6 +738,13 @@ input {
   }
   a {
     color: grey;
+  }
+  .page-title-area {
+    display: flex;
+    justify-content: space-between;
+    #create-btn {
+      margin-bottom: 1rem;
+    }
   }
 }
 

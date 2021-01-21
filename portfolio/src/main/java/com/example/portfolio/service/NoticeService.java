@@ -1,5 +1,6 @@
 package com.example.portfolio.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -23,7 +24,7 @@ public class NoticeService {
    * @return List<Notice> お知らせ一覧
    */
   public List<Notice> findAll() {
-    return noticeRepos.findAll();
+    return noticeRepos.findAllOrderByCreatedAt();
   }
 
   /**
@@ -43,7 +44,8 @@ public class NoticeService {
    * @return お知らせ更新件数
    */
   public int update(Notice n) {
-    return noticeRepos.update(n.getId(), n.getTitle(), n.getText());
+    Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
+    return noticeRepos.update(n.getId(), n.getTitle(), n.getText(), updatedAt);
   }
 
   /**
@@ -56,9 +58,9 @@ public class NoticeService {
   }
 
   public Notice insert(Notice n) {
-    Notice notice = new Notice(n.getTitle(), n.getText());
+    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+    Notice notice = new Notice(n.getTitle(), n.getText(), timestamp, timestamp);
     return noticeRepos.save(notice);
-    // TODO 作成時刻をNow()で取得して、それをStringにフォーマットしてからentity挿入
   }
 
 }

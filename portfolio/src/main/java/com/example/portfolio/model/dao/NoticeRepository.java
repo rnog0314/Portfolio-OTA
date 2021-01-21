@@ -1,5 +1,6 @@
 package com.example.portfolio.model.dao;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.example.portfolio.model.entity.Notice;
@@ -14,11 +15,15 @@ import org.springframework.stereotype.Repository;
 public interface NoticeRepository extends JpaRepository<Notice, Integer> {
 
 	@Modifying
-	@Query(value = "UPDATE notices SET title = :title, text = :text WHERE id = :id", nativeQuery = true)
+	@Query(value = "UPDATE notices SET title = :title, text = :text, updated_at = :updatedAt WHERE id = :id", nativeQuery = true)
 	int update( @Param("id") int id,
 							@Param("title") String title,
-							@Param("text") String text);
+							@Param("text") String text,
+							@Param("updatedAt") Timestamp updatedAt);
 
 	List<Notice> findAllByVisibleFlagTrueOrderByCreatedAt();
+
+	@Query(value = "SELECT * FROM notices ORDER BY created_at ASC", nativeQuery = true)
+	List<Notice> findAllOrderByCreatedAt();
 
 }
