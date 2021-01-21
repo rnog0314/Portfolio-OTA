@@ -38,4 +38,12 @@ public class Notice {
   @Column(name = "updated_at")
   private Timestamp updatedAt;
 
+  public Notice(String title, String text, Timestamp createdAt, Timestamp updatedAt) {
+    this.title = title;
+    this.text = text;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+  }
+
+
 }

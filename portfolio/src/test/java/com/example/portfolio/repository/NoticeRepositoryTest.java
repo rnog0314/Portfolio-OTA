@@ -2,6 +2,7 @@ package com.example.portfolio.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -34,7 +35,8 @@ public class NoticeRepositoryTest {
     int id = 1;
     String title = "updatedTitle";
     String text = "updatedText";
-    repos.update(id, title, text);
+    Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
+    repos.update(id, title, text, updatedAt);
 
     // 更新確認
     String sql = "SELECT * FROM notices WHERE id = ?";

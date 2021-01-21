@@ -1,5 +1,6 @@
 package com.example.portfolio.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -19,14 +20,16 @@ public class NoticeService {
 
   /**
    * お知らせ全取得
+   *
    * @return List<Notice> お知らせ一覧
    */
   public List<Notice> findAll() {
-    return noticeRepos.findAll();
+    return noticeRepos.findAllOrderByCreatedAt();
   }
 
   /**
    * お知らせ詳細取得
+   *
    * @param id お知らせID
    * @return Notice お知らせ詳細
    */
@@ -36,19 +39,28 @@ public class NoticeService {
 
   /**
    * お知らせ情報更新
+   *
    * @param n Notice
    * @return お知らせ更新件数
    */
   public int update(Notice n) {
-    return noticeRepos.update(n.getId(), n.getTitle(), n.getText());
+    Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
+    return noticeRepos.update(n.getId(), n.getTitle(), n.getText(), updatedAt);
   }
 
   /**
    * 表示可お知らせ一覧取得
+   *
    * @return List<Notice> 表示可お知らせ一覧
    */
   public List<Notice> findAllByVisibleFlagTrue() {
     return noticeRepos.findAllByVisibleFlagTrueOrderByCreatedAt();
+  }
+
+  public Notice insert(Notice n) {
+    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+    Notice notice = new Notice(n.getTitle(), n.getText(), timestamp, timestamp);
+    return noticeRepos.save(notice);
   }
 
 }

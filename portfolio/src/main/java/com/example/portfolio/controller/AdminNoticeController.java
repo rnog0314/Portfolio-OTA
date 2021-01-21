@@ -24,6 +24,7 @@ public class AdminNoticeController {
 
   /**
    * 管理者/お知らせ画面一覧表示
+   *
    * @param m Model
    * @return admin/notice.html
    */
@@ -36,8 +37,9 @@ public class AdminNoticeController {
 
   /**
    * お知らせ詳細画面表示
+   *
    * @param id お知らせID
-   * @param m Model
+   * @param m  Model
    * @return admin/notice_detail,html
    */
   @GetMapping(value = "/{id}")
@@ -49,6 +51,7 @@ public class AdminNoticeController {
 
   /**
    * お知らせ修正
+   *
    * @param notice お知らせ
    * @return お知らせ修正成功/失敗
    */
@@ -58,6 +61,17 @@ public class AdminNoticeController {
     boolean bool = false;
     int result = noticeService.update(notice);
     if (result > 0) {
+      bool = true;
+    }
+    return bool;
+  }
+
+  @PostMapping("/create")
+  @ResponseBody
+  public boolean insert(@RequestBody Notice notice) {
+    boolean bool = false;
+    Notice insertedNotice = noticeService.insert(notice);
+    if (insertedNotice != null) {
       bool = true;
     }
     return bool;
