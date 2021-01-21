@@ -65,7 +65,8 @@ public class IndexController {
 }
 
 /* TODO
-  - STSでカバレッじ測定
+  - 画面設計書作成
+  - STSでcloneしてカバレッじ測定
   - cateogry_details.htmlの画像を画質の良いものに変更
   - Qiita投稿(Stripe, fullCalendar)
 */
@@ -75,5 +76,4 @@ public class IndexController {
   - README作成
   - ⭐️AWSとDockerを使ってデプロイ
   - ER図作成
-  - 画面設計書作成
 */
