@@ -8,8 +8,8 @@ $(function () {
       dataType: "json",
       contentType: "application/json",
     })
-      .done(function (boolean) {
-        if (boolean == true) {
+      .done(function (bool) {
+        if (bool) {
           bootbox.alert(
             "This user name is already used. Please try another one."
           );
@@ -18,10 +18,10 @@ $(function () {
           $("#confirm-btn").prop("disabled", false);
         }
       })
-      .fail(function (boolean) {
+      .fail(function (bool) {
         console.log("ajax通信に失敗しました");
       })
-      .always(function (boolean) {
+      .always(function (bool) {
         console.log("ajax通信をしました");
       });
   });
