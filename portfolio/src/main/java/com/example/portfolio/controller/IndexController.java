@@ -75,5 +75,4 @@ public class IndexController {
   - 統合テスト(統合試験仕様書をページごとに簡単に作成の上、試験)
   - README作成
   - ⭐️AWSとDockerを使ってデプロイ
-  - ER図作成
 */
