@@ -65,14 +65,14 @@ public class IndexController {
 }
 
 /* TODO
-  - 画面設計書作成
   - STSでcloneしてカバレッじ測定
-  - cateogry_details.htmlの画像を画質の良いものに変更
-  - Qiita投稿(Stripe, fullCalendar)
-*/
+  - 画面設計書作成
+  - sudo java -jar lombok.jar
+  */
 
-/* 残りの作成工程
+  /* 残りの作成工程
   - 統合テスト(統合試験仕様書をページごとに簡単に作成の上、試験)
   - README作成
   - ⭐️AWSとDockerを使ってデプロイ
+  - Qiita投稿(Stripe, fullCalendar)
 */

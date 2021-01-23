@@ -3,6 +3,7 @@ package com.example.portfolio.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -32,22 +33,21 @@ public class ReservationServiceTest {
   private Utils utils;
 
   @Mock
-  private ReservationRepository rRepos;
+  private ReservationRepository reservationRepos;
 
   @InjectMocks
-  private ReservationService rService;
+  private ReservationService reservationService;
 
   @Test
   public void testReserve() {
     when(loginSession.getUserId()).thenReturn(1);
     when(userService.findUserNameById(anyInt())).thenReturn("testUser");
-    when(utils.getEndDate(anyString())).thenReturn("2020-02-04");
-    Reservation expected = mock(Reservation.class);
-    when(rRepos.save(expected)).thenReturn(expected);
+    when(utils.getEndDate(anyString())).thenReturn("2020-01-01");
+    Reservation expected = new Reservation(1, 1, 5, "2020-12-31", "2020-01-01", "testUser : 4PX");
+    when(reservationRepos.save(any())).thenReturn(expected);
     ReservationForm f = new ReservationForm("2020-12-31", 4, 5);
-    Reservation actual = rService.reserve(f);
+    Reservation actual = reservationService.reserve(f);
     assertEquals(expected, actual);
-
   }
 
 }

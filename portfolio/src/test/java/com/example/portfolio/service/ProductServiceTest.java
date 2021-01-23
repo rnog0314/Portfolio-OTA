@@ -12,6 +12,7 @@ import java.util.Set;
 import com.example.portfolio.model.dao.ProductRepository;
 import com.example.portfolio.model.dao.SearchDtoRepository;
 import com.example.portfolio.model.entity.SearchDto;
+import com.example.portfolio.utils.Utils;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -28,6 +29,9 @@ public class ProductServiceTest {
 
   @Mock
   private SearchDtoRepository searchRepos;
+
+  @Mock
+  private Utils utils;
 
   @InjectMocks
   private ProductService productService;
@@ -58,6 +62,7 @@ public class ProductServiceTest {
       productList.add(new SearchDto(i, "dummyImage" + i, "dummyName" + i));
     }
     page = Optional.of(Integer.valueOf(2));
+    when(utils.getCurrentPage(page)).thenReturn(2);
     List<SearchDto> actual2 = productService.getPaginatedResult(productList, page);
     assertEquals(6, actual2.size());
   }

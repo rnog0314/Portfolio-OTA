@@ -11,13 +11,14 @@ import javax.persistence.Table;
 
 import com.google.gson.annotations.Expose;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "reservations")
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Reservation {
 
   @Id
