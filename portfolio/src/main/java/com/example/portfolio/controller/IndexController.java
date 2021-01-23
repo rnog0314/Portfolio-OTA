@@ -65,9 +65,7 @@ public class IndexController {
 }
 
 /* TODO
-  - STSでcloneしてカバレッじ測定
   - 画面設計書作成
-  - sudo java -jar lombok.jar
   */
 
   /* 残りの作成工程
