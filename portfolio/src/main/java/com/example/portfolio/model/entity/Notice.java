@@ -45,5 +45,10 @@ public class Notice {
     this.updatedAt = updatedAt;
   }
 
+  public Notice (String title, String text) {
+    this.title = title;
+    this.text = text;
+  }
+
 
 }
