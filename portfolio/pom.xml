@@ -16,10 +16,6 @@
 	<description>Demo project for Spring Boot</description>
 
 
-	<properties>
-		<java.version>11</java.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -196,5 +192,11 @@
 			</plugin>
 		</plugins>
 	</build>
+	<properties>
+		<java.version>11</java.version>
+		<!-- <spring.profiles.active>
+			demo
+		</spring.profiles.active> -->
+	</properties>
 
 </project>
