@@ -18,6 +18,7 @@ import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -25,10 +26,10 @@ import java.util.List;
 public class AdminServiceTest {
 
   @Mock
-  private AdminRepository adminReposMock;
+  private AdminRepository repos;
 
   @Mock
-  private AdminSession adminSession;
+  private AdminSession session;
 
   @InjectMocks
   private AdminService adminService;
@@ -41,12 +42,21 @@ public class AdminServiceTest {
   int adminId;
 
   @Test
+  public void testFindById() {
+    Optional<Admin> expected = Optional.of(new Admin(1, "testAdmin", "testPassword"));
+    when(repos.findById(anyInt())).thenReturn(expected);
+    int id = 1;
+    Admin actual = adminService.findById(id);
+    assertEquals(expected.get().getAdminName(), actual.getAdminName());
+  }
+
+  @Test
   public void testFindByAdminNameAndPassword() {
     expected = new Admin(1, "testAdmin1", "password001");
     adminName = "testAdmin1";
     password = "password001";
     // Mockの動作を定義
-    when(adminReposMock.findByAdminNameAndPassword(adminName, password)).thenReturn(expected);
+    when(repos.findByAdminNameAndPassword(adminName, password)).thenReturn(expected);
     /* execute */
     actual = adminService.findByAdminNameAndPassword(adminName, password);
     /* verify */
@@ -62,10 +72,10 @@ public class AdminServiceTest {
   @Test
   public void testUpdateAdmin() {
     AdminForm f = new AdminForm("testAdmin", "password");
-    when(adminSession.getId()).thenReturn(1);
-    doNothing().when(adminReposMock).updateAdmin(1, "testAdmin", "password");
+    when(session.getId()).thenReturn(1);
+    doNothing().when(repos).updateAdmin(1, "testAdmin", "password");
     adminService.updateAdmin(f);
-    assertEquals(1 , adminSession.getId());
+    assertEquals(1 , session.getId());
     assertEquals("testAdmin", f.getAdminName());
     assertEquals("password", f.getPassword());
   }
@@ -73,10 +83,10 @@ public class AdminServiceTest {
   @Test
   public void testSetAdminSession() {
     Admin testAdmin1 = new Admin(3, "testAdmin", "password");
-    doNothing().when(adminSession).setId(testAdmin1.getId());
-    doNothing().when(adminSession).setAdminName(testAdmin1.getAdminName());
-    doNothing().when(adminSession).setPassword(testAdmin1.getPassword());
-    doNothing().when(adminSession).setLogined(true);
+    doNothing().when(session).setId(testAdmin1.getId());
+    doNothing().when(session).setAdminName(testAdmin1.getAdminName());
+    doNothing().when(session).setPassword(testAdmin1.getPassword());
+    doNothing().when(session).setLogined(true);
     adminService.setAdminSession(testAdmin1);
   }
 
@@ -85,7 +95,7 @@ public class AdminServiceTest {
     List<Admin> expected = new ArrayList<Admin>();
     expected.add(new Admin(1, "testAdmin", "password"));
     expected.add(new Admin(2, "testAdmin2", "password2"));
-    when(adminReposMock.findAll()).thenReturn(expected);
+    when(repos.findAll()).thenReturn(expected);
     List<Admin> actual = adminService.findAll();
     assertEquals(expected, actual);
   }
