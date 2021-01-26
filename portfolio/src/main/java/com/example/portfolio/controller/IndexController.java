@@ -49,6 +49,7 @@ public class IndexController {
     if (!loginSession.isLogined() && loginSession.getTmpUserId() == null) {
       int tempUserId = (int) (Math.random() * 1000000000);
       loginSession.setTmpUserId(tempUserId); // ランダムな整数を仮ユーザIDとしてログインセッションに登録
+      loginSession.setLogined(false);
     }
     List<Product> products = productService.findAll();
     List<Category> categories = categoryService.findAll();
