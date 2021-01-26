@@ -22,7 +22,7 @@ public class CategoryService {
    * @return List<Category> カテゴリ一覧
    */
 	public List<Category> findAll() {
-		return categoryRepos.findAll();
+		return categoryRepos.findAllCategories();
 	}
 
   /**
