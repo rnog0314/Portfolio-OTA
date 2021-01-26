@@ -66,6 +66,7 @@ public class IndexController {
 }
 
 /* TODO
+  - EC2にSHHログインしてnanoファイル編集
   - 画面設計書作成
   */
 
