@@ -4,8 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.portfolio.model.dao.BookmarkDtoRepository;
 import com.example.portfolio.model.dao.BookmarkRepository;
 import com.example.portfolio.model.entity.Bookmark;
+import com.example.portfolio.model.entity.BookmarkDto;
 import com.example.portfolio.model.session.LoginSession;
 
 import org.junit.jupiter.api.Test;
@@ -20,6 +25,9 @@ public class BookmarkServiceTest {
 
   @Mock
   private BookmarkRepository bookmarkRepos;
+
+  @Mock
+  private BookmarkDtoRepository dtoRepos;
 
   @Mock
   private LoginSession loginSession;
@@ -39,6 +47,15 @@ public class BookmarkServiceTest {
     // 例外処理
     doReturn(null).when(bookmark);
     assertThrows(RuntimeException.class, () -> bookmarkService.add(1));
+  }
+
+  @Test
+  public void testGetBookmarkList() {
+    List<BookmarkDto> expected = new ArrayList<>();
+    when(dtoRepos.getBookmarkList(anyInt())).thenReturn(expected);
+    int userId = 1;
+    List<BookmarkDto> actual = bookmarkService.getBookmarkList(userId);
+    assertEquals(expected, actual);
   }
 
   @Test
