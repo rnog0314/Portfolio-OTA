@@ -40,7 +40,7 @@ public class ProductService {
 	 * @return
 	 */
 	public List<Product> findAll() {
-		return productRepos.findAll().subList(1, 11);
+		return productRepos.findAllProduct().subList(1, 11);
 	}
 
 	/**

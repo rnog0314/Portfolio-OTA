@@ -23,7 +23,7 @@ public class DestinationService {
    * @return List<Destination> デスティネーション一覧
    */
   public List<Destination> findAll() {
-    return destinationRepos.findAll();
+    return destinationRepos.findAllDestination();
   }
 
   /**

@@ -22,6 +22,6 @@ public class TestimonialService {
    * @return List<Testimonial> Testimonial一覧
    */
   public List<Testimonial> findAll() {
-    return testimonialRepos.findAll();
+    return testimonialRepos.findAllTestimonails();
   }
 }

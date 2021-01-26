@@ -63,7 +63,7 @@ public class Product {
   @JoinColumn(name = "destination_id", insertable = false, updatable = false)
   private Destination destination;
 
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinColumn(name = "id")
   private ProductDetail productDetail;
 

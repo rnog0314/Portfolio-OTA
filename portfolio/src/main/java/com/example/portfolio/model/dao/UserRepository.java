@@ -25,16 +25,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query(value = "INSERT INTO users (user_name, family_name, first_name, email, password, gender) VALUES (:#{#u.userName}, :#{#u.familyName}, :#{#u.firstName}, :#{#u.email}, :#{#u.password}, :#{#u.gender})", nativeQuery = true)
 	int insertUser(@Param("u") User newUser);
 
-	// @Modifying
-	// @Query(value = "UPDATE users SET user_name = :userName, family_name = :familyName, first_name = :firstName, email = :email, password = :password, user_img = :imgPath WHERE id = :userId", nativeQuery = true)
-	// int update(	@Param("userName") String userName,
-	// 						@Param("familyName") String familyName,
-	// 						@Param("firstName") String firstName,
-	// 						@Param("email") String email,
-	// 						@Param("password") String password,
-	// 						@Param("imgPath") String imgPath,
-	// 						@Param("userId") int userId);
-
 	@Modifying
 	@Query(value = "UPDATE users SET user_img = :bytes WHERE id = :userId", nativeQuery = true)
 	int updateUserImage( @Param("bytes") byte[] bytes,
