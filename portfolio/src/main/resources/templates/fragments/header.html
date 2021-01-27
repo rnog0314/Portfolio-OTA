@@ -50,7 +50,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="welcome-msg-area">
-        <p id="welcome-msg" class="welcome-msg" th:text="'Welcome！' + ${!loginSession.isLogined() ? 'our Guest' : loginSession.getUserName()}"></p>
+        <p id="welcome-msg" class="welcome-msg" th:text="'Welcome！' + ${loginSession.isLogined() ? loginSession.getUserName() : 'our Guest'}"></p>
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">

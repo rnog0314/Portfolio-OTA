@@ -70,7 +70,7 @@ public class UserServiceTest {
     user.setUserName("testAdmin");
     user.setEmail("example@gmail.com");
     user.setPassword("password");
-    doNothing().when(loginSession).setTmpUserId(null);
+    doNothing().when(loginSession).setTmpUserId(0);
     doNothing().when(loginSession).setLogined(true);
     doNothing().when(loginSession).setUserId(user.getId());
     doNothing().when(loginSession).setUserName(user.getUserName());

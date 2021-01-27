@@ -46,9 +46,10 @@ public class IndexController {
   @GetMapping(value = "")
   public String init(Model m) {
      // ログインしてない&仮ユーザIDがない(=初めてページを開いたとき)
-    if (!loginSession.isLogined() && loginSession.getTmpUserId() == null) {
-      int tempUserId = (int) (Math.random() * 1000000000);
+    if (!loginSession.isLogined() && loginSession.getTmpUserId() == 0) {
+      int tempUserId = (int) (Math.random() * 100000);
       loginSession.setTmpUserId(tempUserId); // ランダムな整数を仮ユーザIDとしてログインセッションに登録
+      System.out.println("仮ID"+loginSession.getTmpUserId());
       loginSession.setLogined(false);
     }
     List<Product> products = productService.findAll();
@@ -67,6 +68,7 @@ public class IndexController {
 
 /* TODO
   - EC2にSHHログインしてnanoファイル編集
+  - SELECT文を発行しているSQLのN+1問題解消(テーブルのJOINが２つならJOIN FETCH, 3つならそれ用のDTO作成)
   - 画面設計書作成
   */
 

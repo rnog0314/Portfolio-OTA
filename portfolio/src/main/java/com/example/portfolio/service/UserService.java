@@ -80,7 +80,7 @@ public class UserService {
    */
   public void setLoginSession(User user) {
     if (user != null) { // ユーザが存在すれば
-      loginSession.setTmpUserId(null); // トップページ初期表示時に付与した仮ユーザIDをnullにして破棄
+      loginSession.setTmpUserId(0); // トップページ初期表示時に付与した仮ユーザIDをnullにして破棄
       loginSession.setLogined(true); // ログイン状態にする
       loginSession.setUserId(user.getId());
       loginSession.setUserName(user.getUserName());

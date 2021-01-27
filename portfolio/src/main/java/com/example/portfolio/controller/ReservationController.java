@@ -62,8 +62,6 @@ public class ReservationController {
   public String init(Model m) {
     int userId = loginSession.getUserId();
     List<ReservationDto> reservationList = reservationService.getReservationList(userId);
-    // String email = userService.findByUserId(userId).getEmail();
-    // m.addAttribute("email", email);
     m.addAttribute("reservationList", reservationList);
     m.addAttribute("loginSession", loginSession);
     return "reservation_list";

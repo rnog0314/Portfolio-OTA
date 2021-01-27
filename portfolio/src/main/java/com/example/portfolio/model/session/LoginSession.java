@@ -3,14 +3,17 @@ package com.example.portfolio.model.session;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Component
 @SessionScope
-@Data
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class LoginSession {
   private Integer userId;
-	private Integer tmpUserId;
+	private int tmpUserId;
 	private String userName;
   private String password;
   private String email;
