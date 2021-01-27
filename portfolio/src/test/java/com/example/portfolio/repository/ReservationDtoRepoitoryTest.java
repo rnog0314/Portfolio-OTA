@@ -6,8 +6,8 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import com.example.portfolio.model.dao.ReservationDtoRepoitory;
-import com.example.portfolio.model.entity.ReservationDto;
+import com.example.portfolio.model.dao.ReservationDtoRepository;
+import com.example.portfolio.model.entity.dto.ReservationDto;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import org.springframework.test.context.jdbc.Sql;
 public class ReservationDtoRepoitoryTest {
 
   @Autowired
-  private ReservationDtoRepoitory repos;
+  private ReservationDtoRepository repos;
 
   @Test
   public void testGetReservationList() {

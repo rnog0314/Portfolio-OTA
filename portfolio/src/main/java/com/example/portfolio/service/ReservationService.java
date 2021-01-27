@@ -5,10 +5,11 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import com.example.portfolio.model.dao.ReservationDtoRepoitory;
+import com.example.portfolio.model.dao.ReservationDtoRepository;
+// import com.example.portfolio.model.dao.ReservationDtoRepository;
 import com.example.portfolio.model.dao.ReservationRepository;
 import com.example.portfolio.model.entity.Reservation;
-import com.example.portfolio.model.entity.ReservationDto;
+import com.example.portfolio.model.entity.dto.ReservationDto;
 import com.example.portfolio.model.form.ReservationForm;
 import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.utils.Utils;
@@ -31,7 +32,7 @@ public class ReservationService {
   private ReservationRepository reservationRepos;
 
   @Autowired
-  private ReservationDtoRepoitory reservationDtoRepos;
+  private ReservationDtoRepository reservationDtoRepos;
 
   @Autowired
   private UserService userService;

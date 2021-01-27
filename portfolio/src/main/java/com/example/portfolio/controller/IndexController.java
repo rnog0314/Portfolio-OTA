@@ -49,7 +49,6 @@ public class IndexController {
     if (!loginSession.isLogined() && loginSession.getTmpUserId() == 0) {
       int tempUserId = (int) (Math.random() * 100000);
       loginSession.setTmpUserId(tempUserId); // ランダムな整数を仮ユーザIDとしてログインセッションに登録
-      System.out.println("仮ID"+loginSession.getTmpUserId());
       loginSession.setLogined(false);
     }
     List<Product> products = productService.findAll();
@@ -67,9 +66,9 @@ public class IndexController {
 }
 
 /* TODO
-  - EC2にSHHログインしてnanoファイル編集
   - SELECT文を発行しているSQLのN+1問題解消(テーブルのJOINが２つならJOIN FETCH, 3つならそれ用のDTO作成)
   - 画面設計書作成
+  - 一旦全てのloginSessionをコントローラでinLogined変数に変えてViewに渡しすようにして同じエラーが出るか確認
   */
 
   /* 残りの作成工程

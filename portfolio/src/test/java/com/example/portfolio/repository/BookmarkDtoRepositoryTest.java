@@ -6,7 +6,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.example.portfolio.model.dao.BookmarkDtoRepository;
-import com.example.portfolio.model.entity.BookmarkDto;
+import com.example.portfolio.model.entity.dto.BookmarkDto;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

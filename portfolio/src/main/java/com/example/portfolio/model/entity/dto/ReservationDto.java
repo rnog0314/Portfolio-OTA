@@ -1,4 +1,4 @@
-package com.example.portfolio.model.entity;
+package com.example.portfolio.model.entity.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
