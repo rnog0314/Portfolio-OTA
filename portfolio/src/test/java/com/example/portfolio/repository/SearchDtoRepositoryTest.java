@@ -7,7 +7,7 @@ import java.util.Set;
 import javax.transaction.Transactional;
 
 import com.example.portfolio.model.dao.SearchDtoRepository;
-import com.example.portfolio.model.entity.SearchDto;
+import com.example.portfolio.model.entity.dto.SearchDto;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;

@@ -1,4 +1,4 @@
-package com.example.portfolio.model.entity;
+package com.example.portfolio.model.entity.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,16 +11,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ReservationDto {
-  // 画面表示用のDTO
+public class ProductDto {
   @Id
   private int id;
-  private int productId;
-  private String productImage;
-  private int count;
-  private int price;
   private String productName;
-  private String startDate;
-  private String userName;
-
+  private int categoryId;
+  private String productImage;
+  private int destinationId;
+  private int price;
+  private boolean deleteFlag;
 }

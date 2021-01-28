@@ -11,7 +11,7 @@ import java.util.Set;
 
 import com.example.portfolio.model.dao.ProductRepository;
 import com.example.portfolio.model.dao.SearchDtoRepository;
-import com.example.portfolio.model.entity.SearchDto;
+import com.example.portfolio.model.entity.dto.SearchDto;
 import com.example.portfolio.utils.Utils;
 
 import org.junit.jupiter.api.Test;

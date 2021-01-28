@@ -1,14 +1,18 @@
 package com.example.portfolio.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import com.example.portfolio.model.dao.ReservationDtoRepoitory;
+import com.example.portfolio.model.dao.CalendarReservationDtoRepository;
+import com.example.portfolio.model.dao.ReservationDtoRepository;
+// import com.example.portfolio.model.dao.ReservationDtoRepository;
 import com.example.portfolio.model.dao.ReservationRepository;
 import com.example.portfolio.model.entity.Reservation;
-import com.example.portfolio.model.entity.ReservationDto;
+import com.example.portfolio.model.entity.dto.CalendarReservationDto;
+import com.example.portfolio.model.entity.dto.ReservationDto;
 import com.example.portfolio.model.form.ReservationForm;
 import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.utils.Utils;
@@ -31,7 +35,10 @@ public class ReservationService {
   private ReservationRepository reservationRepos;
 
   @Autowired
-  private ReservationDtoRepoitory reservationDtoRepos;
+  private ReservationDtoRepository reservationDtoRepos;
+
+  @Autowired
+  private CalendarReservationDtoRepository calendarReservRepos;
 
   @Autowired
   private UserService userService;
@@ -89,10 +96,20 @@ public class ReservationService {
   public Page<Reservation> findPaginatedList(Optional<Integer> page) {
     Reservation probe = new Reservation();
     probe.setValidFlag(true);
-    ExampleMatcher matcher = ExampleMatcher.matching().withIgnorePaths("id", "userId", "productId", "title", "start", "end", "count");
+    ExampleMatcher matcher = ExampleMatcher.matching().withIgnorePaths("id", "userId", "productId", "title", "start",
+        "end", "count");
     Example<Reservation> example = Example.of(probe, matcher);
     Pageable pageable = utils.getPageable(page);
     return reservationRepos.findAll(example, pageable);
+  }
+
+  /**
+   * 予約有効フラグの更新
+   *
+   * @param reservationId 予約ID
+   */
+  public void updateValidFlag(int reservationId) {
+    reservationRepos.updateValidFlag(reservationId);
   }
 
   /**
@@ -100,17 +117,13 @@ public class ReservationService {
    *
    * @return 全予約リスト
    */
-  public List<Reservation> findAll() {
-    return reservationRepos.findAllByValidFlagTrue();
+  public List<Reservation> findAllForCalendar() {
+    List<CalendarReservationDto> results = calendarReservRepos.findAllByValidFlagTrue();
+    List<Reservation> reservations = new ArrayList<>();
+    for (CalendarReservationDto r : results) {
+      reservations.add(new Reservation(r.getId(), r.getStart(), r.getEnd(), r.getTitle()));
+    }
+    return reservations;
   }
-
-  /**
-   * 予約有効フラグの更新
-   * @param reservationId 予約ID
-   */
-  public void updateValidFlag(int reservationId) {
-    reservationRepos.updateValidFlag(reservationId);
-  }
-
 
 }

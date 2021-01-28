@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.portfolio.model.entity.ChargeRequest;
 import com.example.portfolio.model.entity.Reservation;
-import com.example.portfolio.model.entity.ReservationDto;
+import com.example.portfolio.model.entity.dto.ReservationDto;
 import com.example.portfolio.model.entity.ChargeRequest.Currency;
 import com.example.portfolio.model.form.ReservationForm;
 import com.example.portfolio.model.session.LoginSession;

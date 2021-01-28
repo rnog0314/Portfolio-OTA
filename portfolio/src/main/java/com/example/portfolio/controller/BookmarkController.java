@@ -2,7 +2,7 @@ package com.example.portfolio.controller;
 
 import java.util.List;
 
-import com.example.portfolio.model.entity.BookmarkDto;
+import com.example.portfolio.model.entity.dto.BookmarkDto;
 import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.service.BookmarkService;
 

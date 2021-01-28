@@ -10,7 +10,7 @@ import java.util.List;
 import com.example.portfolio.model.dao.BookmarkDtoRepository;
 import com.example.portfolio.model.dao.BookmarkRepository;
 import com.example.portfolio.model.entity.Bookmark;
-import com.example.portfolio.model.entity.BookmarkDto;
+import com.example.portfolio.model.entity.dto.BookmarkDto;
 import com.example.portfolio.model.session.LoginSession;
 
 import org.junit.jupiter.api.Test;

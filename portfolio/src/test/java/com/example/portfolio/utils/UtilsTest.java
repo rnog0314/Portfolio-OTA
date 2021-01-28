@@ -9,7 +9,7 @@ import java.util.Set;
 
 import javax.transaction.Transactional;
 
-import com.example.portfolio.model.entity.SearchDto;
+import com.example.portfolio.model.entity.dto.SearchDto;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

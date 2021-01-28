@@ -2,7 +2,7 @@ package com.example.portfolio.model.dao;
 
 import java.util.List;
 
-import com.example.portfolio.model.entity.ReservationDto;
+import com.example.portfolio.model.entity.dto.ReservationDto;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ReservationDtoRepoitory extends JpaRepository<ReservationDto, Integer> {
+public interface ReservationDtoRepository extends JpaRepository<ReservationDto, Integer> {
 
 
   @Query(value =  "SELECT r.id, r.product_id, r.count, p.product_image, p.price,  p.product_name, r.start_date, u.user_name "

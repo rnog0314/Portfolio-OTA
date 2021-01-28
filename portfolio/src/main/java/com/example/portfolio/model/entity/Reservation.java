@@ -71,4 +71,11 @@ public class Reservation {
     this.title = title;
     this.validFlag = false;
   }
+
+  public Reservation (int id, String start, String end, String title) {
+    this.id = id;
+    this.start = start;
+    this.end = end;
+    this.title = title;
+  }
 }

@@ -2,7 +2,7 @@ package com.example.portfolio.controller;
 
 import com.example.portfolio.model.entity.CategoryDetail;
 import com.example.portfolio.model.entity.Category;
-import com.example.portfolio.model.entity.Product;
+import com.example.portfolio.model.entity.dto.ProductDto;
 import com.example.portfolio.model.session.LoginSession;
 
 import java.util.List;
@@ -44,7 +44,7 @@ public class CategoryController {
   public String init(@PathVariable("id") int categoryId, Model m) {
     Category category = categoryService.findById(categoryId);
     CategoryDetail categoryDetail = categoryDetailService.findById(categoryId);
-    List<Product> products = productService.findByCategoryId(categoryId);
+    List<ProductDto> products = productService.findByCategoryId(categoryId);
     m.addAttribute("category", category);
     m.addAttribute("categoryDetail", categoryDetail);
     m.addAttribute("products", products);

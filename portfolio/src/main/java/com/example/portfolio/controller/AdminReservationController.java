@@ -64,7 +64,7 @@ public class AdminReservationController {
   @GetMapping(value = "/fetchAll")
   @ResponseBody
   public String fetchAll() {
-    List<Reservation> reservations = reservationService.findAll();
+    List<Reservation> reservations = reservationService.findAllForCalendar();
     return gson.toJson(reservations);
   }
 

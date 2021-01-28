@@ -2,7 +2,7 @@ package com.example.portfolio.model.dao;
 
 import java.util.List;
 
-import com.example.portfolio.model.entity.BookmarkDto;
+import com.example.portfolio.model.entity.dto.BookmarkDto;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
