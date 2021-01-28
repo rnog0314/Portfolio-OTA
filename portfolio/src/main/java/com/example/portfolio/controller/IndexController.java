@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.example.portfolio.model.entity.Category;
 import com.example.portfolio.model.entity.Destination;
-import com.example.portfolio.model.entity.Product;
 import com.example.portfolio.model.entity.Testimonial;
+import com.example.portfolio.model.entity.dto.ProductDto;
 import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.service.CategoryService;
 import com.example.portfolio.service.DestinationService;
@@ -51,7 +51,7 @@ public class IndexController {
       loginSession.setTmpUserId(tempUserId); // ランダムな整数を仮ユーザIDとしてログインセッションに登録
       loginSession.setLogined(false);
     }
-    List<Product> products = productService.findAll();
+    List<ProductDto> products = productService.findAll();
     List<Category> categories = categoryService.findAll();
     List<Destination> destinations = destinationService.findAll();
     List<Testimonial> testimonials = testimonialService.findAll();
