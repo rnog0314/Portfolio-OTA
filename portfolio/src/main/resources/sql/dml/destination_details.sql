@@ -98,6 +98,4 @@ Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan fe
 
 Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.');
 
-SELECT * FROM destination_details;
 
-delete from destination_details;

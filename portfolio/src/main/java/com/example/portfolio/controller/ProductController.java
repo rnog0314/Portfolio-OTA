@@ -1,7 +1,7 @@
 package com.example.portfolio.controller;
 
-import com.example.portfolio.model.entity.Product;
 import com.example.portfolio.model.entity.ProductDetail;
+import com.example.portfolio.model.entity.dto.ProductDto;
 import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.service.ProductDetailService;
 import com.example.portfolio.service.ProductService;
@@ -35,7 +35,7 @@ public class ProductController {
    */
   @GetMapping(value="/{id}")
   public String init(@PathVariable("id") int productId, Model m) {
-    Product product = productService.findById(productId);
+    ProductDto product = productService.findById(productId);
     ProductDetail productDetail = productDetailService.findByProductId(productId);
     m.addAttribute("productDetail", productDetail);
     m.addAttribute("product", product);

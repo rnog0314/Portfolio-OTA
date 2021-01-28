@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import com.example.portfolio.model.dao.ProductDtoRepository;
 import com.example.portfolio.model.dao.ProductRepository;
 import com.example.portfolio.model.dao.SearchDtoRepository;
 import com.example.portfolio.model.entity.Product;
+import com.example.portfolio.model.entity.dto.ProductDto;
 import com.example.portfolio.model.entity.dto.SearchDto;
 // import com.example.portfolio.model.form.ProductForm;
 import com.example.portfolio.utils.Utils;
@@ -25,6 +27,9 @@ public class ProductService {
 
 	@Autowired
 	private ProductRepository productRepos;
+
+	@Autowired
+	private ProductDtoRepository productDtoRepos;
 
 	@Autowired
 	private SearchDtoRepository searchRepos;
@@ -58,9 +63,12 @@ public class ProductService {
 	 * @param categoryId カテゴリID
 	 * @return List<Product> カテゴリIDでソートした商品一覧
 	 */
-	public List<Product> findByCategoryId(int categoryId) {
-		return 	productRepos.findByCategoryId(categoryId);
+	public List<ProductDto> findByCategoryId(int categoryId) {
+		return 	productDtoRepos.findByCategoryId(categoryId);
 	}
+	// public List<Product> findByCategoryId(int categoryId) {
+	// 	return 	productRepos.findByCategoryId(categoryId);
+	// }
 
 	/**
 	 * 商品詳細取得
@@ -68,9 +76,8 @@ public class ProductService {
 	 * @param productId 商品ID
 	 * @return Product 商品
 	 */
-	public Product findById(int productId) {
-		Optional<Product> result = productRepos.findById(productId);
-		Product product = result.get();
+	public ProductDto findById(int productId) {
+		ProductDto product = productDtoRepos.findProductById(productId);
 		return product;
 	}
 
