@@ -101,6 +101,7 @@ public class ReservationService {
     Example<Reservation> example = Example.of(probe, matcher);
     Pageable pageable = utils.getPageable(page);
     return reservationRepos.findAll(example, pageable);
+    // TODO repos.findAll(example)を使ってAdminProductControllerと同様に修正
   }
 
   /**
