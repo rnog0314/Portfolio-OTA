@@ -1,7 +1,5 @@
 package com.example.portfolio.model.dao;
 
-import java.util.List;
-
 import com.example.portfolio.model.entity.Reservation;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,8 +18,4 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 	@Modifying
 	@Query(value = "UPDATE reservations SET valid_flag = true WHERE id = :reservationId", nativeQuery = true)
 	void updateValidFlag(@Param("reservationId") int reservationId);
-
-	@Query(value = "SELECT * FROM reservations WHERE valid_flag = true", nativeQuery = true)
-	List<Reservation> findAllByValidFlagTrue();
-
 }
