@@ -1,6 +1,7 @@
 package com.example.portfolio.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -12,11 +13,11 @@ import com.example.portfolio.model.dao.SearchDtoRepository;
 import com.example.portfolio.model.entity.Product;
 import com.example.portfolio.model.entity.dto.ProductDto;
 import com.example.portfolio.model.entity.dto.SearchDto;
-// import com.example.portfolio.model.form.ProductForm;
 import com.example.portfolio.utils.Utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,8 +45,8 @@ public class ProductService {
 	 *
 	 * @return
 	 */
-	public List<Product> findAll() {
-		return productRepos.findAllProduct().subList(1, 11);
+	public List<ProductDto> findAll() {
+		return productDtoRepos.findTenProducts();
 	}
 
 	/**
@@ -60,14 +61,15 @@ public class ProductService {
 
 	/**
 	 * カテゴリを条件に商品レコードを取得
+	 *
 	 * @param categoryId カテゴリID
 	 * @return List<Product> カテゴリIDでソートした商品一覧
 	 */
 	public List<ProductDto> findByCategoryId(int categoryId) {
-		return 	productDtoRepos.findByCategoryId(categoryId);
+		return productDtoRepos.findByCategoryId(categoryId);
 	}
 	// public List<Product> findByCategoryId(int categoryId) {
-	// 	return 	productRepos.findByCategoryId(categoryId);
+	// return productRepos.findByCategoryId(categoryId);
 	// }
 
 	/**
@@ -80,7 +82,6 @@ public class ProductService {
 		ProductDto product = productDtoRepos.findProductById(productId);
 		return product;
 	}
-
 
 	/**
 	 * キーワード条件にレコードを全て取得
@@ -106,7 +107,7 @@ public class ProductService {
 	 * リクエストされたページの商品リスト取得
 	 *
 	 * @param products 検索された商品一覧の全結果
-	 * @param page リクエストされたページ番号
+	 * @param page     リクエストされたページ番号
 	 * @return List<SearchDto> ページネーションされた検索結果
 	 */
 	public List<SearchDto> getPaginatedResult(Set<SearchDto> products, Optional<Integer> page) {
@@ -128,32 +129,40 @@ public class ProductService {
 
 	/**
 	 * 商品削除
+	 *
 	 * @param id 商品ID
 	 */
 	public void delete(int id) {
-		productRepos.deleteById(id);;
+		productRepos.deleteById(id);
+		;
 	}
 
 	/**
 	 * ページネーションされた商品リスト取得
+	 *
 	 * @param page リクエストされたページ番号
 	 * @return ページネーションされた商品リスト
 	 */
-	public Page<Product> findPaginatedList(Optional<Integer> page) {
+	public Page<ProductDto> findPaginatedList(Optional<Integer> page) {
 		Pageable pageable = utils.getPageable(page);
-		return productRepos.findAll(pageable);
+		int pageSize = pageable.getPageSize();
+		int currentPage = pageable.getPageNumber();
+		int startItem = currentPage * pageSize;
+		List<ProductDto> list;
+		List<ProductDto> products = productDtoRepos.findAllProduct();
+		if (products.size() < startItem) {
+			list = Collections.emptyList();
+		} else {
+			int toIndex = Math.min(startItem + pageSize, products.size());
+			list = products.subList(startItem, toIndex);
+		}
+		Page<ProductDto> productPage = new PageImpl<>(list, pageable, products.size());
+		return productPage;
 	}
-
-	// /**
-	//  * 商品情報修正
-	//  * @param f ProductForm
-	//  */
-	// public void updateProduct(ProductForm f) {
-	// 	productRepos.updateProduct(f.getProductName(), f.getPrice());
-	// }
 
 	/**
 	 * 商品価格取得
+	 *
 	 * @param productId 商品ID
 	 * @return 商品価格
 	 */
@@ -163,6 +172,7 @@ public class ProductService {
 
 	/**
 	 * 商品画像のパス取得
+	 *
 	 * @param productId 商品ID
 	 * @return String 商品画像のパス
 	 */
@@ -172,6 +182,7 @@ public class ProductService {
 
 	/**
 	 * 商品名
+	 *
 	 * @param productId 商品ID
 	 * @return String 商品名
 	 */

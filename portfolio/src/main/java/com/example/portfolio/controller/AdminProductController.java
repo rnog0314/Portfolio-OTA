@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import com.example.portfolio.model.entity.Product;
+import com.example.portfolio.model.entity.dto.ProductDto;
 import com.example.portfolio.model.session.AdminSession;
 import com.example.portfolio.service.ProductService;
 
@@ -39,7 +40,7 @@ public class AdminProductController {
    */
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
   public String init(@PathVariable(name = "page") Optional<Integer> page, Model m, Product p) {
-    Page<Product> products = productService.findPaginatedList(page);
+    Page<ProductDto> products = productService.findPaginatedList(page);
     int lastPage = products.getTotalPages();
     if (lastPage > 0) {
       List<Integer> pageNumbers = IntStream.rangeClosed(1, lastPage).boxed().collect(Collectors.toList()); // HTMLでページ分ループするために各ページ番号が入ったリストを作成
@@ -70,16 +71,5 @@ public class AdminProductController {
     }
 
   }
-
-  // /**
-  //  * 商品情報修正
-  //  * @param productForm ProductForm
-  //  * @return admin/product.html
-  //  */
-  // @PostMapping(value = "/modify")
-  // public String modify(ProductForm productForm) {
-  //   productService.updateProduct(productForm);
-  //   return "redirect:/portfolio/admin/product";
-  // }
 
 }
