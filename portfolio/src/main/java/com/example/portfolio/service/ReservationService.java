@@ -1,6 +1,7 @@
 package com.example.portfolio.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,7 +9,6 @@ import javax.transaction.Transactional;
 
 import com.example.portfolio.model.dao.CalendarReservationDtoRepository;
 import com.example.portfolio.model.dao.ReservationDtoRepository;
-// import com.example.portfolio.model.dao.ReservationDtoRepository;
 import com.example.portfolio.model.dao.ReservationRepository;
 import com.example.portfolio.model.entity.Reservation;
 import com.example.portfolio.model.entity.dto.CalendarReservationDto;
@@ -18,9 +18,8 @@ import com.example.portfolio.model.session.LoginSession;
 import com.example.portfolio.utils.Utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -93,15 +92,21 @@ public class ReservationService {
    * @param page リクエストされたページ番号
    * @return ページネーションされた予約リスト
    */
-  public Page<Reservation> findPaginatedList(Optional<Integer> page) {
-    Reservation probe = new Reservation();
-    probe.setValidFlag(true);
-    ExampleMatcher matcher = ExampleMatcher.matching().withIgnorePaths("id", "userId", "productId", "title", "start",
-        "end", "count");
-    Example<Reservation> example = Example.of(probe, matcher);
+  public Page<ReservationDto> findPaginatedList(Optional<Integer> page) {
     Pageable pageable = utils.getPageable(page);
-    return reservationRepos.findAll(example, pageable);
-    // TODO repos.findAll(example)を使ってAdminProductControllerと同様に修正
+    int pageSize = pageable.getPageSize();
+    int currentPage = pageable.getPageNumber();
+    int startItem = currentPage * pageSize;
+    List<ReservationDto> list;
+    List<ReservationDto> products = reservationDtoRepos.findAllReservation();
+    if (products.size() < startItem) {
+			list = Collections.emptyList();
+		} else {
+			int toIndex = Math.min(startItem + pageSize, products.size());
+			list = products.subList(startItem, toIndex);
+		}
+		Page<ReservationDto> productPage = new PageImpl<>(list, pageable, products.size());
+		return productPage;
   }
 
   /**

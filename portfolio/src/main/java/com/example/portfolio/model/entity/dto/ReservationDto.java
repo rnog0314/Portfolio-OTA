@@ -15,6 +15,7 @@ public class ReservationDto {
   // 画面表示用のDTO
   @Id
   private int id;
+  private int userId;
   private int productId;
   private String productImage;
   private int count;
@@ -22,5 +23,6 @@ public class ReservationDto {
   private String productName;
   private String startDate;
   private String userName;
+  private boolean validFlag;
 
 }

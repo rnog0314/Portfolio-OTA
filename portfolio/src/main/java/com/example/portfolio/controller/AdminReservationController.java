@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import com.example.portfolio.model.entity.Reservation;
+import com.example.portfolio.model.entity.dto.ReservationDto;
 import com.example.portfolio.model.session.AdminSession;
 import com.example.portfolio.service.ReservationService;
 import com.google.gson.Gson;
@@ -40,7 +41,7 @@ public class AdminReservationController {
    */
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
   public String init(@PathVariable(name = "page") Optional<Integer> page, Model m, Reservation r) {
-    Page<Reservation> reservations = reservationService.findPaginatedList(page);
+    Page<ReservationDto> reservations = reservationService.findPaginatedList(page);
     int lastPage = reservations.getTotalPages();
     if (lastPage > 0) {
       List<Integer> pageNumbers = IntStream.rangeClosed(1, lastPage).boxed().collect(Collectors.toList()); // HTMLでページ分ループするために各ページ番号が入ったリストを作成
