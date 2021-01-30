@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-	List<Product> findByDestinationId(int destinationId);
 
 	List<Product> findByCategoryId(int categoryId);
 
@@ -24,6 +23,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 	@Query(value = "SELECT product_name FROM products WHERE id = :productId", nativeQuery = true)
 	String getProductNameById(@Param("productId") int productId);
-
 
 }

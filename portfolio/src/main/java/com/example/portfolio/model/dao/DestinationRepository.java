@@ -13,4 +13,7 @@ public interface DestinationRepository extends JpaRepository<Destination, Intege
 	@Query(value = "SELECT d FROM Destination d INNER JOIN FETCH d.destinationDetail")
 	List<Destination> findAllDestination();
 
+	@Query(value = "SELECT d FROM Destination d INNER JOIN FETCH d.destinationDetail WHERE d.destinationId = :id")
+	Destination findDestinationById(int id);
+
 }

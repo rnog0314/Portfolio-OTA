@@ -10,7 +10,6 @@ import java.util.Set;
 import com.example.portfolio.model.dao.ProductDtoRepository;
 import com.example.portfolio.model.dao.ProductRepository;
 import com.example.portfolio.model.dao.SearchDtoRepository;
-import com.example.portfolio.model.entity.Product;
 import com.example.portfolio.model.entity.dto.ProductDto;
 import com.example.portfolio.model.entity.dto.SearchDto;
 import com.example.portfolio.utils.Utils;
@@ -55,8 +54,8 @@ public class ProductService {
 	 * @param destinationId デスティネーションID
 	 * @return List<Product> デスティネーションIDでソートした商品一覧
 	 */
-	public List<Product> findByDestinationId(int destinationId) {
-		return productRepos.findByDestinationId(destinationId);
+	public List<ProductDto> findByDestinationId(int destinationId) {
+		return productDtoRepos.findProductByDestinationId(destinationId);
 	}
 
 	/**
@@ -68,9 +67,6 @@ public class ProductService {
 	public List<ProductDto> findByCategoryId(int categoryId) {
 		return productDtoRepos.findByCategoryId(categoryId);
 	}
-	// public List<Product> findByCategoryId(int categoryId) {
-	// return productRepos.findByCategoryId(categoryId);
-	// }
 
 	/**
 	 * 商品詳細取得

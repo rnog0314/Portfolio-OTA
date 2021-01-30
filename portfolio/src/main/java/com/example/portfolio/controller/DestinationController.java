@@ -1,7 +1,7 @@
 package com.example.portfolio.controller;
 
 import com.example.portfolio.model.entity.DestinationDetail;
-import com.example.portfolio.model.entity.Product;
+import com.example.portfolio.model.entity.dto.ProductDto;
 import com.example.portfolio.model.session.LoginSession;
 
 import java.util.List;
@@ -44,7 +44,7 @@ public class DestinationController {
   public String init(@PathVariable("init") int destinationId, Model m) {
     Destination destination = destinationService.findById(destinationId);
     DestinationDetail destinationDetail = destinationDetailService.findById(destinationId);
-    List<Product> products = productService.findByDestinationId(destinationId);
+    List<ProductDto> products = productService.findByDestinationId(destinationId);
     m.addAttribute("destination", destination);
     m.addAttribute("destinationDetail", destinationDetail);
     m.addAttribute("products", products);

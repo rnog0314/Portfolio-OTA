@@ -1,7 +1,6 @@
 package com.example.portfolio.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -31,9 +30,7 @@ public class DestinationService {
    * @param destinationId デスティネーションID
    * @return Destination デスティネーション
    */
-  public Destination findById(int destinationId) {
-    Optional <Destination> result = destinationRepos.findById(destinationId);
-    Destination destination = result.get();
-    return destination;
+  public Destination findById(int id) {
+    return destinationRepos.findDestinationById(id);
   }
 }
