@@ -1,7 +1,5 @@
 package com.example.portfolio.model.dao;
 
-import java.util.List;
-
 import com.example.portfolio.model.entity.Product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,9 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-
-
-	List<Product> findByCategoryId(int categoryId);
 
 	@Query(value = "SELECT price FROM products WHERE id = :productId", nativeQuery = true)
 	int getPriceById(@Param("productId") int productId);
