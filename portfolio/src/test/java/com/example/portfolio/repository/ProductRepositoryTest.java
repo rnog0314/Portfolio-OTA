@@ -6,8 +6,9 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.example.portfolio.model.dao.ProductDtoRepository;
 import com.example.portfolio.model.dao.ProductRepository;
-import com.example.portfolio.model.entity.Product;
+import com.example.portfolio.model.entity.dto.ProductDto;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,22 +23,18 @@ public class ProductRepositoryTest {
   @Autowired
   private ProductRepository repos;
 
-  // @Test
-  // public void testFindByDestinationId() {
-  //   int id = 1;
-  //   List<ProductDto> actual = repos.findProductByDestinationId(id);
-  //   assertEquals(2, actual.size());
-  // }
+  @Autowired
+  private ProductDtoRepository dtoRepos;
 
   @Test
   public void testFindByCategoryId() {
     int id = 3;
-    List<Product> actual = repos.findByCategoryId(id);
+    List<ProductDto> actual = dtoRepos.findByCategoryId(id);
     assertEquals(2, actual.size());
   }
 
   @Test
-  public void PriceById() {
+  public void testGetPriceById() {
     int productId = 4;
     int actual = repos.getPriceById(productId);
     assertEquals(1500, actual);
