@@ -9,10 +9,16 @@ spring:
       - classpath:/static/
       - file:/static/img/
   datasource:
-    url: jdbc:postgresql://localhost:5432/ota
-    # url: jdbc:postgresql://portfolio-ota-db.clgrhvnsnncj.ap-northeast-1.rds.amazonaws.com:5432/otademo
+    # ↓ローカル上のPostgres
+    # url: jdbc:postgresql://localhost:5432/ota
+    # ↓Docker上のPostgres
+    # url: jdbc:postgresql://localhost:5432/postgres
+    # ↓AWS(RDS)上のPostgres
+    url: jdbc:postgresql://portfolio-ota-db.clgrhvnsnncj.ap-northeast-1.rds.amazonaws.com:5432/otademo
     username: postgres
     password: postgres
+    # ↓Docker上のPostgres
+    # password: password
     sql-script-encoding: UTF-8
   jpa:
     database: POSTGRESQL

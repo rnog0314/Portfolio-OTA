@@ -66,7 +66,6 @@ public class IndexController {
 }
 
 /* TODO
-  - SELECT文を発行しているSQLのN+1問題解消(テーブルのJOINが２つならJOIN FETCH, 3つならそれ用のDTO作成)
   - 画面設計書作成
   - 一旦全てのloginSessionをコントローラでinLogined変数に変えてViewに渡しすようにして同じエラーが出るか確認
   */
