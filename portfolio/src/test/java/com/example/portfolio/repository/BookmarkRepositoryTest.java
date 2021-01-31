@@ -30,7 +30,7 @@ public class BookmarkRepositoryTest {
   private JdbcTemplate jdbcTemplate;
 
   @Test
-  public void name() {
+  public void testdeleteByProductIdAndUserId() {
     String sql = "SELECT * FROM bookmarks WHERE product_id = 1 AND user_id = 1";
     RowMapper<Bookmark> rowMapper = new BeanPropertyRowMapper<Bookmark>(Bookmark.class);
     List<Bookmark> actual1 = jdbcTemplate.query(sql, rowMapper);
