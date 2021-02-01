@@ -67,7 +67,11 @@ public class IndexController {
 
 /* TODO
   - 画面設計書作成
-  - 一旦全てのloginSessionをコントローラでinLogined変数に変えてViewに渡しすようにして同じエラーが出るか確認
+  - READMEに載せるgifのキャプチャ動画作成
+  - READMEに載せる動画をgifにして投稿
+  - READMEに記載する機能をAPPを動かしながら確認し記載
+  - READMEに採用担当者にどう操作してもらいたいかの手順を記載
+  - READMEに使用技術の詳細を調べて記載
   */
 
   /* 残りの作成工程
@@ -76,3 +80,9 @@ public class IndexController {
   - ⭐️AWSとDockerを使ってデプロイ
   - Qiita投稿(Stripe, fullCalendar)
 */
+
+/* メンターに聞くこと
+- コードレビュー
+- デプロイ
+- README
+ */
