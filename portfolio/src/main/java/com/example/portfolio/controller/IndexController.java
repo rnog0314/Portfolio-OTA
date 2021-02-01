@@ -67,17 +67,19 @@ public class IndexController {
 
 /* TODO
   - 画面設計書作成
+  - 予約画面の合計金額が「NaN」になっているバグ修正
+  - RDSのDBが古いままのため、商品ID5, 6, 7で起きているバグ解消
+  - 男で登録したユーザの性別が「女」になっているバグ解消
   - READMEに載せるgifのキャプチャ動画作成
   - READMEに載せる動画をgifにして投稿
-  - READMEに記載する機能をAPPを動かしながら確認し記載
   - READMEに採用担当者にどう操作してもらいたいかの手順を記載
-  - READMEに使用技術の詳細を調べて記載
   */
 
   /* 残りの作成工程
   - 統合テスト(統合試験仕様書をページごとに簡単に作成の上、試験)
   - README作成
-  - ⭐️AWSとDockerを使ってデプロイ
+  - 独自ドメイン(ともすた)
+  - Circle CI
   - Qiita投稿(Stripe, fullCalendar)
 */
 
