@@ -7,8 +7,28 @@
 前職で外国人向けのツアーガイドを行っており、
 業務の中での使っていた予約機能に改善できる点があると感じていたため。
 
+# 使用技術
+- Java 11
+- Spring Boot 2.4.2
+- PostgreSQL 12.5
+- HTML 5
+- CSS 3
+  - Bootstrap 4
+- SCSS
+- Javascrpit
+  - OwlCarousel.js
+  - FullCalendar.js
+  - BootBox.js
+- Docker
+- AWS ECS
+- Stripe API
+- Google Maps API
+
 # ER図
 ![relation](https://user-images.githubusercontent.com/63575996/106672315-35dbfd00-65f3-11eb-9ced-61c8ff18d943.png)
+
+# インフラ構成図
+<img width="1269" alt="スクリーンショット 2021-02-01 20 26 09" src="https://user-images.githubusercontent.com/63575996/106671528-01b40c80-65f2-11eb-80cf-eafe2cabfc6f.png">
 
 # 使い方
 - ユーザ画面
@@ -36,23 +56,6 @@
 5. サイドメニューの「Reservations」をクリックして「予約管理(リスト)」画面に遷移する。「🗓」アイコンをクリックして「予約管理(カレンダー)」画面に切り替える
 6. サイドメニューの「Testimonials」をクリックして「お客様の声」画面に遷移する。
 7. サイドメニューの「Notices」をクリックして「お知らせ管理」画面に遷移する。[Create]をクリックして、任意でお知らせを作成し、[Submit]をクリックする。
-
-# 使用技術
-- Java 11
-- Spring Boot 2.4.2
-- PostgreSQL 12.5
-- HTML 5
-- CSS 3
-  - Bootstrap 4
-- SCSS
-- Javascrpit
-  - OwlCarousel.js
-  - FullCalendar.js
-  - BootBox.js
-- Docker
-- AWS ECS
-- Stripe API
-- Google Maps API
 
 # 機能一覧
 - ユーザ画面
