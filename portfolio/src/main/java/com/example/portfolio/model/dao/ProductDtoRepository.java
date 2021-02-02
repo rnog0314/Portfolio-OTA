@@ -20,7 +20,7 @@ public interface ProductDtoRepository extends JpaRepository<ProductDto, Integer>
   @Query(value = "SELECT * FROM products ORDER BY id LIMIT 10", nativeQuery = true)
   List<ProductDto> findTenProducts();
 
-  @Query(value = "SELECT * FROM products ORDER BY id", nativeQuery = true)
+  @Query(value = "SELECT * FROM products WHERE delete_flag = FALSE ORDER BY id", nativeQuery = true)
   List<ProductDto> findAllProduct();
 
   @Query(value = "SELECT * FROM products WHERE destination_id = :destinationId", nativeQuery = true)

@@ -129,8 +129,7 @@ public class ProductService {
 	 * @param id 商品ID
 	 */
 	public void delete(int id) {
-		productRepos.deleteById(id);
-		;
+		productRepos.logicalDeleteById(id);
 	}
 
 	/**
