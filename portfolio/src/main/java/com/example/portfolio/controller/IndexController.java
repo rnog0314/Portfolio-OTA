@@ -69,7 +69,6 @@ public class IndexController {
   - 画面設計書作成
   - READMEに載せるgifのキャプチャ動画作成
   - READMEに載せる動画をgifにして投稿
-  - 商品管理ページで[Delete]ボタンが機能しないバグ解消(論理削除に変更)
   */
 
   /* 残りの作成工程
@@ -82,6 +81,5 @@ public class IndexController {
 
 /* メンターに聞くこと
 - コードレビュー
-- デプロイ
 - README
  */
