@@ -100,7 +100,7 @@
   <script th:inline="javascript" type="text/javascript">
     /*<![CDATA[*/
     var bool = /*[[${loginSession.isLogined()}]]*/ false;
-    let price = /*[[${productDetail.price}]]*/ 0;
+    var price = /*[[${productDetail.price}]]*/ 0;
     /*]]>*/
   </script>
   <script th:inline="javascript" th:src="@{/js/product_detail.js}"></script>

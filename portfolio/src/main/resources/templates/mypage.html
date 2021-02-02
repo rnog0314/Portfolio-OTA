@@ -78,7 +78,13 @@
               </tr>
               <tr>
                 <th scope="row" style="width: 30%;">Gender</th>
-                <td th:text="*{gender == 'M' ? 'Male' : 'Female'}"></td>
+                <!-- なぜか三項演算子が効いていない -->
+                <!-- <td th:if="*{gender=='M'}">Male</td>
+                <td th:if="*{gender=='F'}">Female</td> -->
+                <td th:switch="*{gender}">
+                  <p class="m-0" th:case="'M'">Male</p>
+                  <p class="m-0" th:case="'F'">Female</p>
+                </td>
               </tr>
             </table>
             <div class="btn-area">

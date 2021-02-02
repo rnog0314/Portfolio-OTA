@@ -172,10 +172,10 @@ $(function () {
   /* 金額表示 */
   function showPrice() {
     price.toString();
-    price = "$" + price;
+    prix = "$" + price;
     $("tbody")
       .find(".fc-day.fc-future")
       .append('<span class="prix price"></span>');
-    $(".prix").text(price);
+    $(".prix").text(prix);
   }
 });
