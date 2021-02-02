@@ -68,7 +68,6 @@ public class IndexController {
 /* TODO
   - 画面設計書作成
   - 予約画面の合計金額が「NaN」になっているバグ修正
-  - RDSのDBが古いままのため、商品ID5, 6, 7で起きているバグ解消
   - 男で登録したユーザの性別が「女」になっているバグ解消
   - READMEに載せるgifのキャプチャ動画作成
   - READMEに載せる動画をgifにして投稿
