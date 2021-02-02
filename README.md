@@ -45,6 +45,10 @@
 - AWS ECS
 - Stripe API
 - Google Maps API
+
+# インフラ構成図
+<img width="1269" src="https://user-images.githubusercontent.com/63575996/106671528-01b40c80-65f2-11eb-80cf-eafe2cabfc6f.png">
+
 # 機能一覧
 - ユーザ画面
   - 商品
