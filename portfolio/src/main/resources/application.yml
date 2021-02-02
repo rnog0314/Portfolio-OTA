@@ -10,11 +10,11 @@ spring:
       - file:/static/img/
   datasource:
     # ↓ローカル上のPostgres
-    # url: jdbc:postgresql://localhost:5432/ota
+    url: jdbc:postgresql://localhost:5432/ota
     # ↓Docker上のPostgres
     # url: jdbc:postgresql://localhost:5432/postgres
     # ↓AWS(RDS)上のPostgres
-    url: jdbc:postgresql://portfolio-ota-db.clgrhvnsnncj.ap-northeast-1.rds.amazonaws.com:5432/otademo
+    # url: jdbc:postgresql://portfolio-ota-db.clgrhvnsnncj.ap-northeast-1.rds.amazonaws.com:5432/otademo
     username: postgres
     password: postgres
     # ↓Docker上のPostgres
