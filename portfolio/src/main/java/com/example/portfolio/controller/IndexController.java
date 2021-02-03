@@ -69,11 +69,11 @@ public class IndexController {
   - 画面設計書作成
   - READMEに載せるgifのキャプチャ動画作成
   - READMEに載せる動画をgifにして投稿
+  - 独自ドメイン(ともすた)
   */
 
   /* 残りの作成工程
   - 統合テスト(統合試験仕様書をページごとに簡単に作成の上、試験)
-  - 独自ドメイン(ともすた)
   - Circle CI
   - Qiita投稿(Stripe, fullCalendar)
 */
