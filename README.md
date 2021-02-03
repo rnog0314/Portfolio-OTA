@@ -15,12 +15,12 @@
 - CSS 3
   - Bootstrap 4
 - SCSS
-- Javascrpit
+- JQuery
   - OwlCarousel.js
   - FullCalendar.js
   - BootBox.js
 - Docker
-- AWS ECS
+- AWS (ECS/Fargate/RDS)
 - Stripe API
 - Google Maps API
 
@@ -98,16 +98,19 @@
   - お知らせ
     - 一覧表示
     - 新規作成
-    
+
 # テスト
-- 単体試験(JUnit)
+- 単体試験
+  - JUnit5
+  - Mockito
+  - h2
 - 結合試験(URL配置予定)
 
 # 難しかった点
 - FullCalendar.jsを使用してカレンダーとDBとの連動
 - N+1問題を解決するためのリファクタリング
-- JUnitテスト
+- モックを使用したJUnitテスト
 
 # こだわった点
-- 単にバグがなくアプリケーションが動くだけでなく、N+1問題の解消や単体試験のメソッド網羅によってパフォーマンを改善した点
+- 単にバグがなくアプリケーションが動くだけでなく、N+1問題の解消や単体試験のメソッド網羅によるリファクタリングを行いパフォーマンを改善した点
 - できるだけAjaxを使用し、使いやすさを向上させた点
