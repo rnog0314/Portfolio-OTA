@@ -1,6 +1,8 @@
 # Adview
 オンライン旅行予約サイトです。
 閲覧、選択、お気に入り追加、決済、確認、削除をスムーズに行うことができます。
+![スクリーンショット 2021-02-03 20 11 13](https://user-images.githubusercontent.com/63575996/106739160-280e9200-665c-11eb-9634-bed6d41a2524.png)
+
 ![ダウンロード](https://user-images.githubusercontent.com/63575996/106738648-88e99a80-665b-11eb-84e3-a0be3c522bc6.gif)
 
 # このテーマを選んだ理由
