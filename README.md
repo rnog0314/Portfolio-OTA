@@ -25,8 +25,7 @@
 - Google Maps API
 
 # ER図
-![relation](https://user-images.githubusercontent.com/63575996/106724493-a0208c00-664b-11eb-8d74-1d2fa9c3c3e7.png)
-
+![relation](https://user-images.githubusercontent.com/63575996/106725206-7320a900-664c-11eb-87ea-b463cd441fe5.png)
 
 # インフラ構成図
 <img width="1269" alt="スクリーンショット 2021-02-01 20 26 09" src="https://user-images.githubusercontent.com/63575996/106671528-01b40c80-65f2-11eb-80cf-eafe2cabfc6f.png">
