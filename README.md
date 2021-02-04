@@ -6,9 +6,9 @@
 
 ![ダウンロード](https://user-images.githubusercontent.com/63575996/106738648-88e99a80-665b-11eb-84e3-a0be3c522bc6.gif)
 
-# このテーマを選んだ理由
-前職で外国人向けのツアーガイドを行っており、
-業務の中での使っていた予約機能に改善できる点があると感じていたため。
+# 概要
+以下のExcelファイルをご参照ください。
+[Adview画面設計書.xlsx](https://github.com/Ryoto-Noguchi/Portfolio-OTA/files/5929104/Adview.xlsx)
 
 # 使用技術
 - Java 11
@@ -108,6 +108,10 @@
   - Mockito
   - h2
 - 結合試験(URL配置予定)
+
+# このテーマを選んだ理由
+前職で外国人向けのツアーガイドを行っており、
+業務の中での使っていた予約機能に改善できる点があると感じていたため。
 
 # 難しかった点
 - FullCalendar.jsを使用してカレンダーとDBとの連動
