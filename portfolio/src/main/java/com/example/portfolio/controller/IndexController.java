@@ -68,11 +68,13 @@ public class IndexController {
 /* TODO
   - 画面設計書作成
   - 独自ドメイン(ともすた)
+  - 単体テストをまとめて実行して通るようにする
+  - Wantedlyプロフィール作りこみ
+  - Circle CI
   */
 
   /* 残りの作成工程
   - 統合テスト(統合試験仕様書をページごとに簡単に作成の上、試験)
-  - Circle CI
   - Qiita投稿(Stripe, fullCalendar)
 */
 
