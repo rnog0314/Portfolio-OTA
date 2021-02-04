@@ -67,8 +67,6 @@ public class IndexController {
 
 /* TODO
   - 画面設計書作成
-  - READMEに載せるgifのキャプチャ動画作成
-  - READMEに載せる動画をgifにして投稿
   - 独自ドメイン(ともすた)
   */
 
