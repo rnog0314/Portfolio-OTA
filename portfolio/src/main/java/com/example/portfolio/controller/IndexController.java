@@ -66,7 +66,6 @@ public class IndexController {
 }
 
 /* TODO
-  - 画面設計書作成
   - 独自ドメイン(ともすた)
   - 単体テストをまとめて実行して通るようにする
   - Wantedlyプロフィール作りこみ
