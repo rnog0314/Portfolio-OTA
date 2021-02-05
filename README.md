@@ -7,8 +7,10 @@
 ![ダウンロード](https://user-images.githubusercontent.com/63575996/106738648-88e99a80-665b-11eb-84e3-a0be3c522bc6.gif)
 
 # 概要
-以下のExcelファイルをご参照ください。
-[Adview画面設計書.xlsx](https://github.com/Ryoto-Noguchi/Portfolio-OTA/files/5929104/Adview.xlsx)
+以下のExcelファイルまたはPDFファイルをご参照ください。
+- [Adview画面設計書.xlsx](https://github.com/Ryoto-Noguchi/Portfolio-OTA/files/5929104/Adview.xlsx)
+- [Adview画面設計書.pdf](https://github.com/Ryoto-Noguchi/Portfolio-OTA/files/5931885/Adview.pdf)
+
 
 # 使用技術
 - Java 11
