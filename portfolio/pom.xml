@@ -176,6 +176,9 @@
 			<plugin>
 				<artifactId>maven-install-plugin</artifactId>
 				<version>2.5.2</version>
+				<configuration>
+					<createChechsum>true</createChechsum>
+				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-deploy-plugin</artifactId>
