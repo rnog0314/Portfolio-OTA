@@ -24,7 +24,7 @@ jobs: # a collection of steps
             - ~/.m2
           key: portfolio-{{ checksum "pom.xml" }}
 
-      - run: mvn clean package # run the actual tests
+      - run: mvn clean install # run the actual tests
 
       - store_test_results: # テスト メタデータを `target/surefire-reports` ディレクトリからアップロードし、CircleCI ダッシュボードに表示されるようにします
       # アップロードしたテスト結果は、テスト サマリー (https://circleci.com/ja/docs/2.0/collect-test-data/) に表示されます
