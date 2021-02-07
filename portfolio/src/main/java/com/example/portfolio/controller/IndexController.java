@@ -66,10 +66,10 @@ public class IndexController {
 }
 
 /* TODO
-  - リクナビプロフィール修正
-  - mvn installでEROORが出る件質問
+  - GitHub 職務経歴書
   - 独自ドメイン(ともすた)
   - Circle CI
+  - 応募時にdeploy
   */
 
   /* 残りの作成工程
@@ -79,5 +79,4 @@ public class IndexController {
 
 /* メンターに聞くこと
 - コードレビュー
-- mvn installでEROORが出る件
  */
