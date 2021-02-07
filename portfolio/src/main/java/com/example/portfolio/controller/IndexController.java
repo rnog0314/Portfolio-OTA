@@ -67,8 +67,6 @@ public class IndexController {
 
 /* TODO
   - 独自ドメイン(ともすた)
-  - 単体テストをまとめて実行して通るようにする
-  - Wantedlyプロフィール作りこみ
   - Circle CI
   */
 
@@ -79,5 +77,5 @@ public class IndexController {
 
 /* メンターに聞くこと
 - コードレビュー
-- README
+- mvn installでEROORが出る件
  */
