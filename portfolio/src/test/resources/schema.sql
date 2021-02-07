@@ -2,21 +2,21 @@
 
 -- CREATE DATABASE ota;
 
-CREATE TABLE categories (
+CREATE TABLE IF NOT EXISTS  categories (
   category_id SERIAL PRIMARY KEY,
   category_name VARCHAR(255) NOT NULL UNIQUE,
   category_image VARCHAR(255),
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
 );
 
-CREATE TABLE destinations (
+CREATE TABLE IF NOT EXISTS  destinations (
   destination_id SERIAL PRIMARY KEY,
   destination_name VARCHAR(255) NOT NULL UNIQUE,
   destination_image VARCHAR(255),
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
 );
 
-CREATE TABLE products (
+CREATE TABLE IF NOT EXISTS  products (
   product_id SERIAL PRIMARY KEY,
   product_name VARCHAR(255) NOT NULL UNIQUE,
   category_id INTEGER NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE products (
   FOREIGN KEY(destination_id) REFERENCES destinations(destination_id)
 );
 
-CREATE TABLE product_details (
+CREATE TABLE IF NOT EXISTS  product_details (
   product_detail_id SERIAL PRIMARY KEY,
   product_id INTEGER NOT NULL,
   image VARCHAR(255) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE product_details (
   FOREIGN KEY(product_id) REFERENCES products(product_id)
 );
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS  users (
   user_id SERIAL PRIMARY KEY,
   user_name VARCHAR(32) NOT NULL UNIQUE,
   password VARCHAR(16) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE users (
   delete_flag BOOLEAN NOT NULL DEFAULT 'FALSE'
 );
 
-CREATE TABLE carts (
+CREATE TABLE IF NOT EXISTS  carts (
   category_id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
   product_id INTEGER NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE carts (
 );
 
 
-CREATE TABLE testimonials (
+CREATE TABLE IF NOT EXISTS  testimonials (
   testimonial_id SERIAL PRIMARY KEY,
   testimonial_image VARCHAR(255) NOT NULL,
   testimonial_title VARCHAR(255) NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE testimonials (
 );
 
 
-CREATE TABLE destination_details (
+CREATE TABLE IF NOT EXISTS  destination_details (
   destination_detail_id SERIAL PRIMARY KEY,
   destination_id INTEGER NOT NULL,
   image1 VARCHAR(255) NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE destination_details (
   FOREIGN KEY(destination_id) REFERENCES destinations(destination_id)
 );
 
-CREATE TABLE category_details (
+CREATE TABLE IF NOT EXISTS  category_details (
   category_detail_id SERIAL PRIMARY KEY,
   category_id INTEGER NOT NULL,
   image1 VARCHAR(255) NOT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE category_details (
   FOREIGN KEY(category_id) REFERENCES categories(category_id)
 );
 
-CREATE TABLE reservations (
+CREATE TABLE IF NOT EXISTS  reservations (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
   product_id INTEGER NOT NULL,
@@ -114,7 +114,7 @@ CREATE TABLE reservations (
   FOREIGN KEY(product_id) REFERENCES products(product_id)
 );
 
-CREATE TABLE bookmarks (
+CREATE TABLE IF NOT EXISTS  bookmarks (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
   product_id INTEGER NOT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE bookmarks (
   FOREIGN KEY(product_id) REFERENCES products(product_id)
 );
 
-CREATE TABLE notices (
+CREATE TABLE IF NOT EXISTS  notices (
   id SERIAL PRIMARY KEY,
   title VARCHAR(100) NOT NULL,
   text VARCHAR(2000) NOT NULL,
@@ -131,7 +131,7 @@ CREATE TABLE notices (
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_DATE
 );
 
-CREATE TABLE admin (
+CREATE TABLE IF NOT EXISTS  admin (
   id SERIAL PRIMARY KEY,
   admin_name VARCHAR(32) NOT NULL,
   password VARCHAR(64) NOT NULL

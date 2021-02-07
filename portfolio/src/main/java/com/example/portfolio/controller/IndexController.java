@@ -66,6 +66,8 @@ public class IndexController {
 }
 
 /* TODO
+  - リクナビプロフィール修正
+  - mvn installでEROORが出る件質問
   - 独自ドメイン(ともすた)
   - Circle CI
   */
