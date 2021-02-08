@@ -67,16 +67,16 @@ public class IndexController {
 
 /* TODO
   - 画像圧縮(デプロイすると遅くなる)
+  - インフラ構成図をupdate(RDSとCircle CI)
   - GitHub 職務経歴書
   - 独自ドメイン(ともすた)
-  - Circle CI
-  - 応募時にdeploy
   - Free will返信
   - Free リクルートエージェント応募
   */
 
   /* 残りの作成工程
   - 統合テスト(統合試験仕様書をページごとに簡単に作成の上、試験)
+  - Circle CIとTerraformを使って自動デプロイ
   - Qiita投稿(Stripe, fullCalendar)
 */
 
