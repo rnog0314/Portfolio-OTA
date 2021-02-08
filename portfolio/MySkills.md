@@ -1,0 +1,86 @@
+# ITスキル
+
+## プログラミングスキル（アプリケーションで使用経験のあるもの）
+- Java + Spring Boot + Thymeleaf
+  - CRUD操作
+  - ページネーション
+  - 検索
+    - Query By Example
+    - 空欄無視
+  - CSVダウンロード
+  - 正規化
+  - バリデーション
+  - コレクション
+  - クレジットカード決済
+  - メール送信
+  - JUnitテスト
+  - SNSログイン認証
+  - 画像ファイルアップロード・表示
+  - セッション
+- Javacript/JQuery
+  - DOM操作
+  - イベント操作
+  - コールバック関数
+  - ajax通信
+  - ライブラリ
+    - Bootbox.js
+    - fullCalendar.js
+    - OwlCarousel.js
+    - JQueryUI
+    - Bootstrap
+- SQL
+  - GROUP BY
+  - ORDER BY
+  - LIMIT OFFSET
+  - LEFT JOIN
+  - INNER JOIN
+  - CASE
+  - WHEN
+  - HAVING
+  - UNION
+  - サブクエリ
+  - 相関クエリ
+  - IN
+  - EXIST
+  - WITH
+- Git
+  - add
+  - commit
+  - stash
+  - push
+  - pull request
+  - merge
+  - pull
+  - rebase
+  - checkout
+  - branch
+- DB
+  - 外部キー制約
+  - UNIQUE制約
+  - DEFAULT設定
+  - NOT NULL制約
+  - リレーション
+  - 複数主キー
+  - 一時テーブル
+
+## インフラ
+- Docker
+  - docker build
+  - docker image
+  - docker tag
+  - docker push
+- AWS
+  - ECR
+  - ECS
+  - RDS
+- Circle CI
+  - GitHubと連動して自動テスト
+- Jenkins
+  - GitHubと連動して自動テスト&DockerHubデプロイ
+
+## その他ツール
+- IDE
+  - VS Code
+  - Eclipse
+- Excel
+- PowerPoint
