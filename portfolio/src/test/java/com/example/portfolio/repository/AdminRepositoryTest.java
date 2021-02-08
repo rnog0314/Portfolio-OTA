@@ -28,7 +28,7 @@ import javax.transaction.Transactional;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
-@Sql(executionPhase=ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = "classpath:AdminRepositoryTest.sql", executionPhase=ExecutionPhase.BEFORE_TEST_METHOD)
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 @AutoConfigureTestDatabase(replace = Replace.ANY)
 public class AdminRepositoryTest {

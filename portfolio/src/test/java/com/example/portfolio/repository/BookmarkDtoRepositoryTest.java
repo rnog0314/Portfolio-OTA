@@ -19,7 +19,7 @@ import static org.hamcrest.CoreMatchers.is;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
-@Sql
+@Sql(scripts = "classpath:BookmarkDtoRepositoryTest.sql")
 public class BookmarkDtoRepositoryTest {
 
   @Autowired

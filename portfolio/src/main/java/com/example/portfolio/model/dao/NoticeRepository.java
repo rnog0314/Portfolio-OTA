@@ -21,6 +21,7 @@ public interface NoticeRepository extends JpaRepository<Notice, Integer> {
 							@Param("text") String text,
 							@Param("updatedAt") Timestamp updatedAt);
 
+	@Query(value = "SELECT * FROM notices WHERE visible_flag = TRUE ORDER BY created_at ASC", nativeQuery = true)
 	List<Notice> findAllByVisibleFlagTrueOrderByCreatedAt();
 
 	@Query(value = "SELECT * FROM notices ORDER BY created_at ASC", nativeQuery = true)

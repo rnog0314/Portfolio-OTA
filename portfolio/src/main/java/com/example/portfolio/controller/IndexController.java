@@ -66,12 +66,13 @@ public class IndexController {
 }
 
 /* TODO
-  - デプロイ
-  - wantedlyの会社辞めた理由にコロナ付け加え
+  - 画像圧縮(デプロイすると遅くなる)
   - GitHub 職務経歴書
   - 独自ドメイン(ともすた)
   - Circle CI
   - 応募時にdeploy
+  - Free will返信
+  - Free リクルートエージェント応募
   */
 
   /* 残りの作成工程

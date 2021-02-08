@@ -17,7 +17,7 @@ import org.springframework.test.context.jdbc.Sql;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
-@Sql
+@Sql(scripts = "classpath:ProductRepositoryTest.sql")
 public class ProductRepositoryTest {
 
   @Autowired
