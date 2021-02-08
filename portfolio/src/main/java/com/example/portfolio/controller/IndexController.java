@@ -66,6 +66,8 @@ public class IndexController {
 }
 
 /* TODO
+  - デプロイ
+  - wantedlyの会社辞めた理由にコロナ付け加え
   - GitHub 職務経歴書
   - 独自ドメイン(ともすた)
   - Circle CI
