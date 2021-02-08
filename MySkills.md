@@ -1,5 +1,4 @@
 # ITスキル
-
 ## プログラミングスキル（アプリケーションで使用経験のあるもの）
 - Java + Spring Boot + Thymeleaf
   - CRUD操作
