@@ -121,7 +121,8 @@
 - Google Maps API
 
 ## インフラ構成図
-<img width="1269" alt="スクリーンショット 2021-02-01 20 26 09" src="https://user-images.githubusercontent.com/63575996/106671528-01b40c80-65f2-11eb-80cf-eafe2cabfc6f.png">
+![infrastructure](https://user-images.githubusercontent.com/63575996/107296139-26a5f500-6ab4-11eb-9174-28fdb804d381.png)
+
 
 ## 画面設計書
 以下のExcelファイルまたはPDFファイルをご参照ください。

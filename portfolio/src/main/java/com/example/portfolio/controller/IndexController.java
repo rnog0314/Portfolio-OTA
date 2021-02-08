@@ -66,7 +66,6 @@ public class IndexController {
 }
 
 /* TODO
-  - 画像圧縮(デプロイすると遅くなる)
   - インフラ構成図をupdate(RDSとCircle CI)
   - GitHub 職務経歴書(50%)
   - 独自ドメイン(ともすた)
