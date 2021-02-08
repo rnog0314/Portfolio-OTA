@@ -116,6 +116,7 @@
   - BootBox.js
 - Docker
 - AWS (ECS/Fargate/RDS)
+- Circle CI
 - Stripe API
 - Google Maps API
 
@@ -134,4 +135,5 @@
   - JUnit5
   - Mockito
   - h2
+  - Circle CI自動テスト
 - 結合試験(URL配置予定)
