@@ -66,11 +66,16 @@ public class IndexController {
 }
 
 /* TODO
-  - インフラ構成図をupdate(RDSとCircle CI)
-  - GitHub 職務経歴書(50%)
-  - 独自ドメイン(ともすた)
-  - Free will返信
-  - Free リクルートエージェント応募
+  - FreeWill
+    - 志望動機
+    - 将来の目標
+    - 質問
+    を記事を全て読んでまとめる
+  - DF
+    - 志望動機
+    - ビジョン
+    - 質問
+  - 英検暗記
   */
 
   /* 残りの作成工程
