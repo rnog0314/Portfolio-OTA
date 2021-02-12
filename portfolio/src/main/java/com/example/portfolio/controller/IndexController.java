@@ -71,6 +71,3 @@ public class IndexController {
   - Qiita投稿(Stripe, fullCalendar)
 */
 
-/* メンターに聞くこと
-- コードレビュー
- */
