@@ -66,21 +66,8 @@ public class IndexController {
 }
 
 /* TODO
-  - FreeWill
-    - 志望動機
-    - 将来の目標
-    - 質問
-    を記事を全て読んでまとめる
-  - DF
-    - 志望動機
-    - ビジョン
-    - 質問
-  - 英検暗記
-  */
-
   /* 残りの作成工程
   - 統合テスト(統合試験仕様書をページごとに簡単に作成の上、試験)
-  - Circle CIとTerraformを使って自動デプロイ
   - Qiita投稿(Stripe, fullCalendar)
 */
 
