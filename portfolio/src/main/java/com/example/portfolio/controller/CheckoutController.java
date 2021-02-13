@@ -21,6 +21,11 @@ public class CheckoutController {
   @Autowired
   private LoginSession loginSession;
 
+  /**
+   * 決済ページ初期表示
+   * @param model
+   * @return checkout.html
+   */
   @GetMapping(value="")
   public String checkout(Model model) {
     model.addAttribute("amount", 50 * 100); // in cents

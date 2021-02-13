@@ -27,7 +27,7 @@ public class AdminUserController {
   private UserService userService;
 
   /**
-   *
+   * ユーザー一覧表示
    * @param page
    * @param m
    * @param u

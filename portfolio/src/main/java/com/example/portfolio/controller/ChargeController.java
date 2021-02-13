@@ -24,6 +24,13 @@ public class ChargeController {
   @Autowired
   private StripeService paymentsService;
 
+  /**
+   * 決済
+   * @param chargeRequest
+   * @param model
+   * @return 決済結果ページ result.html
+   * @throws StripeException
+   */
   @PostMapping("")
   public String charge(ChargeRequest chargeRequest, Model model) throws StripeException {
     chargeRequest.setDescription("Example charge");
@@ -37,6 +44,12 @@ public class ChargeController {
     return "result";
   }
 
+  /**
+   * 例外ハンドラー
+   * @param model
+   * @param ex
+   * @return
+   */
   @ExceptionHandler(StripeException.class)
   public String handleError(Model model, StripeException ex) {
     model.addAttribute("error", ex.getMessage());
