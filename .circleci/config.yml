@@ -12,9 +12,6 @@ orbs:
 workflows:
   build_and_push_image:
     jobs:
-      build:
-        docker:
-          - image: 
       - aws-ecr/build-and-push-image:
           <<: *filters
           name: Build and Push Docker Image
