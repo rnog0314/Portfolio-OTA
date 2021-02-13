@@ -12,6 +12,9 @@ orbs:
 workflows:
   build_and_push_image:
     jobs:
+      build:
+        docker:
+          - image: 
       - aws-ecr/build-and-push-image:
           <<: *filters
           name: Build and Push Docker Image
@@ -21,7 +24,6 @@ workflows:
           region: AWS_DEFAULT_REGION
           context: adview-test
           create-repo: false
-          docker: 
           dockerfile: Dockerfile
           no-output-timeout: 20m
           path: .
