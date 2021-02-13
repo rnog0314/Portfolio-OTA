@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
 @Controller
 @RequestMapping("/portfolio/admin/testimonial")
 public class AdminTestimonialController {
@@ -25,15 +24,15 @@ public class AdminTestimonialController {
 
   /**
    * お客様の声一覧表示
+   *
    * @param m Model
    * @return admin/testimonial.html
    */
-  @GetMapping(value="")
+  @GetMapping(value = "")
   public String init(Model m) {
     List<Testimonial> testimonials = testimonialService.findAll();
     m.addAttribute("testimonials", testimonials);
     m.addAttribute("adminSession", adminSession);
     return "admin/testimonial";
   }
-
 }

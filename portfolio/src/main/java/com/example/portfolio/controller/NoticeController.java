@@ -31,7 +31,6 @@ public class NoticeController {
   @GetMapping(value = "")
   public String init(Model m) {
     List<Notice> notices = noticeService.findAllByVisibleFlagTrue();
-    System.out.println("一列目の日付" + notices.get(0).getCreatedAt());
     m.addAttribute("notices", notices);
     m.addAttribute("loginSession", loginSession);
     return "notice";

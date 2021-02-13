@@ -71,7 +71,7 @@ public class ReservationController {
    * 仮予約
    *
    * @param reservationForm ReservationForm
-   * @param m               Model
+   * @param m Model
    * @return checkout.html
    */
   @PostMapping(value = "/reserve")

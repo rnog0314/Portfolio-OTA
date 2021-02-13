@@ -52,6 +52,11 @@ public class AdminReservationController {
     return "admin/reservation_list";
   }
 
+  /**
+   * 予約のカレンダー表示
+   * @param m Model
+   * @return admin/reservation.html
+   */
   @GetMapping("/calendar")
   public String showCalendar(Model m) {
     m.addAttribute("adminSession", adminSession);
@@ -68,5 +73,4 @@ public class AdminReservationController {
     List<Reservation> reservations = reservationService.findAllForCalendar();
     return gson.toJson(reservations);
   }
-
 }

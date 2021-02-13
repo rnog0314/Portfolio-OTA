@@ -32,10 +32,11 @@ public class AdminProductController {
   private ProductService productService;
 
   /**
-   *  ページネーションされた商品一覧取得
+   * ページネーションされた商品一覧取得
+   *
    * @param page リクエストされたページ番号
-   * @param m Model
-   * @param p Product
+   * @param m    Model
+   * @param p    Product
    * @return admin/product.html
    */
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
@@ -53,6 +54,7 @@ public class AdminProductController {
 
   /**
    * 商品削除
+   *
    * @param checkedIdList 削除チェックボックスに☑️がついた商品ID(String)
    * @return 商品削除成功/失敗
    */
@@ -69,7 +71,5 @@ public class AdminProductController {
     } catch (Exception e) {
       throw new RuntimeException();
     }
-
   }
-
 }

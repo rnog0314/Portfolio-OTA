@@ -28,7 +28,7 @@ public class AuthController {
   private LoginSession loginSession;
 
   /**
-   * ログイン
+   * 管理者ログイン
    *
    * @param form UserForm
    * @param m Model

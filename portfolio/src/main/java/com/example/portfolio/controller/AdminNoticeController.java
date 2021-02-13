@@ -66,6 +66,11 @@ public class AdminNoticeController {
     return bool;
   }
 
+  /**
+   * お知らせ作成
+   * @param notice
+   * @return 作成成功/失敗
+   */
   @PostMapping("/create")
   @ResponseBody
   public boolean insert(@RequestBody Notice notice) {
