@@ -22,6 +22,7 @@ workflows:
           context: adview-test
           create-repo: false
           dockerfile: ~/Portfolio-OTA/portfolio/Dockerfile
+            path : ~/Portfolio-OTA/portfolio
           no-output-timeout: 20m
           path: .
           profile-name: default
