@@ -34,4 +34,34 @@ jobs: # a collection of steps
       # アップロードしたテスト結果は、アーティファクト (https://circleci.com/ja/docs/2.0/artifacts/) に表示されます
           path: target/adview-docker.jar
       # デプロイの構成例は https://circleci.com/ja/docs/2.0/deployment-integrations/ を参照してください
-    
+
+# version: 2.1
+
+anchors:
+  filters: &filters
+    filters:
+      branches:
+        only: main
+
+orbs:
+  aws-ecr: circleci/aws-ecr@6.15.2
+
+workflows:
+  build_and_push_image:
+    jobs:
+      - aws-ecr/build-and-push-image:
+          <<: *filters
+          name: Build and Push Docker Image
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          region: AWS_DEFAULT_REGION
+          context: adview-test
+          create-repo: false
+          dockerfile: ~/Portfolio-OTA/portfolio/Dockerfile
+          no-output-timeout: 20m
+          path: .
+          profile-name: default
+          repo: adview
+          skip-when-tags-exist: false
+          tag: 'latest,$CIRCLE_SHA1'
