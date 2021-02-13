@@ -21,6 +21,7 @@ workflows:
           region: AWS_DEFAULT_REGION
           context: adview-test
           create-repo: false
+          docker: 
           dockerfile: Dockerfile
           no-output-timeout: 20m
           path: .
