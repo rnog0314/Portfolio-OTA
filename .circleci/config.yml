@@ -54,8 +54,8 @@ jobs: # a collection of steps
 
       # check out source code to working directory
 
-      - checkout:
-          path: ~/Portfolio-OTA
+      # - checkout:
+      #     path: ~/Portfolio-OTA
       - aws-ecr/build-and-push-image:
           <<: *filters
           name: Build and Push Docker Image
