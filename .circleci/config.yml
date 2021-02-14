@@ -21,7 +21,7 @@ workflows:
           region: AWS_DEFAULT_REGION
           context: adview-test
           create-repo: false
-          dockerfile: Dockerfile
+          dockerfile: ./portfolio/Dockerfile
           no-output-timeout: 20m
           path: .
           profile-name: default
