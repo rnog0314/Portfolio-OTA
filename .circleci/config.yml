@@ -23,7 +23,7 @@ workflows:
           create-repo: false
           dockerfile: ./portfolio/Dockerfile
           no-output-timeout: 20m
-          path: .
+          path: ./portfolio
           profile-name: default
           repo: adview
           skip-when-tags-exist: false
