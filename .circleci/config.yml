@@ -1,35 +1,41 @@
 version: 2.1
-
-anchors:
-  filters: &filters
-    filters:
-      branches:
-        only: terraform
-
 orbs:
-  aws-ecr: circleci/aws-ecr@6.15.2
-
-jobs:
-  build:
-    docker:
-      - image: openjdk-11
-
+  aws-ecr: circleci/aws-ecr@0.0.2
+  aws-ecs: circleci/aws-ecs@0.0.10
 workflows:
-  build_and_push_image:
+  build-and-deploy:
     jobs:
-      - aws-ecr/build-and-push-image:
-          <<: *filters
-          name: Build and Push Docker Image
+      - aws-ecr/build_and_push_image:
           account-url: AWS_ECR_ACCOUNT_URL
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          region: AWS_DEFAULT_REGION
-          context: adview-test
-          create-repo: false
-          dockerfile: ./portfolio/Dockerfile
-          no-output-timeout: 20m
-          path: .
-          profile-name: default
           repo: adview
-          skip-when-tags-exist: false
+          region: AWS_DEFAULT_REGION
           tag: 'latest,$CIRCLE_SHA1'
+                  dockerfile: ./portfolio/Dockerfile
+        no-output-timeout: 20m
+        path: .
+      - ...
+
+
+
+
+
+
+
+
+
+    - aws-ecr/build-and-push-image:
+        <<: *filters
+        name: Build and Push Docker Image
+        account-url: AWS_ECR_ACCOUNT_URL
+        aws-access-key-id: AWS_ACCESS_KEY_ID
+        aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+        region: AWS_DEFAULT_REGION
+        context: adview-test
+        create-repo: false
+        dockerfile: ./portfolio/Dockerfile
+        no-output-timeout: 20m
+        path: .
+        profile-name: default
+        repo: adview
+        skip-when-tags-exist: false
+        tag: 'latest,$CIRCLE_SHA1'
