@@ -9,6 +9,11 @@ anchors:
 orbs:
   aws-ecr: circleci/aws-ecr@6.15.2
 
+jobs:
+  build:
+    docker:
+      - image: openjdk-11
+
 workflows:
   build_and_push_image:
     jobs:
