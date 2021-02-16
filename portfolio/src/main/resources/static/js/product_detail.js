@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (e.start <= today) {
         return false;
       } else {
+        // ドラッグをDisabledにする処理をして、日付のみを選択できるようにする
         if (e.end.getTime() / 1000 - e.start.getTime() / 1000 <= 86400) {
           return true;
         }
@@ -25,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
     dateClick: function (info) {
       // 日付選択をしたその値をinputのvalueに書き換え
       let selectedDate = info.dateStr;
-      var today = new Date().toISOString().slice(0, 10); // yyy-MM-ddフォーマットに変換
+      let date = new Date();
+      let today = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString(); // new Date().toISOString().slice(0,10)だとタイムゾーンが日本時間ではないため、時間帯によってはずれてしまう
       if (selectedDate > today) {
         //選択された日が翌日以降であれば選択した日を有効とする
         $("#selectedDate").text(selectedDate);
@@ -40,8 +42,7 @@ $(function () {
   // 予約確認モーダルの設定
   var box = bootbox.confirm({
     title: "Please make sure your order is correct.",
-    message:
-      "<form id='reservConf' action='/portfolio/reservation/reserve' method='POST' name='reservationForm'>\
+    message:  "<form id='reservConf' action='/portfolio/reservation/reserve' method='POST' name='reservationForm'>\
               <table class='table table-hover table-responsve-md table-bordered text-left'>\
               <tr><th scope='row'>Date</th><td><span><input name='date' id='confirmDate' readonly></span></td></tr>\
               <tr><th scope='row'>Number of Participant</th><td><span><input name='count' id='confirmCnt' readonly></span></td></tr>\
@@ -125,8 +126,8 @@ $(function () {
                     "You have not yet registered. Please sign up first !"
                   );
                 } else {
-                  login(user);
-                  loginCheck();
+                  ns.login(user); // footer.jsに記述したプラグインを呼び出す
+                  ns.loginCheck(); // footer.jsに記述したプラグインを呼び出す
                   addBookmark(); // ブックマークに追加
                 }
               })
@@ -184,8 +185,7 @@ $(function () {
       // ログインしていなかったらログインモーダルを開く
       bootbox.confirm({
         title: "Please enter your login info",
-        message:
-          "<form id='login-info'>\
+        message:"<form id='login-info'>\
                 <p class='m-2'>Email</p>\
                 <input id='email' type='email' name='email' required placeholder='example@abc.com'/><br/>\
                 <p class='m-2'>Password</p>\
@@ -223,10 +223,9 @@ $(function () {
                     "You have not yet registered. Please sign up first !"
                   );
                 } else {
-                  login(user);
-                  loginCheck();
+                  ns.login(user);
+                  ns.loginCheck();
                   console.log("ログインしました");
-                  // location.reload();
                   box.modal("show");
                 }
               })
@@ -241,42 +240,14 @@ $(function () {
       });
     } else {
       // ログインしている場合予約確認モーダルを開く
-
       box.modal("show");
     }
   });
 
-  // ログイン処理
-  function login(user) {
-    let userName = user["userName"];
-    $("#welcome-msg").text(`Welcome ${userName} !`);
-  }
-
-  // ログイン操作後のnavbar切り替え処理
-  function loginCheck() {
-    let loginChecker = $("#login-link").prop("class");
-    // 非同期通信のため、以下のclassの切り替えを行わないと画面が更新されない
-    if (jQuery.isEmptyObject(loginChecker)) {
-      // ログインしている時
-      $("#login-link").addClass("hidden");
-      $("#signup-link").addClass("hidden");
-      $("#logout-link").removeClass("hidden");
-      $("#mypage-link").removeClass("hidden");
-      $("#bookmark-link").removeClass("hidden");
-      $("#reservation-link").removeClass("hidden");
-    } else {
-      // ログインしていない時
-      $("#welcome-msg").text(`Welcome our Guest!`);
-      $("#login-link").removeClass("hidden");
-      $("#signup-link").removeClass("hidden");
-      $("#logout-link").addClass("hidden");
-      $("#mypage-link").addClass("hidden");
-      $("#bookmark-link").addClass("hidden");
-      $("#reservation-link").addClass("hidden");
-    }
-  }
-
   /* 選択日の初期表示を現在日の翌日に */
+  let tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() +1);
+  console.log(tomorrow);
   $("#selectedDate").val(tomorrow.toLocaleDateString("fr-CA"));
 
   /* カレンダーのボタンが押下されても値段表示が消えないように */
