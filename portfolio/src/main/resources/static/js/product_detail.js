@@ -11,37 +11,141 @@ document.addEventListener("DOMContentLoaded", function () {
       right: "prev next",
     },
     selectable: true,
-    selectAllow: function (selectInfo) {
-      let today = new Date();
-      if (selectInfo.start < today) {
+    unselectAuto: false,
+    selectAllow: function (e) {
+      var today = new Date().toISOString().slice(0, 10); // yyy-MM-ddフォーマットに変換
+      if (e.start <= today) {
         return false;
       } else {
-        return true;
+        if (e.end.getTime() / 1000 - e.start.getTime() / 1000 <= 86400) {
+          return true;
+        }
       }
     },
     dateClick: function (info) {
       // 日付選択をしたその値をinputのvalueに書き換え
       let selectedDate = info.dateStr;
-      $("#selectedDate").text(selectedDate);
-      $("#selectedDate").val(selectedDate);
+      var today = new Date().toISOString().slice(0, 10); // yyy-MM-ddフォーマットに変換
+      if (selectedDate > today) {
+        //選択された日が翌日以降であれば選択した日を有効とする
+        $("#selectedDate").text(selectedDate);
+        $("#selectedDate").val(selectedDate);
+      }
     },
   });
-
   calendar.render();
 });
 
 $(function () {
+  // 予約確認モーダルの設定
+  var box = bootbox.confirm({
+    title: "Please make sure your order is correct.",
+    message:
+      "<form id='reservConf' action='/portfolio/reservation/reserve' method='POST' name='reservationForm'>\
+              <table class='table table-hover table-responsve-md table-bordered text-left'>\
+              <tr><th scope='row'>Date</th><td><span><input name='date' id='confirmDate' readonly></span></td></tr>\
+              <tr><th scope='row'>Number of Participant</th><td><span><input name='count' id='confirmCnt' readonly></span></td></tr>\
+              <tr><th scope='row'>Product Name</th><td><span><input name='' id='confirmProductName' readonly></span></td></tr>\
+              <tr class='hidden'><th scope='row'></th><td><span><input name='productId' id='confirmProductId' readonly></span></td></tr>\
+              </table>\
+              </form>",
+    backdrop: true,
+    centerVertical: true,
+    show: false,
+    buttons: {
+      confirm: {
+        label: '<i class="fa fa-check"></i> OK',
+        className: "btn-info",
+      },
+      cancel: {
+        label: '<i class="fa fa-times"></i> Modify',
+        className: "btn-secondary",
+      },
+    },
+    callback: function (result) {
+      if (result) {
+        $("#reservConf").submit();
+      }
+    },
+  }); // bootbox.confirm
+  box.on("shown.bs.modal", function () {
+    // モーダルが開かれた直後に以下を実行する
+    $("#confirmDate").text($("#selectedDate").val());
+    $("#confirmDate").val($("#selectedDate").val());
+    $("#confirmCnt").text($("#participantsNumber").val());
+    $("#confirmCnt").val($("#participantsNumber").val());
+    $("#confirmProductName").text($("#selectedProductName").val());
+    $("#confirmProductName").val($("#selectedProductName").val());
+    $("#confirmProductId").val($("#selectedProductId").val());
+  });
+
   /* ブックマークボタン押下時 */
   $("#bookmark-btn").on("click", function () {
-    console.log("ログイン状態"+ bool);
+    console.log("ログイン状態" + bool);
     if (!bool) {
-      bootbox.alert({
-        message: "Please login to add to your BOOKMARK",
+      // ログインしていなかったらログインモーダルを開く
+      bootbox.confirm({
+        title: "Please enter your login info",
+        message:
+          "<form id='login-info'>\
+                <p class='m-2'>Email</p>\
+                <input id='email' type='email' name='email' required placeholder='example@abc.com'/><br/>\
+                <p class='m-2'>Password</p>\
+                <input id='password' type='password' name='password' required placeholder='●●●●●●'/>\
+                </form>",
         backdrop: true,
         centerVertical: true,
+        buttons: {
+          confirm: {
+            label: '<i class="fa fa-check"></i> Login',
+            className: "btn-info",
+          },
+          cancel: {
+            label: '<i class="fa fa-times"></i> Cancel',
+            className: "btn-secondary",
+          },
+        },
+        callback: function (result) {
+          if (result) {
+            let jsonString = {
+              email: $("#email", ".bootbox").val(),
+              password: $("#password", ".bootbox").val(),
+            };
+            $.ajax({
+              type: "POST",
+              url: "/portfolio/auth/login",
+              data: JSON.stringify(jsonString),
+              contentType: "application/json",
+              dataType: "json",
+            })
+              .done(function (result) {
+                let user = result;
+                if (jQuery.isEmptyObject(user)) {
+                  bootbox.alert(
+                    "You have not yet registered. Please sign up first !"
+                  );
+                } else {
+                  login(user);
+                  loginCheck();
+                  addBookmark(); // ブックマークに追加
+                }
+              })
+              .fail(function (result) {
+                console.log("Error: ajax通信に失敗しました");
+              })
+              .always(function (result) {
+                console.log("ajax通信しました");
+              });
+          }
+        },
       });
-      return false;
+    } else { // ログイン状態であればそのままブックマークに追加
+      addBookmark()
     }
+  });
+
+  // ブックマークに追加する関数
+  function addBookmark() {
     let productId = $("#selectedProductId").val();
     $.ajax({
       type: "POST",
@@ -59,13 +163,14 @@ $(function () {
       .always(function () {
         console.log("ajax通信しました");
       });
-  });
+  }
 
   /* カレンダーに値段を表示 */
   showPrice();
 
   /* 予約ボタン押下時*/
   $("#book-btn").on("click", function () {
+    // 予約人数が0人の場合アラートを出す
     if ($("#participantsNumber").val() == 0) {
       bootbox.alert({
         message: "You need to input more than 1 person to book",
@@ -76,58 +181,103 @@ $(function () {
     }
 
     if (!bool) {
-      bootbox.alert({
-        message: "Please login to book",
+      // ログインしていなかったらログインモーダルを開く
+      bootbox.confirm({
+        title: "Please enter your login info",
+        message:
+          "<form id='login-info'>\
+                <p class='m-2'>Email</p>\
+                <input id='email' type='email' name='email' required placeholder='example@abc.com'/><br/>\
+                <p class='m-2'>Password</p>\
+                <input id='password' type='password' name='password' required placeholder='●●●●●●'/>\
+                </form>",
         backdrop: true,
         centerVertical: true,
+        buttons: {
+          confirm: {
+            label: '<i class="fa fa-check"></i> Login',
+            className: "btn-info",
+          },
+          cancel: {
+            label: '<i class="fa fa-times"></i> Cancel',
+            className: "btn-secondary",
+          },
+        },
+        callback: function (result) {
+          if (result) {
+            let jsonString = {
+              email: $("#email", ".bootbox").val(),
+              password: $("#password", ".bootbox").val(),
+            };
+            $.ajax({
+              type: "POST",
+              url: "/portfolio/auth/login",
+              data: JSON.stringify(jsonString),
+              contentType: "application/json",
+              dataType: "json",
+            })
+              .done(function (result) {
+                let user = result;
+                if (jQuery.isEmptyObject(user)) {
+                  bootbox.alert(
+                    "You have not yet registered. Please sign up first !"
+                  );
+                } else {
+                  login(user);
+                  loginCheck();
+                  console.log("ログインしました");
+                  // location.reload();
+                  box.modal("show");
+                }
+              })
+              .fail(function (result) {
+                console.log("Error: ajax通信に失敗しました");
+              })
+              .always(function (result) {
+                console.log("ajax通信しました");
+              });
+          }
+        },
       });
-      return false;
+    } else {
+      // ログインしている場合予約確認モーダルを開く
+
+      box.modal("show");
     }
-    var box = bootbox.confirm({
-      title: "Please make sure your order is correct.",
-      message: "<form id='reservConf' action='/portfolio/reservation/reserve' method='POST' name='reservationForm'>\
-                <table class='table table-hover table-responsve-md table-bordered text-left'>\
-                <tr><th scope='row'>Date</th><td><span><input name='date' id='confirmDate' readonly></span></td></tr>\
-                <tr><th scope='row'>Number of Participant</th><td><span><input name='count' id='confirmCnt' readonly></span></td></tr>\
-                <tr><th scope='row'>Product Name</th><td><span><input name='' id='confirmProductName' readonly></span></td></tr>\
-                <tr class='hidden'><th scope='row'></th><td><span><input name='productId' id='confirmProductId' readonly></span></td></tr>\
-                </table>\
-                </form>",
-      backdrop: true,
-      centerVertical: true,
-      show: false,
-      buttons: {
-        confirm: {
-          label: '<i class="fa fa-check"></i> OK',
-          className: "btn-info",
-        },
-        cancel: {
-          label: '<i class="fa fa-times"></i> Modify',
-          className: "btn-secondary",
-        },
-      },
-      callback: function (result) {
-        if (result) {
-          $("#reservConf").submit();
-        }
-      },
-    }); // bootbox.confirm
-    box.on("shown.bs.modal", function () {
-      // モーダルが開かれた直後に以下を実行する
-      $("#confirmDate").text($("#selectedDate").val());
-      $("#confirmDate").val($("#selectedDate").val());
-      $("#confirmCnt").text($("#participantsNumber").val());
-      $("#confirmCnt").val($("#participantsNumber").val());
-      $("#confirmProductName").text($("#selectedProductName").val());
-      $("#confirmProductName").val($("#selectedProductName").val());
-      $("#confirmProductId").val($("#selectedProductId").val());
-    });
-    box.modal("show");
   });
 
-  /* 選択日の初期表示を現在日に */
-  let today = new Date();
-  $("#selectedDate").val(today.toLocaleDateString());
+  // ログイン処理
+  function login(user) {
+    let userName = user["userName"];
+    $("#welcome-msg").text(`Welcome ${userName} !`);
+  }
+
+  // ログイン操作後のnavbar切り替え処理
+  function loginCheck() {
+    let loginChecker = $("#login-link").prop("class");
+    // 非同期通信のため、以下のclassの切り替えを行わないと画面が更新されない
+    if (jQuery.isEmptyObject(loginChecker)) {
+      // ログインしている時
+      $("#login-link").addClass("hidden");
+      $("#signup-link").addClass("hidden");
+      $("#logout-link").removeClass("hidden");
+      $("#mypage-link").removeClass("hidden");
+      $("#bookmark-link").removeClass("hidden");
+      $("#reservation-link").removeClass("hidden");
+    } else {
+      // ログインしていない時
+      $("#welcome-msg").text(`Welcome our Guest!`);
+      $("#login-link").removeClass("hidden");
+      $("#signup-link").removeClass("hidden");
+      $("#logout-link").addClass("hidden");
+      $("#mypage-link").addClass("hidden");
+      $("#bookmark-link").addClass("hidden");
+      $("#reservation-link").addClass("hidden");
+    }
+  }
+
+  /* 選択日の初期表示を現在日の翌日に */
+  $("#selectedDate").val(tomorrow.toLocaleDateString("fr-CA"));
 
   /* カレンダーのボタンが押下されても値段表示が消えないように */
   $(".fc-toolbar button").on("click", function () {
