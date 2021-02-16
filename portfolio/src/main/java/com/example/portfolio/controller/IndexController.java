@@ -66,6 +66,7 @@ public class IndexController {
 }
 
 /* TODO
+  - ブックマーク追加重複排除
   /* 残りの作成工程
   - 統合テスト(統合試験仕様書をページごとに簡単に作成の上、試験)
   - Qiita投稿(Stripe, fullCalendar)

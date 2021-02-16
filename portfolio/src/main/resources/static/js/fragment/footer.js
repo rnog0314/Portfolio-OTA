@@ -42,8 +42,8 @@ $(function () {
                   "You have not yet registered. Please sign up first !"
                 );
               } else {
-                login(user);
-                loginCheck();
+                ns.login(user);
+                ns.loginCheck();
                 console.log("ログインしました");
                 location.reload();
               }
@@ -68,7 +68,7 @@ $(function () {
       scriptCharset: "utf-8",
     })
       .done(function (result) {
-        loginCheck();
+        ns.loginCheck();
         bootbox.alert({
           message: "You loged out",
           backdrop: true,
@@ -85,36 +85,44 @@ $(function () {
         console.log("ajax通信しました");
       });
   });
-
-  // ログイン時のwelcome-msg切り替え処理
-  function login(user) {
-    let userName = user["userName"];
-    $("#welcome-msg").text(`Welcome ${userName} !`);
-  }
-
-  // ログイン操作後のnavbar切り替え処理
-  function loginCheck() {
-    let loginChecker = $("#login-link").prop("class");
-    // 非同期通信のため、以下のclassの切り替えを行わないと画面が更新されない
-    if (jQuery.isEmptyObject(loginChecker)) {
-      // ログインしている時
-      $("#login-link").addClass("hidden");
-      $("#signup-link").addClass("hidden");
-      $("#logout-link").removeClass("hidden");
-      $("#mypage-link").removeClass("hidden");
-      $("#bookmark-link").removeClass("hidden");
-      $("#reservation-link").removeClass("hidden");
-    } else {
-      // ログインしていない時
-      $("#welcome-msg").text(`Welcome our Guest!`);
-      $("#login-link").removeClass("hidden");
-      $("#signup-link").removeClass("hidden");
-      $("#logout-link").addClass("hidden");
-      $("#mypage-link").addClass("hidden");
-      $("#bookmark-link").addClass("hidden");
-      $("#reservation-link").addClass("hidden");
-    }
-  }
 });
+
+// プラグイン化して他のjsファイルからでも使用できるように設定
+(function($) {
+  var namespace;                  // 任意な名前
+
+  namespace = {                   // オブジェクトの定義
+      login : function login(user) {
+        let userName = user["userName"];
+        $("#welcome-msg").text(`Welcome ${userName} !`);
+      },
+
+      loginCheck : function loginCheck() {
+        let loginChecker = $("#login-link").prop("class");
+        // 非同期通信のため、以下のclassの切り替えを行わないと画面が更新されない
+        if (jQuery.isEmptyObject(loginChecker)) {
+          // ログインしている時
+          $("#login-link").addClass("hidden");
+          $("#signup-link").addClass("hidden");
+          $("#logout-link").removeClass("hidden");
+          $("#mypage-link").removeClass("hidden");
+          $("#bookmark-link").removeClass("hidden");
+          $("#reservation-link").removeClass("hidden");
+        } else {
+          // ログインしていない時
+          $("#welcome-msg").text(`Welcome our Guest!`);
+          $("#login-link").removeClass("hidden");
+          $("#signup-link").removeClass("hidden");
+          $("#logout-link").addClass("hidden");
+          $("#mypage-link").addClass("hidden");
+          $("#bookmark-link").addClass("hidden");
+          $("#reservation-link").addClass("hidden");
+        }
+      }
+  };
+
+  window.ns = namespace;  // windowオブジェクトに"ns"名としてバインディング
+
+})(jQuery);
 
 /*]]>*/
