@@ -132,8 +132,7 @@ $(function () {
                   ns.login(user); // footer.jsに記述したプラグインを呼び出す
                   ns.loginCheck(); // footer.jsに記述したプラグインを呼び出す
                   addBookmark(); // ブックマークに追加
-                  // location.reload();
-                  bool == true;
+                  bool = true;
                 }
               })
               .fail(function (result) {
@@ -174,7 +173,7 @@ $(function () {
             backdrop: true,
             centerVertical: true,
             callback: function () {
-              location.reload();
+              // location.reload();
             },
           });
         }
@@ -247,6 +246,7 @@ $(function () {
                 } else {
                   ns.login(user);
                   ns.loginCheck();
+                  bool = true;
                   console.log("ログインしました");
                   box.modal("show");
                 }
