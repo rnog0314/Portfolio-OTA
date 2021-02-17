@@ -27,7 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
       // 日付選択をしたその値をinputのvalueに書き換え
       let selectedDate = info.dateStr;
       let date = new Date();
-      let today = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString(); // new Date().toISOString().slice(0,10)だとタイムゾーンが日本時間ではないため、時間帯によってはずれてしまう
+      let today = new Date(
+        date.getTime() - date.getTimezoneOffset() * 60000
+      ).toISOString(); // new Date().toISOString().slice(0,10)だとタイムゾーンが日本時間ではないため、時間帯によってはずれてしまう
       if (selectedDate > today) {
         //選択された日が翌日以降であれば選択した日を有効とする
         $("#selectedDate").text(selectedDate);
@@ -42,7 +44,8 @@ $(function () {
   // 予約確認モーダルの設定
   var box = bootbox.confirm({
     title: "Please make sure your order is correct.",
-    message:  "<form id='reservConf' action='/portfolio/reservation/reserve' method='POST' name='reservationForm'>\
+    message:
+      "<form id='reservConf' action='/portfolio/reservation/reserve' method='POST' name='reservationForm'>\
               <table class='table table-hover table-responsve-md table-bordered text-left'>\
               <tr><th scope='row'>Date</th><td><span><input name='date' id='confirmDate' readonly></span></td></tr>\
               <tr><th scope='row'>Number of Participant</th><td><span><input name='count' id='confirmCnt' readonly></span></td></tr>\
@@ -129,6 +132,8 @@ $(function () {
                   ns.login(user); // footer.jsに記述したプラグインを呼び出す
                   ns.loginCheck(); // footer.jsに記述したプラグインを呼び出す
                   addBookmark(); // ブックマークに追加
+                  // location.reload();
+                  bool == true;
                 }
               })
               .fail(function (result) {
@@ -140,8 +145,9 @@ $(function () {
           }
         },
       });
-    } else { // ログイン状態であればそのままブックマークに追加
-      addBookmark()
+    } else {
+      // ログイン状態であればそのままブックマークに追加
+      addBookmark();
     }
   });
 
@@ -155,8 +161,23 @@ $(function () {
       contentType: "application/json",
       dataType: "json",
     })
-      .done(function () {
-        bootbox.alert("This product has been added in you BOOKMARK");
+      .done(function (bool) {
+        if (bool) {
+          bootbox.alert({
+            message: "This product has just added in your BOOKMARK",
+            backdrop: true,
+            centerVertical: true,
+          });
+        } else {
+          bootbox.alert({
+            message: "This product was aleady added in your BOOKMARK",
+            backdrop: true,
+            centerVertical: true,
+            callback: function () {
+              location.reload();
+            },
+          });
+        }
       })
       .fail(function () {
         bootbox.alert("Something went wrong. Please try again");
@@ -185,7 +206,8 @@ $(function () {
       // ログインしていなかったらログインモーダルを開く
       bootbox.confirm({
         title: "Please enter your login info",
-        message:"<form id='login-info'>\
+        message:
+          "<form id='login-info'>\
                 <p class='m-2'>Email</p>\
                 <input id='email' type='email' name='email' required placeholder='example@abc.com'/><br/>\
                 <p class='m-2'>Password</p>\
@@ -246,7 +268,7 @@ $(function () {
 
   /* 選択日の初期表示を現在日の翌日に */
   let tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() +1);
+  tomorrow.setDate(tomorrow.getDate() + 1);
   console.log(tomorrow);
   $("#selectedDate").val(tomorrow.toLocaleDateString("fr-CA"));
 

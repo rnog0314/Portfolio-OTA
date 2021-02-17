@@ -19,4 +19,14 @@ public interface BookmarkDtoRepository extends JpaRepository<BookmarkDto, Intege
                   "WHERE b.user_id = :userId", nativeQuery = true)
   List<BookmarkDto> getBookmarkList(@Param("userId") int userId);
 
+  @Query(value = "SELECT b.id, b.product_id, b.user_id, p.product_image, p.product_name " +
+                  "FROM bookmarks AS b " +
+                  "INNER JOIN products AS p " +
+                  "ON b.product_id = p.id " +
+                  "INNER JOIN users AS u " +
+                  "ON b.user_id = u.id " +
+                  "WHERE b.product_id = :productId " +
+                  "AND b.user_id = :userId", nativeQuery = true)
+  BookmarkDto findByProductIdAndUserId(int productId, Integer userId);
+
 }

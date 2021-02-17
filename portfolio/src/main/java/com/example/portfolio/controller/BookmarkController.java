@@ -48,9 +48,12 @@ public class BookmarkController {
   public boolean add(@RequestBody int productId) {
     boolean bool = false;
     // TODO もしブックマークテーブルに同じプロダクトIDがあればfalseを返す処理を記述
-    int result = bookmarkService.add(productId);
-    if (result > 0) {
-      bool = true;
+    BookmarkDto bookmark = bookmarkService.findBookmark(productId, loginSession.getUserId());
+    if (bookmark == null) {
+      int result = bookmarkService.add(productId);
+      if (result > 0) {
+        bool = true;
+      }
     }
     return bool;
   }

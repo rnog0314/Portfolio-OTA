@@ -28,6 +28,7 @@ public class BookmarkService {
 
   /**
    * お気に入り追加
+   *
    * @param productId 商品ID
    * @return 商品追加件数
    */
@@ -43,6 +44,7 @@ public class BookmarkService {
 
   /**
    * お気に入り取得
+   *
    * @param userId ユーザID
    * @return ユーザ別お気に入り一覧
    */
@@ -52,12 +54,23 @@ public class BookmarkService {
 
   /**
    * お気に入り削除
+   *
    * @param productId 商品ID
    * @return 削除件数
    */
   public int delete(int productId) {
     int userId = loginSession.getUserId();
     return bookmarkRepos.deleteByProductIdAndUserId(productId, userId);
+  }
+
+  /**
+   * ブックマークの重複確認
+   * @param productId
+   * @param userId
+   * @return Bookmark
+   */
+  public BookmarkDto findBookmark(int productId, Integer userId) {
+    return bookmarkDtoRepos.findByProductIdAndUserId(productId, userId);
   }
 
 }
