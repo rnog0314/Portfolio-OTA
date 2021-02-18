@@ -30,7 +30,7 @@ public class AdminNoticeController {
    */
   @GetMapping(value = "")
   public String init(Model m) {
-    List<Notice> notices = noticeService.findAll();
+    List<Notice> notices = noticeService.findAll(); // お知らせの全取得
     m.addAttribute("notices", notices);
     return "admin/notice";
   }
@@ -59,7 +59,7 @@ public class AdminNoticeController {
   @ResponseBody
   public boolean update(@RequestBody Notice notice) {
     boolean bool = false;
-    int result = noticeService.update(notice);
+    int result = noticeService.update(notice); // お知らせ更新
     if (result > 0) {
       bool = true;
     }
@@ -75,8 +75,8 @@ public class AdminNoticeController {
   @ResponseBody
   public boolean insert(@RequestBody Notice notice) {
     boolean bool = false;
-    Notice insertedNotice = noticeService.insert(notice);
-    if (insertedNotice != null) {
+    Notice insertedNotice = noticeService.insert(notice); // 入力された内容をもとにお知らせを作成
+    if (insertedNotice != null) { // お知らせが問題なく作成されたら
       bool = true;
     }
     return bool;

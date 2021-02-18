@@ -88,14 +88,13 @@ public class UserController {
    */
   @PostMapping(value = "/modify", consumes = { "multipart/form-data" })
   public String modify(UserForm f, Model m) {
-    int userId = loginSession.getUserId();
+    int userId = loginSession.getUserId(); // ユーザID取得
     f.setUserId(userId);
-    userService.updateUser(f);
-
-    User user = userService.findByUserId(userId);
-    userService.setLoginSession(user);
-    String image = userService.getUserImg(user);
-    boolean completeMsg = true;
+    userService.updateUser(f); // 修正されたユーザ情報を元にDB更新
+    User user = userService.findByUserId(userId); //
+    userService.setLoginSession(user); // logoinセッションを更新
+    String image = userService.getUserImg(user); // プロフィール画像を取得
+    boolean completeMsg = true; // 更新完了情報を追加
     m.addAttribute("user", user);
     m.addAttribute("image", image);
     m.addAttribute("loginSession", loginSession);
@@ -114,7 +113,7 @@ public class UserController {
   @ResponseBody
   public boolean updateUserImg(@RequestParam("file") MultipartFile file, Model m) {
     boolean bool = false;
-    int result = userService.updateUserImage(file);
+    int result = userService.updateUserImage(file); // プロフィール画像を更新
     if (result > 0) { bool = true; }
     return bool;
   }

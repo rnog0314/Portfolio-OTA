@@ -42,9 +42,9 @@ public class CategoryController {
    */
   @GetMapping(value = "/{id}")
   public String init(@PathVariable("id") int categoryId, Model m) {
-    Category category = categoryService.findById(categoryId);
-    CategoryDetail categoryDetail = categoryDetailService.findById(categoryId);
-    List<ProductDto> products = productService.findByCategoryId(categoryId);
+    Category category = categoryService.findById(categoryId); // カテゴリ取得
+    CategoryDetail categoryDetail = categoryDetailService.findById(categoryId); // カテゴリ詳細情報取得
+    List<ProductDto> products = productService.findByCategoryId(categoryId); // カテゴリIDを元に商品詳細を取得
     m.addAttribute("category", category);
     m.addAttribute("categoryDetail", categoryDetail);
     m.addAttribute("products", products);

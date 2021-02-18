@@ -61,7 +61,7 @@ public class AdminController {
     if (!adminSession.isLogined()) { // ログインしていなかった場合ログインページに戻る
       return "redirect:/portfolio/admin";
     }
-    Admin admin = adminService.findById(adminSession.getId());
+    Admin admin = adminService.findById(adminSession.getId()); // IDをもとにアカウントを取得する
     m.addAttribute("admin", admin);
     m.addAttribute("adminSession", adminSession);
     return "admin/home";
@@ -74,7 +74,7 @@ public class AdminController {
    */
   @GetMapping(value = "/account")
   public String showAccount(Model m) {
-    Admin admin = adminService.findById(adminSession.getId());
+    Admin admin = adminService.findById(adminSession.getId()); // IDをもとに管理者アカウントを取得する
     m.addAttribute("admin", admin);
     return "admin/account";
   }
@@ -87,10 +87,10 @@ public class AdminController {
    */
   @PostMapping(value = "/modify")
   public String modify(AdminForm adminForm, Model m) {
-    adminService.updateAdmin(adminForm);
-    Admin admin = adminService.findById(adminSession.getId());
-    adminService.setAdminSession(admin);
-    boolean completeMsg = true;
+    adminService.updateAdmin(adminForm); // 修正されて内容をもとにアカウント情報更新する
+    Admin admin = adminService.findById(adminSession.getId()); // IDをもとにアカウント情報を取得する
+    adminService.setAdminSession(admin); // adminセッションに更新した情報を登録する
+    boolean completeMsg = true; // アカウント情報の更新完了
     m.addAttribute("admin", admin);
     m.addAttribute("adminSession", adminSession);
     m.addAttribute("completeMsg", completeMsg);

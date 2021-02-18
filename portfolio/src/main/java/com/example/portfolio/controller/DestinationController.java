@@ -42,9 +42,9 @@ public class DestinationController {
    */
   @GetMapping(value = "/{init}")
   public String init(@PathVariable("init") int destinationId, Model m) {
-    Destination destination = destinationService.findById(destinationId);
-    DestinationDetail destinationDetail = destinationDetailService.findById(destinationId);
-    List<ProductDto> products = productService.findByDestinationId(destinationId);
+    Destination destination = destinationService.findById(destinationId); // IDを元に詳細情報を取得スティネーション情報を取得
+    DestinationDetail destinationDetail = destinationDetailService.findById(destinationId); // IDを元に詳細情報を取得
+    List<ProductDto> products = productService.findByDestinationId(destinationId); // IDを元に商品詳細情報を取得
     m.addAttribute("destination", destination);
     m.addAttribute("destinationDetail", destinationDetail);
     m.addAttribute("products", products);
