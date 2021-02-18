@@ -41,7 +41,7 @@ public class AdminProductController {
    */
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
   public String init(@PathVariable(name = "page") Optional<Integer> page, Model m, Product p) {
-    Page<ProductDto> products = productService.findPaginatedList(page);
+    Page<ProductDto> products = productService.findPaginatedList(page); // リクエストされたページの商品情報リストを取得する
     int lastPage = products.getTotalPages();
     if (lastPage > 0) {
       List<Integer> pageNumbers = IntStream.rangeClosed(1, lastPage).boxed().collect(Collectors.toList()); // HTMLでページ分ループするために各ページ番号が入ったリストを作成

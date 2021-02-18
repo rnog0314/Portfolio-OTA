@@ -52,6 +52,7 @@ public class AuthController {
   @PostMapping(value = "/logout")
   @ResponseBody
   public String logout() {
+    // loginセッションを更新
     loginSession.setTmpUserId(0);
     loginSession.setLogined(false);
     loginSession.setUserId(null);
