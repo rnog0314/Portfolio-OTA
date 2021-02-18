@@ -42,6 +42,7 @@ public class AdminController {
   @ResponseBody
   public boolean home(@RequestBody AdminForm f) {
     boolean bool = false;
+    // 入力されたユーザ名とパスワードをもとに管理者アカウントを取得
     Admin admin = adminService.findByAdminNameAndPassword(f.getAdminName(), f.getPassword());
     if (admin != null) {
       adminService.setAdminSession(admin);
@@ -57,7 +58,7 @@ public class AdminController {
    */
   @GetMapping(value = "/home")
   public String index(Model m) {
-    if (!adminSession.isLogined()) {
+    if (!adminSession.isLogined()) { // ログインしていなかった場合ログインページに戻る
       return "redirect:/portfolio/admin";
     }
     Admin admin = adminService.findById(adminSession.getId());
