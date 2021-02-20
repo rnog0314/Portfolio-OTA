@@ -42,7 +42,7 @@ public class ProductService {
 	/**
 	 * トップで表示する10個の商品取得
 	 *
-	 * @return
+	 * @return List<ProductDto> 
 	 */
 	public List<ProductDto> findAll() {
 		return productDtoRepos.findTenProducts();

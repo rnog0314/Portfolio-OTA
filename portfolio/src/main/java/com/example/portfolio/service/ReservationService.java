@@ -52,14 +52,14 @@ public class ReservationService {
    * @return Reservation
    */
   public Reservation reserve(ReservationForm f) {
-    int userId = loginSession.getUserId();
-    int productId = f.getProductId();
-    int count = f.getCount();
-    String title = userService.findUserNameById(userId) + " : " + count + "PAX";
-    String start = f.getDate();
-    String end = utils.getEndDate(start);
-    Reservation reservation = new Reservation(userId, productId, count, start, end, title);
-    return reservationRepos.save(reservation);
+    int userId = loginSession.getUserId(); // loginセッションからユーザIDを取得
+    int productId = f.getProductId(); // formから商品IDを取得
+    int count = f.getCount(); // formから個数を取得
+    String title = userService.findUserNameById(userId) + " : " + count + "PAX"; // 予約タイトルの文字列をつくる
+    String start = f.getDate(); // formから開始日を取得
+    String end = utils.getEndDate(start); // 終了日を開始日の1日後に設定する
+    Reservation reservation = new Reservation(userId, productId, count, start, end, title); // reservationインスタンスを上記の引数で作成
+    return reservationRepos.save(reservation); // reservationsテーブルに新規レコードを登録
   }
 
   /**
@@ -93,7 +93,7 @@ public class ReservationService {
    * @return ページネーションされた予約リスト
    */
   public Page<ReservationDto> findPaginatedList(Optional<Integer> page) {
-    Pageable pageable = utils.getPageable(page);
+    Pageable pageable = utils.getPageable(page); 
     int pageSize = pageable.getPageSize();
     int currentPage = pageable.getPageNumber();
     int startItem = currentPage * pageSize;

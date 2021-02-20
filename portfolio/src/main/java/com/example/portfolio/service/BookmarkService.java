@@ -34,7 +34,7 @@ public class BookmarkService {
    */
   public int add(int productId) {
     try {
-      Bookmark bookmark = new Bookmark(loginSession.getUserId(), productId);
+      Bookmark bookmark = new Bookmark(loginSession.getUserId(), productId); // ユーザIDと商品IDを条件にブックマークを追加
       bookmarkRepos.save(bookmark);
       return 1;
     } catch (IllegalArgumentException e) {
