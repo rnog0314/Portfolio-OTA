@@ -29,7 +29,7 @@ public class AdminService {
    * @return Admin
    */
   public Admin findByAdminNameAndPassword(String adminName, String password) {
-    return adminRepos.findByAdminNameAndPassword(adminName, password);
+    return adminRepos.findByAdminNameAndPassword(adminName, password); // 管理者ユーザ名とパスワードを元に管理者ユーザを取得する
   }
 
   /**
@@ -46,10 +46,10 @@ public class AdminService {
    * @param f AdminForm
    */
   public void updateAdmin(AdminForm f) {
-    int id = adminSession.getId();
-    String adminName = f.getAdminName();
-    String password = f.getPassword();
-    adminRepos.updateAdmin(id, adminName, password);
+    int id = adminSession.getId(); // adminセッションからIDを取得
+    String adminName = f.getAdminName(); // adminセッションから管理者ユーザ名を取得
+    String password = f.getPassword(); // adminセッションからパスワードを取得
+    adminRepos.updateAdmin(id, adminName, password); // ID・管理者ユーザ名・パスワードをもとに管理者情報を更新する
   }
 
   /**
@@ -63,6 +63,10 @@ public class AdminService {
     adminSession.setLogined(true);
   }
 
+  /**
+   * 管理者全取得
+   * @return List<Admin>
+   */
   public List<Admin> findAll() {
     return adminRepos.findAll();
   }

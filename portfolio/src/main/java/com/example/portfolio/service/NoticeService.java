@@ -57,6 +57,11 @@ public class NoticeService {
     return noticeRepos.findAllByVisibleFlagTrueOrderByCreatedAt();
   }
 
+  /**
+   * お知らせ登録
+   * @param Notice
+   * @return 新規登録したNotice
+   */
   public Notice insert(Notice n) {
     Timestamp timestamp = new Timestamp(System.currentTimeMillis());
     Notice notice = new Notice(n.getTitle(), n.getText(), timestamp, timestamp);

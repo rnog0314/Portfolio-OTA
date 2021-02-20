@@ -19,8 +19,8 @@ public class EmailSendService {
    * @param status 決済状況
    */
   public void send(String email, String id, String status) {
-    String topic = "Thank you for booking our product!!";
-    String body = "Your payment ID : " + id + "\n" + "Payament status : " + status;
+    String topic = "Thank you for booking our product!!"; // 件名
+    String body = "Your payment ID : " + id + "\n" + "Payament status : " + status; // 本文
     SimpleMailMessage message = new SimpleMailMessage();
     message.setTo(email);
     message.setSubject(topic);
