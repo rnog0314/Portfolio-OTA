@@ -1,5 +1,6 @@
 /*<![CDATA[*/
 $(document).ready(function () {
+  /*削除ボタン押下時*/
   $(".delete-btn").on("click", function (e) {
     let productId = $(this).parent().find("input").val();
     $.ajax({
@@ -10,7 +11,7 @@ $(document).ready(function () {
       dataType: "json",
     })
       .done(function () {
-        $(e.target).parent().parent().parent().parent().remove();
+        $(e.target).parent().parent().parent().parent().remove(); // 行全体を削除する
         location.reload();
       })
       .fail(function () {
