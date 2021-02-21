@@ -91,7 +91,7 @@ $(function () {
       bootbox.confirm({
         title: "Please enter your login info",
         message:
-          "<form id='login-info'>\
+                "<form id='login-info'>\
                 <p class='m-2'>Email</p>\
                 <input id='email' type='email' name='email' required placeholder='example@abc.com'/><br/>\
                 <p class='m-2'>Password</p>\
@@ -132,7 +132,7 @@ $(function () {
                   ns.login(user); // footer.jsに記述したプラグインを呼び出す
                   ns.loginCheck(); // footer.jsに記述したプラグインを呼び出す
                   addBookmark(); // ブックマークに追加
-                  bool = true;
+                  bool = true; // ログイン状態にする
                 }
               })
               .fail(function (result) {
@@ -161,7 +161,7 @@ $(function () {
       dataType: "json",
     })
       .done(function (bool) {
-        if (bool) {
+        if (bool) { // 正常にブックマーク追加処理ができた場合
           bootbox.alert({
             message: "This product has just added in your BOOKMARK",
             backdrop: true,
@@ -245,7 +245,7 @@ $(function () {
                 } else {
                   ns.login(user); // footer.jsでプラグインかしたloginメソッドを呼びだし
                   ns.loginCheck();
-                  bool = true;
+                  bool = true; // ログイン状態にする
                   box.modal("show");
                 }
               })
@@ -267,7 +267,6 @@ $(function () {
   /* 選択日の初期表示を現在日の翌日に */
   let tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
-  console.log(tomorrow);
   $("#selectedDate").val(tomorrow.toLocaleDateString("fr-CA"));
 
   /* カレンダーのボタンが押下されても値段表示が消えないように */
