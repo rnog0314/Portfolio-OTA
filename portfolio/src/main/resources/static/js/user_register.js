@@ -31,7 +31,7 @@ $(function () {
     var box = bootbox.confirm({
       title: "Please make sure your input is correct.",
       message:
-        "<table class='table table-hover table-responsve-md table-bordered text-left'>\
+                "<table class='table table-hover table-responsve-md table-bordered text-left'>\
                 <tr><th scope='row'>User Name</th><td><span id='userNameConfirm'></span></td></tr>\
                 <tr><th scope='row'>Full Name</th><td><span id='familyNameConfirm'></span><span id='firstNameConfirm'></span></td></tr>\
                 <tr><th scope='row'>E-mail</th><td><span id='emailConfirm'></span></td></tr>\

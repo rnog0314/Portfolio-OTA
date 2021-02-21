@@ -2,7 +2,6 @@
 $(document).ready(function () {
   $(".delete-btn").on("click", function (e) {
     let productId = $(this).parent().find("input").val();
-    console.log(productId);
     $.ajax({
       type: "POST",
       url: "/portfolio/bookmark/delete",

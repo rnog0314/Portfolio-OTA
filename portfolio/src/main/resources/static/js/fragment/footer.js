@@ -57,7 +57,7 @@ $(function () {
         }
       },
     });
-  }); // ログインボタン押下
+  });
 
   // ログアウトボタン押下
   $("#logout-link").on("click", function () {
@@ -68,7 +68,7 @@ $(function () {
       scriptCharset: "utf-8",
     })
       .done(function (result) {
-        ns.loginCheck();
+        ns.loginCheck(); 
         bootbox.alert({
           message: "You loged out",
           backdrop: true,
