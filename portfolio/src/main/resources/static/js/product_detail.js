@@ -173,7 +173,6 @@ $(function () {
             backdrop: true,
             centerVertical: true,
             callback: function () {
-              // location.reload();
             },
           });
         }
@@ -206,7 +205,7 @@ $(function () {
       bootbox.confirm({
         title: "Please enter your login info",
         message:
-          "<form id='login-info'>\
+                "<form id='login-info'>\
                 <p class='m-2'>Email</p>\
                 <input id='email' type='email' name='email' required placeholder='example@abc.com'/><br/>\
                 <p class='m-2'>Password</p>\
@@ -244,10 +243,9 @@ $(function () {
                     "You have not yet registered. Please sign up first !"
                   );
                 } else {
-                  ns.login(user);
+                  ns.login(user); // footer.jsでプラグインかしたloginメソッドを呼びだし
                   ns.loginCheck();
                   bool = true;
-                  console.log("ログインしました");
                   box.modal("show");
                 }
               })
