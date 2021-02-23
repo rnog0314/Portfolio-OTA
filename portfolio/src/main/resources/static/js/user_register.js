@@ -1,5 +1,5 @@
 $(function () {
-  /*ユーザ名重複確認ボタン押下時 */
+  /* ユーザ名重複確認ボタン押下時 */
   $("#checkUserName").on("click", function () {
     let userName = $("#newUserName").val();
     $.ajax({

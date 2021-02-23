@@ -67,7 +67,7 @@ $(document).ready(function () {
         break;
       }
     }
-    console.log(disabled);
+    // 削除ボタンの状態を変更する
     $("#delete-btn").prop("disabled", disabled);
   }
 });

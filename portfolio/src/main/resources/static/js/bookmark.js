@@ -1,6 +1,7 @@
 /*<![CDATA[*/
 $(document).ready(function () {
-  /*削除ボタン押下時*/
+
+  /* キャンセルボタン押下時にブックマークを削除する */
   $(".delete-btn").on("click", function (e) {
     let productId = $(this).parent().find("input").val();
     $.ajax({

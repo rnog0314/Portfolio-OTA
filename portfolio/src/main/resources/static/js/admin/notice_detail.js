@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  /* 修正ボタン押下時 */
+  /* 修正ボタン押下時に編集モードに切り替える */
   $("#modify-btn").on("click", function () {
     $(".normal").addClass("hidden");
     $(".modify").removeClass("hidden");
@@ -8,7 +8,7 @@ $(document).ready(function () {
     $("#submit-btn").removeClass("hidden");
   });
 
-  /*キャンセルボタン押下時*/
+  /*キャンセルボタン押下時に通常モードに切り替える*/
   $("#cancel-btn").on("click", function () {
     $(".normal").removeClass("hidden");
     $(".modify").addClass("hidden");
