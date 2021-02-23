@@ -1,5 +1,7 @@
+
 /* fullCalendarの初期設定 */
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () { 
+
   var calendarEl = document.getElementById("calendar");
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -18,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     selectable: true,
     selectAllow: function (selectInfo) {
       let today = new Date();
-      if (selectInfo.start < today) {
+      if (selectInfo.start < today) { // 現在日以前の日にちを選択不可にする
         return false;
       } else {
         return true;

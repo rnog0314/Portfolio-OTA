@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  /* ログインボタン押下時 */
+  /*ログインボタン押下時*/
   $("#login-btn").on("click", function () {
     let jsonString = {
       adminName: $("#adminName").val(),
@@ -13,7 +13,7 @@ $(document).ready(function () {
       dataType: "json",
     })
       .done(function (bool) {
-        if (bool) {
+        if (bool) { // ajaxが正常に処理され、正常にログインできた場合
           location.replace("/portfolio/admin/home");
         } else {
           bootbox.alert({

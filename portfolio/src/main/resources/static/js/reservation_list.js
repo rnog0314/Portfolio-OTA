@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  /* 削除ボタン押下時*/
+  /* キャンセルボタン押下時*/
   $(".cancel-btn").on("click", function (e) {
     bootbox.confirm({
       message: "Are you sure to cancel this reservation?",

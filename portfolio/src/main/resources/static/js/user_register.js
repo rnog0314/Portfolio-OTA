@@ -70,7 +70,7 @@ $(function () {
             dataType: "json",
           })
             .done(function (result) {
-              if (result == true) {
+              if (result) {
                 bootbox.alert(
                   "You have just registerd! You will move to your personal page.",
                   function () {
@@ -81,10 +81,10 @@ $(function () {
                 bootbox.alert("Something wrong. Please try again.");
               }
             })
-            .fail(function (result) {
+            .fail(function () {
               console.log("Error: ajax通信に失敗しました");
             })
-            .always(function (result) {
+            .always(function () {
               console.log("ajax通信しました");
             });
         }

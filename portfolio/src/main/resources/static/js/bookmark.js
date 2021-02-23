@@ -1,5 +1,6 @@
 /*<![CDATA[*/
 $(document).ready(function () {
+
   /* キャンセルボタン押下時にブックマークを削除する */
   $(".delete-btn").on("click", function (e) {
     let productId = $(this).parent().find("input").val();
@@ -11,7 +12,7 @@ $(document).ready(function () {
       dataType: "json",
     })
       .done(function () {
-        $(e.target).parent().parent().parent().parent().remove();
+        $(e.target).parent().parent().parent().parent().remove(); // 行全体を削除する
         location.reload();
       })
       .fail(function () {
