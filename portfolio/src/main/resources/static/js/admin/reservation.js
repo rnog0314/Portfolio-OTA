@@ -1,3 +1,4 @@
+/* fullCalendarの初期設定 */
 document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
 
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       right: "prev next",
     },
     events: {
-      url: "/portfolio/admin/reservation/fetchAll",
+      url: "/portfolio/admin/reservation/fetchAll", // DBのreservationsテーブルから全てのレコードを取得する
     },
     selectable: true,
     selectAllow: function (selectInfo) {

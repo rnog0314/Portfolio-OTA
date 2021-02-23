@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  /* ログインボタン押下時 */
   $("#login-btn").on("click", function () {
     let jsonString = {
       adminName: $("#adminName").val(),

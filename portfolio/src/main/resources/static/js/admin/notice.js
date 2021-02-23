@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  /* 作成ボタン押下時にモーダルを表示する */
   $("#create-btn").on("click", function () {
     bootbox.confirm({
       title: "Please create a new notice",
