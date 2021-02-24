@@ -29,9 +29,9 @@ public class AdminUserController {
   /**
    * ユーザー一覧表示
    * @param page
-   * @param m
-   * @param u
-   * @return
+   * @param m Model
+   * @param u user
+   * @return ユーザー一覧
    */
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
   public String init(@PathVariable(name = "page") Optional<Integer> page, Model m, User u) {
