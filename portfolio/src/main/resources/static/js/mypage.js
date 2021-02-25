@@ -12,7 +12,7 @@ $(document).ready(function () {
   $('#userImg').change(function () {
     var file = $(this).prop('files')[0];
     if (!file.type.match('image.*')) {
-      // クリア
+      // クリアする
       $(this).val('');
       return;
     }
