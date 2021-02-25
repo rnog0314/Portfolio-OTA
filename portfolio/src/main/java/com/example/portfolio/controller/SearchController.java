@@ -47,11 +47,11 @@ public class SearchController {
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
   public String init(@RequestParam("keyword") Optional<String> keyword, @PathVariable(name = "page") Optional<Integer> page, Model m) {
     String key = "";
-    if (keyword.isPresent()) {
+    if (keyword.isPresent()) { // 検索ワードが入力されていた場合
       key = keyword.get();
       searchSession.setKeyword(key);
     } else {
-      key = searchSession.getKeyword();
+      key = searchSession.getKeyword(); // セッションから検索キーワードを取得する
     }
     Set<SearchDto> searchResult = productService.getAllSearchResult(key);
     int lastPage = utils.getLastPage(searchResult);

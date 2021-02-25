@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 @RequestMapping("/portfolio/admin/user")
 public class AdminUserController {
+
   @Autowired
   private AdminSession adminSession;
 
@@ -28,10 +29,10 @@ public class AdminUserController {
 
   /**
    * ユーザー一覧表示
-   * @param page
-   * @param m
-   * @param u
-   * @return
+   * @param page リクエストされたページ番号
+   * @param m model
+   * @param u user
+   * @return admin/user.html
    */
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
   public String init(@PathVariable(name = "page") Optional<Integer> page, Model m, User u) {
