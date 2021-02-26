@@ -41,6 +41,30 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 $(function () {
+  // ログインしている場合に表示している商品がブックマークに追加済みかどうかチェックする
+  if (bool) {
+    let productId = $("#selectedProductId").val();
+    $.ajax({
+      type: "POST",
+      url: "/portfolio/bookmark/check",
+      data: productId,
+      contentType: "application/json",
+      dataType: "json",
+    }).done(function (result) {
+      if (result) {
+        $('#bookmark-btn').css('display', 'none');
+        $('#bookmark-icon-off').addClass('hidden');
+        $('#bookmark-icon-on').removeClass('hidden');
+      } else {
+        console.log('このプランはまだブックマーク登録されていません');
+      }
+    }).fail(function () {
+      console.log("Error: ajax通信に失敗しました");
+    }).always(function () {
+      console.log("ajax通信しました");
+    });
+  }
+
   // 予約確認モーダルの設定
   var box = bootbox.confirm({
     title: "Please make sure your order is correct.",
@@ -133,12 +157,15 @@ $(function () {
                   ns.loginCheck(); // footer.jsに記述したプラグインを呼び出す
                   addBookmark(); // ブックマークに追加
                   bool = true; // ログイン状態にする
+                  $('#bookmark-btn').css('display', 'none'); // ブックマークボタンを非表示
+                  $('#bookmark-icon-off').addClass('hidden');
+                  $('#bookmark-icon-on').removeClass('hidden');
                 }
               })
-              .fail(function (result) {
+              .fail(function () {
                 console.log("Error: ajax通信に失敗しました");
               })
-              .always(function (result) {
+              .always(function () {
                 console.log("ajax通信しました");
               });
           }
@@ -166,6 +193,11 @@ $(function () {
             message: "This product has just added in your BOOKMARK",
             backdrop: true,
             centerVertical: true,
+            callback: function () {
+              $('#bookmark-btn').css('display', 'none'); // ブックマークボタンを非表示
+              $('#bookmark-icon-off').addClass('hidden');
+              $('#bookmark-icon-on').removeClass('hidden');
+            }
           });
         } else {
           bootbox.alert({
