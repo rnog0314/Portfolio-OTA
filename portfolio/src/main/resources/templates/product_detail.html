@@ -15,6 +15,8 @@
       <div class="container" th:object="${productDetail}">
         <div class="banner-area">
           <img th:src="@{{imagePath} (imagePath = *{image})}" class="banner-img" alt="">
+          <span><i id="bookmark-icon-off" class="far fa-3x fa-bookmark" style="color: #fff;"></i></span>
+          <span><i id="bookmark-icon-on" class="fas fa-3x fa-bookmark hidden" style="color: #fff;"></i></span>
           <div class="price-area">
             <span class="price">
               <samll>from</samll>&nbsp;USD&nbsp;<span th:text="*{price}"></span>

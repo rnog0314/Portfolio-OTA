@@ -74,4 +74,20 @@ public class BookmarkController {
     return bool;
   }
 
+  /**
+   * ブックマーク済みかどうかをチェック
+   * @param productId
+   * @return bool ブックマーク済み:true 未ブックマーク:false
+   */
+  @PostMapping(value = "/check")
+  @ResponseBody
+  public boolean check(@RequestBody int productId) {
+    boolean bool = false;
+    BookmarkDto bookmark = bookmarkService.findBookmark(productId, loginSession.getUserId());
+    if (bookmark != null) {
+      bool = true;
+    }
+    return bool;
+  }
+
 }

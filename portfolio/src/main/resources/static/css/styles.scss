@@ -73,6 +73,7 @@ iframe {
 .hidden {
   display: none;
 }
+
 .navbar-nav {
   .welcome-msg-area {
     margin: auto 1.5rem;
@@ -363,6 +364,11 @@ input {
   }
   #bookmark-btn {
     color: white;
+  }
+  .fa-bookmark {
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
   }
 }
 
