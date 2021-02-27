@@ -112,6 +112,16 @@ input {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#go-home-btn {
+  margin-right: 2rem;
+}
+
+#question-icon {
+  position: absolute;
+  right: 50%;
+  transform: translate(50%);
+}
+
 .page-link {
   color: grey !important;
 }
@@ -320,7 +330,7 @@ input {
 }
 
 #destination-tour a:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 #destination-tour .tour-img {
@@ -524,7 +534,7 @@ input {
 }
 
 #searchResult .card .card-body {
-  padding-top: .5rem;
+  padding-top: 0.5rem;
 }
 
 #searchResult .card img {
@@ -552,7 +562,7 @@ input {
 }
 
 #tour-category .card a:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 #tour-category .card img {
@@ -572,7 +582,7 @@ input {
 }
 
 #bookmark .card a:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 #bookmark .card img {
@@ -606,14 +616,16 @@ input {
   padding-bottom: 3rem;
 }
 
-#checkout-page .stripe-button-el, #checkout-page .stripe-button-el span {
+#checkout-page .stripe-button-el,
+#checkout-page .stripe-button-el span {
   color: #fff;
   background-color: #17a2b8 !important;
   border-color: #17a2b8 !important;
   background-image: none !important;
 }
 
-#checkout-page .stripe-button-el:hover, #checkout-page .stripe-button-el span:hover {
+#checkout-page .stripe-button-el:hover,
+#checkout-page .stripe-button-el span:hover {
   background-color: #17a2b8;
   border-color: #17a2b8;
 }
