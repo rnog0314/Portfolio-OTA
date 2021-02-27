@@ -1,4 +1,4 @@
-# Title:[Adview](http://adview.work:8080/portfolio)
+# Title:[Adview](http://18.177.142.60:8080/portfolio)
 ![スクリーンショット 2021-02-03 20 11 13](https://user-images.githubusercontent.com/63575996/106739160-280e9200-665c-11eb-9634-bed6d41a2524.png)
 ![ダウンロード](https://user-images.githubusercontent.com/63575996/106738648-88e99a80-665b-11eb-84e3-a0be3c522bc6.gif)
 ## 概要
@@ -64,7 +64,7 @@
     - 新規作成
 
 ## 使い方
-- ユーザー画面(http://adview.work:8080/portfolio). ~~※現在停止中~~
+- ユーザー画面(http://18.177.142.60:8080/portfolio). ~~※現在停止中~~
   - 商品表示・検索機能
     1. トップページの「What's popular」から任意の画像を押下する。
     2. ヘッダーのロゴを押下してトップページに遷移した後、「Where To Go」から任意の画像を押下する。
@@ -95,7 +95,7 @@
     6. メールドレスに任意のメールアドレス、カード番号に「4242 4242 4242 4242」、カード利用期限に「02/24」、CVCに「234」と入力し、[支払う]を押下し、決済が完了するのを待つ。10秒ほどで決済完了画面に遷移する。
     7. ヘッダーの「Reservation」を押下して、予約確認ページに遷移する。
     8. [Cancel]ボタンを押下し、表示される確認モーダルの[Yes]ボタンを押下し、予約を削除する。
-- 管理者画面(http://adview.work:8080/portfolio/admin).  ~~※現在停止中~~
+- 管理者画面(http://18.177.142.60:8080/portfolio/admin).  ~~※現在停止中~~
   1. ログインページのUser Nameに「demoAdmin」、Passwordに「password」を入力し、「Login」ボタンを押下して、管理者トップページに遷移する。
   2. メニューの「Account」をクリックして、「管理者アカウント」画面に遷移する。
   3. サイドメニューの「Users」をクリックして「ユーザー管理」画面に遷移する。
