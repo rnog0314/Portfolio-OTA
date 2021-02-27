@@ -31,7 +31,7 @@ button {
 
 iframe {
   border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
 }
 
 // ヘッダー
@@ -103,6 +103,18 @@ input {
   font-family: fontawesome;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+// error.html
+
+#go-home-btn {
+  margin-right: 2rem;
+}
+
+#question-icon {
+  position: absolute;
+  right: 50%;
+  transform: translate(50%);
 }
 
 // pagination.html
@@ -294,7 +306,7 @@ input {
     border-radius: 1rem;
     object-fit: cover;
     border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
   }
   .card-title {
     font-size: 2rem;
@@ -308,13 +320,13 @@ input {
   a {
     color: grey;
     &:hover {
-      opacity: .8;
+      opacity: 0.8;
     }
   }
   .tour-img {
     object-fit: cover;
     border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
   }
   .item {
     margin: 3rem;
@@ -330,7 +342,7 @@ input {
 
 #map {
   border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
   width: 40rem;
   height: 25rem;
 }
@@ -503,7 +515,7 @@ input {
     margin: 1rem auto;
     border-radius: 1rem;
     .card-body {
-      padding-top: .5rem;
+      padding-top: 0.5rem;
     }
     img {
       margin: 0;
@@ -528,7 +540,7 @@ input {
     a {
       color: grey;
       &:hover {
-        opacity: .8;
+        opacity: 0.8;
       }
     }
     img {
@@ -548,7 +560,7 @@ input {
     a {
       color: grey;
       &:hover {
-        opacity: .8;
+        opacity: 0.8;
       }
     }
     img {
@@ -591,7 +603,8 @@ input {
 
 // checkout.html
 #checkout-page {
-  .stripe-button-el, .stripe-button-el span {
+  .stripe-button-el,
+  .stripe-button-el span {
     color: #fff;
     background-color: #17a2b8 !important;
     border-color: #17a2b8 !important;
