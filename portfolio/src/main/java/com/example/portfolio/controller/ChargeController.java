@@ -33,9 +33,9 @@ public class ChargeController {
    */
   @PostMapping("")
   public String charge(ChargeRequest chargeRequest, Model model) throws StripeException {
-    chargeRequest.setDescription("Example charge");
+    chargeRequest.setDescription("Example charge"); // 説明を追加
     chargeRequest.setCurrency(Currency.EUR); // 通貨を指定
-    Charge charge = paymentsService.charge(chargeRequest);
+    Charge charge = paymentsService.charge(chargeRequest); 
     model.addAttribute("id", charge.getId());
     model.addAttribute("status", charge.getStatus());
     model.addAttribute("chargeId", charge.getId());

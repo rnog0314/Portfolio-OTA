@@ -9,6 +9,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductDetailRepository extends JpaRepository<ProductDetail, Integer> {
 
+	/**
+	 * 商品詳細レコード取得
+	 * @param productId
+	 * @return ProductDetail
+	 */
 	@Query("SELECT pd FROM ProductDetail pd WHERE pd.productId = :productId")
 	ProductDetail findByProductId(int productId);
 

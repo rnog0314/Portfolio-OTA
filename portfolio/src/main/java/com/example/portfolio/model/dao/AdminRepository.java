@@ -11,9 +11,21 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
 
+	/**
+	 * Adminユーザーの取得
+	 * @param adminName
+	 * @param password
+	 * @return Admin 
+	 */
 	Admin findByAdminNameAndPassword(	@Param("adminName") String adminName,
 																		@Param("password") String password);
 
+	/**
+	 * Adminユーザー情報の更新
+	 * @param id
+	 * @param adminName
+	 * @param password
+	 */
 	@Modifying
 	@Query(value = "UPDATE admin SET admin_name = :adminName, password = :password WHERE  id = :id" , nativeQuery = true)
 	void updateAdmin( @Param("id") int id,

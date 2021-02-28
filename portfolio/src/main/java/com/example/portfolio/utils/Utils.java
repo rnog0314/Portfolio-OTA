@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
+// 複数のクラスで共通して使用されるメソッドをUtilsとしてこのクラスに集約
 @Component
 public class Utils {
 

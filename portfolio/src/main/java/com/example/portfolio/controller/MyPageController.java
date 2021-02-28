@@ -29,11 +29,11 @@ public class MyPageController {
    */
   @GetMapping("")
   public String init(Model model) {
-    User user = userService.findByUserId((int) loginSession.getUserId());
-    byte[] bytes = user.getUserImg();
+    User user = userService.findByUserId((int) loginSession.getUserId()); // ログインしているユーザーのユーザーIDを元に合致するユーザー情報取得
+    byte[] bytes = user.getUserImg(); // 取得したユーザーのプロフィール画像のバイナリデータ取得
     if (bytes != null) {
-      String image = userService.getUserImg(user);
-      model.addAttribute("image", image);
+      String image = userService.getUserImg(user);  // バイナリデータをStringに変換する
+      model.addAttribute("image", image); 
     }
     model.addAttribute("user", user);
     model.addAttribute("loginSession", loginSession);

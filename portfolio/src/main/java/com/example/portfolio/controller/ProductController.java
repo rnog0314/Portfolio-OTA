@@ -35,9 +35,9 @@ public class ProductController {
    */
   @GetMapping(value="/{id}")
   public String init(@PathVariable("id") int productId, Model m) {
-    ProductDto product = productService.findById(productId);
-    ProductDetail productDetail = productDetailService.findByProductId(productId);
-    m.addAttribute("productDetail", productDetail);
+    ProductDto product = productService.findById(productId); // 商品IDを条件に商品取得
+    ProductDetail productDetail = productDetailService.findByProductId(productId); // 商品詳細を商品IDを条件に取得
+    m.addAttribute("productDetail", productDetail); 
     m.addAttribute("product", product);
     m.addAttribute("loginSession", loginSession);
     return "product_detail";

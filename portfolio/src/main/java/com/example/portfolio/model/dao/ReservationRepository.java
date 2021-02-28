@@ -11,10 +11,19 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
 
+	/**
+	 * 予約IDを条件にして予約を削除
+	 * @param reservationId
+	 * @return 1
+	 */
 	@Modifying
 	@Query(value = "DELETE FROM reservations WHERE id = :reservationId", nativeQuery = true)
 	int deleteByReservationId(@Param("reservationId") int reservationId);
 
+	/**
+	 * 決済完了後に予約を確定する
+	 * @param reservationId
+	 */
 	@Modifying
 	@Query(value = "UPDATE reservations SET valid_flag = true WHERE id = :reservationId", nativeQuery = true)
 	void updateValidFlag(@Param("reservationId") int reservationId);

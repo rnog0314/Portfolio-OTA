@@ -51,10 +51,10 @@ public class IndexController {
       loginSession.setTmpUserId(tempUserId); // ランダムな整数を仮ユーザIDとしてログインセッションに登録
       loginSession.setLogined(false);
     }
-    List<ProductDto> products = productService.findAll();
-    List<Category> categories = categoryService.findAll();
-    List<Destination> destinations = destinationService.findAll();
-    List<Testimonial> testimonials = testimonialService.findAll();
+    List<ProductDto> products = productService.findAll(); // トップページ表示する商品一覧取得
+    List<Category> categories = categoryService.findAll(); // カテゴリ全取得
+    List<Destination> destinations = destinationService.findAll(); // デスティネーション全取得
+    List<Testimonial> testimonials = testimonialService.findAll(); // testimonial全取得
     m.addAttribute("products", products);
     m.addAttribute("categories", categories);
     m.addAttribute("destinations", destinations);

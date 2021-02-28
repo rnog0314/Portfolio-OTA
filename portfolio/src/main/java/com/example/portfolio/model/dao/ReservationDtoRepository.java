@@ -13,6 +13,11 @@ import org.springframework.stereotype.Repository;
 public interface ReservationDtoRepository extends JpaRepository<ReservationDto, Integer> {
 
 
+  /**
+   * ユーザーIDを条件に絞り込んだ予約レコードのリストを取得
+   * @param userId
+   * @return List<ReservationDto>
+   */
   @Query(value =  "SELECT r.id, r.user_id, r.product_id, r.count, p.product_image, p.price,  p.product_name, r.start_date, u.user_name, r.valid_flag "
                 + "FROM reservations AS r "
                 + "INNER JOIN products AS p "
@@ -23,6 +28,10 @@ public interface ReservationDtoRepository extends JpaRepository<ReservationDto, 
                 + "AND r.valid_flag = true", nativeQuery = true)
 	List<ReservationDto> getReservationList(@Param("userId") int userId);
 
+  /**
+   * 条件指定なしで予約レコードを全取得
+   * @return List<ReservationDto>
+   */
   @Query(value =  "SELECT r.id, r.user_id, r.product_id, r.count, p.product_image, p.price,  p.product_name, r.start_date, u.user_name, r.valid_flag "
                 + "FROM reservations AS r "
                 + "INNER JOIN products AS p "

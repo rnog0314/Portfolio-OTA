@@ -38,6 +38,11 @@ public class Bookmark {
   @JoinColumn(name = "user_id", insertable = false, updatable = false)
   private User user;
 
+  /**
+   * ブックマーク登録時にインスタンスを生成する
+   * @param userId
+   * @param productId
+   */
   public Bookmark(int userId, int productId) {
     this.userId = userId;
     this.productId = productId;

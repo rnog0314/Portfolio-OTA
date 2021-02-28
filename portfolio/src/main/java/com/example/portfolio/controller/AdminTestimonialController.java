@@ -30,7 +30,7 @@ public class AdminTestimonialController {
    */
   @GetMapping(value = "")
   public String init(Model m) {
-    List<Testimonial> testimonials = testimonialService.findAll();
+    List<Testimonial> testimonials = testimonialService.findAll(); // testimonialsテーブルに存在する全てのレコードを取得する
     m.addAttribute("testimonials", testimonials);
     m.addAttribute("adminSession", adminSession);
     return "admin/testimonial";

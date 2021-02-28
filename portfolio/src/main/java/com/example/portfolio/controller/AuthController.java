@@ -39,7 +39,7 @@ public class AuthController {
   public String login(@RequestBody UserForm form, Model m) {
     // ログインフォームに入力されたユーザ名とパスワードと一致するユーザを取得
     User user = userService.findByEmailAndPassword(form.getEmail(), form.getPassword());
-    userService.setLoginSession(user);
+    userService.setLoginSession(user); 
     m.addAttribute("loginSession", loginSession);
     return gson.toJson(user);
   }

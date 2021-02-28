@@ -30,7 +30,7 @@ public class NoticeController {
    */
   @GetMapping(value = "")
   public String init(Model m) {
-    List<Notice> notices = noticeService.findAllByVisibleFlagTrue();
+    List<Notice> notices = noticeService.findAllByVisibleFlagTrue(); // お知らせレコード全取得(論理削除されていない)
     m.addAttribute("notices", notices);
     m.addAttribute("loginSession", loginSession);
     return "notice";
@@ -44,8 +44,8 @@ public class NoticeController {
    */
   @GetMapping(value = "/{id}")
   public String showDetail(@PathVariable("id") int id, Model m) {
-    Notice notice = noticeService.findById(id);
-    m.addAttribute("notice", notice);
+    Notice notice = noticeService.findById(id); // お知らせIDを条件にお知らせ取得
+    m.addAttribute("notice", notice); 
     m.addAttribute("loginSession", loginSession);
     return "notice_detail";
   }

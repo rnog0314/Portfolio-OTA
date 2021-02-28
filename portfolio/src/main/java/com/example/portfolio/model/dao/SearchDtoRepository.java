@@ -11,6 +11,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SearchDtoRepository extends JpaRepository<SearchDto, Integer> {
+
+	/**
+	 * 検索キーワードを条件に商品ID・商品画像のパス・商品名を取得
+	 * @param keyword
+	 * @return Set<SearchDto
+	 */
 	@Query(value = "SELECT p.id, p.product_image, p.product_name " +
 									"FROM products AS p " +
 									"INNER JOIN categories AS c ON p.category_id = c.category_id " +

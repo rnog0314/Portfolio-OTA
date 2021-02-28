@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 @RequestMapping("/portfolio/admin/reservation")
 public class AdminReservationController {
-  
+
   @Autowired
   private AdminSession adminSession;
 
@@ -42,8 +42,8 @@ public class AdminReservationController {
    */
   @GetMapping(value = { "", "/{page:^[1-9][0-9]*$}" })
   public String init(@PathVariable(name = "page") Optional<Integer> page, Model m, Reservation r) {
-    Page<ReservationDto> reservations = reservationService.findPaginatedList(page);
-    int lastPage = reservations.getTotalPages();
+    Page<ReservationDto> reservations = reservationService.findPaginatedList(page); // ページングされた予約リストを取得する
+    int lastPage = reservations.getTotalPages(); // 最終ページを取得する
     if (lastPage > 0) {
       List<Integer> pageNumbers = IntStream.rangeClosed(1, lastPage).boxed().collect(Collectors.toList()); // HTMLでページ分ループするために各ページ番号が入ったリストを作成
       m.addAttribute("pageNumbers", pageNumbers);
@@ -65,13 +65,13 @@ public class AdminReservationController {
   }
 
   /**
-   * DBから予約情報取得しカレンダーに表示
+   * DBから予約情報取得し、カレンダーに表示 ajax使用
    * @return reservations 全予約情報
    */
   @GetMapping(value = "/fetchAll")
   @ResponseBody
   public String fetchAll() {
-    List<Reservation> reservations = reservationService.findAllForCalendar();
+    List<Reservation> reservations = reservationService.findAllForCalendar(); // reservationsテーブルに存在する全てのレコードを取得する
     return gson.toJson(reservations);
   }
 }

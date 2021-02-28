@@ -52,7 +52,7 @@ public class UserController {
   public boolean checkUserNameDuplicate(@RequestBody String newUserName) {
     boolean bool = false; // 重複があるかどうか真偽値をfalseで初期化
     int count = userService.findByUserName(newUserName);
-    if (count > 0) { // 同一のユーザ名が既に存在していたらtrueを返してエラーを表示
+    if (count > 0) { // 同一のユーザ名が既に存在していたらtrueを返してエラーメッセージを表示
       bool = true;
     } else {
       bool = false; // 同一のユーザ名が存在していなければfalseを返して続行させる
@@ -70,10 +70,10 @@ public class UserController {
   @ResponseBody
   public boolean register(@RequestBody User newUser) {
     boolean bool = false;
-    int result = userService.insertUser(newUser);
+    int result = userService.insertUser(newUser); // 渡ってきたパラメータを使ってusersテーブルにレコードを新規登録する
     if (result > 0) {
       User user = userService.findByUserNameAndPassword(newUser.getUserName(), newUser.getPassword());
-      userService.setLoginSession(user);
+      userService.setLoginSession(user); // loginセッションを更新する
       bool = true;
     }
     return bool;

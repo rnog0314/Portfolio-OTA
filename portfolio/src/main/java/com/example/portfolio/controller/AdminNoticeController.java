@@ -44,7 +44,7 @@ public class AdminNoticeController {
    */
   @GetMapping(value = "/{id}")
   public String showDetail(@PathVariable("id") int id, Model m) {
-    Notice notice = noticeService.findById(id);
+    Notice notice = noticeService.findById(id); // お知らせIDを条件にお知らせを取得する
     m.addAttribute("notice", notice);
     return "admin/notice_detail";
   }
@@ -60,8 +60,8 @@ public class AdminNoticeController {
   public boolean update(@RequestBody Notice notice) {
     boolean bool = false;
     int result = noticeService.update(notice); // お知らせ更新
-    if (result > 0) {
-      bool = true;
+    if (result > 0) { // 更新されたレコードがあった場合
+      bool = true; // 更新成功に変更
     }
     return bool;
   }
@@ -76,8 +76,8 @@ public class AdminNoticeController {
   public boolean insert(@RequestBody Notice notice) {
     boolean bool = false;
     Notice insertedNotice = noticeService.insert(notice); // 入力された内容をもとにお知らせを作成
-    if (insertedNotice != null) { // お知らせが問題なく作成されたら
-      bool = true;
+    if (insertedNotice != null) { // お知らせが問題なく作成された場合
+      bool = true; // 作成成功に変更する
     }
     return bool;
   }

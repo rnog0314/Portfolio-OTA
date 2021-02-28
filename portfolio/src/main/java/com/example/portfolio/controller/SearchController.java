@@ -49,14 +49,14 @@ public class SearchController {
     String key = "";
     if (keyword.isPresent()) { // 検索ワードが入力されていた場合
       key = keyword.get();
-      searchSession.setKeyword(key);
+      searchSession.setKeyword(key); // searchセッションを更新する
     } else {
       key = searchSession.getKeyword(); // セッションから検索キーワードを取得する
     }
-    Set<SearchDto> searchResult = productService.getAllSearchResult(key);
-    int lastPage = utils.getLastPage(searchResult);
-    List<SearchDto> paginatedResult = productService.getPaginatedResult(searchResult, page);
-    int currentPage = utils.getCurrentPage(page);
+    Set<SearchDto> searchResult = productService.getAllSearchResult(key); // 検索キーワードを条件に検索処理を行う
+    int lastPage = utils.getLastPage(searchResult); // 検索結果の最後ページを取得
+    List<SearchDto> paginatedResult = productService.getPaginatedResult(searchResult, page); // 全検索結果からリクエストされたページの検索結果のみを取得する
+    int currentPage = utils.getCurrentPage(page); // 現在ページを取得する
 
     if (lastPage > 0) {
       List<Integer> pageNumbers = IntStream.rangeClosed(1, lastPage).boxed().collect(Collectors.toList()); // HTMLでページ分ループするために各ページ番号が入ったリストを作成

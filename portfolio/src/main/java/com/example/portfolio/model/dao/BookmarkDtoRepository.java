@@ -12,6 +12,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookmarkDtoRepository extends JpaRepository<BookmarkDto, Integer> {
 
+  /**
+   * ブックマーク一覧取得
+   * @param userId
+   * @return List<BookmarkDto> ブックマーク一覧
+   */
   @Query(value =  "SELECT b.id, b.product_id, b.user_id, p.product_image, p.product_name " +
                   "FROM bookmarks AS b " +
                   "INNER JOIN products AS p " +
@@ -19,6 +24,12 @@ public interface BookmarkDtoRepository extends JpaRepository<BookmarkDto, Intege
                   "WHERE b.user_id = :userId", nativeQuery = true)
   List<BookmarkDto> getBookmarkList(@Param("userId") int userId);
 
+  /**
+   * ブックマーク
+   * @param productId
+   * @param userId
+   * @return BookmarkDto ブックマーク
+   */
   @Query(value = "SELECT b.id, b.product_id, b.user_id, p.product_image, p.product_name " +
                   "FROM bookmarks AS b " +
                   "INNER JOIN products AS p " +

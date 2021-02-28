@@ -32,7 +32,7 @@ public class BookmarkController {
    */
   @GetMapping(value = "")
   public String init(Model m) {
-    List<BookmarkDto> bookmarks = bookmarkService.getBookmarkList(loginSession.getUserId());
+    List<BookmarkDto> bookmarks = bookmarkService.getBookmarkList(loginSession.getUserId()); // ユーザーIDを条件にbookmarksテーブルから全てのレコードを取得する
     m.addAttribute("bookmarks", bookmarks);
     m.addAttribute("loginSession", loginSession);
     return "bookmark";
@@ -47,9 +47,9 @@ public class BookmarkController {
   @ResponseBody
   public boolean add(@RequestBody int productId) {
     boolean bool = false;
-    BookmarkDto bookmark = bookmarkService.findBookmark(productId, loginSession.getUserId());
+    BookmarkDto bookmark = bookmarkService.findBookmark(productId, loginSession.getUserId()); // 商品IDとユーザーIDを条件にしてbookmarksテーブルからユニークなレコードを取得する
     if (bookmark == null) { // ブックマークの重複がなかった場合
-      int result = bookmarkService.add(productId);
+      int result = bookmarkService.add(productId); // bookmarksテーブルにレコードを追加する
       if (result > 0) {
         bool = true;
       }
@@ -84,8 +84,8 @@ public class BookmarkController {
   public boolean check(@RequestBody int productId) {
     boolean bool = false;
     BookmarkDto bookmark = bookmarkService.findBookmark(productId, loginSession.getUserId());
-    if (bookmark != null) {
-      bool = true;
+    if (bookmark != null) { // まだbookmarksテーブルに登録されていなかったら
+      bool = true; // 登録可能状態に変更する
     }
     return bool;
   }

@@ -10,6 +10,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TestimonialRepository extends JpaRepository<Testimonial, Integer> {
 
+	/**
+	 * testimonial全取得
+	 * @return List<Testimonial>
+	 */
 	@Query(value = "SELECT * FROM testimonials", nativeQuery = true)
 	List<Testimonial> findAllTestimonails();
 

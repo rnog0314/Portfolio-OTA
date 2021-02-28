@@ -26,7 +26,7 @@ public class AdminController {
 
   /**
    * 管理者ログインページ初期表示
-   * @return admin/login.html
+   * @return admin/login.html 管理者画面ログインページ
    */
   @GetMapping(value = "")
   public String init() {
@@ -34,7 +34,7 @@ public class AdminController {
   }
 
   /**
-   * 管理者ログイン
+   * 管理者ログイン ajazx使用
    * @param f AdminForm
    * @return 管理者情報照合成功/失敗
    */
@@ -44,9 +44,10 @@ public class AdminController {
     boolean bool = false;
     // 入力されたユーザ名とパスワードをもとに管理者アカウントを取得
     Admin admin = adminService.findByAdminNameAndPassword(f.getAdminName(), f.getPassword());
+    // 取得した管理者の情報が存在していたら
     if (admin != null) {
-      adminService.setAdminSession(admin);
-      bool = true;
+      adminService.setAdminSession(admin); // adminセッションにログイン情報を登録する
+      bool = true; // 照合成功に変更する
     }
     return bool;
   }

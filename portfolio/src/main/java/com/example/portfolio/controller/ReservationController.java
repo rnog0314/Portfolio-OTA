@@ -60,8 +60,8 @@ public class ReservationController {
    */
   @GetMapping(value = "")
   public String init(Model m) {
-    int userId = loginSession.getUserId();
-    List<ReservationDto> reservationList = reservationService.getReservationList(userId);
+    int userId = loginSession.getUserId(); // loginセッションからユーザーIDを取得
+    List<ReservationDto> reservationList = reservationService.getReservationList(userId); // ユーザーIDを条件に予約一覧を取得
     m.addAttribute("reservationList", reservationList);
     m.addAttribute("loginSession", loginSession);
     return "reservation_list";
@@ -76,13 +76,13 @@ public class ReservationController {
    */
   @PostMapping(value = "/reserve")
   public String reserve(ReservationForm reservationForm, Model m) {
-    Reservation reserve = reservationService.reserve(reservationForm);
-    int productId = reserve.getProductId();
-    int price = productService.getPriceByProductId(productId);
-    String imagePath = productService.getProductImageByProductId(productId);
-    String productName = productService.getProductNameByProductId(productId);
-    int amount = price * reserve.getCount();
-    int id = reserve.getId();
+    Reservation reserve = reservationService.reserve(reservationForm); // 画面から渡ってきたパラメータ(reservationForm)を使ってreservationsテーブルに新規登録する
+    int productId = reserve.getProductId(); // 新規登録したレコードから商品IDを取得
+    int price = productService.getPriceByProductId(productId); // 商品IDを条件に商品価格を取得
+    String imagePath = productService.getProductImageByProductId(productId); // 商品IDを条件に画像のパスを取得
+    String productName = productService.getProductNameByProductId(productId); // 商品IDを条件に商品名を取得
+    int amount = price * reserve.getCount(); // 合計金額を取得
+    int id = reserve.getId(); // 商品IDを取得
 
     m.addAttribute("amount", amount * 100); // in Stripeはセントはでamoutを扱うため、✖️100
     m.addAttribute("imagePath", imagePath);
