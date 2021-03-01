@@ -1,6 +1,7 @@
 $(document).ready(function () {
   /* 修正ボタン押下時に編集モードに切り替える */
   $('#modify-btn').on('click', function () {
+    // hiddenクラス=display:none;
     $('.normal').addClass('hidden');
     $('.modify').removeClass('hidden');
     $('#modify-btn').addClass('hidden');
@@ -24,12 +25,12 @@ $(document).ready(function () {
     centerVertical: true,
     show: false,
     callback: function () {
-      location.replace('/portfolio/admin/home');
+      location.replace('/portfolio/admin/home'); // 管理者トップページに戻る
     }
   });
 
   /*Admin情報更新後のアラート表示*/
-  if (completeMsg) { 
+  if (completeMsg) {
     dialog.modal('show');
   }
 })

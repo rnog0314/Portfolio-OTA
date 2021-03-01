@@ -17,8 +17,7 @@ $(document).ready(function () {
           location.replace("/portfolio/admin/home");
         } else {
           bootbox.alert({
-            message:
-              "Your login info is not correct. Please make sure your input.",
+            message: "Your login info is not correct. Please make sure your input.",
             backdrop: true,
             centerVertical: true,
           });
