@@ -8,13 +8,14 @@ $(document).ready(function () {
   /* 全選択チェックボックスのつけ外し */
   $("#checkbox-all").on("click", function () {
     $(".checkbox").prop("checked", this.checked); // this.checkedで全選択チェックボックスの状態と各チェックボックスの状態を同じにする
-    changeDisabled();
+    changeDisabled(); // 削除ボタンの状態を変更
   });
+  /*各行のチェックボックスを押下時 */
   $(".checkbox").on("click", function () {
-    if ($("#boxes:checked").length == $(".checkbox").length) {
-      $("#checkbox-all").prop("checked", true);
+    if ($("#boxes:checked").length == $(".checkbox").length) { // テーブルのチェックボックスの数とチェックの入ったチェックボックスの数が同じであれば
+      $("#checkbox-all").prop("checked", true); // 全選択チェックボックスにチェックを入れる
     } else {
-      $("#checkbox-all").prop("checked", false);
+      $("#checkbox-all").prop("checked", false); // 全選択チェックボックスにチェックを外す
     }
   });
 
@@ -26,7 +27,7 @@ $(document).ready(function () {
     for (checked of checkedList) {
       checkedIdList.push($(checked).val()); // ☑️のついたレコードのvalueとして設定されているidを空の配列に入れる
     }
-    deleteProduct(checkedList, checkedIdList);
+    deleteProduct(checkedList, checkedIdList); // チェックの入った行を削除する
   });
 
   /*削除処理*/
