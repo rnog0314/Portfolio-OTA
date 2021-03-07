@@ -18,7 +18,7 @@ $(document).ready(function () {
     }
     $('#selected-status').text(`Selected photo : [${file.name}]`);
     const fd = new FormData();
-    fd.append('file', $('input[type=file]')[0].files[0]);
+    fd.append('file', $('input[type=file]')[0].files[0]); // 読み込むファイルを指定する
     $.ajax({
       url: '/portfolio/user/imgUpload',
       type: "POST",
@@ -36,9 +36,9 @@ $(document).ready(function () {
           callback: function () {
             var reader = new FileReader();
             reader.onload = function () {
-              var img_src = $('.mypage-img').attr('src', reader.result);
+              $('.mypage-img').attr('src', reader.result); // FileReaderのメソッドで、ファイルの内容をStringにして取得する
             }
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(file); // 読み込みを実行する
             console.log('画像ファイルをimgフォルダに格納しました');
           }
         })
