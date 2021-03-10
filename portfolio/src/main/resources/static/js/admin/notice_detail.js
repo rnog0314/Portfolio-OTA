@@ -20,7 +20,7 @@ $(document).ready(function () {
   /* 送信ボタン押下時 */
   $("#submit-btn").on("click", function () {
     let jsonString = {
-      id: $("#ID").val(),
+      id: $("#noticeId").val(),
       title: $("#newTitle").val(),
       text: $("#newText").val(),
     };
